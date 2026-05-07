@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
-  <title>FCAU IIMS - Risk Heatmaps</title>
+  <title>IIMS - Risk Heatmaps</title>
   <style>
     #map-placeholder { height: 600px; background: #e9ecef; display: flex; align-items: center; justify-content: center; border-radius: 15px; position: relative; overflow: hidden; }
     .map-overlay-card { position: absolute; top: 20px; left: 20px; z-index: 10; width: 250px; }
@@ -14,7 +14,14 @@
   <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
   <div id="main-wrapper">
     <aside class="left-sidebar with-vertical"><div>
-      <div class="brand-logo d-flex align-items-center justify-content-between"><a href="./iims-dashboard.html" class="text-nowrap logo-img"><img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="" /></a></div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
       <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
         <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>

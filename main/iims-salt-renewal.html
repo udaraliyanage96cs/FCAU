@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
-  <title>IIMS - Pre-Import Entry</title>
+  <title>IIMS - Salt Registration Renewal</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -69,60 +69,34 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Pre-Import Consignment Entry</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-import-control.html">Import Control</a></li><li class="breadcrumb-item active">New Entry</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Annual Registration Renewal (Salt)</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-salt-manufacturing.html">Salt Module</a></li><li class="breadcrumb-item active">Renewal</li></ol></nav></div></div></div>
           </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Consignment Registration (Phase 01)</h5>
-              <div class="row g-4">
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">Importer Profile</label>
-                  <select class="form-select"><option>Global Foods (Pvt) Ltd (IMP-0042)</option><option>Ceylon Spice Imports (IMP-0081)</option></select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">ASYCUDA / BL Number</label>
-                  <input type="text" class="form-control" placeholder="Enter BL or ASYCUDA Ref #">
-                </div>
-
-                <div class="col-md-4">
-                  <label class="form-label fw-semibold">Commodity Type</label>
-                  <select class="form-select"><option>Canned Goods</option><option>Dairy Products</option><option>Fresh Produce</option><option>Spices</option></select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-semibold">Country of Origin</label>
-                  <select class="form-select"><option>Thailand</option><option>India</option><option>Australia</option><option>Malaysia</option></select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-semibold">Expected Port of Entry</label>
-                  <select class="form-select"><option>Colombo Port</option><option>BIA Terminal</option><option>Hambantota Port</option></select>
-                </div>
-
-                <div class="col-12"><hr></div>
-
-                <h6 class="fw-semibold">Document Uploads (Verification Node)</h6>
-                <div class="col-md-6">
-                  <label class="form-label">Health Certificate (from Origin)</label>
-                  <input type="file" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Product Label (Specimen)</label>
-                  <input type="file" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Certificate of Analysis (COA)</label>
-                  <input type="file" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Commercial Invoice</label>
-                  <input type="file" class="form-control">
-                </div>
-
-                <div class="col-12 mt-4 text-end">
-                  <button class="btn btn-outline-secondary me-2">Save as Draft</button>
-                  <button class="btn btn-primary px-4"><i class="ti ti-send me-1"></i>Submit for Verification</button>
-                </div>
+              <div class="alert alert-info border-0 mb-4">
+                <h6 class="fw-bold"><i class="ti ti-history me-1"></i> Data Reuse Enabled</h6>
+                Existing facility plans and layouts have been pre-loaded. You only need to upload renewed local authority licenses or medical reports.
               </div>
+              
+              <h5 class="fw-semibold mb-4">Active Registration: SLT-2025-088</h5>
+              <form>
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" id="reuseDocs" checked>
+                      <label class="form-check-label fw-semibold" for="reuseDocs">Reuse Architectural and Site Plans from previous year</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6"><label class="form-label">New Annual Local Authority License</label><input type="file" class="form-control"></div>
+                  <div class="col-md-6"><label class="form-label">Updated Medical Certificates (All Handlers)</label><input type="file" class="form-control"></div>
+
+                  <div class="col-md-12 mt-4"><hr></div>
+                  <div class="col-md-6"><p class="mb-1 text-muted">Renewal Fee</p><h5 class="fw-bold">Rs. 25,000.00</h5></div>
+                  <div class="col-md-6 text-end pt-3"><button type="submit" class="btn btn-primary px-5">Pay & Submit Renewal</button></div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
