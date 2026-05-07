@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <title>FCAU IIMS - Lab Result Ingestion</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical"><div>
+      <div class="brand-logo d-flex align-items-center justify-content-between"><a href="./iims-dashboard.html" class="text-nowrap logo-img"><img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="" /></a></div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
+        
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Admin & Portals</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-user-management.html"><span><i class="ti ti-users"></i></span><span class="hide-menu">User Management</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-notification-templates.html"><span><i class="ti ti-mail-opened"></i></span><span class="hide-menu">Notification Templates</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-public-complaint.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Public Portal</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login Page</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Registration</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-fbo-registration.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">FBO Registration</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-premises-list.html"><span><i class="ti ti-building-store"></i></span><span class="hide-menu">Premises List</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-appeals.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Grievance & Appeals</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Inspection</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-form.html"><span><i class="ti ti-clipboard-check"></i></span><span class="hide-menu">H-800 Inspection</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-calendar.html"><span><i class="ti ti-calendar-event"></i></span><span class="hide-menu">Inspection Calendar</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-config.html"><span><i class="ti ti-settings"></i></span><span class="hide-menu">Inspection Config</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Laboratory</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-sample-management.html"><span><i class="ti ti-test-pipe"></i></span><span class="hide-menu">Sample Management</span></a></li>
+        
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Trade Control</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-import-control.html"><span><i class="ti ti-package-import"></i></span><span class="hide-menu">Import Control</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-export-control.html"><span><i class="ti ti-package-export"></i></span><span class="hide-menu">Export Control</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-exporter-registration.html"><span><i class="ti ti-building-factory-2"></i></span><span class="hide-menu">Exporter Registry</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Specialized Mfg</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-bottled-water.html"><span><i class="ti ti-bottle"></i></span><span class="hide-menu">Bottled Water</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-salt-manufacturing.html"><span><i class="ti ti-salt"></i></span><span class="hide-menu">Salt Manufacturing</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Compliance</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-complaints.html"><span><i class="ti ti-message-report"></i></span><span class="hide-menu">Complaints</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-enforcement.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Enforcement</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-arrested-list.html"><span><i class="ti ti-user-cancel"></i></span><span class="hide-menu">Arrested Register</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">System</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-chart-pie"></i></span><span class="hide-menu">IIMS Dashboard</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-risk-heatmaps.html"><span><i class="ti ti-map-2"></i></span><span class="hide-menu">Risk Heatmaps</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
+      </ul></nav>
+    </div></aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Laboratory Result Ingestion</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-sample-management.html">Laboratory</a></li><li class="breadcrumb-item active">Result Entry</li></ol></nav></div></div></div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Analytical Parameters Entry</h5>
+                  <form>
+                    <div class="row g-3">
+                      <div class="col-md-6"><label class="form-label">Moisture (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit < 6.00%"></div>
+                      <div class="col-md-6"><label class="form-label">NaCl Purity (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit >= 97.00%"></div>
+                      <div class="col-md-6"><label class="form-label">Iodine Concentration (mg/kg)</label><input type="number" step="0.01" class="form-control" placeholder="Limit 15.0 - 30.0"></div>
+                      <div class="col-md-6"><label class="form-label">Insoluble Matter (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit < 0.50%"></div>
+                      
+                      <div class="col-md-12"><hr></div>
+                      
+                      <div class="col-md-6">
+                        <label class="form-label">Microbiology: Salmonella</label>
+                        <select class="form-select"><option>Not Detected</option><option>Detected</option></select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Microbiology: E. Coli</label>
+                        <select class="form-select"><option>Not Detected</option><option>Detected</option></select>
+                      </div>
+
+                      <div class="col-md-12 mt-4">
+                        <label class="form-label fw-semibold">Analytical Conclusion</label>
+                        <textarea class="form-control" rows="3" placeholder="Summary of findings..."></textarea>
+                      </div>
+
+                      <div class="col-12 mt-3">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="compliant"><label class="form-check-label" for="compliant">The sample meets all national standards (Schedule III)</label></div>
+                      </div>
+
+                      <div class="col-12 mt-4 text-end">
+                        <button type="submit" class="btn btn-primary px-4"><i class="ti ti-check me-1"></i>Finalize & Dispatch to PHI</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="card bg-primary-subtle border-0">
+                <div class="card-body">
+                  <h5 class="fw-semibold mb-3">Upload Formal Report (PDF)</h5>
+                  <p class="fs-2 text-muted mb-4">The system will use OCR to attempt automatic extraction of parameters if a PDF is uploaded.</p>
+                  <div class="border-2 border-dashed border-primary rounded-4 p-5 text-center bg-white mb-4">
+                    <i class="ti ti-file-upload fs-10 text-primary mb-3"></i>
+                    <h6>Drop Lab Report PDF here</h6>
+                    <small>Only signed PDF files are accepted</small>
+                    <input type="file" class="d-none" id="fileUpload">
+                    <button class="btn btn-primary d-block mx-auto mt-3" onclick="document.getElementById('fileUpload').click()">Browse Files</button>
+                  </div>
+                  <div class="alert alert-info border-0 fs-2">
+                    <i class="ti ti-info-circle me-1"></i> Manual entry is required if OCR cannot confirm certain parameters.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/js/vendor.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../assets/js/theme/app.init.js"></script>
+  <script src="../assets/js/theme/theme.js"></script>
+  <script src="../assets/js/theme/app.min.js"></script>
+  <script src="../assets/js/theme/sidebarmenu.js"></script>
+</body>
+</html>
