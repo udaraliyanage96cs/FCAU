@@ -1,0 +1,105 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <meta charset="utf-8">
+    <title>FCAU IIMS Prototype Guide</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #5d87ff; padding-bottom: 10px; }
+        h2 { color: #5d87ff; margin-top: 30px; border-left: 5px solid #5d87ff; padding-left: 10px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; color: #2c3e50; font-weight: bold; }
+        .url { color: #5d87ff; font-family: monospace; }
+        .description { font-style: italic; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <h1>FCAU IIMS Prototype - Page & Module Guide</h1>
+    <p>This document provides a comprehensive list of all functional pages within the FCAU IIMS frontend prototype, organized by their respective SRS modules.</p>
+
+    <h2>🏠 Home & Strategic Analytics</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>IIMS Dashboard</b></td><td class="url">iims-dashboard.html</td><td class="description">Central operational dashboard with KPI counters and task summaries.</td></tr>
+        <tr><td><b>Risk Heatmaps</b></td><td class="url">iims-risk-heatmaps.html</td><td class="description">Strategic visualization of national non-compliance density (Grade C/D clusters).</td></tr>
+    </table>
+
+    <h2>🔑 Admin & User Management</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>User Sign-up</b></td><td class="url">iims-user-signup.html</td><td class="description">Level 1 Identity Inception for new system users (Progressive Profiling).</td></tr>
+        <tr><td><b>User Directory</b></td><td class="url">iims-user-management.html</td><td class="description">Master list of all internal users (PHIs, MOHs, Admins) with role management.</td></tr>
+        <tr><td><b>Add New User</b></td><td class="url">iims-add-user.html</td><td class="description">Form to provision new internal identities and assign administrative territories.</td></tr>
+        <tr><td><b>Login Portal</b></td><td class="url">iims-login.html</td><td class="description">Secure entry point for all system actors.</td></tr>
+    </table>
+
+    <h2>📋 Registration (FBO)</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>Registration Wizard</b></td><td class="url">iims-fbo-registration.html</td><td class="description">Multi-step form for Premises Owners to register and upload statutory documents.</td></tr>
+        <tr><td><b>Premises Registry</b></td><td class="url">iims-premises-list.html</td><td class="description">Comprehensive list of all registered food establishments with risk indexing.</td></tr>
+        <tr><td><b>Grievance & Appeals</b></td><td class="url">iims-appeals.html</td><td class="description">Management of appeals against rejected registrations or grading results.</td></tr>
+    </table>
+
+    <h2>🛡️ Inspection & Grading</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>H-800 Digital Form</b></td><td class="url">iims-inspection-form.html</td><td class="description">Mobile-responsive checklist for field PHIs to record 10-cage evaluation data.</td></tr>
+        <tr><td><b>Inspection Result</b></td><td class="url">iims-inspection-result.html</td><td class="description">Printable Hygiene Rating Certificate (Grade A/B/C/D) with QR verification.</td></tr>
+        <tr><td><b>Supervisory Review</b></td><td class="url">iims-inspection-review.html</td><td class="description">MOH interface to audit PHI findings and finalize grading decisions.</td></tr>
+        <tr><td><b>Inspection Config</b></td><td class="url">iims-inspection-config.html</td><td class="description">Backend tool to define scoring weights and risk-based frequency rules.</td></tr>
+        <tr><td><b>Inspection Calendar</b></td><td class="url">iims-inspection-calendar.html</td><td class="description">PHI itinerary planner showing routine, complaint, and follow-up triggers.</td></tr>
+    </table>
+
+    <h2>🧪 Laboratory Coordination</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>Sample Management</b></td><td class="url">iims-sample-management.html</td><td class="description">Registry of all physical samples currently in transit, in lab, or completed.</td></tr>
+        <tr><td><b>Reception Triage</b></td><td class="url">iims-lab-triage.html</td><td class="description">Lab reception interface to verify sample integrity and assign analysts.</td></tr>
+        <tr><td><b>Manual Result Entry</b></td><td class="url">iims-lab-report-form.html</td><td class="description">Form for recording analytical parameters (Moisture, NaCl, Microbiology).</td></tr>
+    </table>
+
+    <h2>🚢 Trade Control (Import/Export)</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>Import Pipeline</b></td><td class="url">iims-import-control.html</td><td class="description">Tracking queue for all incoming food consignments at ports of entry.</td></tr>
+        <tr><td><b>Pre-Import Entry</b></td><td class="url">iims-import-entry.html</td><td class="description">Importer portal for submitting shipping details prior to cargo arrival.</td></tr>
+        <tr><td><b>Border Inspection</b></td><td class="url">iims-import-inspection.html</td><td class="description">FDI log for trilingual label verification and border triage decisions.</td></tr>
+        <tr><td><b>Export Control</b></td><td class="url">iims-export-control.html</td><td class="description">Dashboard for reviewing and issuing Export Health Certificates.</td></tr>
+        <tr><td><b>Health Cert App</b></td><td class="url">iims-export-app.html</td><td class="description">Exporter portal to apply for specific consignment certifications.</td></tr>
+        <tr><td><b>Exporter Registry</b></td><td class="url">iims-exporter-registration.html</td><td class="description">Advanced registration for factories seeking export-grade status.</td></tr>
+    </table>
+
+    <h2>🏭 Specialized Manufacturing</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>Salt Manufacturing</b></td><td class="url">iims-salt-manufacturing.html</td><td class="description">Specialized module dashboard for Common Salt manufacturing.</td></tr>
+        <tr><td><b>Salt Reg Form</b></td><td class="url">iims-salt-registration-form.html</td><td class="description">Detailed registration for Salt Lagoons and Processing Factories.</td></tr>
+        <tr><td><b>Salt Renewal</b></td><td class="url">iims-salt-renewal.html</td><td class="description">Streamlined annual renewal workflow with document reuse logic.</td></tr>
+        <tr><td><b>Salt Amendment</b></td><td class="url">iims-salt-amendment.html</td><td class="description">Request portal for location, ownership, or structural changes.</td></tr>
+        <tr><td><b>Bottled Water</b></td><td class="url">iims-bottled-water.html</td><td class="description">Specialized module dashboard for Bottled/Packaged water.</td></tr>
+        <tr><td><b>Water Reg Form</b></td><td class="url">iims-water-registration-form.html</td><td class="description">Application for water source (Well/Spring) and initial facility approval.</td></tr>
+        <tr><td><b>Brand Registration</b></td><td class="url">iims-water-brands.html</td><td class="description">Registering multiple commercial brands under a single parent facility.</td></tr>
+    </table>
+
+    <h2>⚖️ Compliance & Enforcement</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>Complaints Ledger</b></td><td class="url">iims-complaints.html</td><td class="description">Tracking system for all public reports and food poisoning cases.</td></tr>
+        <tr><td><b>Complaint Triage</b></td><td class="url">iims-complaint-triage.html</td><td class="description">Administrative "Ticketing Engine" to route complaints to the correct PHI.</td></tr>
+        <tr><td><b>Public Portal</b></td><td class="url">iims-public-complaint.html</td><td class="description">Simple citizen interface to report food safety concerns anonymously.</td></tr>
+        <tr><td><b>Legal Action Registry</b></td><td class="url">iims-enforcement.html</td><td class="description">Central log of Seizures, Destructions, and Prosecutions.</td></tr>
+        <tr><td><b>Seizure Order</b></td><td class="url">iims-seizure-order.html</td><td class="description">Formal record creation for the lawful seizure of hazardous goods.</td></tr>
+        <tr><td><b>Prosecution Form</b></td><td class="url">iims-prosecution-form.html</td><td class="description">Formulation of court plaints and recording of judicial verdicts.</td></tr>
+        <tr><td><b>Arrested Register</b></td><td class="url">iims-arrested-list.html</td><td class="description">Dedicated custody log for enforcement actions involving physical arrests.</td></tr>
+    </table>
+
+    <h2>📢 System Support</h2>
+    <table>
+        <tr><th>Page</th><th>URL</th><th>Description</th></tr>
+        <tr><td><b>Alerts Center</b></td><td class="url">iims-alerts.html</td><td class="description">Inbox for critical system notifications and expiring certifications.</td></tr>
+        <tr><td><b>Notif. Templates</b></td><td class="url">iims-notification-templates.html</td><td class="description">Management of SMS/Email templates with dynamic placeholders.</td></tr>
+        <tr><td><b>Reports & Analytics</b></td><td class="url">iims-reports.html</td><td class="description">Multi-dimensional reporting engine with charts and data export.</td></tr>
+    </table>
+</body>
+</html>
