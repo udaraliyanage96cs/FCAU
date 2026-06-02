@@ -1,0 +1,89 @@
+/* ============================================================
+   IIMS Role Script — FBO (Food Business Operator – Self-Service)
+   Injected into every page inside /main/fbo/
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var ROLE = {
+    id: 'fbo',
+    name: 'Business Owner',
+    subtitle: 'Registered FBO Entity',
+    badge: 'FBO',
+    color: '#10B981',
+    colorLight: '#ECFDF5',
+    nav: [
+      { type: 'cap', label: 'My Account' },
+      { type: 'link', icon: 'ti ti-user-plus',        label: 'Registration Wizard', href: './iims-fbo-registration.html' },
+      { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals', href: './iims-appeals.html' },
+
+      { type: 'cap', label: 'Export & Import' },
+      { type: 'link', icon: 'ti ti-certificate',      label: 'Export Health Cert',  href: './iims-export-app.html' },
+      { type: 'link', icon: 'ti ti-file-invoice',     label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
+
+      { type: 'cap', label: 'Salt Products' },
+      { type: 'link', icon: 'ti ti-file-plus',        label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
+      { type: 'link', icon: 'ti ti-refresh',          label: 'Salt Renewal',        href: './iims-salt-renewal.html' },
+      { type: 'link', icon: 'ti ti-edit',             label: 'Salt Amendment',      href: './iims-salt-amendment.html' },
+
+      { type: 'cap', label: 'Water Products' },
+      { type: 'link', icon: 'ti ti-droplet',          label: 'Water Registration',  href: './iims-water-registration-form.html' },
+      { type: 'link', icon: 'ti ti-tag',              label: 'Brand Registration',  href: './iims-water-brands.html' }
+    ]
+  };
+
+  function buildNav() {
+    var cur = window.location.pathname.split('/').pop() || 'iims-fbo-registration.html';
+    return ROLE.nav.map(function (item) {
+      if (item.type === 'cap') {
+        return '<li class="nav-small-cap">' +
+               '<i class="ti ti-dots nav-small-cap-icon fs-4"></i>' +
+               '<span class="hide-menu">' + item.label + '</span></li>';
+      }
+      var active = (cur === item.href.replace('./', '')) ? ' active' : '';
+      return '<li class="sidebar-item">' +
+             '<a class="sidebar-link' + active + '" href="' + item.href + '">' +
+             '<span><i class="' + item.icon + '"></i></span>' +
+             '<span class="hide-menu">' + item.label + '</span></a></li>';
+    }).join('');
+  }
+
+  function injectStyles() {
+    var s = document.createElement('style');
+    s.textContent = [
+      '.role-banner{background:linear-gradient(135deg,' + ROLE.color + '18,' + ROLE.color + '08);',
+      'border-left:3px solid ' + ROLE.color + ';border-radius:8px;',
+      'padding:8px 12px;margin:8px 16px 2px;display:flex;align-items:center;gap:8px;}',
+      '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
+      'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
+      '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
+      '.sidebar-link.active{color:' + ROLE.color + ' !important;}',
+      '.sidebar-link.active i{color:' + ROLE.color + ' !important;}'
+    ].join('');
+    document.head.appendChild(s);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    injectStyles();
+
+    var brand = document.querySelector('.brand-logo');
+    if (brand) {
+      var banner = document.createElement('div');
+      banner.className = 'role-banner';
+      banner.innerHTML = '<span class="role-badge">' + ROLE.badge + '</span>' +
+                         '<span class="role-label">' + ROLE.name + '</span>';
+      brand.insertAdjacentElement('afterend', banner);
+    }
+
+    var nav = document.getElementById('sidebarnav');
+    if (nav) nav.innerHTML = buildNav();
+
+    var ph6 = document.querySelector('.fixed-profile h6');
+    var psub = document.querySelector('.fixed-profile span.fs-2');
+    if (ph6) ph6.textContent = ROLE.name;
+    if (psub) psub.textContent = ROLE.subtitle;
+
+    var topbar = document.querySelector('.topbar');
+    if (topbar) topbar.style.borderBottom = '2px solid ' + ROLE.color + '55';
+  });
+})();

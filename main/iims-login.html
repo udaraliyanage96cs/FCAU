@@ -1,106 +1,295 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
-  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FCAU IIMS — Secure login portal for all system actors." />
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
-  <title>IIMS - Login</title>
+  <title>IIMS – Sign In</title>
   <style>
-    .auth-wrapper{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1e3a5f 0%,#2d5a8e 50%,#1a73e8 100%)}
-    .auth-card{max-width:480px;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-    .auth-header{background:linear-gradient(135deg,#0d47a1,#1565c0);padding:40px 30px 30px;text-align:center;color:#fff}
-    .auth-header img{width:60px;margin-bottom:12px}
-    .auth-body{padding:30px}
-    .role-selector .form-check{border:2px solid #e9ecef;border-radius:10px;padding:12px 16px 12px 40px;margin-bottom:8px;transition:all .2s;cursor:pointer}
-    .role-selector .form-check:hover{border-color:#5D87FF;background:#f0f6ff}
-    .role-selector .form-check-input:checked~.form-check-label{color:#5D87FF;font-weight:600}
-    .role-selector .form-check:has(.form-check-input:checked){border-color:#5D87FF;background:#f0f6ff}
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    *{box-sizing:border-box;}
+    body{font-family:'Inter',sans-serif;margin:0;background:#0f172a;}
+
+    /* ── Background ── */
+    .auth-bg{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      padding:24px;
+      background:radial-gradient(ellipse at 20% 50%,#1e3a8a22 0%,transparent 60%),
+                 radial-gradient(ellipse at 80% 20%,#7c3aed22 0%,transparent 50%),
+                 linear-gradient(160deg,#0f172a 0%,#1e1b4b 100%);
+    }
+
+    /* ── Card ── */
+    .auth-card{
+      width:100%;max-width:520px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.5);
+      backdrop-filter:blur(20px);
+    }
+
+    /* ── Header ── */
+    .auth-header{
+      padding:36px 32px 28px;text-align:center;
+      background:linear-gradient(135deg,rgba(93,135,255,.2),rgba(124,58,237,.15));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .auth-logo{
+      width:56px;height:56px;border-radius:14px;
+      background:linear-gradient(135deg,#5D87FF,#7c3aed);
+      display:inline-flex;align-items:center;justify-content:center;
+      margin-bottom:14px;box-shadow:0 8px 24px rgba(93,135,255,.4);
+    }
+    .auth-logo i{font-size:28px;color:#fff;}
+    .auth-title{color:#fff;font-size:22px;font-weight:800;margin:0 0 4px;}
+    .auth-subtitle{color:rgba(255,255,255,.6);font-size:13px;margin:0;}
+
+    /* ── Body ── */
+    .auth-body{padding:28px 32px 32px;}
+
+    /* ── Form fields ── */
+    .field-label{color:rgba(255,255,255,.7);font-size:12px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px;display:block;}
+    .field-wrap{position:relative;margin-bottom:16px;}
+    .field-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4);font-size:16px;pointer-events:none;}
+    .form-input{
+      width:100%;padding:12px 14px 12px 42px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:10px;color:#fff;font-size:14px;outline:none;
+      transition:border-color .2s,background .2s;
+    }
+    .form-input:focus{border-color:#5D87FF;background:rgba(93,135,255,.1);}
+    .form-input::placeholder{color:rgba(255,255,255,.3);}
+
+    /* ── Role cards ── */
+    .role-section-label{
+      color:rgba(255,255,255,.5);font-size:11px;font-weight:600;
+      letter-spacing:.6px;text-transform:uppercase;margin:20px 0 12px;
+    }
+    .role-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+    .role-card{
+      position:relative;border:1.5px solid rgba(255,255,255,.1);
+      border-radius:12px;padding:12px 14px;cursor:pointer;
+      transition:all .2s;background:rgba(255,255,255,.04);
+      display:flex;align-items:center;gap:10px;
+    }
+    .role-card:hover{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.08);transform:translateY(-1px);}
+    .role-card.selected{border-color:var(--rc);background:rgba(var(--rc-rgb),.12);box-shadow:0 0 0 3px rgba(var(--rc-rgb),.15);}
+    .role-card input[type=radio]{position:absolute;opacity:0;pointer-events:none;}
+    .role-icon{
+      width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+      background:rgba(var(--rc-rgb),.2);flex-shrink:0;
+    }
+    .role-icon i{font-size:16px;color:var(--rc);}
+    .role-info{}
+    .role-badge-pill{
+      font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+      padding:2px 7px;border-radius:4px;background:var(--rc);color:#fff;
+      display:inline-block;margin-bottom:2px;
+    }
+    .role-name{color:rgba(255,255,255,.8);font-size:11px;font-weight:500;display:block;}
+
+    /* ── CTA ── */
+    .btn-signin{
+      width:100%;padding:14px;border:none;border-radius:12px;cursor:pointer;
+      background:linear-gradient(135deg,#5D87FF,#7c3aed);
+      color:#fff;font-size:15px;font-weight:700;letter-spacing:.3px;
+      margin-top:24px;transition:all .2s;box-shadow:0 6px 24px rgba(93,135,255,.4);
+      display:flex;align-items:center;justify-content:center;gap:8px;
+    }
+    .btn-signin:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(93,135,255,.55);}
+    .btn-signin i{font-size:18px;}
+
+    /* ── Footer links ── */
+    .auth-footer{text-align:center;margin-top:20px;}
+    .auth-footer a{color:#5D87FF;font-size:13px;text-decoration:none;font-weight:500;}
+    .auth-footer a:hover{text-decoration:underline;}
+    .auth-footer p{color:rgba(255,255,255,.35);font-size:12px;margin:14px 0 0;}
+
+    /* ── Public link ── */
+    .public-link{
+      text-align:center;margin-top:16px;padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .public-link a{color:rgba(255,255,255,.45);font-size:12px;text-decoration:none;}
+    .public-link a:hover{color:rgba(255,255,255,.7);}
   </style>
 </head>
 <body>
-  <div class="auth-wrapper">
-    <div class="auth-card card mb-0">
+  <div class="auth-bg">
+    <div class="auth-card">
+
+      <!-- Header -->
       <div class="auth-header">
-        <img src="../assets/images/logos/favicon.png" alt="FCAU">
-        <h3 class="fw-bold mb-1">FCAU IIMS</h3>
-        <p class="mb-0 opacity-75">Interoperable Risk-based Food Safety Inspection<br>Information Management System</p>
+        <div class="auth-logo"><i class="ti ti-shield-check"></i></div>
+        <h1 class="auth-title">FCAU IIMS</h1>
+        <p class="auth-subtitle">Interoperable Risk-based Food Safety Inspection<br>Information Management System</p>
       </div>
+
+      <!-- Body -->
       <div class="auth-body">
-        <h5 class="fw-semibold mb-1">Welcome Back</h5>
-        <p class="text-muted mb-4 fs-2">Sign in to access the management portal</p>
 
-        <div class="mb-3">
-          <label class="form-label fw-semibold">Email / Username</label>
-          <div class="input-group">
-            <span class="input-group-text bg-transparent"><i class="ti ti-user"></i></span>
-            <input type="text" class="form-control" placeholder="Enter your email or username" value="phi.perera@fcau.gov.lk">
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label fw-semibold">Password</label>
-          <div class="input-group">
-            <span class="input-group-text bg-transparent"><i class="ti ti-lock"></i></span>
-            <input type="password" class="form-control" placeholder="Enter your password" value="••••••••">
-            <button class="btn btn-outline-secondary" type="button"><i class="ti ti-eye"></i></button>
-          </div>
+        <!-- Username -->
+        <label class="field-label" for="login-email">Email / Username</label>
+        <div class="field-wrap">
+          <i class="ti ti-user field-icon"></i>
+          <input id="login-email" type="text" class="form-input" placeholder="your.name@fcau.gov.lk" value="phi.perera@fcau.gov.lk" />
         </div>
 
-        <div class="mb-3">
-          <label class="form-label fw-semibold">Login As (Role)</label>
-          <div class="role-selector">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="rolePHI" checked>
-              <label class="form-check-label" for="rolePHI"><i class="ti ti-clipboard-check me-2"></i>Public Health Inspector (PHI)</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleMOH">
-              <label class="form-check-label" for="roleMOH"><i class="ti ti-stethoscope me-2"></i>Medical Officer of Health (MOH)</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleFDI">
-              <label class="form-check-label" for="roleFDI"><i class="ti ti-package-import me-2"></i>Food & Drug Inspector (FDI)</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleRD">
-              <label class="form-check-label" for="roleRD"><i class="ti ti-building-community me-2"></i>Regional Director (RD)</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleAdmin">
-              <label class="form-check-label" for="roleAdmin"><i class="ti ti-shield-check me-2"></i>FCAU Administrator</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleFBO">
-              <label class="form-check-label" for="roleFBO"><i class="ti ti-building-store me-2"></i>Food Business Operator (FBO)</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleLab">
-              <label class="form-check-label" for="roleLab"><i class="ti ti-test-pipe me-2"></i>Laboratory Analyst</label>
-            </div>
-          </div>
+        <!-- Password -->
+        <label class="field-label" for="login-password">Password</label>
+        <div class="field-wrap">
+          <i class="ti ti-lock field-icon"></i>
+          <input id="login-password" type="password" class="form-input" placeholder="Enter password" value="••••••••" />
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="remember" checked>
-            <label class="form-check-label" for="remember">Remember me</label>
-          </div>
-          <a href="javascript:void(0)" class="text-primary fs-2">Forgot Password?</a>
+        <!-- Role selector -->
+        <div class="role-section-label">Select Your Role to Sign In</div>
+        <div class="role-grid" id="roleGrid">
+
+          <label class="role-card selected" id="card-phi"
+                 style="--rc:#3B82F6;--rc-rgb:59,130,246;"
+                 onclick="selectRole('phi')">
+            <input type="radio" name="role" value="phi" checked>
+            <div class="role-icon"><i class="ti ti-clipboard-check"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#3B82F6;">PHI</span>
+              <span class="role-name">Public Health Inspector</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-moh"
+                 style="--rc:#14B8A6;--rc-rgb:20,184,166;"
+                 onclick="selectRole('moh')">
+            <input type="radio" name="role" value="moh">
+            <div class="role-icon"><i class="ti ti-stethoscope"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#14B8A6;">MOH</span>
+              <span class="role-name">Medical Officer of Health</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-admin"
+                 style="--rc:#6366F1;--rc-rgb:99,102,241;"
+                 onclick="selectRole('admin')">
+            <input type="radio" name="role" value="admin">
+            <div class="role-icon"><i class="ti ti-shield-lock"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#6366F1;">ADMIN</span>
+              <span class="role-name">System Administrator</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-fdi"
+                 style="--rc:#8B5CF6;--rc-rgb:139,92,246;"
+                 onclick="selectRole('fdi')">
+            <input type="radio" name="role" value="fdi">
+            <div class="role-icon"><i class="ti ti-package-import"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#8B5CF6;">FDI</span>
+              <span class="role-name">Food &amp; Drug Inspector</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-lab"
+                 style="--rc:#F59E0B;--rc-rgb:245,158,11;"
+                 onclick="selectRole('lab')">
+            <input type="radio" name="role" value="lab">
+            <div class="role-icon"><i class="ti ti-test-pipe"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#F59E0B;">LAB</span>
+              <span class="role-name">Laboratory Analyst</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-fbo"
+                 style="--rc:#10B981;--rc-rgb:16,185,129;"
+                 onclick="selectRole('fbo')">
+            <input type="radio" name="role" value="fbo">
+            <div class="role-icon"><i class="ti ti-building-store"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#10B981;">FBO</span>
+              <span class="role-name">Food Business Operator</span>
+            </div>
+          </label>
+
         </div>
 
-        <a href="./iims-dashboard.html" class="btn btn-primary w-100 mb-3 py-2 fw-semibold"><i class="ti ti-login me-1"></i>Sign In</a>
+        <!-- Sign In Button -->
+        <button class="btn-signin" id="signinBtn" onclick="doSignIn()">
+          <i class="ti ti-login"></i> Sign In to Portal
+        </button>
 
-        <div class="text-center">
-          <p class="text-muted fs-2 mb-1">New Food Business Operator?</p>
-          <a href="./iims-fbo-registration.html" class="text-primary fw-semibold fs-2">Register Your Premises</a>
+        <!-- Footer -->
+        <div class="auth-footer">
+          <a href="javascript:void(0)">Forgot Password?</a>
+        </div>
+        <div class="public-link">
+          <a href="./public/iims-public-complaint.html">
+            <i class="ti ti-alert-circle" style="vertical-align:middle;"></i>
+            Submit a Food Safety Complaint (Public Portal)
+          </a>
         </div>
 
-        <hr class="my-3">
-        <div class="text-center">
-          <small class="text-muted">Food Control Administration Unit (FCAU) &copy; 2026</small><br>
-          <small class="text-muted">Ministry of Health, Sri Lanka</small>
-        </div>
-      </div>
-    </div>
+        <p style="text-align:center;color:rgba(255,255,255,.2);font-size:11px;margin:18px 0 0;">
+          Food Control Administration Unit (FCAU) &copy; 2026 &nbsp;·&nbsp; Ministry of Health, Sri Lanka
+        </p>
+
+      </div><!-- /auth-body -->
+    </div><!-- /auth-card -->
   </div>
+
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script>
+    var selectedRole = 'phi';
+
+    // Role → index page mapping
+    var rolePortals = {
+      phi:   './phi/iims-dashboard.html',
+      moh:   './moh/iims-dashboard.html',
+      admin: './admin/iims-dashboard.html',
+      fdi:   './fdi/iims-dashboard.html',
+      lab:   './lab/iims-dashboard.html',
+      fbo:   './fbo/iims-fbo-registration.html'
+    };
+
+    function selectRole(role) {
+      // Deselect all
+      document.querySelectorAll('.role-card').forEach(function(c){ c.classList.remove('selected'); });
+      // Select target
+      var card = document.getElementById('card-' + role);
+      if (card) {
+        card.classList.add('selected');
+        card.querySelector('input[type=radio]').checked = true;
+      }
+      selectedRole = role;
+    }
+
+    function doSignIn() {
+      var btn = document.getElementById('signinBtn');
+      btn.innerHTML = '<i class="ti ti-loader" style="animation:spin .7s linear infinite"></i> Authenticating...';
+      btn.style.opacity = '.8';
+      setTimeout(function() {
+        window.location.href = rolePortals[selectedRole] || './phi/iims-dashboard.html';
+      }, 700);
+    }
+
+    // Handle card clicks — prevent double-fire from label
+    document.querySelectorAll('.role-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        var role = card.querySelector('input[type=radio]').value;
+        selectRole(role);
+      });
+    });
+  </script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </body>
 </html>

@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Dashboard</title>
+</head>
+
+<body class="link-sidebar">
+  <div class="preloader">
+    <img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" />
+  </div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav">
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
+        
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Admin & Portals</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-user-management.html"><span><i class="ti ti-users"></i></span><span class="hide-menu">User Management</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-notification-templates.html"><span><i class="ti ti-mail-opened"></i></span><span class="hide-menu">Notification Templates</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-public-complaint.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Public Portal</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login Page</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Registration</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-fbo-registration.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">FBO Registration</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-premises-list.html"><span><i class="ti ti-building-store"></i></span><span class="hide-menu">Premises List</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-appeals.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Grievance & Appeals</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Inspection</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-form.html"><span><i class="ti ti-clipboard-check"></i></span><span class="hide-menu">H-800 Inspection</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-calendar.html"><span><i class="ti ti-calendar-event"></i></span><span class="hide-menu">Inspection Calendar</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-config.html"><span><i class="ti ti-settings"></i></span><span class="hide-menu">Inspection Config</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Laboratory</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-sample-management.html"><span><i class="ti ti-test-pipe"></i></span><span class="hide-menu">Sample Management</span></a></li>
+        
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Trade Control</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-import-control.html"><span><i class="ti ti-package-import"></i></span><span class="hide-menu">Import Control</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-export-control.html"><span><i class="ti ti-package-export"></i></span><span class="hide-menu">Export Control</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-exporter-registration.html"><span><i class="ti ti-building-factory-2"></i></span><span class="hide-menu">Exporter Registry</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Specialized Mfg</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-bottled-water.html"><span><i class="ti ti-bottle"></i></span><span class="hide-menu">Bottled Water</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-salt-manufacturing.html"><span><i class="ti ti-salt"></i></span><span class="hide-menu">Salt Manufacturing</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Compliance</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-complaints.html"><span><i class="ti ti-message-report"></i></span><span class="hide-menu">Complaints</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-enforcement.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Enforcement</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-arrested-list.html"><span><i class="ti ti-user-cancel"></i></span><span class="hide-menu">Arrested Register</span></a></li>
+
+        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">System</span></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-chart-pie"></i></span><span class="hide-menu">IIMS Dashboard</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-risk-heatmaps.html"><span><i class="ti ti-map-2"></i></span><span class="hide-menu">Risk Heatmaps</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
+      </ul>
+        </nav>
+        <div class="fixed-profile p-3 mx-4 mb-2 bg-secondary-subtle rounded mt-3">
+          <div class="hstack gap-3">
+            <div class="john-img">
+              <img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt="" />
+            </div>
+            <div class="john-title">
+              <h6 class="mb-0 fs-4 fw-semibold">PHI Officer</h6>
+              <span class="fs-2">Colombo West</span>
+            </div>
+            <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+              <i class="ti ti-power fs-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="page-wrapper">
+      <header class="topbar">
+        <div class="with-vertical">
+          <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav">
+              <li class="nav-item nav-icon-hover-bg rounded-circle ms-n2">
+                <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)">
+                  <i class="ti ti-menu-2"></i>
+                </a>
+              </li>
+            </ul>
+            <div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div>
+            <a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="ti ti-dots fs-7"></i>
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div class="d-flex align-items-center justify-content-between">
+                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+                  <li class="nav-item nav-icon-hover-bg rounded-circle">
+                    <a class="nav-link" href="javascript:void(0)">
+                      <i class="ti ti-bell-ringing"></i>
+                      <div class="notification bg-primary rounded-circle"></div>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <div class="dropdown">
+                      <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                          <div class="user-profile-img">
+                            <img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumb -->
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">IIMS Dashboard</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-3 text-center">
+                  <img src="../../assets/images/backgrounds/track-bg.png" alt="" class="img-fluid mb-n7" style="max-height:100px;" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KPI Row -->
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle">
+                      <i class="ti ti-building-store text-primary fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Registered Premises</span>
+                      <h3 class="mb-0 fw-semibold">4,278</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-success fs-2 fw-semibold"><i class="ti ti-arrow-up"></i> +12.5%</span>
+                    <span class="text-muted fs-2">vs last quarter</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-success-subtle">
+                      <i class="ti ti-clipboard-check text-success fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Inspections (Month)</span>
+                      <h3 class="mb-0 fw-semibold">1,842</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-success fs-2 fw-semibold"><i class="ti ti-arrow-up"></i> +8.3%</span>
+                    <span class="text-muted fs-2">completion rate: 87%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-warning-subtle">
+                      <i class="ti ti-test-pipe text-warning fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Pending Lab Results</span>
+                      <h3 class="mb-0 fw-semibold">156</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-danger fs-2 fw-semibold"><i class="ti ti-arrow-down"></i> -3.2%</span>
+                    <span class="text-muted fs-2">avg turnaround: 5d</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-danger-subtle">
+                      <i class="ti ti-alert-triangle text-danger fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Critical Alerts</span>
+                      <h3 class="mb-0 fw-semibold">23</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-danger fs-2 fw-semibold"><i class="ti ti-arrow-up"></i> +5 new</span>
+                    <span class="text-muted fs-2">requires action</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-7">
+                    <div>
+                      <h5 class="card-title fw-semibold">Inspection Coverage & Compliance</h5>
+                      <p class="card-subtitle mb-0 text-muted">Monthly inspection execution vs mandate</p>
+                    </div>
+                    <div class="dropdown">
+                      <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">This Year</button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                        <li><a class="dropdown-item" href="#">Last Year</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div id="inspection-coverage-chart" style="height: 300px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-1">Risk Distribution</h5>
+                  <p class="card-subtitle mb-3 text-muted">By establishment grade</p>
+                  <div id="risk-distribution-chart" style="height: 300px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Inspections Table -->
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h5 class="card-title fw-semibold mb-0">Recent Inspections</h5>
+                    <a href="./iims-inspection-calendar.html" class="btn btn-sm btn-primary">View All</a>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead>
+                        <tr>
+                          <th>Establishment</th>
+                          <th>Category</th>
+                          <th>PHI</th>
+                          <th>Score</th>
+                          <th>Grade</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><span class="fw-semibold">Golden Rice Restaurant</span></td>
+                          <td><span class="badge bg-info-subtle text-info">A2 - Restaurant</span></td>
+                          <td>K. Perera</td>
+                          <td>82%</td>
+                          <td><span class="badge bg-success">A</span></td>
+                          <td>2026-05-04</td>
+                          <td><span class="badge bg-success-subtle text-success">Approved</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">Fresh Mart Supermarket</span></td>
+                          <td><span class="badge bg-primary-subtle text-primary">H2 - Retail</span></td>
+                          <td>S. Fernando</td>
+                          <td>56%</td>
+                          <td><span class="badge bg-warning">B</span></td>
+                          <td>2026-05-03</td>
+                          <td><span class="badge bg-warning-subtle text-warning">Pending Review</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">City Bakery & Confections</span></td>
+                          <td><span class="badge bg-warning-subtle text-warning">I1 - Processing</span></td>
+                          <td>M. Silva</td>
+                          <td>34%</td>
+                          <td><span class="badge bg-danger">C</span></td>
+                          <td>2026-05-02</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Enforcement</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">Lanka Spice Exporters</span></td>
+                          <td><span class="badge bg-info-subtle text-info">A1 - Manufacturing</span></td>
+                          <td>R. Jayawardena</td>
+                          <td>91%</td>
+                          <td><span class="badge bg-success">A</span></td>
+                          <td>2026-05-01</td>
+                          <td><span class="badge bg-success-subtle text-success">Approved</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">Harbor Fish Market</span></td>
+                          <td><span class="badge bg-danger-subtle text-danger">A3 - Market</span></td>
+                          <td>D. Wijesekara</td>
+                          <td>18%</td>
+                          <td><span class="badge bg-dark">D</span></td>
+                          <td>2026-04-30</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Prosecution</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold">Pending Tasks</h5>
+                  <p class="card-subtitle text-muted mb-3">Your action items</p>
+                  <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="round-40 rounded-circle d-flex align-items-center justify-content-center bg-warning-subtle">
+                        <i class="ti ti-clipboard-list text-warning"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 fs-3">Inspections Due</h6>
+                        <span class="fs-2 text-muted">This week</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-warning rounded-pill">12</span>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="round-40 rounded-circle d-flex align-items-center justify-content-center bg-info-subtle">
+                        <i class="ti ti-file-check text-info"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 fs-3">Applications to Review</h6>
+                        <span class="fs-2 text-muted">Awaiting MOH decision</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-info rounded-pill">8</span>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="round-40 rounded-circle d-flex align-items-center justify-content-center bg-danger-subtle">
+                        <i class="ti ti-alert-octagon text-danger"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 fs-3">Overdue Follow-ups</h6>
+                        <span class="fs-2 text-muted">Grade C/D re-inspections</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-danger rounded-pill">5</span>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="round-40 rounded-circle d-flex align-items-center justify-content-center bg-success-subtle">
+                        <i class="ti ti-message-report text-success"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 fs-3">Complaints Assigned</h6>
+                        <span class="fs-2 text-muted">Pending investigation</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-success rounded-pill">3</span>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="round-40 rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle">
+                        <i class="ti ti-certificate text-primary"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 fs-3">Expiring Certifications</h6>
+                        <span class="fs-2 text-muted">Next 30 days</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">15</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script>
+    // Inspection Coverage Chart
+    var coverageOptions = {
+      series: [{name:'Mandated',data:[320,280,340,310,350,290,320,380,360,340,310,350]},{name:'Completed',data:[280,250,310,290,320,260,300,350,340,310,280,330]},{name:'Non-Compliant',data:[45,38,52,41,58,34,48,62,55,47,39,54]}],
+      chart: {type:'bar',height:300,toolbar:{show:false},fontFamily:'inherit'},
+      plotOptions:{bar:{horizontal:false,columnWidth:'55%',borderRadius:4}},
+      dataLabels:{enabled:false},
+      stroke:{show:true,width:2,colors:['transparent']},
+      xaxis:{categories:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']},
+      yaxis:{title:{text:'Inspections'}},
+      fill:{opacity:1},
+      colors:['#5D87FF','#13DEB9','#FA896B'],
+      tooltip:{y:{formatter:function(val){return val+" inspections"}}}
+    };
+    new ApexCharts(document.querySelector("#inspection-coverage-chart"), coverageOptions).render();
+
+    // Risk Distribution Chart
+    var riskOptions = {
+      series: [35, 28, 25, 12],
+      chart: {type:'donut',height:300,fontFamily:'inherit'},
+      labels:['Grade A (75-100%)','Grade B (50-74%)','Grade C (25-49%)','Grade D (0-24%)'],
+      colors:['#13DEB9','#5D87FF','#FFAE1F','#FA896B'],
+      plotOptions:{pie:{donut:{size:'70%',labels:{show:true,name:{show:true},value:{show:true,formatter:function(val){return val+"%"}},total:{show:true,label:'Total Premises',formatter:function(w){return w.globals.seriesTotals.reduce((a,b)=>a+b,0)+"%"}}}}}},
+      legend:{position:'bottom'},
+      responsive:[{breakpoint:480,options:{chart:{height:250},legend:{position:'bottom'}}}]
+    };
+    new ApexCharts(document.querySelector("#risk-distribution-chart"), riskOptions).render();
+  </script>
+<script src="./_role.js"></script>
+</body>
+</html>
