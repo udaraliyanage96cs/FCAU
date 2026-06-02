@@ -88,5 +88,33 @@
         window.location.href = '../iims-login.html';
       });
     }
+
+    /* top-right avatar icon → login page */
+    var topAvatar = document.getElementById('drop1');
+    if (topAvatar) {
+      topAvatar.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = '../iims-login.html';
+      });
+    }
+
+    /* inject visible Sign Out button into topbar */
+    var navList = document.querySelector('.navbar-nav.flex-row.ms-auto');
+    if (navList) {
+      var signOutLi = document.createElement('li');
+      signOutLi.className = 'nav-item';
+      signOutLi.innerHTML =
+        '<a href="../iims-login.html" ' +
+        '   style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;' +
+        '          color:' + ROLE.color + ';padding:6px 12px;border:1.5px solid ' + ROLE.color + '55;' +
+        '          border-radius:8px;margin-left:8px;text-decoration:none;transition:all .2s;' +
+        '          cursor:pointer;" ' +
+        '   onmouseover="this.style.background=\'' + ROLE.color + '15\'" ' +
+        '   onmouseout="this.style.background=\'transparent\'">' +
+        '  <i class="ti ti-logout" style="font-size:15px;"></i>' +
+        '  <span>Sign Out</span>' +
+        '</a>';
+      navList.appendChild(signOutLi);
+    }
   });
 })();
