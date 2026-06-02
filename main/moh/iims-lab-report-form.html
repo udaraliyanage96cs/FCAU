@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Arrested Register</title>
+  <title>IIMS - Lab Result Ingestion</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -70,41 +70,66 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Arrested Person Register</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-enforcement.html">Enforcement</a></li><li class="breadcrumb-item active">Arrested Register</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Laboratory Result Ingestion</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-sample-management.html">Laboratory</a></li><li class="breadcrumb-item active">Result Entry</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h5 class="fw-semibold mb-0">Custody Records</h5>
-                <button class="btn btn-primary"><i class="ti ti-plus me-1"></i>New Entry</button>
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Analytical Parameters Entry</h5>
+                  <form>
+                    <div class="row g-3">
+                      <div class="col-md-6"><label class="form-label">Moisture (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit < 6.00%"></div>
+                      <div class="col-md-6"><label class="form-label">NaCl Purity (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit >= 97.00%"></div>
+                      <div class="col-md-6"><label class="form-label">Iodine Concentration (mg/kg)</label><input type="number" step="0.01" class="form-control" placeholder="Limit 15.0 - 30.0"></div>
+                      <div class="col-md-6"><label class="form-label">Insoluble Matter (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit < 0.50%"></div>
+                      
+                      <div class="col-md-12"><hr></div>
+                      
+                      <div class="col-md-6">
+                        <label class="form-label">Microbiology: Salmonella</label>
+                        <select class="form-select"><option>Not Detected</option><option>Detected</option></select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Microbiology: E. Coli</label>
+                        <select class="form-select"><option>Not Detected</option><option>Detected</option></select>
+                      </div>
+
+                      <div class="col-md-12 mt-4">
+                        <label class="form-label fw-semibold">Analytical Conclusion</label>
+                        <textarea class="form-control" rows="3" placeholder="Summary of findings..."></textarea>
+                      </div>
+
+                      <div class="col-12 mt-3">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="compliant"><label class="form-check-label" for="compliant">The sample meets all national standards (Schedule III)</label></div>
+                      </div>
+
+                      <div class="col-12 mt-4 text-end">
+                        <button type="submit" class="btn btn-primary px-4"><i class="ti ti-check me-1"></i>Finalize & Dispatch to PHI</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                  <thead class="table-light"><tr><th>Arrest ID</th><th>Full Name</th><th>NIC</th><th>Violation Basis</th><th>Date of Arrest</th><th>Police Station</th><th>Bail Status</th><th>Actions</th></tr></thead>
-                  <tbody>
-                    <tr>
-                      <td><span class="fw-bold">ARR-2026-001</span></td>
-                      <td>Jagath Kumara</td>
-                      <td>197544210V</td>
-                      <td><span class="badge bg-danger-subtle text-danger">Adulteration</span></td>
-                      <td>2026-05-02</td>
-                      <td>Borella Police</td>
-                      <td><span class="badge bg-warning">Remanded</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
-                    </tr>
-                    <tr>
-                      <td><span class="fw-bold">ARR-2026-002</span></td>
-                      <td>M. Faizal</td>
-                      <td>198211094V</td>
-                      <td><span class="badge bg-warning-subtle text-warning">Expired Goods</span></td>
-                      <td>2026-05-05</td>
-                      <td>Fort Police</td>
-                      <td><span class="badge bg-success">Police Bail</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
-                    </tr>
-                  </tbody>
-                </table>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="card bg-primary-subtle border-0">
+                <div class="card-body">
+                  <h5 class="fw-semibold mb-3">Upload Formal Report (PDF)</h5>
+                  <p class="fs-2 text-muted mb-4">The system will use OCR to attempt automatic extraction of parameters if a PDF is uploaded.</p>
+                  <div class="border-2 border-dashed border-primary rounded-4 p-5 text-center bg-white mb-4">
+                    <i class="ti ti-file-upload fs-10 text-primary mb-3"></i>
+                    <h6>Drop Lab Report PDF here</h6>
+                    <small>Only signed PDF files are accepted</small>
+                    <input type="file" class="d-none" id="fileUpload">
+                    <button class="btn btn-primary d-block mx-auto mt-3" onclick="document.getElementById('fileUpload').click()">Browse Files</button>
+                  </div>
+                  <div class="alert alert-info border-0 fs-2">
+                    <i class="ti ti-info-circle me-1"></i> Manual entry is required if OCR cannot confirm certain parameters.
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
   <meta charset="UTF-8" />
@@ -140,8 +140,70 @@
                     <input type="text" class="form-control" placeholder="Business trading name">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label">Food Category <span class="text-danger">*</span></label>
-                    <select class="form-select"><option>Select category...</option><option>A1 - Food Manufacturing</option><option>A2 - Restaurant / Hotel</option><option>A3 - Open Market / Fair</option><option>H1 - Food Warehouse</option><option>H2 - Retail / Supermarket</option><option>I1 - Food Processing</option><option>I2 - Catering Services</option><option>J1 - Street Food Vendor</option><option>K1 - Bakery / Confectionery</option><option>L1 - Meat / Fish Processing</option></select>
+                    <label class="form-label">Food Main Category (Select multiple if applicable) <span class="text-danger">*</span></label>
+                    <div class="border rounded p-3 bg-white" style="max-height: 180px; overflow-y: auto;">
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-1" value="A1 - Food Manufacturing">
+                        <label class="form-check-label" for="cat-m-1">A1 - Food Manufacturing</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-2" value="A2 - Restaurant / Hotel" checked>
+                        <label class="form-check-label" for="cat-m-2">A2 - Restaurant / Hotel</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-3" value="A3 - Open Market / Fair">
+                        <label class="form-check-label" for="cat-m-3">A3 - Open Market / Fair</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-4" value="H1 - Food Warehouse">
+                        <label class="form-check-label" for="cat-m-4">H1 - Food Warehouse</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-5" value="H2 - Retail / Supermarket">
+                        <label class="form-check-label" for="cat-m-5">H2 - Retail / Supermarket</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-6" value="I1 - Food Processing">
+                        <label class="form-check-label" for="cat-m-6">I1 - Food Processing</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-7" value="K1 - Bakery / Confectionery">
+                        <label class="form-check-label" for="cat-m-7">K1 - Bakery / Confectionery</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Food Sub Category (Select multiple if applicable) <span class="text-danger">*</span></label>
+                    <div class="border rounded p-3 bg-white" style="max-height: 180px; overflow-y: auto;">
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-1" value="Bakery Products">
+                        <label class="form-check-label" for="cat-s-1">Bakery Products</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-2" value="Cooked Meals" checked>
+                        <label class="form-check-label" for="cat-s-2">Cooked Meals / Catering</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-3" value="Dairy Products">
+                        <label class="form-check-label" for="cat-s-3">Dairy & Milk Products</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-4" value="Beverages">
+                        <label class="form-check-label" for="cat-s-4">Beverages (Bottled / Fresh)</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-5" value="Raw Meat / Fish">
+                        <label class="form-check-label" for="cat-s-5">Raw Meat / Poultry / Fish</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-6" value="Spices & Grains">
+                        <label class="form-check-label" for="cat-s-6">Spices, Condiments & Grains</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-7" value="Confectioneries">
+                        <label class="form-check-label" for="cat-s-7">Confectioneries & Sweets</label>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label class="form-label">Floor Area (sq.ft.) <span class="text-danger">*</span></label>

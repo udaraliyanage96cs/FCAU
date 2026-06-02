@@ -15,25 +15,24 @@
     nav: [
       { type: 'cap', label: 'Home' },
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-dashboard.html' },
+      { type: 'link', icon: 'ti ti-user',             label: 'My Profile',         href: './iims-profile.html' },
 
       { type: 'cap', label: 'Inspection' },
       { type: 'link', icon: 'ti ti-clipboard-check',  label: 'H-800 Digital Form', href: './iims-inspection-form.html' },
       { type: 'link', icon: 'ti ti-calendar-event',   label: 'Inspection Calendar',href: './iims-inspection-calendar.html' },
-      { type: 'link', icon: 'ti ti-certificate',      label: 'Inspection Result',  href: './iims-inspection-result.html' },
 
       { type: 'cap', label: 'Premises' },
       { type: 'link', icon: 'ti ti-building-store',   label: 'Premises Registry',  href: './iims-premises-list.html' },
+      { type: 'link', icon: 'ti ti-user-plus',        label: 'FBO Registration',   href: './iims-fbo-registration.html' },
 
       { type: 'cap', label: 'Laboratory' },
       { type: 'link', icon: 'ti ti-test-pipe',        label: 'Sample Management',  href: './iims-sample-management.html' },
 
       { type: 'cap', label: 'Compliance' },
       { type: 'link', icon: 'ti ti-message-report',   label: 'Complaints Ledger',  href: './iims-complaints.html' },
-      { type: 'link', icon: 'ti ti-filter',           label: 'Complaint Triage',   href: './iims-complaint-triage.html' },
       { type: 'link', icon: 'ti ti-gavel',            label: 'Enforcement',        href: './iims-enforcement.html' },
       { type: 'link', icon: 'ti ti-lock',             label: 'Seizure Order',      href: './iims-seizure-order.html' },
       { type: 'link', icon: 'ti ti-scale',            label: 'Prosecution Form',   href: './iims-prosecution-form.html' },
-      { type: 'link', icon: 'ti ti-user-cancel',      label: 'Arrested Register',  href: './iims-arrested-list.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts',             href: './iims-alerts.html' }
@@ -65,8 +64,8 @@
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{color:' + ROLE.color + ' !important;}',
-      '.sidebar-link.active i{color:' + ROLE.color + ' !important;}'
+      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);
   }
@@ -103,12 +102,12 @@
       });
     }
 
-    /* top-right avatar icon → login page */
+    /* top-right avatar icon → profile page */
     var topAvatar = document.getElementById('drop1');
     if (topAvatar) {
       topAvatar.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = '../iims-login.html';
+        window.location.href = './iims-profile.html';
       });
     }
 

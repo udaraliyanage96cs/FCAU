@@ -14,21 +14,10 @@
     colorLight: '#ECFDF5',
     nav: [
       { type: 'cap', label: 'My Account' },
+      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',           href: './iims-dashboard.html' },
       { type: 'link', icon: 'ti ti-user-plus',        label: 'Registration Wizard', href: './iims-fbo-registration.html' },
       { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals', href: './iims-appeals.html' },
-
-      { type: 'cap', label: 'Export & Import' },
-      { type: 'link', icon: 'ti ti-certificate',      label: 'Export Health Cert',  href: './iims-export-app.html' },
-      { type: 'link', icon: 'ti ti-file-invoice',     label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
-
-      { type: 'cap', label: 'Salt Products' },
-      { type: 'link', icon: 'ti ti-file-plus',        label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
-      { type: 'link', icon: 'ti ti-refresh',          label: 'Salt Renewal',        href: './iims-salt-renewal.html' },
-      { type: 'link', icon: 'ti ti-edit',             label: 'Salt Amendment',      href: './iims-salt-amendment.html' },
-
-      { type: 'cap', label: 'Water Products' },
-      { type: 'link', icon: 'ti ti-droplet',          label: 'Water Registration',  href: './iims-water-registration-form.html' },
-      { type: 'link', icon: 'ti ti-tag',              label: 'Brand Registration',  href: './iims-water-brands.html' }
+      { type: 'link', icon: 'ti ti-gavel',            label: 'Legal History',       href: './iims-legal-history.html' }
     ]
   };
 
@@ -57,8 +46,8 @@
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{color:' + ROLE.color + ' !important;}',
-      '.sidebar-link.active i{color:' + ROLE.color + ' !important;}'
+      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);
   }

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Enforcement & Legal</title>
+  <title>IIMS - Sample Management</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -71,154 +71,77 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Enforcement & Legal Actions</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Enforcement</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Sample Custody Register</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Sample Management</li></ol></nav></div></div></div>
           </div>
 
-          <!-- Tabs -->
-          <ul class="nav nav-tabs mb-3" role="tablist">
-            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#prosecutions">Prosecution Cases</a></li>
-            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#seizures">Seizure & Destruction</a></li>
-            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#arrested">Arrest Register</a></li>
-          </ul>
+          <!-- KPI Cards -->
+          <div class="row mb-3">
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-primary mb-0">156</h3><span class="text-muted fs-2">Pending Lab Results</span></div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-warning mb-0">42</h3><span class="text-muted fs-2">In Transit</span></div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-success mb-0">1,284</h3><span class="text-muted fs-2">Compliant (YTD)</span></div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-danger mb-0">38</h3><span class="text-muted fs-2">Non-Compliant</span></div></div></div>
+          </div>
 
-          <div class="tab-content">
-            <!-- Prosecutions -->
-            <div class="tab-pane fade show active" id="prosecutions">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="card-title fw-semibold mb-0">Active Prosecution Cases</h5>
-                    <button class="btn btn-sm btn-primary"><i class="ti ti-plus me-1"></i>New Case</button>
-                  </div>
-                  <div class="table-responsive"><table class="table table-hover align-middle mb-0">
-                    <thead class="table-light"><tr><th>Case ID</th><th>Accused Entity</th><th>Legal Basis</th><th>Violated Codes</th><th>Court</th><th>Statute Deadline</th><th>Next Hearing</th><th>Verdict</th><th>Fine (LKR)</th><th>Action</th></tr></thead>
-                    <tbody>
-                      <tr>
-                        <td><span class="fw-semibold">PRO-2026-0042</span></td>
-                        <td>Harbor Fish Market</td>
-                        <td><span class="badge bg-danger-subtle text-danger">Act & Regs</span></td>
-                        <td><span class="badge bg-secondary-subtle text-secondary me-1">S.26</span><span class="badge bg-secondary-subtle text-secondary">S.28</span></td>
-                        <td>Galle MC</td>
-                        <td><span class="text-danger fw-semibold">2026-07-30</span></td>
-                        <td>2026-05-20</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                        <td>-</td>
-                        <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
-                      </tr>
-                      <tr>
-                        <td><span class="fw-semibold">PRO-2026-0041</span></td>
-                        <td>Quick Bites Cafe</td>
-                        <td><span class="badge bg-warning-subtle text-warning">Regulations</span></td>
-                        <td><span class="badge bg-secondary-subtle text-secondary">S.14</span></td>
-                        <td>Colombo MC</td>
-                        <td>2026-09-15</td>
-                        <td>2026-06-10</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                        <td>-</td>
-                        <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
-                      </tr>
-                      <tr>
-                        <td><span class="fw-semibold">PRO-2026-0038</span></td>
-                        <td>Night Delight Bakery</td>
-                        <td><span class="badge bg-danger-subtle text-danger">Act</span></td>
-                        <td><span class="badge bg-secondary-subtle text-secondary">S.26</span></td>
-                        <td>Kandy MC</td>
-                        <td>2026-06-20</td>
-                        <td>-</td>
-                        <td><span class="badge bg-success">Convicted</span></td>
-                        <td class="fw-semibold">Rs. 50,000</td>
-                        <td><button class="btn btn-sm btn-outline-success">Closed</button></td>
-                      </tr>
-                      <tr>
-                        <td><span class="fw-semibold">PRO-2026-0035</span></td>
-                        <td>Sunrise Dairy Farm</td>
-                        <td><span class="badge bg-danger-subtle text-danger">Act & Regs</span></td>
-                        <td><span class="badge bg-secondary-subtle text-secondary me-1">S.20</span><span class="badge bg-secondary-subtle text-secondary">S.22</span></td>
-                        <td>Matale MC</td>
-                        <td>2026-05-18</td>
-                        <td>-</td>
-                        <td><span class="badge bg-secondary">Discharged</span></td>
-                        <td>-</td>
-                        <td><button class="btn btn-sm btn-outline-secondary">Closed</button></td>
-                      </tr>
-                    </tbody>
-                  </table></div>
-                </div>
+          <!-- Add Sample -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-3">Register New Sample</h5>
+              <div class="row g-3">
+                <div class="col-md-3"><label class="form-label">Sample Reference No.</label><input type="text" class="form-control" value="2026/PHI/COL/048" readonly></div>
+                <div class="col-md-3"><label class="form-label">Establishment</label><select class="form-select"><option>Golden Rice Restaurant</option><option>Fresh Mart Supermarket</option></select></div>
+                <div class="col-md-3"><label class="form-label">Commodity</label><input type="text" class="form-control" placeholder="e.g., UHT Pasteurized Milk"></div>
+                <div class="col-md-3"><label class="form-label">Batch/Lot No.</label><input type="text" class="form-control" placeholder="Manufacturer's batch ID"></div>
+                <div class="col-md-3"><label class="form-label">Sampling Objective</label><select class="form-select"><option>Routine Monitoring</option><option>Targeted Surveillance</option><option>Compliance Enforcement</option></select></div>
+                <div class="col-md-3"><label class="form-label">Target Laboratory</label><select class="form-select"><option>Medical Research Institute</option><option>Industrial Tech. Institute</option><option>SGS Lanka</option></select></div>
+                <div class="col-md-3"><label class="form-label">Collection Date</label><input type="date" class="form-control" value="2026-05-05"></div>
+                <div class="col-md-3 d-flex align-items-end"><button class="btn btn-primary w-100"><i class="ti ti-qrcode me-1"></i>Generate QR & Register</button></div>
               </div>
             </div>
+          </div>
 
-            <!-- Seizures -->
-            <div class="tab-pane fade" id="seizures">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="card-title fw-semibold mb-0">Seizure & Destruction Records</h5>
-                    <a href="iims-seizure-order.html" class="btn btn-sm btn-primary"><i class="ti ti-plus me-1"></i>Record Seizure</a>
-                  </div>
-                  <div class="table-responsive"><table class="table table-hover align-middle mb-0">
-                    <thead class="table-light"><tr><th>Seizure ID</th><th>Officer</th><th>Inventory</th><th>Reason</th><th>Owner Consent</th><th>Magistrate Order</th><th>Disposal Date</th><th>Action</th></tr></thead>
-                    <tbody>
-                      <tr>
-                        <td><span class="fw-semibold">SEZ-2026-0018</span></td>
-                        <td>K. Perera</td><td>250kg expired frozen meat</td><td>Putrid / Expired</td>
-                        <td><span class="badge bg-success">Yes</span></td><td>N/A</td><td>2026-05-03</td>
-                        <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                      </tr>
-                      <tr>
-                        <td><span class="fw-semibold">SEZ-2026-0017</span></td>
-                        <td>M. Silva</td><td>120 units unregistered supplements</td><td>Unregistered Product</td>
-                        <td><span class="badge bg-danger">No</span></td><td><span class="badge bg-primary">Obtained</span></td><td>2026-04-28</td>
-                        <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                      </tr>
-                      <tr>
-                        <td><span class="fw-semibold">SEZ-2026-0016</span></td>
-                        <td>R. Jayawardena</td><td>500kg insect-infested rice</td><td>Insect Infestation</td>
-                        <td><span class="badge bg-success">Yes</span></td><td>N/A</td><td>2026-04-22</td>
-                        <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                      </tr>
-                    </tbody>
-                  </table></div>
+          <!-- Sample Registry Table -->
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="card-title fw-semibold mb-0">Sample Registry</h5>
+                <div class="d-flex gap-2">
+                  <select class="form-select form-select-sm" style="width:auto;"><option>All Status</option><option>Pending</option><option>In Transit</option><option>Testing</option><option>Completed</option></select>
+                  <button class="btn btn-sm btn-outline-success"><i class="ti ti-download me-1"></i>Export</button>
                 </div>
               </div>
-            </div>
-
-            <!-- Arrested Register -->
-            <div class="tab-pane fade" id="arrested">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="card-title fw-semibold mb-0">Arrest Register (Custody Records)</h5>
-                    <button class="btn btn-sm btn-primary"><i class="ti ti-plus me-1"></i>New Entry</button>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                      <thead class="table-light"><tr><th>Arrest ID</th><th>Full Name</th><th>NIC</th><th>Violation Basis</th><th>Date of Arrest</th><th>Police Station</th><th>Bail Status</th><th>Actions</th></tr></thead>
-                      <tbody>
-                        <tr>
-                          <td><span class="fw-bold">ARR-2026-001</span></td>
-                          <td>Jagath Kumara</td>
-                          <td>197544210V</td>
-                          <td><span class="badge bg-danger-subtle text-danger">Adulteration</span></td>
-                          <td>2026-05-02</td>
-                          <td>Borella Police</td>
-                          <td><span class="badge bg-warning">Remanded</span></td>
-                          <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
-                        </tr>
-                        <tr>
-                          <td><span class="fw-bold">ARR-2026-002</span></td>
-                          <td>M. Faizal</td>
-                          <td>198211094V</td>
-                          <td><span class="badge bg-warning-subtle text-warning">Expired Goods</span></td>
-                          <td>2026-05-05</td>
-                          <td>Fort Police</td>
-                          <td><span class="badge bg-success">Police Bail</span></td>
-                          <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+              <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+                <thead class="table-light"><tr><th>Ref No.</th><th>Establishment</th><th>Commodity</th><th>Batch</th><th>Objective</th><th>Laboratory</th><th>Status</th><th>Result</th><th>Action</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="fw-semibold">2026/PHI/COL/047</span></td><td>Golden Rice</td><td>Cooking Oil</td><td>LOT-A892</td>
+                    <td><span class="badge bg-info-subtle text-info">Routine</span></td><td>MRI</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                    <td><span class="badge bg-success-subtle text-success">Compliant</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary">View Report</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="fw-semibold">2026/PHI/COL/046</span></td><td>Harbor Fish Market</td><td>Frozen Prawns</td><td>FP-2026-331</td>
+                    <td><span class="badge bg-danger-subtle text-danger">Enforcement</span></td><td>ITI</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                    <td><span class="badge bg-danger-subtle text-danger">Salmonella Detected</span></td>
+                    <td><button class="btn btn-sm btn-outline-danger">Critical Alert</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="fw-semibold">2026/PHI/COL/045</span></td><td>Fresh Mart</td><td>Packaged Rice</td><td>RIC-8844</td>
+                    <td><span class="badge bg-warning-subtle text-warning">Surveillance</span></td><td>SGS Lanka</td>
+                    <td><span class="badge bg-warning">Testing</span></td>
+                    <td><span class="text-muted">Awaiting</span></td>
+                    <td><button class="btn btn-sm btn-outline-secondary">Track</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="fw-semibold">2026/PHI/COL/044</span></td><td>City Bakery</td><td>Wheat Flour</td><td>WF-2026-112</td>
+                    <td><span class="badge bg-info-subtle text-info">Routine</span></td><td>MRI</td>
+                     <td><span class="badge bg-primary">In Transit</span></td>
+                    <td><span class="text-muted">-</span></td>
+                    <td><a href="iims-lab-triage.html" class="btn btn-sm btn-primary">Triage Sample</a></td>
+                  </tr>
+                </tbody>
+              </table></div>
             </div>
           </div>
         </div>

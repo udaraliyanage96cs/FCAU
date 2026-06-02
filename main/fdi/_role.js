@@ -67,8 +67,8 @@
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{color:' + ROLE.color + ' !important;}',
-      '.sidebar-link.active i{color:' + ROLE.color + ' !important;}'
+      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);
   }
