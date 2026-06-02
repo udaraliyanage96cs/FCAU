@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Public Complaint Portal</title>
+  <style>
+    .public-header{background:#1a73e8;padding:15px 0;color:white;}
+    .public-header img{height:40px;margin-right:15px;}
+    .public-footer{background:#f8f9fa;padding:20px 0;text-align:center;border-top:1px solid #e9ecef;}
+  </style>
+</head>
+<body>
+  
+  <header class="public-header shadow-sm">
+    <div class="container d-flex align-items-center">
+      <img src="../../assets/images/logos/favicon.png" alt="Logo">
+      <div>
+        <h4 class="mb-0 text-white fw-bold">Food Control Administration Unit (FCAU)</h4>
+        <small class="opacity-75">Public Services Portal - Sri Lanka</small>
+      </div>
+      <div class="ms-auto">
+        <a href="./iims-login.html" class="btn btn-outline-light btn-sm">Official Login</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold text-primary">Report a Food Safety Concern</h2>
+          <p class="text-muted fs-4">Your report helps us ensure the safety and quality of food in Sri Lanka. You can choose to remain anonymous.</p>
+        </div>
+
+        <div class="card shadow-lg border-0 rounded-4">
+          <div class="card-body p-5">
+            <form>
+              <h5 class="fw-semibold mb-4 border-bottom pb-2 text-primary"><i class="ti ti-map-pin me-2"></i>1. Incident Location</h5>
+              
+              <div class="row g-3 mb-4">
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Name of Establishment (Shop/Restaurant/Brand) <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" placeholder="e.g. City Supermarket or Golden Bakery">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">District <span class="text-danger">*</span></label>
+                  <select class="form-select">
+                    <option selected disabled>Select District...</option>
+                    <option>Colombo</option>
+                    <option>Gampaha</option>
+                    <option>Kandy</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">City / Town <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" placeholder="e.g. Dehiwala">
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Detailed Address / Landmarks</label>
+                  <textarea class="form-control" rows="2" placeholder="Describe exactly where it is located..."></textarea>
+                </div>
+              </div>
+
+              <h5 class="fw-semibold mb-4 border-bottom pb-2 text-primary"><i class="ti ti-alert-triangle me-2"></i>2. Complaint Details</h5>
+              
+              <div class="row g-3 mb-4">
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Nature of Complaint <span class="text-danger">*</span></label>
+                  <select class="form-select">
+                    <option selected disabled>Select Category...</option>
+                    <option>Food Poisoning / Illness after consumption</option>
+                    <option>Unhygienic premises / Pest infestation (Rats/Cockroaches)</option>
+                    <option>Expired products being sold</option>
+                    <option>Foreign objects found in food</option>
+                    <option>Adulterated / Fake food products</option>
+                    <option>Misleading labeling or no proper labels</option>
+                    <option>Other food safety violation</option>
+                  </select>
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Detailed Description <span class="text-danger">*</span></label>
+                  <textarea class="form-control" rows="4" placeholder="Please describe what happened, when it happened, and any other relevant details..."></textarea>
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Evidence (Photos/Videos)</label>
+                  <input type="file" class="form-control" multiple accept="image/*,video/*">
+                  <div class="form-text">Upload photos of the food, receipt, packaging, or premises (Max 5MB per file)</div>
+                </div>
+              </div>
+
+              <h5 class="fw-semibold mb-4 border-bottom pb-2 text-primary"><i class="ti ti-user me-2"></i>3. Your Details (Optional)</h5>
+              
+              <div class="alert alert-info bg-info-subtle text-info border-0 d-flex align-items-center" role="alert">
+                <i class="ti ti-info-circle fs-5 me-2"></i>
+                <div>Providing your contact details allows our inspectors to follow up for more information if needed. Your identity will be kept strictly confidential.</div>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Full Name</label>
+                  <input type="text" class="form-control" placeholder="Leave blank to remain anonymous">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Phone Number</label>
+                  <input type="tel" class="form-control" placeholder="e.g. 077 XXX XXXX">
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label fw-semibold">Email Address</label>
+                  <input type="email" class="form-control" placeholder="To receive updates on your complaint">
+                </div>
+              </div>
+
+              <div class="d-grid gap-2 pt-3">
+                <button type="button" class="btn btn-primary btn-lg fw-bold shadow-sm" onclick="alert('Thank you. Your complaint has been submitted to the FCAU and routed to the relevant Medical Officer of Health (MOH). Your Tracking ID is CMP-2026-8942.')">
+                  <i class="ti ti-send me-2"></i>Submit Complaint Securely
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="public-footer">
+    <div class="container">
+      <p class="mb-1 text-muted">Food Control Administration Unit (FCAU) &copy; 2026. All Rights Reserved.</p>
+      <p class="mb-0 text-muted fs-2">Ministry of Health, Nutrition and Indigenous Medicine - Sri Lanka</p>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+<script src="./_role.js"></script>
+</body>
+</html>
