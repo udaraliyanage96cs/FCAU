@@ -76,54 +76,56 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title fw-semibold mb-4">Consignment Registration (Phase 01)</h5>
-              <div class="row g-4">
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">Importer Profile</label>
-                  <select class="form-select"><option>Global Foods (Pvt) Ltd (IMP-0042)</option><option>Ceylon Spice Imports (IMP-0081)</option></select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">ASYCUDA / BL Number</label>
-                  <input type="text" class="form-control" placeholder="Enter BL or ASYCUDA Ref #">
-                </div>
+              <form method="post" action="#">
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">Importer Profile</label>
+                    <select name="importer_profile" class="form-select"><option value="IMP-0042">Global Foods (Pvt) Ltd (IMP-0042)</option><option value="IMP-0081">Ceylon Spice Imports (IMP-0081)</option></select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">ASYCUDA / BL Number</label>
+                    <input name="bl_number" type="text" class="form-control" placeholder="Enter BL or ASYCUDA Ref #">
+                  </div>
 
-                <div class="col-md-4">
-                  <label class="form-label fw-semibold">Commodity Type</label>
-                  <select class="form-select"><option>Canned Goods</option><option>Dairy Products</option><option>Fresh Produce</option><option>Spices</option></select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-semibold">Country of Origin</label>
-                  <select class="form-select"><option>Thailand</option><option>India</option><option>Australia</option><option>Malaysia</option></select>
-                </div>
-                <div class="col-md-4">
-                  <label class="form-label fw-semibold">Expected Port of Entry</label>
-                  <select class="form-select"><option>Colombo Port</option><option>BIA Terminal</option><option>Hambantota Port</option></select>
-                </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold">Commodity Type</label>
+                    <select name="commodity_type" class="form-select"><option value="canned">Canned Goods</option><option value="dairy">Dairy Products</option><option value="fresh">Fresh Produce</option><option value="spices">Spices</option></select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold">Country of Origin</label>
+                    <select name="origin_country" class="form-select"><option value="thailand">Thailand</option><option value="india">India</option><option value="australia">Australia</option><option value="malaysia">Malaysia</option></select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold">Expected Port of Entry</label>
+                    <select name="port_of_entry" class="form-select"><option value="colombo">Colombo Port</option><option value="bia">BIA Terminal</option><option value="hambantota">Hambantota Port</option></select>
+                  </div>
 
-                <div class="col-12"><hr></div>
+                  <div class="col-12"><hr></div>
 
-                <h6 class="fw-semibold">Document Uploads (Verification Node)</h6>
-                <div class="col-md-6">
-                  <label class="form-label">Health Certificate (from Origin)</label>
-                  <input type="file" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Product Label (Specimen)</label>
-                  <input type="file" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Certificate of Analysis (COA)</label>
-                  <input type="file" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Commercial Invoice</label>
-                  <input type="file" class="form-control">
-                </div>
+                  <h6 class="fw-semibold">Document Uploads (Verification Node)</h6>
+                  <div class="col-md-6">
+                    <label class="form-label">Health Certificate (from Origin)</label>
+                    <input name="doc_health_certificate" type="file" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Product Label (Specimen)</label>
+                    <input name="doc_product_label" type="file" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Certificate of Analysis (COA)</label>
+                    <input name="doc_coa" type="file" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Commercial Invoice</label>
+                    <input name="doc_invoice" type="file" class="form-control">
+                  </div>
 
-                <div class="col-12 mt-4 text-end">
-                  <button class="btn btn-outline-secondary me-2">Save as Draft</button>
-                  <button class="btn btn-primary px-4"><i class="ti ti-send me-1"></i>Submit for Verification</button>
+                  <div class="col-12 mt-4 text-end">
+                    <button type="button" class="btn btn-outline-secondary me-2">Save as Draft</button>
+                    <button type="submit" class="btn btn-primary px-4"><i class="ti ti-send me-1"></i>Submit for Verification</button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
