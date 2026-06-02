@@ -85,5 +85,14 @@
 
     var topbar = document.querySelector('.topbar');
     if (topbar) topbar.style.borderBottom = '2px solid ' + ROLE.color + '55';
+
+    /* sign-out button → login page */
+    var logoutBtn = document.querySelector('[aria-label="logout"]');
+    if (logoutBtn) {
+      logoutBtn.style.cursor = 'pointer';
+      logoutBtn.addEventListener('click', function () {
+        window.location.href = '../iims-login.html';
+      });
+    }
   });
 })();
