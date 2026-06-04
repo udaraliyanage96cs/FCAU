@@ -8,79 +8,33 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <title>IIMS - FBO Registration</title>
 </head>
-<body class="link-sidebar">
+<body class="bg-light">
   <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
-  <div id="main-wrapper">
-    <aside class="left-sidebar with-vertical">
-      <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
-            IIMS
-          </a>
-          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
-            <i class="ti ti-x"></i>
-          </a>
+  
+  <header class="bg-white border-bottom py-3 mb-4 shadow-sm">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-2">
+        <img src="../assets/images/logos/favicon.png" alt="Logo" width="40" height="40" />
+        <div>
+          <h4 class="fw-bold mb-0 text-primary">FCAU IIMS</h4>
+          <span class="fs-2 text-muted">Ministry of Health, Sri Lanka</span>
         </div>
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
-          <ul id="sidebarnav">
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
-        
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Admin & Portals</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-user-management.html"><span><i class="ti ti-users"></i></span><span class="hide-menu">User Management</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-notification-templates.html"><span><i class="ti ti-mail-opened"></i></span><span class="hide-menu">Notification Templates</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-public-complaint.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Public Portal</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login Page</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Registration</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-fbo-registration.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">FBO Registration</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-premises-list.html"><span><i class="ti ti-building-store"></i></span><span class="hide-menu">Premises List</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-appeals.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Grievance & Appeals</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Inspection</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-form.html"><span><i class="ti ti-clipboard-check"></i></span><span class="hide-menu">H-800 Inspection</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-calendar.html"><span><i class="ti ti-calendar-event"></i></span><span class="hide-menu">Inspection Calendar</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-config.html"><span><i class="ti ti-settings"></i></span><span class="hide-menu">Inspection Config</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Laboratory</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-sample-management.html"><span><i class="ti ti-test-pipe"></i></span><span class="hide-menu">Sample Management</span></a></li>
-        
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Trade Control</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-import-control.html"><span><i class="ti ti-package-import"></i></span><span class="hide-menu">Import Control</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-export-control.html"><span><i class="ti ti-package-export"></i></span><span class="hide-menu">Export Control</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-exporter-registration.html"><span><i class="ti ti-building-factory-2"></i></span><span class="hide-menu">Exporter Registry</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Specialized Mfg</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-bottled-water.html"><span><i class="ti ti-bottle"></i></span><span class="hide-menu">Bottled Water</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-salt-manufacturing.html"><span><i class="ti ti-salt"></i></span><span class="hide-menu">Salt Manufacturing</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Compliance</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-complaints.html"><span><i class="ti ti-message-report"></i></span><span class="hide-menu">Complaints</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-enforcement.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Enforcement</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-arrested-list.html"><span><i class="ti ti-user-cancel"></i></span><span class="hide-menu">Arrested Register</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">System</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-chart-pie"></i></span><span class="hide-menu">IIMS Dashboard</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-risk-heatmaps.html"><span><i class="ti ti-map-2"></i></span><span class="hide-menu">Risk Heatmaps</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
-      </ul>
-        </nav>
-        <div class="fixed-profile p-3 mx-4 mb-2 bg-secondary-subtle rounded mt-3"><div class="hstack gap-3"><div><img src="../assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt="" /></div><div><h6 class="mb-0 fs-4 fw-semibold">PHI Officer</h6><span class="fs-2">Colombo West</span></div><button class="border-0 bg-transparent text-primary ms-auto" type="button"><i class="ti ti-power fs-6"></i></button></div></div>
       </div>
-    </aside>
+      <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
+    </div>
+  </header>
 
-    <div class="page-wrapper">
-      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item nav-icon-hover-bg rounded-circle"><a class="nav-link" href="javascript:void(0)"><i class="ti ti-bell-ringing"></i></a></li><li class="nav-item"><img src="../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
-
-      <div class="body-wrapper">
-        <div class="container-fluid">
-          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3">
-              <div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">FBO Registration</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Registration</li></ol></nav></div></div>
-            </div>
+  <div class="container py-2" style="max-width: 1000px;">
+    <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+      <div class="card-body px-4 py-3">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h4 class="fw-semibold mb-1 text-primary">Food Business Operator Registration</h4>
+            <p class="mb-0 text-muted">Complete the 5-step registration wizard to register your premises with the FCAU.</p>
           </div>
+        </div>
+      </div>
+    </div>
 
           <!-- Wizard -->
           <div class="card">
@@ -140,8 +94,70 @@
                     <input type="text" class="form-control" placeholder="Business trading name">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label">Food Category <span class="text-danger">*</span></label>
-                    <select class="form-select"><option>Select category...</option><option>A1 - Food Manufacturing</option><option>A2 - Restaurant / Hotel</option><option>A3 - Open Market / Fair</option><option>H1 - Food Warehouse</option><option>H2 - Retail / Supermarket</option><option>I1 - Food Processing</option><option>I2 - Catering Services</option><option>J1 - Street Food Vendor</option><option>K1 - Bakery / Confectionery</option><option>L1 - Meat / Fish Processing</option></select>
+                    <label class="form-label">Food Main Category (Select multiple if applicable) <span class="text-danger">*</span></label>
+                    <div class="border rounded p-3 bg-white" style="max-height: 180px; overflow-y: auto;">
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-1" value="A1 - Food Manufacturing">
+                        <label class="form-check-label" for="cat-m-1">A1 - Food Manufacturing</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-2" value="A2 - Restaurant / Hotel" checked>
+                        <label class="form-check-label" for="cat-m-2">A2 - Restaurant / Hotel</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-3" value="A3 - Open Market / Fair">
+                        <label class="form-check-label" for="cat-m-3">A3 - Open Market / Fair</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-4" value="H1 - Food Warehouse">
+                        <label class="form-check-label" for="cat-m-4">H1 - Food Warehouse</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-5" value="H2 - Retail / Supermarket">
+                        <label class="form-check-label" for="cat-m-5">H2 - Retail / Supermarket</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-6" value="I1 - Food Processing">
+                        <label class="form-check-label" for="cat-m-6">I1 - Food Processing</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-m-7" value="K1 - Bakery / Confectionery">
+                        <label class="form-check-label" for="cat-m-7">K1 - Bakery / Confectionery</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Food Sub Category (Select multiple if applicable) <span class="text-danger">*</span></label>
+                    <div class="border rounded p-3 bg-white" style="max-height: 180px; overflow-y: auto;">
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-1" value="Bakery Products">
+                        <label class="form-check-label" for="cat-s-1">Bakery Products</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-2" value="Cooked Meals" checked>
+                        <label class="form-check-label" for="cat-s-2">Cooked Meals / Catering</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-3" value="Dairy Products">
+                        <label class="form-check-label" for="cat-s-3">Dairy & Milk Products</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-4" value="Beverages">
+                        <label class="form-check-label" for="cat-s-4">Beverages (Bottled / Fresh)</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-5" value="Raw Meat / Fish">
+                        <label class="form-check-label" for="cat-s-5">Raw Meat / Poultry / Fish</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-6" value="Spices & Grains">
+                        <label class="form-check-label" for="cat-s-6">Spices, Condiments & Grains</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="cat-s-7" value="Confectioneries">
+                        <label class="form-check-label" for="cat-s-7">Confectioneries & Sweets</label>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label class="form-label">Floor Area (sq.ft.) <span class="text-danger">*</span></label>
@@ -295,8 +311,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </div>
   </div>
   <div class="dark-transparent sidebartoggler"></div>

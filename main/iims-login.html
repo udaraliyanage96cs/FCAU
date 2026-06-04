@@ -217,6 +217,39 @@
             </div>
           </label>
 
+          <label class="role-card" id="card-trader"
+                 style="--rc:#8B5CF6;--rc-rgb:139,92,246;"
+                 onclick="selectRole('trader')">
+            <input type="radio" name="role" value="trader">
+            <div class="role-icon"><i class="ti ti-arrows-left-right"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#8B5CF6;">TRADE</span>
+              <span class="role-name">Trade Operator</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-salt"
+                 style="--rc:#3B82F6;--rc-rgb:59,130,246;"
+                 onclick="selectRole('salt')">
+            <input type="radio" name="role" value="salt">
+            <div class="role-icon"><i class="ti ti-ripple"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#3B82F6;">SALT</span>
+              <span class="role-name">Salt Manufacturer</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-water"
+                 style="--rc:#14B8A6;--rc-rgb:20,184,166;"
+                 onclick="selectRole('water')">
+            <input type="radio" name="role" value="water">
+            <div class="role-icon"><i class="ti ti-droplet"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#14B8A6;">WATER</span>
+              <span class="role-name">Water Manufacturer</span>
+            </div>
+          </label>
+
         </div>
 
         <!-- Sign In Button -->
@@ -225,8 +258,9 @@
         </button>
 
         <!-- Footer -->
-        <div class="auth-footer">
+        <div class="auth-footer d-flex justify-content-between align-items-center mt-3">
           <a href="javascript:void(0)">Forgot Password?</a>
+          <a href="./iims-fbo-registration.html" class="fw-bold" style="color: #10B981; text-decoration: none;"><i class="ti ti-user-plus me-1"></i>FBO Registration</a>
         </div>
         <div class="public-link">
           <a href="./public/iims-public-complaint.html">
@@ -250,12 +284,15 @@
 
     // Role → index page mapping
     var rolePortals = {
-      phi:   './phi/iims-dashboard.html',
-      moh:   './moh/iims-dashboard.html',
-      admin: './admin/iims-dashboard.html',
-      fdi:   './fdi/iims-dashboard.html',
-      lab:   './lab/iims-dashboard.html',
-      fbo:   './fbo/iims-fbo-registration.html'
+      phi:    './phi/iims-dashboard.html',
+      moh:    './moh/iims-dashboard.html',
+      admin:  './admin/iims-dashboard.html',
+      fdi:    './fdi/iims-dashboard.html',
+      lab:    './lab/iims-dashboard.html',
+      fbo:    './fbo/iims-dashboard.html',
+      trader: './trader/index.html',
+      salt:   './salt/index.html',
+      water:  './water/index.html'
     };
 
     function selectRole(role) {

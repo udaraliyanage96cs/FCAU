@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - FBO Dashboard</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav"></ul>
+        </nav>
+        <div class="fixed-profile p-3 mx-4 mb-2 bg-secondary-subtle rounded mt-3">
+          <div class="hstack gap-3">
+            <div><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt="" /></div>
+            <div><h6 class="mb-0 fs-4 fw-semibold">Business Owner</h6><span class="fs-2">FBO Entity</span></div>
+            <button class="border-0 bg-transparent text-primary ms-auto" type="button"><i class="ti ti-power fs-6"></i></button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="page-wrapper">
+      <header class="topbar">
+        <div class="with-vertical">
+          <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul>
+            <div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div>
+            <a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div class="d-flex align-items-center justify-content-between">
+                <ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <!-- Header Card -->
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">FBO Corporate Dashboard</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-3 text-center">
+                  <img src="../../assets/images/backgrounds/track-bg.png" alt="" class="img-fluid mb-n7" style="max-height:100px;" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle">
+                      <i class="ti ti-git-branch text-primary fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Total Branches</span>
+                      <h3 class="mb-0 fw-semibold" id="kpi-branches">3</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-success-subtle">
+                      <i class="ti ti-users text-success fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Active Managers</span>
+                      <h3 class="mb-0 fw-semibold" id="kpi-managers">3</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-warning-subtle">
+                      <i class="ti ti-certificate text-warning fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Avg Compliance</span>
+                      <h3 class="mb-0 fw-semibold">84.3%</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-danger-subtle">
+                      <i class="ti ti-alert-triangle text-danger fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Pending Actions</span>
+                      <h3 class="mb-0 fw-semibold">1</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branches Section -->
+          <div class="row">
+            <!-- Branch Grid -->
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h5 class="card-title fw-semibold mb-0">Managed Outlets & Branches</h5>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addBranchModal">
+                      <i class="ti ti-plus me-1"></i>Add Branch
+                    </button>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Trading Name</th>
+                          <th>Location / Address</th>
+                          <th>Assigned Manager</th>
+                          <th>Food Categories</th>
+                          <th>Grade</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="branch-table-body">
+                        <tr>
+                          <td><span class="fw-semibold">Golden Rice - Colombo 07</span></td>
+                          <td><span class="fs-3">No. 45, Ward Place, Colombo 07</span></td>
+                          <td><span class="badge bg-secondary-subtle text-secondary">Jagath Kumara</span></td>
+                          <td>
+                            <span class="badge bg-primary-subtle text-primary mb-1">Restaurant</span><br>
+                            <span class="badge bg-light text-muted fs-1">Cooked Meals, Dairy</span>
+                          </td>
+                          <td><span class="badge bg-success">A (88%)</span></td>
+                          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(0)"><i class="ti ti-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">Golden Rice Express - Gampaha</span></td>
+                          <td><span class="fs-3">No. 12, Kandy Road, Gampaha</span></td>
+                          <td><span class="badge bg-secondary-subtle text-secondary">Nimal Silva</span></td>
+                          <td>
+                            <span class="badge bg-primary-subtle text-primary mb-1">Restaurant, Catering</span><br>
+                            <span class="badge bg-light text-muted fs-1">Cooked Meals, Beverages</span>
+                          </td>
+                          <td><span class="badge bg-warning">B (74%)</span></td>
+                          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(1)"><i class="ti ti-trash"></i></button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">Golden Rice Bakery - Kandy</span></td>
+                          <td><span class="fs-3">No. 88, Temple Street, Kandy</span></td>
+                          <td><span class="badge bg-secondary-subtle text-secondary">Chathura Perera</span></td>
+                          <td>
+                            <span class="badge bg-primary-subtle text-primary mb-1">Bakery</span><br>
+                            <span class="badge bg-light text-muted fs-1">Bakery Products, Confectioneries</span>
+                          </td>
+                          <td><span class="badge bg-success">A (91%)</span></td>
+                          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(2)"><i class="ti ti-trash"></i></button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Analytics and Charts -->
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold">Branch Compliance Metrics</h5>
+                  <p class="card-subtitle text-muted mb-4">Relative score breakdown across your network</p>
+                  <div id="compliance-pie-chart" style="height: 250px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Managers Section -->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h5 class="card-title fw-semibold mb-0">Branch Managers</h5>
+                    <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addManagerModal">
+                      <i class="ti ti-user-plus me-1"></i>Create Manager
+                    </button>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Manager Name</th>
+                          <th>NIC Number</th>
+                          <th>Email Address</th>
+                          <th>Phone Number</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="manager-table-body">
+                        <tr>
+                          <td><span class="fw-semibold">Jagath Kumara</span></td>
+                          <td>198522104V</td>
+                          <td>jagath@goldenrice.lk</td>
+                          <td>+94 77 123 4567</td>
+                          <td><span class="badge bg-success-subtle text-success">Active</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">Nimal Silva</span></td>
+                          <td>199044310V</td>
+                          <td>nimal@goldenrice.lk</td>
+                          <td>+94 71 987 6543</td>
+                          <td><span class="badge bg-success-subtle text-success">Active</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">Chathura Perera</span></td>
+                          <td>198822019V</td>
+                          <td>chathura@goldenrice.lk</td>
+                          <td>+94 72 444 5555</td>
+                          <td><span class="badge bg-success-subtle text-success">Active</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Branch Modal -->
+  <div class="modal fade" id="addBranchModal" tabindex="-1" aria-labelledby="addBranchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-semibold" id="addBranchModalLabel">Register New Branch / Outlet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="add-branch-form">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Branch Trading Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="b-name" placeholder="e.g. Golden Rice - Negombo" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Assign Manager <span class="text-danger">*</span></label>
+                <select class="form-select" id="b-manager" required>
+                  <option value="">Select an active manager...</option>
+                  <option value="Jagath Kumara">Jagath Kumara</option>
+                  <option value="Nimal Silva">Nimal Silva</option>
+                  <option value="Chathura Perera">Chathura Perera</option>
+                </select>
+              </div>
+              <div class="col-12 mb-3">
+                <label class="form-label">Address <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="b-address" placeholder="Complete street address" required>
+              </div>
+
+              <!-- Main & Sub Categories Selection -->
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Food Main Categories (Select multiple) <span class="text-danger">*</span></label>
+                <div class="border rounded p-3 bg-white" style="max-height: 180px; overflow-y: auto;">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-1" value="A1 - Food Manufacturing">
+                    <label class="form-check-label" for="m-cat-1">A1 - Food Manufacturing</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-2" value="A2 - Restaurant / Hotel">
+                    <label class="form-check-label" for="m-cat-2">A2 - Restaurant / Hotel</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-3" value="A3 - Open Market / Fair">
+                    <label class="form-check-label" for="m-cat-3">A3 - Open Market / Fair</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-4" value="H1 - Food Warehouse">
+                    <label class="form-check-label" for="m-cat-4">H1 - Food Warehouse</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-5" value="H2 - Retail / Supermarket">
+                    <label class="form-check-label" for="m-cat-5">H2 - Retail / Supermarket</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-6" value="I1 - Food Processing">
+                    <label class="form-check-label" for="m-cat-6">I1 - Food Processing</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-7" value="K1 - Bakery / Confectionery">
+                    <label class="form-check-label" for="m-cat-7">K1 - Bakery / Confectionery</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Food Sub Categories (Select multiple) <span class="text-danger">*</span></label>
+                <div class="border rounded p-3 bg-white" style="max-height: 180px; overflow-y: auto;">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-1" value="Bakery Products">
+                    <label class="form-check-label" for="s-cat-1">Bakery Products</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-2" value="Cooked Meals">
+                    <label class="form-check-label" for="s-cat-2">Cooked Meals / Catering</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-3" value="Dairy Products">
+                    <label class="form-check-label" for="s-cat-3">Dairy & Milk Products</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-4" value="Beverages">
+                    <label class="form-check-label" for="s-cat-4">Beverages (Bottled / Fresh)</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-5" value="Raw Meat / Fish">
+                    <label class="form-check-label" for="s-cat-5">Raw Meat / Poultry / Fish</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-6" value="Spices & Grains">
+                    <label class="form-check-label" for="s-cat-6">Spices, Condiments & Grains</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-7" value="Confectioneries">
+                    <label class="form-check-label" for="s-cat-7">Confectioneries & Sweets</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer px-0 pb-0">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Add Branch</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manager Modal -->
+  <div class="modal fade" id="addManagerModal" tabindex="-1" aria-labelledby="addManagerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-semibold" id="addManagerModalLabel">Create Branch Manager Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="add-manager-form">
+            <div class="mb-3">
+              <label class="form-label">Full Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="m-name" placeholder="Manager's full name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">NIC Number <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="m-nic" placeholder="e.g. 199512345678" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" id="m-email" placeholder="manager@goldenrice.lk" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" id="m-phone" placeholder="e.g. +94 7X XXX XXXX" required>
+            </div>
+            <div class="modal-footer px-0 pb-0">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Create Profile</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+
+  <script>
+    // Initial data lists
+    let branches = [
+      { name: "Golden Rice - Colombo 07", address: "No. 45, Ward Place, Colombo 07", manager: "Jagath Kumara", mains: ["Restaurant"], subs: ["Cooked Meals", "Dairy Products"], grade: "A (88%)" },
+      { name: "Golden Rice Express - Gampaha", address: "No. 12, Kandy Road, Gampaha", manager: "Nimal Silva", mains: ["Restaurant", "Catering Services"], subs: ["Cooked Meals", "Beverages"], grade: "B (74%)" },
+      { name: "Golden Rice Bakery - Kandy", address: "No. 88, Temple Street, Kandy", manager: "Chathura Perera", mains: ["Bakery / Confectionery"], subs: ["Bakery Products", "Confectioneries"], grade: "A (91%)" }
+    ];
+
+    let managers = [
+      { name: "Jagath Kumara", nic: "198522104V", email: "jagath@goldenrice.lk", phone: "+94 77 123 4567" },
+      { name: "Nimal Silva", nic: "199044310V", email: "nimal@goldenrice.lk", phone: "+94 71 987 6543" },
+      { name: "Chathura Perera", nic: "198822019V", email: "chathura@goldenrice.lk", phone: "+94 72 444 5555" }
+    ];
+
+    let chartInstance = null;
+
+    function renderBranches() {
+      const tbody = document.getElementById('branch-table-body');
+      tbody.innerHTML = '';
+      branches.forEach((b, index) => {
+        tbody.innerHTML += `
+          <tr>
+            <td><span class="fw-semibold">${b.name}</span></td>
+            <td><span class="fs-3">${b.address}</span></td>
+            <td><span class="badge bg-secondary-subtle text-secondary">${b.manager}</span></td>
+            <td>
+              <span class="badge bg-primary-subtle text-primary mb-1">${b.mains.join(', ')}</span><br>
+              <span class="badge bg-light text-muted fs-1">${b.subs.join(', ')}</span>
+            </td>
+            <td><span class="badge ${b.grade.includes('A') ? 'bg-success' : 'bg-warning'}">${b.grade}</span></td>
+            <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(${index})"><i class="ti ti-trash"></i></button></td>
+          </tr>
+        `;
+      });
+      document.getElementById('kpi-branches').textContent = branches.length;
+      updateChart();
+    }
+
+    function renderManagers() {
+      const tbody = document.getElementById('manager-table-body');
+      const select = document.getElementById('b-manager');
+      tbody.innerHTML = '';
+      select.innerHTML = '<option value="">Select an active manager...</option>';
+      
+      managers.forEach(m => {
+        tbody.innerHTML += `
+          <tr>
+            <td><span class="fw-semibold">${m.name}</span></td>
+            <td>${m.nic}</td>
+            <td>${m.email}</td>
+            <td>${m.phone}</td>
+            <td><span class="badge bg-success-subtle text-success">Active</span></td>
+          </tr>
+        `;
+        select.innerHTML += `<option value="${m.name}">${m.name}</option>`;
+      });
+      document.getElementById('kpi-managers').textContent = managers.length;
+    }
+
+    function deleteBranch(index) {
+      branches.splice(index, 1);
+      renderBranches();
+    }
+
+    // Modal submit listeners
+    document.getElementById('add-branch-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const mains = Array.from(document.querySelectorAll('.b-main-cat:checked')).map(el => el.value);
+      const subs = Array.from(document.querySelectorAll('.b-sub-cat:checked')).map(el => el.value);
+      
+      if(mains.length === 0 || subs.length === 0) {
+        alert('Please select at least one main and one sub food category.');
+        return;
+      }
+
+      branches.push({
+        name: document.getElementById('b-name').value,
+        address: document.getElementById('b-address').value,
+        manager: document.getElementById('b-manager').value,
+        mains: mains,
+        subs: subs,
+        grade: "Pending review (0%)"
+      });
+
+      document.getElementById('add-branch-form').reset();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addBranchModal'));
+      modal.hide();
+      renderBranches();
+    });
+
+    document.getElementById('add-manager-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      managers.push({
+        name: document.getElementById('m-name').value,
+        nic: document.getElementById('m-nic').value,
+        email: document.getElementById('m-email').value,
+        phone: document.getElementById('m-phone').value
+      });
+
+      document.getElementById('add-manager-form').reset();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addManagerModal'));
+      modal.hide();
+      renderManagers();
+    });
+
+    function updateChart() {
+      const data = branches.map(b => {
+        let score = 0;
+        const matches = b.grade.match(/\((\d+)%\)/);
+        if(matches) score = parseInt(matches[1]);
+        return score;
+      });
+      const labels = branches.map(b => b.name);
+
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      var options = {
+        series: data,
+        chart: { type: 'pie', height: 250, fontFamily: 'inherit' },
+        labels: labels,
+        colors: ['#10B981', '#3B82F6', '#14B8A6', '#6366F1', '#F59E0B'],
+        legend: { position: 'bottom', fontSize: '10px' }
+      };
+
+      chartInstance = new ApexCharts(document.querySelector("#compliance-pie-chart"), options);
+      chartInstance.render();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderBranches();
+      renderManagers();
+    });
+  </script>
+  <script src="./_role.js"></script>
+</body>
+</html>

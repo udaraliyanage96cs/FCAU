@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,6 +78,7 @@
           <ul class="nav nav-tabs mb-3" role="tablist">
             <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#prosecutions">Prosecution Cases</a></li>
             <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#seizures">Seizure & Destruction</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#arrested">Arrest Register</a></li>
           </ul>
 
           <div class="tab-content">
@@ -177,6 +178,45 @@
                       </tr>
                     </tbody>
                   </table></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Arrested Register -->
+            <div class="tab-pane fade" id="arrested">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="card-title fw-semibold mb-0">Arrest Register (Custody Records)</h5>
+                    <button class="btn btn-sm btn-primary"><i class="ti ti-plus me-1"></i>New Entry</button>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light"><tr><th>Arrest ID</th><th>Full Name</th><th>NIC</th><th>Violation Basis</th><th>Date of Arrest</th><th>Police Station</th><th>Bail Status</th><th>Actions</th></tr></thead>
+                      <tbody>
+                        <tr>
+                          <td><span class="fw-bold">ARR-2026-001</span></td>
+                          <td>Jagath Kumara</td>
+                          <td>197544210V</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Adulteration</span></td>
+                          <td>2026-05-02</td>
+                          <td>Borella Police</td>
+                          <td><span class="badge bg-warning">Remanded</span></td>
+                          <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-bold">ARR-2026-002</span></td>
+                          <td>M. Faizal</td>
+                          <td>198211094V</td>
+                          <td><span class="badge bg-warning-subtle text-warning">Expired Goods</span></td>
+                          <td>2026-05-05</td>
+                          <td>Fort Police</td>
+                          <td><span class="badge bg-success">Police Bail</span></td>
+                          <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

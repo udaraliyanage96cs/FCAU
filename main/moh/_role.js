@@ -15,12 +15,18 @@
     nav: [
       { type: 'cap', label: 'Home' },
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',            href: './iims-dashboard.html' },
+      { type: 'link', icon: 'ti ti-user',             label: 'My Profile',           href: './iims-profile.html' },
 
       { type: 'cap', label: 'Supervision' },
       { type: 'link', icon: 'ti ti-eye-check',        label: 'Supervisory Review',   href: './iims-inspection-review.html' },
       { type: 'link', icon: 'ti ti-building-store',   label: 'Premises Registry',    href: './iims-premises-list.html' },
-      { type: 'link', icon: 'ti ti-user-plus',        label: 'FBO Registration',     href: './iims-fbo-registration.html' },
+      { type: 'link', icon: 'ti ti-filter',           label: 'Complaint Triage',     href: './iims-complaint-triage.html' },
       { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals',  href: './iims-appeals.html' },
+
+      { type: 'cap', label: 'Laboratory' },
+      { type: 'link', icon: 'ti ti-microscope',       label: 'Reception Triage',     href: './iims-lab-triage.html' },
+      { type: 'link', icon: 'ti ti-file-analytics',   label: 'Manual Result Entry',  href: './iims-lab-report-form.html' },
+      { type: 'link', icon: 'ti ti-test-pipe',        label: 'Sample Management',    href: './iims-sample-management.html' },
 
       { type: 'cap', label: 'Analytics' },
       { type: 'link', icon: 'ti ti-chart-bar',        label: 'Reports',              href: './iims-reports.html' },
@@ -54,13 +60,13 @@
     var s = document.createElement('style');
     s.textContent = [
       '.role-banner{background:linear-gradient(135deg,' + ROLE.color + '18,' + ROLE.color + '08);',
-      'border-left:3px solid ' + ROLE.color + ';border-radius:8px;',
+      'border-radius:8px;',
       'padding:8px 12px;margin:8px 16px 2px;display:flex;align-items:center;gap:8px;}',
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{color:' + ROLE.color + ' !important;}',
-      '.sidebar-link.active i{color:' + ROLE.color + ' !important;}'
+      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);
   }
@@ -97,17 +103,25 @@
       });
     }
 
-    /* top-right avatar icon → login page */
+    /* top-right avatar icon → profile page */
     var topAvatar = document.getElementById('drop1');
     if (topAvatar) {
       topAvatar.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = '../iims-login.html';
+        window.location.href = './iims-profile.html';
       });
     }
 
     /* inject visible Sign Out button into topbar */
     var navList = document.querySelector('.navbar-nav.flex-row.ms-auto');
+    if (!navList) {
+      var navbar = document.querySelector('.topbar nav.navbar');
+      if (navbar) {
+        navList = document.createElement('ul');
+        navList.className = 'navbar-nav flex-row ms-auto align-items-center justify-content-center';
+        navbar.appendChild(navList);
+      }
+    }
     if (navList) {
       var signOutLi = document.createElement('li');
       signOutLi.className = 'nav-item';
