@@ -78,121 +78,221 @@
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
             <div class="card-body px-4 py-3">
-              <div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Premises Registration</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item">Premises Applications</li><li class="breadcrumb-item active">Application</li></ol></nav></div></div>
+              <div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">FBO Registration</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Registration</li></ol></nav></div></div>
             </div>
           </div>
 
-          <!-- Food Premises Application for Registration Form -->
-          <div class="card border-0 shadow-sm">
+          <!-- Wizard -->
+          <div class="card">
             <div class="card-body">
-              <div class="d-flex align-items-center mb-4 pb-2 border-bottom">
-                <i class="ti ti-file-description fs-6 text-primary me-2"></i>
-                <h5 class="card-title fw-semibold mb-0">Food Premises Application for Registration</h5>
+              <!-- Stepper -->
+              <div class="d-flex justify-content-center mb-4">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2" id="step-indicator-1"><div class="round-36 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold">1</div><span class="fw-semibold text-primary">Identity</span></div>
+                  <div class="border-top flex-grow-0" style="width:40px;"></div>
+                  <div class="d-flex align-items-center gap-2" id="step-indicator-2"><div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">2</div><span class="text-muted">Business Info</span></div>
+                  <div class="border-top flex-grow-0" style="width:40px;"></div>
+                  <div class="d-flex align-items-center gap-2" id="step-indicator-3"><div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">3</div><span class="text-muted">Location</span></div>
+                  <div class="border-top flex-grow-0" style="width:40px;"></div>
+                  <div class="d-flex align-items-center gap-2" id="step-indicator-4"><div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">4</div><span class="text-muted">Documents</span></div>
+                  <div class="border-top flex-grow-0" style="width:40px;"></div>
+                  <div class="d-flex align-items-center gap-2" id="step-indicator-5"><div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">5</div><span class="text-muted">Review</span></div>
+                </div>
               </div>
-              <form id="premisesRegForm">
+
+              <!-- Step 1: Identity -->
+              <div id="step-1">
+                <h5 class="fw-semibold mb-4">Applicant Identity Verification</h5>
                 <div class="row">
-                  <!-- Row 1 -->
                   <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Serial Number <span class="text-danger">*</span></label>
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-light" id="serialNo" value="PHI_796" readonly>
-                      <span class="input-group-text bg-light text-muted fs-2"><i class="ti ti-arrow-left me-1"></i> The system generates a serial number</span>
+                    <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Enter full name as per NIC">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">NIC / Passport Number <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="e.g., 200012345678">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Email Address <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" placeholder="verified@email.com">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Contact Number <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control" placeholder="+94 7X XXX XXXX">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Business Registration Number</label>
+                    <input type="text" class="form-control" placeholder="Optional for sole traders">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Applicant Type <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>Individual</option><option>Company</option><option>Partnership</option></select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Business Info (hidden) -->
+              <div id="step-2" style="display:none;">
+                <h5 class="fw-semibold mb-4">Business & Premises Information</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Trading Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Business trading name">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Food Category <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>Select category...</option><option>A1 - Food Manufacturing</option><option>A2 - Restaurant / Hotel</option><option>A3 - Open Market / Fair</option><option>H1 - Food Warehouse</option><option>H2 - Retail / Supermarket</option><option>I1 - Food Processing</option><option>I2 - Catering Services</option><option>J1 - Street Food Vendor</option><option>K1 - Bakery / Confectionery</option><option>L1 - Meat / Fish Processing</option></select>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label">Floor Area (sq.ft.) <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="e.g., 1200">
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label">Number of Employees <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" placeholder="e.g., 15">
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label">Seating Capacity</label>
+                    <input type="number" class="form-control" placeholder="If applicable">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Water Source <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>NWS&DB Pipeline</option><option>Protected Well</option><option>Borehole</option><option>Other</option></select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Certification (if any)</label>
+                    <select class="form-select"><option>None</option><option>HACCP</option><option>ISO 22000</option><option>GMP</option><option>SLS Certified</option></select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Location (hidden) -->
+              <div id="step-3" style="display:none;">
+                <h5 class="fw-semibold mb-4">Location & GN Division Mapping</h5>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label">Province <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>Western</option><option>Central</option><option>Southern</option><option>Northern</option><option>Eastern</option><option>North Western</option><option>North Central</option><option>Uva</option><option>Sabaragamuwa</option></select>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label">District <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>Colombo</option><option>Gampaha</option><option>Kalutara</option></select>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label">MOH Area <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>Colombo MC</option><option>Dehiwala</option><option>Maharagama</option><option>Homagama</option></select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">GN Division <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>Select GN division...</option><option>Colombo 07 - 508A</option><option>Colombo 07 - 508B</option><option>Bambalapitiya - 520</option></select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">PHI Area <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" value="Auto-assigned based on GN" readonly>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Full Address <span class="text-danger">*</span></label>
+                    <textarea class="form-control" rows="2" placeholder="Enter complete premises address"></textarea>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Latitude</label>
+                    <input type="text" class="form-control" placeholder="e.g., 6.9271">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Longitude</label>
+                    <input type="text" class="form-control" placeholder="e.g., 79.8612">
+                  </div>
+                  <div class="col-12">
+                    <div class="rounded border p-3 bg-light text-center" style="height:200px;">
+                      <i class="ti ti-map-2 fs-1 text-muted d-block mt-7"></i>
+                      <span class="text-muted">GIS Map Integration - Click to pin location</span>
                     </div>
                   </div>
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Date receive <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control" id="dateReceive" required>
-                  </div>
+                </div>
+              </div>
 
-                  <!-- Row 2 -->
+              <!-- Step 4: Documents (hidden) -->
+              <div id="step-4" style="display:none;">
+                <h5 class="fw-semibold mb-4">Statutory Document Upload</h5>
+                <div class="alert alert-info"><i class="ti ti-info-circle me-2"></i>Upload scanned copies (PDF/JPG, max 5MB each). Prohibited file types: .exe, .zip, .rar</div>
+                <div class="row">
                   <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Name of the Applicant <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="applicantName" placeholder="Enter applicant name" required>
+                    <label class="form-label">Trade License <span class="text-danger">*</span></label>
+                    <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">PHI Area <span class="text-danger">*</span></label>
-                    <select class="form-select" id="phiArea" required>
-                      <option value="">Select...</option>
-                      <option value="PHI Area 1">Colombo 07 - PHI 1</option>
-                      <option value="PHI Area 2">Dehiwala - PHI 2</option>
-                      <option value="PHI Area 3">Maharagama - PHI 3</option>
-                    </select>
-                  </div>
-
-                  <!-- Row 3 -->
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">File Number</label>
-                    <input type="text" class="form-control" id="fileNumber" placeholder="Enter file number">
+                    <label class="form-label">Business Registration Certificate</label>
+                    <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Category of the premise <span class="text-danger">*</span></label>
-                    <select class="form-select" id="premiseCategory" required>
-                      <option value="">Select...</option>
-                      <option value="A1">A1 - Food Manufacturing</option>
-                      <option value="A2">A2 - Restaurant / Hotel</option>
-                      <option value="A3">A3 - Open Market / Fair</option>
-                      <option value="H2">H2 - Retail / Supermarket</option>
-                    </select>
-                  </div>
-
-                  <!-- Row 4 -->
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Name of the Premise <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="premiseName" placeholder="Enter name of the premise" required>
+                    <label class="form-label">NIC Copy (Owner) <span class="text-danger">*</span></label>
+                    <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Address of the Premise <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="premiseAddress" placeholder="Enter address of the premise" required>
-                  </div>
-
-                  <!-- Row 5 -->
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Fee levied</label>
-                    <input type="number" class="form-control" id="feeLevied" placeholder="Enter fee amount">
+                    <label class="form-label">Medical Certificates (Schedule VI) <span class="text-danger">*</span></label>
+                    <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png" multiple>
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Receipt No</label>
-                    <input type="text" class="form-control" id="receiptNo" placeholder="Enter receipt number">
-                  </div>
-
-                  <!-- Row 6 -->
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Date of the certificate of registration</label>
-                    <input type="date" class="form-control" id="certDate">
+                    <label class="form-label">Floor Plan / Layout</label>
+                    <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Certificate of the registration Number</label>
-                    <input type="text" class="form-control" id="certNumber" placeholder="Enter certificate number">
-                  </div>
-
-                  <!-- Row 7 -->
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Proposed date of commencement / Date established</label>
-                    <input type="date" class="form-control" id="commencementDate">
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Date of inspection</label>
-                    <input type="date" class="form-control" id="inspectionDate">
-                  </div>
-
-                  <!-- Row 8 -->
-                  <div class="col-md-6 mb-3">
-                    <label class="form-label fw-semibold">Approval Status <span class="text-danger">*</span></label>
-                    <select class="form-select" id="approvalStatus" required>
-                      <option value="">Select...</option>
-                      <option value="Pending">Pending</option>
-                      <option value="Approved">Approved</option>
-                      <option value="Rejected">Rejected</option>
-                    </select>
+                    <label class="form-label">Certification Documents (HACCP/ISO)</label>
+                    <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
                   </div>
                 </div>
+              </div>
 
-                <!-- Form Action Buttons -->
-                <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
-                  <a href="./iims-premises-list.html" class="btn btn-outline-secondary"><i class="ti ti-arrow-left me-1"></i>Back to Registry</a>
-                  <button type="submit" class="btn btn-primary"><i class="ti ti-device-floppy me-1"></i>Register Premises</button>
+              <!-- Step 5: Review (hidden) -->
+              <div id="step-5" style="display:none;">
+                <h5 class="fw-semibold mb-4">Application Review & Submit</h5>
+                <div class="alert alert-warning"><i class="ti ti-alert-triangle me-2"></i>Please review all details before submission. Once submitted, the application enters the FCAU workflow for review.</div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="card bg-light border-0"><div class="card-body">
+                      <h6 class="fw-semibold mb-3"><i class="ti ti-user me-2"></i>Applicant Details</h6>
+                      <p class="mb-1"><strong>Name:</strong> <span class="text-muted">[From Step 1]</span></p>
+                      <p class="mb-1"><strong>NIC:</strong> <span class="text-muted">[From Step 1]</span></p>
+                      <p class="mb-1"><strong>Email:</strong> <span class="text-muted">[From Step 1]</span></p>
+                      <p class="mb-0"><strong>Contact:</strong> <span class="text-muted">[From Step 1]</span></p>
+                    </div></div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card bg-light border-0"><div class="card-body">
+                      <h6 class="fw-semibold mb-3"><i class="ti ti-building-store me-2"></i>Business Details</h6>
+                      <p class="mb-1"><strong>Trading Name:</strong> <span class="text-muted">[From Step 2]</span></p>
+                      <p class="mb-1"><strong>Category:</strong> <span class="text-muted">[From Step 2]</span></p>
+                      <p class="mb-1"><strong>Location:</strong> <span class="text-muted">[From Step 3]</span></p>
+                      <p class="mb-0"><strong>GN Division:</strong> <span class="text-muted">[From Step 3]</span></p>
+                    </div></div>
+                  </div>
+                  <div class="col-12">
+                    <div class="card bg-light border-0"><div class="card-body">
+                      <h6 class="fw-semibold mb-3"><i class="ti ti-files me-2"></i>Uploaded Documents</h6>
+                      <div class="d-flex flex-wrap gap-3">
+                        <span class="badge bg-primary-subtle text-primary p-2"><i class="ti ti-file-check me-1"></i>Trade License.pdf</span>
+                        <span class="badge bg-primary-subtle text-primary p-2"><i class="ti ti-file-check me-1"></i>NIC_Copy.jpg</span>
+                        <span class="badge bg-primary-subtle text-primary p-2"><i class="ti ti-file-check me-1"></i>Medical_Cert.pdf</span>
+                      </div>
+                    </div></div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" id="declaration">
+                      <label class="form-check-label" for="declaration">I hereby declare that all information provided is true and accurate. I understand that providing false information is a punishable offence under the Food Act No. 26 of 1980.</label>
+                    </div>
+                  </div>
                 </div>
-              </form>
+              </div>
+
+              <!-- Navigation Buttons -->
+              <div class="d-flex justify-content-between mt-4 pt-3 border-top">
+                <button class="btn btn-outline-secondary" id="btn-prev" disabled><i class="ti ti-arrow-left me-1"></i>Previous</button>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-outline-primary" id="btn-save-draft"><i class="ti ti-device-floppy me-1"></i>Save Draft</button>
+                  <button class="btn btn-primary" id="btn-next">Next<i class="ti ti-arrow-right ms-1"></i></button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -209,11 +309,192 @@
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
   <script>
-    document.getElementById('premisesRegForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const pName = document.getElementById('premiseName').value;
-      alert("Premises '" + pName + "' registered successfully! Serial Number: PHI_796");
-      window.location.href = "./iims-premises-list.html";
+    let currentStep = 1;
+    const totalSteps = 5;
+    
+    // Parse URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const businessId = urlParams.get('businessId');
+    const branchId = urlParams.get('branchId');
+    const editAppId = urlParams.get('editAppId');
+
+    let selectedBiz = null;
+    let selectedBranch = null;
+
+    function showStep(n) {
+      for(let i=1;i<=totalSteps;i++){document.getElementById('step-'+i).style.display=i===n?'block':'none';}
+      document.getElementById('btn-prev').disabled = n===1;
+      document.getElementById('btn-next').textContent = n===totalSteps ? 'Submit Application' : 'Next';
+      if(n===totalSteps){document.getElementById('btn-next').innerHTML='<i class="ti ti-send me-1"></i>Submit Application';}
+      else{document.getElementById('btn-next').innerHTML='Next<i class="ti ti-arrow-right ms-1"></i>';}
+      for(let i=1;i<=totalSteps;i++){
+        const ind = document.getElementById('step-indicator-'+i);
+        const circle = ind.querySelector('div');
+        const label = ind.querySelector('span');
+        if(i<=n){circle.className='round-36 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold';label.className='fw-semibold text-primary';}
+        else{circle.className='round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold';label.className='text-muted';}
+      }
+    }
+
+    document.getElementById('btn-next').addEventListener('click',function(){
+      if(currentStep<totalSteps){
+        currentStep++;
+        showStep(currentStep);
+        updateReviewPanel();
+      }else{
+        submitApplication();
+      }
+    });
+
+    document.getElementById('btn-prev').addEventListener('click',function(){if(currentStep>1){currentStep--;showStep(currentStep);}});
+    document.getElementById('btn-save-draft').addEventListener('click',function(){alert('Application saved as DRAFT successfully.');});
+
+    function updateReviewPanel() {
+      // Prefill review panel from actual inputs
+      const name = document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value;
+      const nic = document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value;
+      const email = document.querySelector('#step-1 input[placeholder="verified@email.com"]').value;
+      const contact = document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value;
+      const tradeName = document.querySelector('#step-2 input[placeholder="Business trading name"]').value;
+      const category = document.querySelector('#step-2 select').value;
+      const address = document.querySelector('#step-3 textarea').value;
+      const gn = document.querySelector('#step-3 select:nth-of-type(4)') ? document.querySelector('#step-3 select:nth-of-type(4)').value : 'Colombo 07 - 508A';
+
+      const review1 = document.querySelector('#step-5 .row .col-md-6:nth-of-type(1) .card-body');
+      if (review1) {
+        review1.innerHTML = `
+          <h6 class="fw-semibold mb-3"><i class="ti ti-user me-2"></i>Applicant Details</h6>
+          <p class="mb-1"><strong>Name:</strong> <span class="text-dark">${name || 'N/A'}</span></p>
+          <p class="mb-1"><strong>NIC:</strong> <span class="text-dark">${nic || 'N/A'}</span></p>
+          <p class="mb-1"><strong>Email:</strong> <span class="text-dark">${email || 'N/A'}</span></p>
+          <p class="mb-0"><strong>Contact:</strong> <span class="text-dark">${contact || 'N/A'}</span></p>
+        `;
+      }
+
+      const review2 = document.querySelector('#step-5 .row .col-md-6:nth-of-type(2) .card-body');
+      if (review2) {
+        review2.innerHTML = `
+          <h6 class="fw-semibold mb-3"><i class="ti ti-building-store me-2"></i>Business Details</h6>
+          <p class="mb-1"><strong>Trading Name:</strong> <span class="text-dark">${tradeName || 'N/A'}</span></p>
+          <p class="mb-1"><strong>Category:</strong> <span class="text-dark">${category || 'N/A'}</span></p>
+          <p class="mb-1"><strong>Location:</strong> <span class="text-dark">${address || 'N/A'}</span></p>
+          <p class="mb-0"><strong>GN Division:</strong> <span class="text-dark">${gn || 'N/A'}</span></p>
+        `;
+      }
+    }
+
+    function prefillForm() {
+      const businesses = JSON.parse(localStorage.getItem('fcau_businesses')) || [];
+      const branches = JSON.parse(localStorage.getItem('fcau_branches')) || [];
+      const managers = JSON.parse(localStorage.getItem('fcau_managers')) || [];
+      const applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
+
+      if (editAppId) {
+        const app = applications.find(a => a.id === editAppId);
+        if (app) {
+          selectedBiz = businesses.find(b => b.id === app.businessId);
+          selectedBranch = branches.find(b => b.id === app.branchId);
+          
+          document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value = app.applicantName;
+          document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value = app.applicantNic;
+          document.querySelector('#step-2 input[placeholder="Business trading name"]').value = selectedBranch ? selectedBranch.name : '';
+          document.querySelector('#step-3 textarea').value = app.address;
+        }
+        return;
+      }
+
+      if (businessId && branchId) {
+        selectedBiz = businesses.find(b => b.id === businessId);
+        selectedBranch = branches.find(b => b.id === branchId);
+
+        if (selectedBranch) {
+          // Pre-fill Step 2
+          const tradingNameInput = document.querySelector('#step-2 input[placeholder="Business trading name"]');
+          if (tradingNameInput) {
+            tradingNameInput.value = selectedBranch.name;
+            tradingNameInput.readOnly = true;
+          }
+
+          // Pre-fill Category select if matches
+          const catSelect = document.querySelector('#step-2 select');
+          if (catSelect) {
+            // Find option that matches
+            const mainCat = selectedBranch.mains[0]; // e.g. "A2 - Restaurant / Hotel"
+            for (let option of catSelect.options) {
+              if (option.text.includes(mainCat) || mainCat.includes(option.text)) {
+                option.selected = true;
+                break;
+              }
+            }
+          }
+
+          // Pre-fill Step 3 Address
+          const addressTextarea = document.querySelector('#step-3 textarea');
+          if (addressTextarea) {
+            addressTextarea.value = selectedBranch.address;
+            addressTextarea.readOnly = true;
+          }
+
+          // Pre-fill Manager Details (Applicant Details)
+          const mgr = managers.find(m => m.name === selectedBranch.manager);
+          if (mgr) {
+            document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value = mgr.name;
+            document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value = mgr.nic;
+            document.querySelector('#step-1 input[placeholder="verified@email.com"]').value = mgr.email;
+            document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value = mgr.phone;
+          }
+        }
+      }
+    }
+
+    function submitApplication() {
+      if (!document.getElementById('declaration').checked) {
+        alert('Please accept the declaration before submitting.');
+        return;
+      }
+
+      const name = document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value;
+      const nic = document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value;
+      const email = document.querySelector('#step-1 input[placeholder="verified@email.com"]').value;
+      const contact = document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value;
+      const address = document.querySelector('#step-3 textarea').value;
+
+      const applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
+
+      const newApp = {
+        id: editAppId || 'app-' + Date.now(),
+        businessId: businessId || (selectedBiz ? selectedBiz.id : 'bus-1'),
+        branchId: branchId || (selectedBranch ? selectedBranch.id : 'br-1'),
+        applicantName: name,
+        applicantNic: nic,
+        email: email,
+        contact: contact,
+        mains: selectedBranch ? selectedBranch.mains : ["A2 - Restaurant / Hotel"],
+        subs: selectedBranch ? selectedBranch.subs : ["Cooked Meals"],
+        address: address,
+        district: document.querySelector('#step-3 select:nth-of-type(2)') ? document.querySelector('#step-3 select:nth-of-type(2)').value : 'Colombo',
+        mohArea: document.querySelector('#step-3 select:nth-of-type(3)') ? document.querySelector('#step-3 select:nth-of-type(3)').value : 'Colombo MC',
+        gnDivision: document.querySelector('#step-3 select:nth-of-type(4)') ? document.querySelector('#step-3 select:nth-of-type(4)').value : 'Colombo 07 - 508A',
+        status: "Submitted (Awaiting PHI)",
+        assignedPhi: null
+      };
+
+      if (editAppId) {
+        const idx = applications.findIndex(a => a.id === editAppId);
+        if (idx !== -1) applications[idx] = newApp;
+      } else {
+        applications.push(newApp);
+      }
+
+      localStorage.setItem('fcau_applications', JSON.stringify(applications));
+
+      alert('Application submitted successfully! Redirecting to dashboard...');
+      window.location.href = './iims-dashboard.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      prefillForm();
+      showStep(currentStep);
     });
   </script>
 <script src="./_role.js"></script>
