@@ -1,0 +1,41 @@
+Overview of Inspection Information Management System (IIMS)
+What is IIMS — Inspection Information Management System?
+A national digital inspection platform developed by the Food Control Administration Unit of the Ministry of Health.
+Used by authorized officers in food safety.
+Has
+ several key domains covering the full range of food safety inspection and control activities.
+Key Domains in the IIMS?
+Food Premises Registration
+Food Premises Grading
+Food Sampling
+Food Inspection
+Reports
+Import Control
+Export Controls
+Water Bottle Factory Registration
+Salt Factory Registration
+Health Claims
+Key Stakeholders and Their Roles in IIMS
+Food Control Administration Unit: Develops and maintains the IIMS platform; sets national standards for digital inspection.
+Authorized Officers of Food Safety (MOH, PHI, F & DI): Primary system users responsible for conducting inspections and entering data.
+Food Laboratories: Receive digital sample requests, upload test results, and integrate findings into IIMS.
+How to Log in to IIMS System of 
+FCAU
+ ?
+Inspection Workflow — System Overview
+The IIMS inspection workflow guides authorized officers through a structured digital process — from logging in, selecting sampling activities, entering data, submitting samples, through 
+to viewing
+ lab results and downloading reports.
+IIMS System — How to add a sample to the system?
+The system displays a list of all submitted samples, allowing officers to track status and manage records efficiently.
+Once lab results are available in IIMS, the following actions can be performed:
+Edit — Modify sample details if required.
+View Lab Result — Review the full laboratory report online.
+Request Hard Copy from Lab — Submit a formal request for a printed copy of the report.
+View — Open the sample record for detailed viewing.
+Download Report — Save or print the report for records.
+Premises Registration
+To register a food premise, click the Food Premises option in the IIMS navigation menu. This opens the premises registration module where new premises can be added to the national registry.
+Upon successful entry and submission of premises registration details, the IIMS system automatically generates a unique serial number for the registered premises. This number serves as the official identifier for all future inspections and records related to 
+that
+ premises.
