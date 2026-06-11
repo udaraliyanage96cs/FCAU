@@ -144,7 +144,7 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3 flex-wrap gap-2">
                 <div>
-                  <h4 class="fw-semibold mb-1">Good Evening R Nanayakkara</h4>
+                  <h4 class="fw-semibold mb-1">Good Evening Officer</h4>
                   <p class="text-muted mb-0 fs-2">Welcome to MIS for Food Control Administration Unit of the Ministry of Health</p>
                 </div>
                 <div class="text-md-end">
@@ -180,12 +180,15 @@
                 </div>
                 <div class="col-md-3">
                   <label class="form-label fw-semibold">Process Type *</label>
-                  <select class="form-select" id="dashProcessType">
+                  <select required="" type="text" id="process_type_id" name="process_type_id" class="form-select">
                     <option value="">- Select -</option>
-                    <option value="Food Sampled">Food Sampled</option>
-                    <option value="Water Sampled">Water Sampled</option>
-                    <option value="Raw Material">Raw Material</option>
-                    <option value="Finished Product">Finished Product</option>
+                    <option value="1">H800</option>
+                    <option value="2">Education/ Awareness</option>
+                    <option value="3">Application first time received or for renewal registration</option>
+                    <option value="4">Seized</option>
+                    <option value="5">Prosecuted</option>
+                    <option value="6">Arrested (accuser)</option>
+                    <option value="7">Food Sampled</option>
                   </select>
                 </div>
                 <div class="col-md-2">
@@ -491,8 +494,9 @@
     function proceedToSampling() {
       const category = document.getElementById('dashPremiseCategory').value;
       const premise = document.getElementById('dashFoodPremise').value;
-      const process = document.getElementById('dashProcessType').value;
-      if (!category || !premise || !process) {
+      const processSelect = document.getElementById('process_type_id');
+      const process = processSelect.options[processSelect.selectedIndex].text;
+      if (!category || !premise || !processSelect.value) {
         alert('Please select all required fields before proceeding.');
         return;
       }
