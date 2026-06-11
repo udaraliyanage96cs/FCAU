@@ -166,7 +166,7 @@
                       <th>Last Inspection</th>
                       <th>Next Due</th>
                       <th>Certification</th>
-                      <th>Actions</th>
+                      <th class="text-nowrap" style="width:1%;">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -181,9 +181,12 @@
                       <td>2026-05-04</td>
                       <td>2026-11-04</td>
                       <td><span class="badge bg-success-subtle text-success">HACCP</span></td>
-                      <td>
-                        <div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button>
-                          <ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li><li><a class="dropdown-item" href="#">Inspection History</a></li><li><hr class="dropdown-divider"></li><li><a class="dropdown-item text-danger" href="#">Suspend</a></li></ul>
+                      <td class="text-nowrap">
+                        <div class="d-flex gap-1">
+                          <button class="btn btn-xs btn-outline-primary py-1 px-2" onclick="alert('Viewing profile for Golden Rice Restaurant')" title="View Profile"><i class="ti ti-user"></i> View Profile</button>
+                          <a href="./iims-inspection-form.html" class="btn btn-xs btn-outline-success py-1 px-2" title="New Inspection"><i class="ti ti-clipboard-check"></i> New Inspection</a>
+                          <button class="btn btn-xs btn-outline-info py-1 px-2" onclick="alert('Viewing inspection history for Golden Rice Restaurant')" title="Inspection History"><i class="ti ti-history"></i> Inspection History</button>
+                          <button class="btn btn-xs btn-outline-danger py-1 px-2" onclick="alert('Golden Rice Restaurant status: Suspended')" title="Suspend"><i class="ti ti-ban"></i> Suspend</button>
                         </div>
                       </td>
                     </tr>
@@ -198,7 +201,13 @@
                       <td>2026-05-03</td>
                       <td>2026-08-03</td>
                       <td><span class="badge bg-secondary-subtle text-secondary">None</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li><li><a class="dropdown-item" href="#">Inspection History</a></li></ul></div></td>
+                      <td class="text-nowrap">
+                        <div class="d-flex gap-1">
+                          <button class="btn btn-xs btn-outline-primary py-1 px-2" onclick="alert('Viewing profile for Fresh Mart Supermarket')" title="View Profile"><i class="ti ti-user"></i> View Profile</button>
+                          <a href="./iims-inspection-form.html" class="btn btn-xs btn-outline-success py-1 px-2" title="New Inspection"><i class="ti ti-clipboard-check"></i> New Inspection</a>
+                          <button class="btn btn-xs btn-outline-info py-1 px-2" onclick="alert('Viewing inspection history for Fresh Mart Supermarket')" title="Inspection History"><i class="ti ti-history"></i> Inspection History</button>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>3</td>
@@ -211,7 +220,13 @@
                       <td>2026-05-02</td>
                       <td>2026-06-02</td>
                       <td><span class="badge bg-secondary-subtle text-secondary">None</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li><li><a class="dropdown-item text-danger" href="#">Enforcement</a></li></ul></div></td>
+                      <td class="text-nowrap">
+                        <div class="d-flex gap-1">
+                          <button class="btn btn-xs btn-outline-primary py-1 px-2" onclick="alert('Viewing profile for City Bakery & Confections')" title="View Profile"><i class="ti ti-user"></i> View Profile</button>
+                          <a href="./iims-inspection-form.html" class="btn btn-xs btn-outline-success py-1 px-2" title="New Inspection"><i class="ti ti-clipboard-check"></i> New Inspection</a>
+                          <a href="./iims-enforcement.html" class="btn btn-xs btn-outline-danger py-1 px-2" title="Enforcement"><i class="ti ti-alert-triangle"></i> Enforcement</a>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>4</td>
@@ -224,7 +239,12 @@
                       <td>2026-05-01</td>
                       <td>2026-11-01</td>
                       <td><span class="badge bg-success-subtle text-success">ISO 22000</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li></ul></div></td>
+                      <td class="text-nowrap">
+                        <div class="d-flex gap-1">
+                          <button class="btn btn-xs btn-outline-primary py-1 px-2" onclick="alert('Viewing profile for Lanka Spice Exporters Ltd.')" title="View Profile"><i class="ti ti-user"></i> View Profile</button>
+                          <a href="./iims-inspection-form.html" class="btn btn-xs btn-outline-success py-1 px-2" title="New Inspection"><i class="ti ti-clipboard-check"></i> New Inspection</a>
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>5</td>
@@ -237,7 +257,12 @@
                       <td>2026-04-30</td>
                       <td><span class="text-danger fw-semibold">Overdue</span></td>
                       <td><span class="badge bg-secondary-subtle text-secondary">None</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">Urgent</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item text-danger" href="./iims-enforcement.html">Prosecution</a></li></ul></div></td>
+                      <td class="text-nowrap">
+                        <div class="d-flex gap-1">
+                          <button class="btn btn-xs btn-outline-primary py-1 px-2" onclick="alert('Viewing profile for Harbor Fish Market')" title="View Profile"><i class="ti ti-user"></i> View Profile</button>
+                          <a href="./iims-enforcement.html" class="btn btn-xs btn-outline-danger py-1 px-2" title="Prosecution"><i class="ti ti-gavel"></i> Prosecution</a>
+                        </div>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

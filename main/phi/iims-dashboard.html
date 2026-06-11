@@ -139,6 +139,62 @@
             </div>
           </div>
 
+          <!-- Quick Sampling Shortcut Card -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start border-bottom pb-3 mb-3 flex-wrap gap-2">
+                <div>
+                  <h4 class="fw-semibold mb-1">Good Evening R Nanayakkara</h4>
+                  <p class="text-muted mb-0 fs-2">Welcome to MIS for Food Control Administration Unit of the Ministry of Health</p>
+                </div>
+                <div class="text-md-end">
+                  <p class="mb-0 fw-semibold fs-3 text-dark" id="live-date">Fri, 27 Feb 2026</p>
+                  <p class="mb-0 text-muted fs-2" id="live-time">9:24:21 AM</p>
+                </div>
+              </div>
+              <h5 class="card-title fw-semibold mb-3 fs-3">Food Sampling to Laboratory</h5>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold">Premise Category *</label>
+                  <select class="form-select" id="dashPremiseCategory">
+                    <option value="">- Select -</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="Market">Market</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Processing">Processing</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Food Premise *</label>
+                  <select class="form-select" id="dashFoodPremise">
+                    <option value="">- Select -</option>
+                    <option value="Golden Rice Restaurant">Golden Rice Restaurant</option>
+                    <option value="Fresh Mart Supermarket">Fresh Mart Supermarket</option>
+                    <option value="City Bakery & Confections">City Bakery & Confections</option>
+                    <option value="Lanka Spice Exporters Ltd.">Lanka Spice Exporters Ltd.</option>
+                    <option value="Harbor Fish Market">Harbor Fish Market</option>
+                    <option value="City Hotel">City Hotel</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold">Process Type *</label>
+                  <select class="form-select" id="dashProcessType">
+                    <option value="">- Select -</option>
+                    <option value="Food Sampled">Food Sampled</option>
+                    <option value="Water Sampled">Water Sampled</option>
+                    <option value="Raw Material">Raw Material</option>
+                    <option value="Finished Product">Finished Product</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-dark w-100 py-2" onclick="proceedToSampling()">Proceed</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- KPI Row -->
           <div class="row">
             <div class="col-lg-3 col-md-6">
@@ -431,6 +487,17 @@
       responsive:[{breakpoint:480,options:{chart:{height:250},legend:{position:'bottom'}}}]
     };
     new ApexCharts(document.querySelector("#risk-distribution-chart"), riskOptions).render();
+
+    function proceedToSampling() {
+      const category = document.getElementById('dashPremiseCategory').value;
+      const premise = document.getElementById('dashFoodPremise').value;
+      const process = document.getElementById('dashProcessType').value;
+      if (!category || !premise || !process) {
+        alert('Please select all required fields before proceeding.');
+        return;
+      }
+      window.location.href = `./iims-add-sample.html?category=${encodeURIComponent(category)}&establishment=${encodeURIComponent(premise)}&process=${encodeURIComponent(process)}`;
+    }
   </script>
 <script src="./_role.js"></script>
 </body>

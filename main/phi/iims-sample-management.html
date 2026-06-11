@@ -82,23 +82,6 @@
             <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-danger mb-0">38</h3><span class="text-muted fs-2">Non-Compliant</span></div></div></div>
           </div>
 
-          <!-- Add Sample -->
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title fw-semibold mb-3">Register New Sample</h5>
-              <div class="row g-3">
-                <div class="col-md-3"><label class="form-label">Sample Reference No.</label><input type="text" class="form-control" value="2026/PHI/COL/048" readonly></div>
-                <div class="col-md-3"><label class="form-label">Establishment</label><select class="form-select"><option>Golden Rice Restaurant</option><option>Fresh Mart Supermarket</option></select></div>
-                <div class="col-md-3"><label class="form-label">Commodity</label><input type="text" class="form-control" placeholder="e.g., UHT Pasteurized Milk"></div>
-                <div class="col-md-3"><label class="form-label">Batch/Lot No.</label><input type="text" class="form-control" placeholder="Manufacturer's batch ID"></div>
-                <div class="col-md-3"><label class="form-label">Sampling Objective</label><select class="form-select"><option>Routine Monitoring</option><option>Targeted Surveillance</option><option>Compliance Enforcement</option></select></div>
-                <div class="col-md-3"><label class="form-label">Target Laboratory</label><select class="form-select"><option>Medical Research Institute</option><option>Industrial Tech. Institute</option><option>SGS Lanka</option></select></div>
-                <div class="col-md-3"><label class="form-label">Collection Date</label><input type="date" class="form-control" value="2026-05-05"></div>
-                <div class="col-md-3 d-flex align-items-end"><button class="btn btn-primary w-100"><i class="ti ti-qrcode me-1"></i>Generate QR & Register</button></div>
-              </div>
-            </div>
-          </div>
-
           <!-- Sample Registry Table -->
           <div class="card">
             <div class="card-body">
@@ -107,38 +90,83 @@
                 <div class="d-flex gap-2">
                   <select class="form-select form-select-sm" style="width:auto;"><option>All Status</option><option>Pending</option><option>In Transit</option><option>Testing</option><option>Completed</option></select>
                   <button class="btn btn-sm btn-outline-success"><i class="ti ti-download me-1"></i>Export</button>
+                  <a href="./iims-add-sample.html" class="btn btn-sm btn-primary"><i class="ti ti-plus me-1"></i>Add New Sample</a>
                 </div>
               </div>
               <div class="table-responsive"><table class="table table-hover align-middle mb-0">
-                <thead class="table-light"><tr><th>Ref No.</th><th>Establishment</th><th>Commodity</th><th>Batch</th><th>Objective</th><th>Laboratory</th><th>Status</th><th>Result</th><th>Action</th></tr></thead>
+                <thead class="table-light"><tr><th>Ref No.</th><th>Establishment</th><th>Commodity</th><th>Batch</th><th>Objective</th><th>Laboratory</th><th>Status</th><th>Result</th><th class="text-nowrap" style="width:1%;">Action</th></tr></thead>
                 <tbody>
                   <tr>
-                    <td><span class="fw-semibold">2026/PHI/COL/047</span></td><td>Golden Rice</td><td>Cooking Oil</td><td>LOT-A892</td>
-                    <td><span class="badge bg-info-subtle text-info">Routine</span></td><td>MRI</td>
+                    <td><span id="ref-047" class="fw-semibold">2026/PHI/COL/047</span></td>
+                    <td id="est-047">Golden Rice</td>
+                    <td id="comm-047">Cooking Oil</td>
+                    <td id="batch-047">LOT-A892</td>
+                    <td><span class="badge bg-info-subtle text-info">Routine</span></td>
+                    <td>MRI</td>
                     <td><span class="badge bg-success">Completed</span></td>
                     <td><span class="badge bg-success-subtle text-success">Compliant</span></td>
-                    <td><button class="btn btn-sm btn-outline-primary">View Report</button></td>
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-1 align-items-center">
+                        <button class="btn btn-sm btn-outline-secondary py-1 px-2 fs-4" onclick="editSample('2026/PHI/COL/047')" title="Edit"><i class="ti ti-edit"></i></button>
+                        <button class="btn btn-sm btn-outline-primary py-1 px-2 fs-4" onclick="viewLabResult('2026/PHI/COL/047')" title="View Lab Result"><i class="ti ti-microscope"></i></button>
+                        <button class="btn btn-sm btn-outline-warning py-1 px-2 fs-4" onclick="requestHardCopy('2026/PHI/COL/047')" title="Request Hard Copy from Lab"><i class="ti ti-file-text"></i></button>
+                        <button class="btn btn-sm btn-outline-info py-1 px-2 fs-4" onclick="viewSampleDetails('2026/PHI/COL/047')" title="View"><i class="ti ti-eye"></i></button>
+                        <button class="btn btn-sm btn-outline-success py-1 px-2 fs-4" onclick="downloadReport('2026/PHI/COL/047')" title="Download Report"><i class="ti ti-download"></i></button>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
-                    <td><span class="fw-semibold">2026/PHI/COL/046</span></td><td>Harbor Fish Market</td><td>Frozen Prawns</td><td>FP-2026-331</td>
-                    <td><span class="badge bg-danger-subtle text-danger">Enforcement</span></td><td>ITI</td>
+                    <td><span id="ref-046" class="fw-semibold">2026/PHI/COL/046</span></td>
+                    <td id="est-046">Harbor Fish Market</td>
+                    <td id="comm-046">Frozen Prawns</td>
+                    <td id="batch-046">FP-2026-331</td>
+                    <td><span class="badge bg-danger-subtle text-danger">Enforcement</span></td>
+                    <td>ITI</td>
                     <td><span class="badge bg-success">Completed</span></td>
                     <td><span class="badge bg-danger-subtle text-danger">Salmonella Detected</span></td>
-                    <td><button class="btn btn-sm btn-outline-danger">Critical Alert</button></td>
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-1 align-items-center">
+                        <button class="btn btn-sm btn-outline-secondary py-1 px-2 fs-4" onclick="editSample('2026/PHI/COL/046')" title="Edit"><i class="ti ti-edit"></i></button>
+                        <button class="btn btn-sm btn-outline-primary py-1 px-2 fs-4" onclick="viewLabResult('2026/PHI/COL/046')" title="View Lab Result"><i class="ti ti-microscope"></i></button>
+                        <button class="btn btn-sm btn-outline-warning py-1 px-2 fs-4" onclick="requestHardCopy('2026/PHI/COL/046')" title="Request Hard Copy from Lab"><i class="ti ti-file-text"></i></button>
+                        <button class="btn btn-sm btn-outline-info py-1 px-2 fs-4" onclick="viewSampleDetails('2026/PHI/COL/046')" title="View"><i class="ti ti-eye"></i></button>
+                        <button class="btn btn-sm btn-outline-success py-1 px-2 fs-4" onclick="downloadReport('2026/PHI/COL/046')" title="Download Report"><i class="ti ti-download"></i></button>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
-                    <td><span class="fw-semibold">2026/PHI/COL/045</span></td><td>Fresh Mart</td><td>Packaged Rice</td><td>RIC-8844</td>
-                    <td><span class="badge bg-warning-subtle text-warning">Surveillance</span></td><td>SGS Lanka</td>
+                    <td><span class="fw-semibold">2026/PHI/COL/045</span></td>
+                    <td>Fresh Mart</td>
+                    <td>Packaged Rice</td>
+                    <td>RIC-8844</td>
+                    <td><span class="badge bg-warning-subtle text-warning">Surveillance</span></td>
+                    <td>SGS Lanka</td>
                     <td><span class="badge bg-warning">Testing</span></td>
                     <td><span class="text-muted">Awaiting</span></td>
-                    <td><button class="btn btn-sm btn-outline-secondary">Track</button></td>
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-1 align-items-center">
+                        <button class="btn btn-sm btn-outline-secondary py-1 px-2 fs-4" onclick="alert('Editing sample 2026/PHI/COL/045 details')" title="Edit"><i class="ti ti-edit"></i></button>
+                        <button class="btn btn-sm btn-outline-info py-1 px-2 fs-4" onclick="alert('Viewing sample 2026/PHI/COL/045')" title="View"><i class="ti ti-eye"></i></button>
+                        <button class="btn btn-sm btn-outline-secondary py-1 px-2 fs-4" onclick="alert('Tracking status: In Lab Testing Queue')" title="Track"><i class="ti ti-history"></i></button>
+                      </div>
+                    </td>
                   </tr>
                   <tr>
-                    <td><span class="fw-semibold">2026/PHI/COL/044</span></td><td>City Bakery</td><td>Wheat Flour</td><td>WF-2026-112</td>
-                    <td><span class="badge bg-info-subtle text-info">Routine</span></td><td>MRI</td>
-                     <td><span class="badge bg-primary">In Transit</span></td>
+                    <td><span class="fw-semibold">2026/PHI/COL/044</span></td>
+                    <td>City Bakery</td>
+                    <td>Wheat Flour</td>
+                    <td>WF-2026-112</td>
+                    <td><span class="badge bg-info-subtle text-info">Routine</span></td>
+                    <td>MRI</td>
+                    <td><span class="badge bg-primary">In Transit</span></td>
                     <td><span class="text-muted">-</span></td>
-                    <td><a href="iims-lab-triage.html" class="btn btn-sm btn-primary">Triage Sample</a></td>
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-1 align-items-center">
+                        <button class="btn btn-sm btn-outline-secondary py-1 px-2 fs-4" onclick="alert('Editing sample 2026/PHI/COL/044 details')" title="Edit"><i class="ti ti-edit"></i></button>
+                        <button class="btn btn-sm btn-outline-info py-1 px-2 fs-4" onclick="alert('Viewing sample 2026/PHI/COL/044')" title="View"><i class="ti ti-eye"></i></button>
+                        <a href="iims-lab-triage.html" class="btn btn-sm btn-primary py-1 px-2 fs-4" title="Triage Sample"><i class="ti ti-clipboard-list"></i></a>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table></div>
@@ -148,6 +176,387 @@
       </div>
     </div>
   </div>
+  <!-- TOAST CONTAINER FOR FEEDBACK -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+    <div id="actionToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMessage">
+          Action completed successfully.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW LAB RESULT MODAL -->
+  <div class="modal fade" id="viewLabResultModal" tabindex="-1" aria-labelledby="viewLabResultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title text-white" id="viewLabResultModalLabel"><i class="ti ti-microscope me-2"></i>Laboratory Analysis Report</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="border rounded p-3 mb-3 bg-light">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-1"><strong>Sample Reference No:</strong> <span id="labRefNo"></span></p>
+                <p class="mb-1"><strong>Establishment:</strong> <span id="labEstablishment"></span></p>
+                <p class="mb-1"><strong>Commodity:</strong> <span id="labCommodity"></span></p>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-1"><strong>Analyzing Laboratory:</strong> <span id="labAnalyzingLab"></span></p>
+                <p class="mb-1"><strong>Date of Analysis:</strong> <span id="labDateAnalyzed"></span></p>
+                <p class="mb-1"><strong>Status:</strong> <span id="labStatusBadge" class="badge"></span></p>
+              </div>
+            </div>
+          </div>
+          <h6>Test Parameters & Analysis Findings:</h6>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead class="table-light">
+                <tr>
+                  <th>Parameter Tested</th>
+                  <th>Observed Value</th>
+                  <th>Regulatory Standard Limit</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="labParametersTableBody">
+                <!-- Parameters dynamically inserted here -->
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-3">
+            <h6>Conclusion / Remarks:</h6>
+            <div class="alert alert-secondary mb-1" id="labConclusion"></div>
+          </div>
+          <div class="mt-4 text-end">
+            <p class="mb-0 text-muted small">Digitally Authorized by:</p>
+            <p class="fw-semibold mb-0" id="labAnalystSignature"></p>
+            <p class="text-muted small">Authorized Food Analyst, Ministry of Health</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-warning" onclick="requestHardCopyFromModal()"><i class="ti ti-file-text me-1"></i>Request Hard Copy</button>
+          <button type="button" class="btn btn-outline-success" onclick="downloadReportFromModal()"><i class="ti ti-download me-1"></i>Download PDF</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW SAMPLE DETAILS MODAL -->
+  <div class="modal fade" id="viewSampleModal" tabindex="-1" aria-labelledby="viewSampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title text-white" id="viewSampleModalLabel"><i class="ti ti-eye me-2"></i>Sample Custody & Chain of Record</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-sm table-borderless">
+            <tbody>
+              <tr><td class="fw-bold" style="width: 40%;">Sample Ref No:</td><td id="detRefNo"></td></tr>
+              <tr><td class="fw-bold">Establishment:</td><td id="detEstablishment"></td></tr>
+              <tr><td class="fw-bold">Commodity:</td><td id="detCommodity"></td></tr>
+              <tr><td class="fw-bold">Batch/Lot No:</td><td id="detBatch"></td></tr>
+              <tr><td class="fw-bold">Objective:</td><td id="detObjective"></td></tr>
+              <tr><td class="fw-bold">Collection Date:</td><td id="detDate"></td></tr>
+              <tr><td class="fw-bold">Collecting Officer:</td><td id="detOfficer"></td></tr>
+              <tr><td class="fw-bold">Target Laboratory:</td><td id="detLab"></td></tr>
+              <tr><td class="fw-bold">Temperature at Collection:</td><td>4.2 °C</td></tr>
+              <tr><td class="fw-bold">Status:</td><td><span class="badge bg-success">Completed</span></td></tr>
+            </tbody>
+          </table>
+          <hr>
+          <h6>Custody Chain Logs:</h6>
+          <ul class="timeline-widget position-relative mb-0" style="padding-left: 20px;">
+            <li class="timeline-item d-flex position-relative overflow-hidden mb-2">
+              <span class="text-muted fs-2" style="width: 80px;">05-05 09:30</span>
+              <div class="timeline-badge-wrapper d-flex flex-column align-items-center ms-2 me-3">
+                <span class="timeline-badge bg-primary rounded-circle" style="width: 12px; height: 12px;"></span>
+                <span class="timeline-badge-border d-block flex-grow-1 border-start" style="height: 20px;"></span>
+              </div>
+              <div class="timeline-desc fs-3">Sample Collected & Sealed by K. Perera</div>
+            </li>
+            <li class="timeline-item d-flex position-relative overflow-hidden mb-2">
+              <span class="text-muted fs-2" style="width: 80px;">05-05 14:15</span>
+              <div class="timeline-badge-wrapper d-flex flex-column align-items-center ms-2 me-3">
+                <span class="timeline-badge bg-warning rounded-circle" style="width: 12px; height: 12px;"></span>
+                <span class="timeline-badge-border d-block flex-grow-1 border-start" style="height: 20px;"></span>
+              </div>
+              <div class="timeline-desc fs-3">Dispatched to Laboratory Courier Service</div>
+            </li>
+            <li class="timeline-item d-flex position-relative overflow-hidden mb-2">
+              <span class="text-muted fs-2" style="width: 80px;">05-06 08:45</span>
+              <div class="timeline-badge-wrapper d-flex flex-column align-items-center ms-2 me-3">
+                <span class="timeline-badge bg-info rounded-circle" style="width: 12px; height: 12px;"></span>
+                <span class="timeline-badge-border d-block flex-grow-1 border-start" style="height: 20px;"></span>
+              </div>
+              <div class="timeline-desc fs-3">Received by lab registry officer</div>
+            </li>
+            <li class="timeline-item d-flex position-relative overflow-hidden">
+              <span class="text-muted fs-2" style="width: 80px;">05-08 11:20</span>
+              <div class="timeline-badge-wrapper d-flex flex-column align-items-center ms-2 me-3">
+                <span class="timeline-badge bg-success rounded-circle" style="width: 12px; height: 12px;"></span>
+              </div>
+              <div class="timeline-desc fs-3">Analysis Completed & Results uploaded to IIMS</div>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT SAMPLE DETAILS MODAL -->
+  <div class="modal fade" id="editSampleModal" tabindex="-1" aria-labelledby="editSampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-white">
+          <h5 class="modal-title text-white" id="editSampleModalLabel"><i class="ti ti-edit me-2"></i>Edit Sample Information</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editSampleForm">
+            <input type="hidden" id="editRefNo">
+            <div class="mb-3">
+              <label class="form-label">Sample Reference No.</label>
+              <input type="text" class="form-control" id="editRefNoDisplay" readonly>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Establishment</label>
+              <input type="text" class="form-control" id="editEstablishment" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Commodity / Sample Name</label>
+              <input type="text" class="form-control" id="editCommodity" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Batch/Lot No.</label>
+              <input type="text" class="form-control" id="editBatch" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Collection Date</label>
+              <input type="date" class="form-control" id="editDate" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="saveSampleEdit()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State management for sample data
+    const sampleData = {
+      "2026/PHI/COL/047": {
+        refNo: "2026/PHI/COL/047",
+        establishment: "Golden Rice Restaurant",
+        commodity: "Cooking Oil",
+        batch: "LOT-A892",
+        objective: "Routine Monitoring",
+        laboratory: "Medical Research Institute (MRI)",
+        status: "Completed",
+        result: "Compliant",
+        collectionDate: "2026-05-05",
+        officer: "K. Perera (PHI)",
+        labReport: {
+          dateAnalyzed: "2026-05-08",
+          analyst: "Dr. S. K. Hewage (Chief Food Analyst)",
+          parameters: [
+            { name: "Acid Value", value: "0.25 mg KOH/g", limit: "Max 0.6 mg KOH/g", status: "Compliant" },
+            { name: "Peroxide Value", value: "2.1 meq/kg", limit: "Max 10.0 meq/kg", status: "Compliant" },
+            { name: "Moisture & Impurities", value: "0.04%", limit: "Max 0.1%", status: "Compliant" }
+          ],
+          conclusion: "The sample of cooking oil complies with the Sri Lanka Food Regulations (Standards for Edible Oils)."
+        }
+      },
+      "2026/PHI/COL/046": {
+        refNo: "2026/PHI/COL/046",
+        establishment: "Harbor Fish Market",
+        commodity: "Frozen Prawns",
+        batch: "FP-2026-331",
+        objective: "Compliance Enforcement",
+        laboratory: "Industrial Technology Institute (ITI)",
+        status: "Completed",
+        result: "Salmonella Detected",
+        collectionDate: "2026-05-04",
+        officer: "K. Perera (PHI)",
+        labReport: {
+          dateAnalyzed: "2026-05-07",
+          analyst: "Prof. R. L. Perera (Senior Microbiologist)",
+          parameters: [
+            { name: "Salmonella spp.", value: "DETECTED / 25g", limit: "Absent / 25g", status: "NON-COMPLIANT" },
+            { name: "Escherichia coli", value: "12 CFU/g", limit: "Max 10 CFU/g", status: "NON-COMPLIANT" },
+            { name: "Total Aerobic Plate Count", value: "1.2 x 10^5 CFU/g", limit: "Max 5.0 x 10^5 CFU/g", status: "Compliant" }
+          ],
+          conclusion: "The sample is contaminated with Salmonella spp. and E. coli, violating Section 26 of the Food Act No. 26 of 1980."
+        }
+      }
+    };
+
+    let activeRefNo = "";
+
+    function showToast(message, isError = false) {
+      const toastEl = document.getElementById('actionToast');
+      const msgEl = document.getElementById('toastMessage');
+      msgEl.textContent = message;
+      if (isError) {
+        toastEl.classList.remove('bg-success');
+        toastEl.classList.add('bg-danger');
+      } else {
+        toastEl.classList.remove('bg-danger');
+        toastEl.classList.add('bg-success');
+      }
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    }
+
+    // Edit Sample Functionality
+    function editSample(refNo) {
+      activeRefNo = refNo;
+      const data = sampleData[refNo];
+      if (!data) return;
+      document.getElementById('editRefNo').value = refNo;
+      document.getElementById('editRefNoDisplay').value = refNo;
+      document.getElementById('editEstablishment').value = data.establishment;
+      document.getElementById('editCommodity').value = data.commodity;
+      document.getElementById('editBatch').value = data.batch;
+      document.getElementById('editDate').value = data.collectionDate;
+      const modal = new bootstrap.Modal(document.getElementById('editSampleModal'));
+      modal.show();
+    }
+
+    function saveSampleEdit() {
+      const refNo = document.getElementById('editRefNo').value;
+      if (!sampleData[refNo]) return;
+      
+      const newEst = document.getElementById('editEstablishment').value;
+      const newComm = document.getElementById('editCommodity').value;
+      const newBatch = document.getElementById('editBatch').value;
+      const newDate = document.getElementById('editDate').value;
+      
+      sampleData[refNo].establishment = newEst;
+      sampleData[refNo].commodity = newComm;
+      sampleData[refNo].batch = newBatch;
+      sampleData[refNo].collectionDate = newDate;
+
+      // Update UI elements directly
+      const suffix = refNo.endsWith('047') ? '-047' : '-046';
+      document.getElementById('est' + suffix).textContent = newEst;
+      document.getElementById('comm' + suffix).textContent = newComm;
+      document.getElementById('batch' + suffix).textContent = newBatch;
+
+      bootstrap.Modal.getInstance(document.getElementById('editSampleModal')).hide();
+      showToast("Sample " + refNo + " details updated successfully.");
+    }
+
+    // View Lab Result Functionality
+    function viewLabResult(refNo) {
+      activeRefNo = refNo;
+      const data = sampleData[refNo];
+      if (!data) return;
+      
+      document.getElementById('labRefNo').textContent = data.refNo;
+      document.getElementById('labEstablishment').textContent = data.establishment;
+      document.getElementById('labCommodity').textContent = data.commodity;
+      document.getElementById('labAnalyzingLab').textContent = data.laboratory;
+      document.getElementById('labDateAnalyzed').textContent = data.labReport.dateAnalyzed;
+      document.getElementById('labConclusion').textContent = data.labReport.conclusion;
+      document.getElementById('labAnalystSignature').textContent = data.labReport.analyst;
+      
+      const badge = document.getElementById('labStatusBadge');
+      badge.textContent = data.result;
+      if (data.result === 'Compliant') {
+        badge.className = "badge bg-success-subtle text-success";
+      } else {
+        badge.className = "badge bg-danger-subtle text-danger";
+      }
+
+      const tableBody = document.getElementById('labParametersTableBody');
+      tableBody.innerHTML = "";
+      data.labReport.parameters.forEach(p => {
+        const tr = document.createElement('tr');
+        const statusBadge = p.status === 'Compliant' ? 
+          '<span class="badge bg-success">Compliant</span>' : 
+          '<span class="badge bg-danger">Non-Compliant</span>';
+        
+        tr.innerHTML = `
+          <td><strong>${p.name}</strong></td>
+          <td>${p.value}</td>
+          <td>${p.limit}</td>
+          <td>${statusBadge}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      const modal = new bootstrap.Modal(document.getElementById('viewLabResultModal'));
+      modal.show();
+    }
+
+    // Request Hard Copy Functionality
+    function requestHardCopy(refNo) {
+      const data = sampleData[refNo];
+      if (!data) return;
+      showToast("Formal request for hard copy of Ref " + refNo + " submitted to " + data.laboratory + " successfully.");
+    }
+
+    function requestHardCopyFromModal() {
+      if (!activeRefNo) return;
+      bootstrap.Modal.getInstance(document.getElementById('viewLabResultModal')).hide();
+      requestHardCopy(activeRefNo);
+    }
+
+    // View Details Functionality
+    function viewSampleDetails(refNo) {
+      const data = sampleData[refNo];
+      if (!data) return;
+      
+      document.getElementById('detRefNo').textContent = data.refNo;
+      document.getElementById('detEstablishment').textContent = data.establishment;
+      document.getElementById('detCommodity').textContent = data.commodity;
+      document.getElementById('detBatch').textContent = data.batch;
+      document.getElementById('detObjective').textContent = data.objective;
+      document.getElementById('detDate').textContent = data.collectionDate;
+      document.getElementById('detOfficer').textContent = data.officer;
+      document.getElementById('detLab').textContent = data.laboratory;
+      
+      const modal = new bootstrap.Modal(document.getElementById('viewSampleModal'));
+      modal.show();
+    }
+
+    // Download Report Functionality
+    function downloadReport(refNo) {
+      showToast("Downloading laboratory certificate PDF for sample " + refNo + "...");
+      setTimeout(() => {
+        showToast("Download completed successfully.");
+      }, 1500);
+    }
+
+    function downloadReportFromModal() {
+      if (!activeRefNo) return;
+      bootstrap.Modal.getInstance(document.getElementById('viewLabResultModal')).hide();
+      downloadReport(activeRefNo);
+    }
+
+    // Check query params for registration success
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isRegistered = urlParams.get('registered');
+      const estName = urlParams.get('establishment');
+      if (isRegistered === 'true' && estName) {
+        showToast("New sample custody record for " + estName + " registered successfully!");
+      }
+    });
+  </script>
+
   <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
