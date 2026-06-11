@@ -138,18 +138,44 @@
             </div>
           </div>
 
+          <!-- Applications Section -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-3">Premises Registration Applications (Pending Review)</h5>
+              <p class="card-subtitle text-muted mb-4">View applications submitted by FBO branches and assign a Public Health Inspector (PHI) to verify the premises.</p>
+              
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Business Name</th>
+                      <th>Branch Name</th>
+                      <th>GN Division</th>
+                      <th>Applicant</th>
+                      <th>Status</th>
+                      <th>Assigned PHI</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="moh-applications-table-body">
+                    <!-- Dynamic -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
           <!-- Premises Table -->
           <div class="card">
             <div class="card-body">
               <div class="d-flex align-items-center justify-content-between mb-4">
-                <h5 class="card-title fw-semibold mb-0">Registered Premises (4,278)</h5>
+                <h5 class="card-title fw-semibold mb-0">Registered Premises</h5>
                 <div class="d-flex gap-2">
                   <div class="input-group" style="width:250px;">
                     <span class="input-group-text bg-transparent"><i class="ti ti-search"></i></span>
                     <input type="text" class="form-control" placeholder="Search by name or reg no...">
                   </div>
                   <button class="btn btn-outline-success"><i class="ti ti-download me-1"></i>Export</button>
-                  <a href="./iims-fbo-registration.html" class="btn btn-primary"><i class="ti ti-plus me-1"></i>New Registration</a>
                 </div>
               </div>
               <div class="table-responsive">
@@ -169,94 +195,48 @@
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td><span class="fw-semibold text-primary">FBO-2026-0001</span></td>
-                      <td>Golden Rice Restaurant</td>
-                      <td><span class="badge bg-info-subtle text-info">A2</span></td>
-                      <td>Colombo 07</td>
-                      <td><span class="badge bg-success">Low</span></td>
-                      <td><span class="badge bg-success">A (82%)</span></td>
-                      <td>2026-05-04</td>
-                      <td>2026-11-04</td>
-                      <td><span class="badge bg-success-subtle text-success">HACCP</span></td>
-                      <td>
-                        <div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button>
-                          <ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li><li><a class="dropdown-item" href="#">Inspection History</a></li><li><hr class="dropdown-divider"></li><li><a class="dropdown-item text-danger" href="#">Suspend</a></li></ul>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td><span class="fw-semibold text-primary">FBO-2026-0002</span></td>
-                      <td>Fresh Mart Supermarket</td>
-                      <td><span class="badge bg-primary-subtle text-primary">H2</span></td>
-                      <td>Dehiwala</td>
-                      <td><span class="badge bg-warning">Medium</span></td>
-                      <td><span class="badge bg-warning">B (56%)</span></td>
-                      <td>2026-05-03</td>
-                      <td>2026-08-03</td>
-                      <td><span class="badge bg-secondary-subtle text-secondary">None</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li><li><a class="dropdown-item" href="#">Inspection History</a></li></ul></div></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td><span class="fw-semibold text-primary">FBO-2026-0003</span></td>
-                      <td>City Bakery & Confections</td>
-                      <td><span class="badge bg-warning-subtle text-warning">I1</span></td>
-                      <td>Maharagama</td>
-                      <td><span class="badge bg-danger">High</span></td>
-                      <td><span class="badge bg-danger">C (34%)</span></td>
-                      <td>2026-05-02</td>
-                      <td>2026-06-02</td>
-                      <td><span class="badge bg-secondary-subtle text-secondary">None</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li><li><a class="dropdown-item text-danger" href="#">Enforcement</a></li></ul></div></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td><span class="fw-semibold text-primary">FBO-2026-0004</span></td>
-                      <td>Lanka Spice Exporters Ltd.</td>
-                      <td><span class="badge bg-info-subtle text-info">A1</span></td>
-                      <td>Katunayake</td>
-                      <td><span class="badge bg-success">Low</span></td>
-                      <td><span class="badge bg-success">A (91%)</span></td>
-                      <td>2026-05-01</td>
-                      <td>2026-11-01</td>
-                      <td><span class="badge bg-success-subtle text-success">ISO 22000</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li></ul></div></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td><span class="fw-semibold text-primary">FBO-2026-0005</span></td>
-                      <td>Harbor Fish Market</td>
-                      <td><span class="badge bg-danger-subtle text-danger">A3</span></td>
-                      <td>Galle Fort</td>
-                      <td><span class="badge bg-dark text-white">Critical</span></td>
-                      <td><span class="badge bg-dark">D (18%)</span></td>
-                      <td>2026-04-30</td>
-                      <td><span class="text-danger fw-semibold">Overdue</span></td>
-                      <td><span class="badge bg-secondary-subtle text-secondary">None</span></td>
-                      <td><div class="dropdown"><button class="btn btn-sm btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">Urgent</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">View Profile</a></li><li><a class="dropdown-item text-danger" href="./iims-enforcement.html">Prosecution</a></li></ul></div></td>
-                    </tr>
+                  <tbody id="moh-registered-premises-body">
+                    <!-- Dynamic -->
                   </tbody>
                 </table>
               </div>
-              <nav class="mt-4"><ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">428</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul></nav>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Assign PHI Modal -->
+  <div class="modal fade" id="assignPhiModal" tabindex="-1" aria-labelledby="assignPhiModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-semibold" id="assignPhiModalLabel">Assign Public Health Inspector (PHI)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="assign-phi-form">
+            <input type="hidden" id="assign-app-id">
+            <div class="mb-3">
+              <label class="form-label">Select PHI <span class="text-danger">*</span></label>
+              <select class="form-select" id="phi-dropdown" required>
+                <option value="">Choose a PHI in the area...</option>
+                <option value="K. Perera (PHI/COL/007)">K. Perera (PHI/COL/007)</option>
+                <option value="S. Fernando (PHI/COL/008)">S. Fernando (PHI/COL/008)</option>
+                <option value="M. Silva (PHI/COL/009)">M. Silva (PHI/COL/009)</option>
+              </select>
+            </div>
+            <div class="modal-footer px-0 pb-0">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Assign PHI</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -266,6 +246,190 @@
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+  <script>
+    function initData() {
+      if (!localStorage.getItem('fcau_businesses')) {
+        const initialBusinesses = [
+          { id: "bus-1", name: "Golden Rice Corp", regNo: "BR-1001", status: "Approved" },
+          { id: "bus-2", name: "Silver Spoon Group", regNo: "BR-1002", status: "Pending Approval" }
+        ];
+        localStorage.setItem('fcau_businesses', JSON.stringify(initialBusinesses));
+      }
+
+      if (!localStorage.getItem('fcau_branches')) {
+        const initialBranches = [
+          { id: "br-1", businessId: "bus-1", name: "Golden Rice - Colombo 07", address: "No. 45, Ward Place, Colombo 07", manager: "Jagath Kumara", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Dairy Products"], status: "Registered", grade: "A (88%)" },
+          { id: "br-2", businessId: "bus-1", name: "Golden Rice Express - Gampaha", address: "No. 12, Kandy Road, Gampaha", manager: "Nimal Silva", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Beverages"], status: "Registered", grade: "B (74%)" },
+          { id: "br-3", businessId: "bus-1", name: "Golden Rice Bakery - Kandy", address: "No. 88, Temple Street, Kandy", manager: "Chathura Perera", mains: ["K1 - Bakery / Confectionery"], subs: ["Bakery Products", "Confectioneries"], status: "Registered", grade: "A (91%)" }
+        ];
+        localStorage.setItem('fcau_branches', JSON.stringify(initialBranches));
+      }
+
+      if (!localStorage.getItem('fcau_applications')) {
+        const initialApplications = [
+          { id: "app-1", businessId: "bus-1", branchId: "br-1", applicantName: "Jagath Kumara", applicantNic: "198522104V", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Dairy Products"], address: "No. 45, Ward Place, Colombo 07", district: "Colombo", mohArea: "Colombo MC", gnDivision: "Colombo 07 - 508A", status: "Registered", assignedPhi: "K. Perera (PHI/COL/007)" }
+        ];
+        localStorage.setItem('fcau_applications', JSON.stringify(initialApplications));
+      }
+    }
+
+    initData();
+
+    function renderAllMOH() {
+      const businesses = JSON.parse(localStorage.getItem('fcau_businesses')) || [];
+      const branches = JSON.parse(localStorage.getItem('fcau_branches')) || [];
+      const applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
+
+      // 1. Render Applications Table
+      const appTbody = document.getElementById('moh-applications-table-body');
+      appTbody.innerHTML = '';
+
+      const pendingApps = applications.filter(a => a.status !== 'Registered');
+      if (pendingApps.length === 0) {
+        appTbody.innerHTML = `<tr><td colspan="7" class="text-center py-3 text-muted">No pending premises registration applications.</td></tr>`;
+      } else {
+        pendingApps.forEach(a => {
+          const parentBiz = businesses.find(biz => biz.id === a.businessId);
+          const bizName = parentBiz ? parentBiz.name : 'Unknown Business';
+          const branch = branches.find(br => br.id === a.branchId);
+          const branchName = branch ? branch.name : 'Unknown Branch';
+
+          let actionBtn = '';
+          if (a.status === 'Submitted (Awaiting PHI)') {
+            actionBtn = `<button class="btn btn-sm btn-primary" onclick="openAssignModal('${a.id}')"><i class="ti ti-user-check me-1"></i>Assign PHI</button>`;
+          } else {
+            actionBtn = `<a href="./iims-inspection-form.html?appId=${a.id}" class="btn btn-sm btn-outline-success"><i class="ti ti-clipboard-check me-1"></i>Inspect Premises</a>`;
+          }
+
+          appTbody.innerHTML += `
+            <tr>
+              <td><span class="fw-semibold text-muted">${bizName}</span></td>
+              <td><span class="fw-semibold text-dark">${branchName}</span></td>
+              <td><code>${a.gnDivision}</code></td>
+              <td>${a.applicantName}</td>
+              <td><span class="badge ${a.status.includes('Assigned') ? 'bg-warning' : 'bg-info'}">${a.status}</span></td>
+              <td>${a.assignedPhi || '<span class="text-muted italic">Not Assigned</span>'}</td>
+              <td>${actionBtn}</td>
+            </tr>
+          `;
+        });
+      }
+
+      // 2. Render Registered Premises Table
+      const premTbody = document.getElementById('moh-registered-premises-body');
+      premTbody.innerHTML = '';
+
+      // Default static list
+      const staticPremises = [
+        { id: "static-1", regNo: "FBO-2026-0001", name: "Golden Rice Restaurant", cat: "A2", gn: "Colombo 07", risk: "Low", grade: "A (82%)", last: "2026-05-04", next: "2026-11-04", cert: "HACCP" },
+        { id: "static-2", regNo: "FBO-2026-0002", name: "Fresh Mart Supermarket", cat: "H2", gn: "Dehiwala", risk: "Medium", grade: "B (56%)", last: "2026-05-03", next: "2026-08-03", cert: "None" },
+        { id: "static-3", regNo: "FBO-2026-0003", name: "City Bakery & Confections", cat: "I1", gn: "Maharagama", risk: "High", grade: "C (34%)", last: "2026-05-02", next: "2026-06-02", cert: "None" },
+        { id: "static-4", regNo: "FBO-2026-0004", name: "Lanka Spice Exporters Ltd.", cat: "A1", gn: "Katunayake", risk: "Low", grade: "A (91%)", last: "2026-05-01", next: "2026-11-01", cert: "ISO 22000" },
+        { id: "static-5", regNo: "FBO-2026-0005", name: "Harbor Fish Market", cat: "A3", gn: "Galle Fort", risk: "Critical", grade: "D (18%)", last: "2026-04-30", next: "Overdue", cert: "None" }
+      ];
+
+      let count = 1;
+      staticPremises.forEach(p => {
+        premTbody.innerHTML += getPremisesRowHTML(count++, p);
+      });
+
+      // Add registered ones from localStorage
+      const registeredApps = applications.filter(a => a.status === 'Registered');
+      registeredApps.forEach(a => {
+        const branch = branches.find(br => br.id === a.branchId);
+        const name = branch ? branch.name : a.applicantName;
+        const mainCat = a.mains[0] ? a.mains[0].split(' - ')[0] : 'A2';
+        const item = {
+          id: a.id,
+          regNo: "FBO-2026-000" + count,
+          name: name,
+          cat: mainCat,
+          gn: a.gnDivision.split(' - ')[0],
+          risk: "Low",
+          grade: branch ? branch.grade : "A (80%)",
+          last: "2026-06-10",
+          next: "2026-12-10",
+          cert: "GHP"
+        };
+        premTbody.innerHTML += getPremisesRowHTML(count++, item);
+      });
+    }
+
+    function getPremisesRowHTML(num, p) {
+      let riskBadgeClass = 'bg-success';
+      if (p.risk === 'Medium') riskBadgeClass = 'bg-warning';
+      if (p.risk === 'High') riskBadgeClass = 'bg-danger';
+      if (p.risk === 'Critical') riskBadgeClass = 'bg-dark text-white';
+
+      let gradeBadgeClass = 'bg-success';
+      if (p.grade.includes('B')) gradeBadgeClass = 'bg-primary';
+      if (p.grade.includes('C')) gradeBadgeClass = 'bg-warning';
+      if (p.grade.includes('D')) gradeBadgeClass = 'bg-danger';
+
+      return `
+        <tr>
+          <td>${num}</td>
+          <td><span class="fw-semibold text-primary">${p.regNo}</span></td>
+          <td><span class="fw-semibold">${p.name}</span></td>
+          <td><span class="badge bg-info-subtle text-info">${p.cat}</span></td>
+          <td>${p.gn}</td>
+          <td><span class="badge ${riskBadgeClass}">${p.risk}</span></td>
+          <td><span class="badge ${gradeBadgeClass}">${p.grade}</span></td>
+          <td>${p.last}</td>
+          <td>${p.next}</td>
+          <td><span class="badge bg-secondary-subtle text-secondary">${p.cert}</span></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">View Profile</a></li>
+                <li><a class="dropdown-item" href="./iims-inspection-form.html">New Inspection</a></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      `;
+    }
+
+    window.openAssignModal = function(id) {
+      document.getElementById('assign-app-id').value = id;
+      const modal = new bootstrap.Modal(document.getElementById('assignPhiModal'));
+      modal.show();
+    };
+
+    document.getElementById('assign-phi-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const appId = document.getElementById('assign-app-id').value;
+      const phi = document.getElementById('phi-dropdown').value;
+
+      const applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
+      const idx = applications.findIndex(a => a.id === appId);
+      if (idx !== -1) {
+        applications[idx].status = 'PHI Assigned (Pending Inspection)';
+        applications[idx].assignedPhi = phi;
+        localStorage.setItem('fcau_applications', JSON.stringify(applications));
+
+        // Also update the branch status
+        const branches = JSON.parse(localStorage.getItem('fcau_branches')) || [];
+        const bIdx = branches.findIndex(b => b.id === applications[idx].branchId);
+        if (bIdx !== -1) {
+          branches[bIdx].status = 'PHI Assigned';
+          localStorage.setItem('fcau_branches', JSON.stringify(branches));
+        }
+
+        alert('PHI assigned successfully!');
+        const modalEl = document.getElementById('assignPhiModal');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
+        renderAllMOH();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderAllMOH();
+    });
+  </script>
 <script src="./_role.js"></script>
 </body>
 </html>

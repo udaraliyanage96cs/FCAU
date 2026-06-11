@@ -130,6 +130,37 @@
             </div>
           </div>
 
+          <!-- Businesses Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h5 class="card-title fw-semibold mb-0">My Businesses (Corporate Entities)</h5>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addBusinessModal">
+                      <i class="ti ti-plus me-1"></i>Register Business
+                    </button>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Business Name</th>
+                          <th>Reg Number</th>
+                          <th>Status</th>
+                          <th>Branches Count</th>
+                        </tr>
+                      </thead>
+                      <tbody id="business-table-body">
+                        <!-- Dynamic -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Branches Section -->
           <div class="row">
             <!-- Branch Grid -->
@@ -146,48 +177,16 @@
                     <table class="table table-hover align-middle mb-0">
                       <thead class="table-light">
                         <tr>
-                          <th>Trading Name</th>
+                          <th>Business</th>
+                          <th>Branch Name</th>
                           <th>Location / Address</th>
-                          <th>Assigned Manager</th>
-                          <th>Food Categories</th>
-                          <th>Grade</th>
+                          <th>Manager</th>
+                          <th>Premises Registration Status</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody id="branch-table-body">
-                        <tr>
-                          <td><span class="fw-semibold">Golden Rice - Colombo 07</span></td>
-                          <td><span class="fs-3">No. 45, Ward Place, Colombo 07</span></td>
-                          <td><span class="badge bg-secondary-subtle text-secondary">Jagath Kumara</span></td>
-                          <td>
-                            <span class="badge bg-primary-subtle text-primary mb-1">Restaurant</span><br>
-                            <span class="badge bg-light text-muted fs-1">Cooked Meals, Dairy</span>
-                          </td>
-                          <td><span class="badge bg-success">A (88%)</span></td>
-                          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(0)"><i class="ti ti-trash"></i></button></td>
-                        </tr>
-                        <tr>
-                          <td><span class="fw-semibold">Golden Rice Express - Gampaha</span></td>
-                          <td><span class="fs-3">No. 12, Kandy Road, Gampaha</span></td>
-                          <td><span class="badge bg-secondary-subtle text-secondary">Nimal Silva</span></td>
-                          <td>
-                            <span class="badge bg-primary-subtle text-primary mb-1">Restaurant, Catering</span><br>
-                            <span class="badge bg-light text-muted fs-1">Cooked Meals, Beverages</span>
-                          </td>
-                          <td><span class="badge bg-warning">B (74%)</span></td>
-                          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(1)"><i class="ti ti-trash"></i></button></td>
-                        </tr>
-                        <tr>
-                          <td><span class="fw-semibold">Golden Rice Bakery - Kandy</span></td>
-                          <td><span class="fs-3">No. 88, Temple Street, Kandy</span></td>
-                          <td><span class="badge bg-secondary-subtle text-secondary">Chathura Perera</span></td>
-                          <td>
-                            <span class="badge bg-primary-subtle text-primary mb-1">Bakery</span><br>
-                            <span class="badge bg-light text-muted fs-1">Bakery Products, Confectioneries</span>
-                          </td>
-                          <td><span class="badge bg-success">A (91%)</span></td>
-                          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(2)"><i class="ti ti-trash"></i></button></td>
-                        </tr>
+                        <!-- Dynamic -->
                       </tbody>
                     </table>
                   </div>
@@ -230,27 +229,7 @@
                         </tr>
                       </thead>
                       <tbody id="manager-table-body">
-                        <tr>
-                          <td><span class="fw-semibold">Jagath Kumara</span></td>
-                          <td>198522104V</td>
-                          <td>jagath@goldenrice.lk</td>
-                          <td>+94 77 123 4567</td>
-                          <td><span class="badge bg-success-subtle text-success">Active</span></td>
-                        </tr>
-                        <tr>
-                          <td><span class="fw-semibold">Nimal Silva</span></td>
-                          <td>199044310V</td>
-                          <td>nimal@goldenrice.lk</td>
-                          <td>+94 71 987 6543</td>
-                          <td><span class="badge bg-success-subtle text-success">Active</span></td>
-                        </tr>
-                        <tr>
-                          <td><span class="fw-semibold">Chathura Perera</span></td>
-                          <td>198822019V</td>
-                          <td>chathura@goldenrice.lk</td>
-                          <td>+94 72 444 5555</td>
-                          <td><span class="badge bg-success-subtle text-success">Active</span></td>
-                        </tr>
+                        <!-- Dynamic -->
                       </tbody>
                     </table>
                   </div>
@@ -259,6 +238,34 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Modal -->
+  <div class="modal fade" id="addBusinessModal" tabindex="-1" aria-labelledby="addBusinessModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-semibold" id="addBusinessModalLabel">Register New Business Entity</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="add-business-form">
+            <div class="mb-3">
+              <label class="form-label">Business / Trading Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="biz-name" placeholder="e.g. Golden Rice Corp" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Business Registration Number <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="biz-reg" placeholder="e.g. BR-1001" required>
+            </div>
+            <div class="modal-footer px-0 pb-0">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Submit for Approval</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -276,19 +283,24 @@
           <form id="add-branch-form">
             <div class="row">
               <div class="col-md-6 mb-3">
+                <label class="form-label">Parent Business <span class="text-danger">*</span></label>
+                <select class="form-select" id="b-business" required>
+                  <!-- Filled dynamically -->
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
                 <label class="form-label">Branch Trading Name <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="b-name" placeholder="e.g. Golden Rice - Negombo" required>
               </div>
               <div class="col-md-6 mb-3">
-                <label class="form-label">Assign Manager <span class="text-danger">*</span></label>
-                <select class="form-select" id="b-manager" required>
-                  <option value="">Select an active manager...</option>
-                  <option value="Jagath Kumara">Jagath Kumara</option>
-                  <option value="Nimal Silva">Nimal Silva</option>
-                  <option value="Chathura Perera">Chathura Perera</option>
-                </select>
+                <label class="form-label">Branch Manager Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="b-manager-name" placeholder="Manager's Full Name" required>
               </div>
-              <div class="col-12 mb-3">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Branch Manager Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="b-manager-email" placeholder="manager@business.com" required>
+              </div>
+              <div class="col-md-6 mb-3">
                 <label class="form-label">Address <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="b-address" placeholder="Complete street address" required>
               </div>
@@ -302,7 +314,7 @@
                     <label class="form-check-label" for="m-cat-1">A1 - Food Manufacturing</label>
                   </div>
                   <div class="form-check mb-2">
-                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-2" value="A2 - Restaurant / Hotel">
+                    <input class="form-check-input b-main-cat" type="checkbox" id="m-cat-2" value="A2 - Restaurant / Hotel" checked>
                     <label class="form-check-label" for="m-cat-2">A2 - Restaurant / Hotel</label>
                   </div>
                   <div class="form-check mb-2">
@@ -336,11 +348,11 @@
                     <label class="form-check-label" for="s-cat-1">Bakery Products</label>
                   </div>
                   <div class="form-check mb-2">
-                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-2" value="Cooked Meals">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-2" value="Cooked Meals" checked>
                     <label class="form-check-label" for="s-cat-2">Cooked Meals / Catering</label>
                   </div>
                   <div class="form-check mb-2">
-                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-3" value="Dairy Products">
+                    <input class="form-check-input b-sub-cat" type="checkbox" id="s-cat-3" value="Dairy Products" checked>
                     <label class="form-check-label" for="s-cat-3">Dairy & Milk Products</label>
                   </div>
                   <div class="form-check mb-2">
@@ -419,70 +431,186 @@
   <script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
 
   <script>
-    // Initial data lists
-    let branches = [
-      { name: "Golden Rice - Colombo 07", address: "No. 45, Ward Place, Colombo 07", manager: "Jagath Kumara", mains: ["Restaurant"], subs: ["Cooked Meals", "Dairy Products"], grade: "A (88%)" },
-      { name: "Golden Rice Express - Gampaha", address: "No. 12, Kandy Road, Gampaha", manager: "Nimal Silva", mains: ["Restaurant", "Catering Services"], subs: ["Cooked Meals", "Beverages"], grade: "B (74%)" },
-      { name: "Golden Rice Bakery - Kandy", address: "No. 88, Temple Street, Kandy", manager: "Chathura Perera", mains: ["Bakery / Confectionery"], subs: ["Bakery Products", "Confectioneries"], grade: "A (91%)" }
-    ];
+    // State management driven by localStorage
+    function initData() {
+      if (!localStorage.getItem('fcau_businesses')) {
+        const initialBusinesses = [
+          { id: "bus-1", name: "Golden Rice Corp", regNo: "BR-1001", status: "Approved" },
+          { id: "bus-2", name: "Silver Spoon Group", regNo: "BR-1002", status: "Pending Approval" }
+        ];
+        localStorage.setItem('fcau_businesses', JSON.stringify(initialBusinesses));
+      }
 
-    let managers = [
-      { name: "Jagath Kumara", nic: "198522104V", email: "jagath@goldenrice.lk", phone: "+94 77 123 4567" },
-      { name: "Nimal Silva", nic: "199044310V", email: "nimal@goldenrice.lk", phone: "+94 71 987 6543" },
-      { name: "Chathura Perera", nic: "198822019V", email: "chathura@goldenrice.lk", phone: "+94 72 444 5555" }
-    ];
+      if (!localStorage.getItem('fcau_branches')) {
+        const initialBranches = [
+          { id: "br-1", businessId: "bus-1", name: "Golden Rice - Colombo 07", address: "No. 45, Ward Place, Colombo 07", manager: "Jagath Kumara", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Dairy Products"], status: "Registered", grade: "A (88%)" },
+          { id: "br-2", businessId: "bus-1", name: "Golden Rice Express - Gampaha", address: "No. 12, Kandy Road, Gampaha", manager: "Nimal Silva", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Beverages"], status: "Registered", grade: "B (74%)" },
+          { id: "br-3", businessId: "bus-1", name: "Golden Rice Bakery - Kandy", address: "No. 88, Temple Street, Kandy", manager: "Chathura Perera", mains: ["K1 - Bakery / Confectionery"], subs: ["Bakery Products", "Confectioneries"], status: "Registered", grade: "A (91%)" }
+        ];
+        localStorage.setItem('fcau_branches', JSON.stringify(initialBranches));
+      }
+
+      if (!localStorage.getItem('fcau_managers')) {
+        const initialManagers = [
+          { name: "Jagath Kumara", nic: "198522104V", email: "jagath@goldenrice.lk", phone: "+94 77 123 4567" },
+          { name: "Nimal Silva", nic: "199044310V", email: "nimal@goldenrice.lk", phone: "+94 71 987 6543" },
+          { name: "Chathura Perera", nic: "198822019V", email: "chathura@goldenrice.lk", phone: "+94 72 444 5555" }
+        ];
+        localStorage.setItem('fcau_managers', JSON.stringify(initialManagers));
+      }
+
+      if (!localStorage.getItem('fcau_applications')) {
+        const initialApplications = [
+          { id: "app-1", businessId: "bus-1", branchId: "br-1", applicantName: "Jagath Kumara", applicantNic: "198522104V", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Dairy Products"], address: "No. 45, Ward Place, Colombo 07", district: "Colombo", mohArea: "Colombo MC", gnDivision: "Colombo 07 - 508A", status: "Registered", assignedPhi: "K. Perera" }
+        ];
+        localStorage.setItem('fcau_applications', JSON.stringify(initialApplications));
+      }
+    }
+
+    initData();
+
+    let businesses = JSON.parse(localStorage.getItem('fcau_businesses'));
+    let branches = JSON.parse(localStorage.getItem('fcau_branches'));
+    let managers = JSON.parse(localStorage.getItem('fcau_managers'));
+    let applications = JSON.parse(localStorage.getItem('fcau_applications'));
 
     let chartInstance = null;
+
+    function renderAll() {
+      // Reload from storage to ensure consistency
+      businesses = JSON.parse(localStorage.getItem('fcau_businesses')) || [];
+      branches = JSON.parse(localStorage.getItem('fcau_branches')) || [];
+      managers = JSON.parse(localStorage.getItem('fcau_managers')) || [];
+      applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
+
+      renderBusinesses();
+      renderBranches();
+      renderManagers();
+      updateChart();
+    }
+
+    function renderBusinesses() {
+      const tbody = document.getElementById('business-table-body');
+      const select = document.getElementById('b-business');
+      tbody.innerHTML = '';
+      select.innerHTML = '';
+
+      businesses.forEach(b => {
+        const count = branches.filter(br => br.businessId === b.id).length;
+        const badgeClass = b.status === 'Approved' ? 'bg-success' : 'bg-warning';
+        
+        tbody.innerHTML += `
+          <tr>
+            <td><span class="fw-semibold text-dark">${b.name}</span></td>
+            <td><code>${b.regNo}</code></td>
+            <td><span class="badge ${badgeClass}">${b.status}</span></td>
+            <td><span class="badge bg-secondary">${count} Branches</span></td>
+          </tr>
+        `;
+
+        select.innerHTML += `<option value="${b.id}">${b.name} (${b.status})</option>`;
+      });
+    }
 
     function renderBranches() {
       const tbody = document.getElementById('branch-table-body');
       tbody.innerHTML = '';
+
       branches.forEach((b, index) => {
+        const parentBiz = businesses.find(biz => biz.id === b.businessId);
+        const bizName = parentBiz ? parentBiz.name : 'Unknown Business';
+        const bizApproved = parentBiz && parentBiz.status === 'Approved';
+
+        let regBadge = '';
+        let actionBtn = '';
+
+        if (!bizApproved) {
+          regBadge = `<span class="badge bg-danger-subtle text-danger">Awaiting Business Approval</span>`;
+          actionBtn = `<button class="btn btn-sm btn-outline-secondary" disabled>Register Premises</button>`;
+        } else {
+          // Check if there is an application for this branch
+          const app = applications.find(a => a.branchId === b.id);
+          if (app) {
+            if (app.status === 'Registered') {
+              regBadge = `<span class="badge bg-success">Registered (${b.grade || 'A'})</span>`;
+              actionBtn = `<span class="text-success"><i class="ti ti-circle-check fs-5"></i></span>`;
+            } else if (app.status === 'PHI Assigned (Pending Inspection)') {
+              regBadge = `<span class="badge bg-warning text-dark">PHI Assigned (${app.assignedPhi})</span>`;
+              actionBtn = `<a href="./iims-fbo-registration.html?editAppId=${app.id}" class="btn btn-sm btn-outline-info">View Details</a>`;
+            } else {
+              regBadge = `<span class="badge bg-info text-white">Pending Inspection</span>`;
+              actionBtn = `<a href="./iims-fbo-registration.html?editAppId=${app.id}" class="btn btn-sm btn-outline-info">View Details</a>`;
+            }
+          } else {
+            regBadge = `<span class="badge bg-secondary-subtle text-secondary">Not Registered</span>`;
+            actionBtn = `<a href="./iims-fbo-registration.html?businessId=${b.businessId}&branchId=${b.id}" class="btn btn-sm btn-primary">Register Premises</a>`;
+          }
+        }
+
         tbody.innerHTML += `
           <tr>
-            <td><span class="fw-semibold">${b.name}</span></td>
-            <td><span class="fs-3">${b.address}</span></td>
+            <td><span class="fw-semibold text-muted">${bizName}</span></td>
+            <td><span class="fw-semibold text-dark">${b.name}</span></td>
+            <td><span class="fs-3 text-secondary">${b.address}</span></td>
             <td><span class="badge bg-secondary-subtle text-secondary">${b.manager}</span></td>
+            <td>${regBadge}</td>
             <td>
-              <span class="badge bg-primary-subtle text-primary mb-1">${b.mains.join(', ')}</span><br>
-              <span class="badge bg-light text-muted fs-1">${b.subs.join(', ')}</span>
+              <div class="d-flex gap-2 align-items-center">
+                ${actionBtn}
+                <button class="btn btn-sm btn-outline-danger" onclick="deleteBranch('${b.id}')"><i class="ti ti-trash"></i></button>
+              </div>
             </td>
-            <td><span class="badge ${b.grade.includes('A') ? 'bg-success' : 'bg-warning'}">${b.grade}</span></td>
-            <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBranch(${index})"><i class="ti ti-trash"></i></button></td>
           </tr>
         `;
       });
+
       document.getElementById('kpi-branches').textContent = branches.length;
-      updateChart();
     }
 
     function renderManagers() {
       const tbody = document.getElementById('manager-table-body');
-      const select = document.getElementById('b-manager');
+      if (!tbody) return;
       tbody.innerHTML = '';
-      select.innerHTML = '<option value="">Select an active manager...</option>';
       
       managers.forEach(m => {
         tbody.innerHTML += `
           <tr>
             <td><span class="fw-semibold">${m.name}</span></td>
-            <td>${m.nic}</td>
+            <td>${m.nic || 'N/A'}</td>
             <td>${m.email}</td>
-            <td>${m.phone}</td>
+            <td>${m.phone || 'N/A'}</td>
             <td><span class="badge bg-success-subtle text-success">Active</span></td>
           </tr>
         `;
-        select.innerHTML += `<option value="${m.name}">${m.name}</option>`;
       });
       document.getElementById('kpi-managers').textContent = managers.length;
     }
 
-    function deleteBranch(index) {
-      branches.splice(index, 1);
-      renderBranches();
+    function deleteBranch(id) {
+      branches = branches.filter(b => b.id !== id);
+      localStorage.setItem('fcau_branches', JSON.stringify(branches));
+      renderAll();
     }
 
     // Modal submit listeners
+    document.getElementById('add-business-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newBiz = {
+        id: 'bus-' + Date.now(),
+        name: document.getElementById('biz-name').value,
+        regNo: document.getElementById('biz-reg').value,
+        status: 'Pending Approval'
+      };
+
+      businesses.push(newBiz);
+      localStorage.setItem('fcau_businesses', JSON.stringify(businesses));
+      
+      document.getElementById('add-business-form').reset();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addBusinessModal'));
+      modal.hide();
+      renderAll();
+    });
+
     document.getElementById('add-branch-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const mains = Array.from(document.querySelectorAll('.b-main-cat:checked')).map(el => el.value);
@@ -493,42 +621,67 @@
         return;
       }
 
-      branches.push({
+      const mgrName = document.getElementById('b-manager-name').value;
+      const mgrEmail = document.getElementById('b-manager-email').value;
+
+      // Auto create the manager account if not exists
+      const managerExists = managers.some(m => m.email.toLowerCase() === mgrEmail.toLowerCase());
+      if (!managerExists) {
+        const newManager = {
+          name: mgrName,
+          nic: 'Auto-Generated',
+          email: mgrEmail,
+          phone: 'N/A'
+        };
+        managers.push(newManager);
+        localStorage.setItem('fcau_managers', JSON.stringify(managers));
+      }
+
+      const newBranch = {
+        id: 'br-' + Date.now(),
+        businessId: document.getElementById('b-business').value,
         name: document.getElementById('b-name').value,
         address: document.getElementById('b-address').value,
-        manager: document.getElementById('b-manager').value,
+        manager: mgrName,
         mains: mains,
         subs: subs,
+        status: "Not Registered",
         grade: "Pending review (0%)"
-      });
+      };
+
+      branches.push(newBranch);
+      localStorage.setItem('fcau_branches', JSON.stringify(branches));
 
       document.getElementById('add-branch-form').reset();
       const modal = bootstrap.Modal.getInstance(document.getElementById('addBranchModal'));
       modal.hide();
-      renderBranches();
+      renderAll();
     });
 
     document.getElementById('add-manager-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      managers.push({
+      const newManager = {
         name: document.getElementById('m-name').value,
         nic: document.getElementById('m-nic').value,
         email: document.getElementById('m-email').value,
         phone: document.getElementById('m-phone').value
-      });
+      };
+
+      managers.push(newManager);
+      localStorage.setItem('fcau_managers', JSON.stringify(managers));
 
       document.getElementById('add-manager-form').reset();
       const modal = bootstrap.Modal.getInstance(document.getElementById('addManagerModal'));
       modal.hide();
-      renderManagers();
+      renderAll();
     });
 
     function updateChart() {
       const data = branches.map(b => {
         let score = 0;
-        const matches = b.grade.match(/\((\d+)%\)/);
+        const matches = (b.grade || "").match(/\((\d+)%\)/);
         if(matches) score = parseInt(matches[1]);
-        return score;
+        return score || 70; // Fallback score for display
       });
       const labels = branches.map(b => b.name);
 
@@ -537,9 +690,9 @@
       }
 
       var options = {
-        series: data,
+        series: data.length > 0 ? data : [100],
         chart: { type: 'pie', height: 250, fontFamily: 'inherit' },
-        labels: labels,
+        labels: labels.length > 0 ? labels : ['No Data'],
         colors: ['#10B981', '#3B82F6', '#14B8A6', '#6366F1', '#F59E0B'],
         legend: { position: 'bottom', fontSize: '10px' }
       };
@@ -549,8 +702,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      renderBranches();
-      renderManagers();
+      renderAll();
     });
   </script>
   <script src="./_role.js"></script>

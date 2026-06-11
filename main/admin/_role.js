@@ -16,6 +16,7 @@
       { type: 'cap', label: 'Home' },
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',               href: './iims-dashboard.html' },
       { type: 'link', icon: 'ti ti-map-2',            label: 'Risk Heatmaps',           href: './iims-risk-heatmaps.html' },
+      { type: 'link', icon: 'ti ti-building-store',   label: 'Business Approvals',      href: './iims-business-approvals.html' },
 
       { type: 'cap', label: 'User Management' },
       { type: 'link', icon: 'ti ti-users',            label: 'User Directory',          href: './iims-user-management.html' },

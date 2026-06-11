@@ -411,6 +411,10 @@
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
   <script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dashboard initialization
+    });
+
     // Inspection Coverage Chart
     var coverageOptions = {
       series: [{name:'Mandated',data:[320,280,340,310,350,290,320,380,360,340,310,350]},{name:'Completed',data:[280,250,310,290,320,260,300,350,340,310,280,330]},{name:'Non-Compliant',data:[45,38,52,41,58,34,48,62,55,47,39,54]}],
@@ -441,3 +445,5 @@
 <script src="./_role.js"></script>
 </body>
 </html>
+
+

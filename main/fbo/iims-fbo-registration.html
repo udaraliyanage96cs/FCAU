@@ -311,6 +311,16 @@
   <script>
     let currentStep = 1;
     const totalSteps = 5;
+    
+    // Parse URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const businessId = urlParams.get('businessId');
+    const branchId = urlParams.get('branchId');
+    const editAppId = urlParams.get('editAppId');
+
+    let selectedBiz = null;
+    let selectedBranch = null;
+
     function showStep(n) {
       for(let i=1;i<=totalSteps;i++){document.getElementById('step-'+i).style.display=i===n?'block':'none';}
       document.getElementById('btn-prev').disabled = n===1;
@@ -325,9 +335,167 @@
         else{circle.className='round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold';label.className='text-muted';}
       }
     }
-    document.getElementById('btn-next').addEventListener('click',function(){if(currentStep<totalSteps){currentStep++;showStep(currentStep);}else{alert('Application submitted successfully! Status: DRAFT -> SUBMITTED');}});
+
+    document.getElementById('btn-next').addEventListener('click',function(){
+      if(currentStep<totalSteps){
+        currentStep++;
+        showStep(currentStep);
+        updateReviewPanel();
+      }else{
+        submitApplication();
+      }
+    });
+
     document.getElementById('btn-prev').addEventListener('click',function(){if(currentStep>1){currentStep--;showStep(currentStep);}});
     document.getElementById('btn-save-draft').addEventListener('click',function(){alert('Application saved as DRAFT successfully.');});
+
+    function updateReviewPanel() {
+      // Prefill review panel from actual inputs
+      const name = document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value;
+      const nic = document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value;
+      const email = document.querySelector('#step-1 input[placeholder="verified@email.com"]').value;
+      const contact = document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value;
+      const tradeName = document.querySelector('#step-2 input[placeholder="Business trading name"]').value;
+      const category = document.querySelector('#step-2 select').value;
+      const address = document.querySelector('#step-3 textarea').value;
+      const gn = document.querySelector('#step-3 select:nth-of-type(4)') ? document.querySelector('#step-3 select:nth-of-type(4)').value : 'Colombo 07 - 508A';
+
+      const review1 = document.querySelector('#step-5 .row .col-md-6:nth-of-type(1) .card-body');
+      if (review1) {
+        review1.innerHTML = `
+          <h6 class="fw-semibold mb-3"><i class="ti ti-user me-2"></i>Applicant Details</h6>
+          <p class="mb-1"><strong>Name:</strong> <span class="text-dark">${name || 'N/A'}</span></p>
+          <p class="mb-1"><strong>NIC:</strong> <span class="text-dark">${nic || 'N/A'}</span></p>
+          <p class="mb-1"><strong>Email:</strong> <span class="text-dark">${email || 'N/A'}</span></p>
+          <p class="mb-0"><strong>Contact:</strong> <span class="text-dark">${contact || 'N/A'}</span></p>
+        `;
+      }
+
+      const review2 = document.querySelector('#step-5 .row .col-md-6:nth-of-type(2) .card-body');
+      if (review2) {
+        review2.innerHTML = `
+          <h6 class="fw-semibold mb-3"><i class="ti ti-building-store me-2"></i>Business Details</h6>
+          <p class="mb-1"><strong>Trading Name:</strong> <span class="text-dark">${tradeName || 'N/A'}</span></p>
+          <p class="mb-1"><strong>Category:</strong> <span class="text-dark">${category || 'N/A'}</span></p>
+          <p class="mb-1"><strong>Location:</strong> <span class="text-dark">${address || 'N/A'}</span></p>
+          <p class="mb-0"><strong>GN Division:</strong> <span class="text-dark">${gn || 'N/A'}</span></p>
+        `;
+      }
+    }
+
+    function prefillForm() {
+      const businesses = JSON.parse(localStorage.getItem('fcau_businesses')) || [];
+      const branches = JSON.parse(localStorage.getItem('fcau_branches')) || [];
+      const managers = JSON.parse(localStorage.getItem('fcau_managers')) || [];
+      const applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
+
+      if (editAppId) {
+        const app = applications.find(a => a.id === editAppId);
+        if (app) {
+          selectedBiz = businesses.find(b => b.id === app.businessId);
+          selectedBranch = branches.find(b => b.id === app.branchId);
+          
+          document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value = app.applicantName;
+          document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value = app.applicantNic;
+          document.querySelector('#step-2 input[placeholder="Business trading name"]').value = selectedBranch ? selectedBranch.name : '';
+          document.querySelector('#step-3 textarea').value = app.address;
+        }
+        return;
+      }
+
+      if (businessId && branchId) {
+        selectedBiz = businesses.find(b => b.id === businessId);
+        selectedBranch = branches.find(b => b.id === branchId);
+
+        if (selectedBranch) {
+          // Pre-fill Step 2
+          const tradingNameInput = document.querySelector('#step-2 input[placeholder="Business trading name"]');
+          if (tradingNameInput) {
+            tradingNameInput.value = selectedBranch.name;
+            tradingNameInput.readOnly = true;
+          }
+
+          // Pre-fill Category select if matches
+          const catSelect = document.querySelector('#step-2 select');
+          if (catSelect) {
+            // Find option that matches
+            const mainCat = selectedBranch.mains[0]; // e.g. "A2 - Restaurant / Hotel"
+            for (let option of catSelect.options) {
+              if (option.text.includes(mainCat) || mainCat.includes(option.text)) {
+                option.selected = true;
+                break;
+              }
+            }
+          }
+
+          // Pre-fill Step 3 Address
+          const addressTextarea = document.querySelector('#step-3 textarea');
+          if (addressTextarea) {
+            addressTextarea.value = selectedBranch.address;
+            addressTextarea.readOnly = true;
+          }
+
+          // Pre-fill Manager Details (Applicant Details)
+          const mgr = managers.find(m => m.name === selectedBranch.manager);
+          if (mgr) {
+            document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value = mgr.name;
+            document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value = mgr.nic;
+            document.querySelector('#step-1 input[placeholder="verified@email.com"]').value = mgr.email;
+            document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value = mgr.phone;
+          }
+        }
+      }
+    }
+
+    function submitApplication() {
+      if (!document.getElementById('declaration').checked) {
+        alert('Please accept the declaration before submitting.');
+        return;
+      }
+
+      const name = document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value;
+      const nic = document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value;
+      const email = document.querySelector('#step-1 input[placeholder="verified@email.com"]').value;
+      const contact = document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value;
+      const address = document.querySelector('#step-3 textarea').value;
+
+      const applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
+
+      const newApp = {
+        id: editAppId || 'app-' + Date.now(),
+        businessId: businessId || (selectedBiz ? selectedBiz.id : 'bus-1'),
+        branchId: branchId || (selectedBranch ? selectedBranch.id : 'br-1'),
+        applicantName: name,
+        applicantNic: nic,
+        email: email,
+        contact: contact,
+        mains: selectedBranch ? selectedBranch.mains : ["A2 - Restaurant / Hotel"],
+        subs: selectedBranch ? selectedBranch.subs : ["Cooked Meals"],
+        address: address,
+        district: document.querySelector('#step-3 select:nth-of-type(2)') ? document.querySelector('#step-3 select:nth-of-type(2)').value : 'Colombo',
+        mohArea: document.querySelector('#step-3 select:nth-of-type(3)') ? document.querySelector('#step-3 select:nth-of-type(3)').value : 'Colombo MC',
+        gnDivision: document.querySelector('#step-3 select:nth-of-type(4)') ? document.querySelector('#step-3 select:nth-of-type(4)').value : 'Colombo 07 - 508A',
+        status: "Submitted (Awaiting PHI)",
+        assignedPhi: null
+      };
+
+      if (editAppId) {
+        const idx = applications.findIndex(a => a.id === editAppId);
+        if (idx !== -1) applications[idx] = newApp;
+      } else {
+        applications.push(newApp);
+      }
+
+      localStorage.setItem('fcau_applications', JSON.stringify(applications));
+
+      alert('Application submitted successfully! Redirecting to dashboard...');
+      window.location.href = './iims-dashboard.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      prefillForm();
+      showStep(currentStep);
+    });
   </script>
 <script src="./_role.js"></script>
 </body>
