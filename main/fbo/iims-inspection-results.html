@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View the official H-800 inspection results and compliance grade issued by the Medical Officer of Health for your registered food premises." />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS – Inspection Results</title>
+  <style>
+    /* ── Grade badge ring ─────────────────────────────────────────── */
+    .grade-ring {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-weight: 800; position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    }
+    .grade-ring.grade-a  { background: linear-gradient(135deg,#d1fae5,#6ee7b7); color: #065f46; border: 4px solid #10b981; }
+    .grade-ring.grade-b  { background: linear-gradient(135deg,#dbeafe,#93c5fd); color: #1e40af; border: 4px solid #3b82f6; }
+    .grade-ring.grade-c  { background: linear-gradient(135deg,#fef9c3,#fde047); color: #78350f; border: 4px solid #f59e0b; }
+    .grade-ring.grade-f  { background: linear-gradient(135deg,#fee2e2,#fca5a5); color: #7f1d1d; border: 4px solid #ef4444; }
+    .grade-letter { font-size: 3rem; line-height: 1; }
+    .grade-score  { font-size: .75rem; font-weight: 600; opacity: .8; }
+
+    /* ── Score bar ────────────────────────────────────────────────── */
+    .score-bar-wrap { height: 8px; border-radius: 4px; background: #e9ecef; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 4px; transition: width .6s ease; }
+
+    /* ── Status timeline ──────────────────────────────────────────── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 9px; top: 6px; bottom: 6px;
+      width: 2px; background: #e9ecef;
+    }
+    .timeline-item { position: relative; margin-bottom: 20px; }
+    .timeline-dot {
+      position: absolute; left: -24px; top: 3px;
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid; display: flex; align-items: center; justify-content: center;
+    }
+    .timeline-dot.done  { background: #10b981; border-color: #10b981; }
+    .timeline-dot.done::after { content:''; width:5px; height:5px; border-radius:50%; background:#fff; }
+    .timeline-dot.active { background: #fff; border-color: #3b82f6; }
+    .timeline-dot.active::after { content:''; width:5px; height:5px; border-radius:50%; background:#3b82f6; }
+    .timeline-dot.pending { background: #fff; border-color: #d1d5db; }
+    .timeline-dot.pending::after { content:''; width:5px; height:5px; border-radius:50%; background:#d1d5db; }
+
+    /* ── Certificate card ─────────────────────────────────────────── */
+    .cert-card {
+      border: 2px dashed #10b981;
+      border-radius: 12px;
+      background: linear-gradient(135deg,#f0fdf4,#ecfdf5);
+      padding: 20px 24px;
+    }
+  </style>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+
+    <!-- ═══ Sidebar ═══════════════════════════════════════════════════ -->
+    <aside class="left-sidebar with-vertical">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav"></ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- ═══ Page Wrapper ══════════════════════════════════════════════ -->
+    <div class="page-wrapper">
+      <header class="topbar">
+        <div class="with-vertical">
+          <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav">
+              <li class="nav-item nav-icon-hover-bg rounded-circle ms-n2">
+                <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a>
+              </li>
+            </ul>
+            <div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div>
+            <a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <i class="ti ti-dots fs-7"></i>
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div class="d-flex align-items-center justify-content-between">
+                <ul class="navbar-nav flex-row ms-auto align-items-center">
+                  <li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+
+          <!-- ── Page Header ── -->
+          <div class="card bg-success-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-sm-9 col-12">
+                  <h4 class="fw-semibold mb-8">Inspection Results</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Inspection Results</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-sm-3 d-none d-sm-block text-end">
+                  <i class="ti ti-clipboard-check" style="font-size:64px;opacity:.15;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Filter / Selector Bar ── -->
+          <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body py-3">
+              <div class="row g-3 align-items-end">
+                <div class="col-md-4">
+                  <label class="form-label fw-semibold">Branch / Premises</label>
+                  <select class="form-select" id="branch-select" onchange="loadResult()">
+                    <option value="br-1">Golden Rice – Colombo 07</option>
+                    <option value="br-2">Golden Rice Express – Gampaha</option>
+                    <option value="br-3">Golden Rice Bakery – Kandy</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold">Inspection Year</label>
+                  <select class="form-select" id="year-select" onchange="loadResult()">
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                  </select>
+                </div>
+                <div class="col-md-auto">
+                  <button class="btn btn-outline-secondary" onclick="loadResult()">
+                    <i class="ti ti-refresh me-1"></i>Refresh
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Main Content ── -->
+          <div class="row" id="result-panel">
+
+            <!-- Left: Inspection Detail -->
+            <div class="col-lg-8">
+
+              <!-- Summary Banner -->
+              <div class="card mb-4" id="summary-card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center gap-4 flex-wrap">
+                    <div class="grade-ring grade-a" id="grade-ring">
+                      <span class="grade-letter" id="grade-letter">A</span>
+                      <span class="grade-score" id="grade-score">82 / 100</span>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div class="d-flex align-items-center gap-2 mb-1">
+                        <h5 class="fw-semibold mb-0" id="result-title">H-800 Inspection Audit: #INS-2026-4412</h5>
+                        <span class="badge bg-success" id="result-status-badge">Approved</span>
+                      </div>
+                      <p class="text-muted mb-2 fs-3" id="result-premises">Golden Rice Restaurant — No. 45, Ward Place, Colombo 07</p>
+                      <div class="row g-3">
+                        <div class="col-auto">
+                          <span class="text-muted fs-2">Inspector (PHI)</span><br>
+                          <span class="fw-semibold fs-3" id="result-phi">K. Perera (PHI/COL/04)</span>
+                        </div>
+                        <div class="col-auto">
+                          <span class="text-muted fs-2">Inspection Date</span><br>
+                          <span class="fw-semibold fs-3" id="result-date">2026-05-04</span>
+                        </div>
+                        <div class="col-auto">
+                          <span class="text-muted fs-2">MOH Decision Date</span><br>
+                          <span class="fw-semibold fs-3" id="result-decision-date">2026-05-10</span>
+                        </div>
+                        <div class="col-auto">
+                          <span class="text-muted fs-2">Valid Until</span><br>
+                          <span class="fw-semibold fs-3 text-success" id="result-valid">2027-05-10</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scoring Breakdown -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Scoring Breakdown — H-800 Categories</h5>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0" id="score-table">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Category</th>
+                          <th style="width:60px" class="text-center">Max</th>
+                          <th style="width:60px" class="text-center">Score</th>
+                          <th style="width:200px">Performance</th>
+                          <th>Remarks</th>
+                        </tr>
+                      </thead>
+                      <tbody id="score-tbody">
+                        <!-- Injected by JS -->
+                      </tbody>
+                      <tfoot>
+                        <tr class="fw-bold table-light">
+                          <td>Total</td>
+                          <td class="text-center">100</td>
+                          <td class="text-center" id="foot-score">82</td>
+                          <td>
+                            <div class="score-bar-wrap">
+                              <div class="score-bar-fill bg-success" id="foot-bar" style="width:82%"></div>
+                            </div>
+                          </td>
+                          <td><span class="badge bg-success-subtle text-success" id="foot-grade">Grade A</span></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Inspector Recommendations -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-3">Inspector's Recommendations</h5>
+                  <div class="p-3 bg-light rounded fs-3" id="result-recommendations">
+                    "Premises maintained well. Recommended for Grade A. Minor structural issues notified for follow-up in 3 months."
+                  </div>
+                </div>
+              </div>
+
+              <!-- MOH Reviewer Comments -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-3">MOH Supervisory Comments</h5>
+                  <div class="p-3 rounded border border-success-subtle bg-success-subtle fs-3" id="result-moh-comments">
+                    "Inspection verified and approved. FBO is advised to address structural deficiencies within the notified 3-month window. Grade A certificate issued."
+                  </div>
+                  <div class="d-flex align-items-center gap-2 mt-3">
+                    <i class="ti ti-user-check text-success fs-5"></i>
+                    <span class="text-muted fs-3">Reviewed by: <strong id="result-moh-officer">Dr. S. Rathnayake (MOH/COL)</strong></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right: Status & Certificate -->
+            <div class="col-lg-4">
+
+              <!-- Status Timeline -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Registration Progress</h5>
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <div class="timeline-dot done"></div>
+                      <p class="fw-semibold mb-0 fs-3">Application Submitted</p>
+                      <p class="text-muted fs-2 mb-0">2026-03-15</p>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-dot done"></div>
+                      <p class="fw-semibold mb-0 fs-3">PHI Assigned</p>
+                      <p class="text-muted fs-2 mb-0">K. Perera — 2026-04-02</p>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-dot done"></div>
+                      <p class="fw-semibold mb-0 fs-3">H-800 Inspection Conducted</p>
+                      <p class="text-muted fs-2 mb-0">2026-05-04</p>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-dot done"></div>
+                      <p class="fw-semibold mb-0 fs-3">MOH Supervisory Review</p>
+                      <p class="text-muted fs-2 mb-0">2026-05-10 — Approved</p>
+                    </div>
+                    <div class="timeline-item" style="margin-bottom:0">
+                      <div class="timeline-dot done"></div>
+                      <p class="fw-semibold mb-0 fs-3 text-success">Grade Certificate Issued</p>
+                      <p class="text-muted fs-2 mb-0">2026-05-10 — Grade A</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Certificate Download -->
+              <div class="cert-card mb-4" id="cert-panel">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <div class="round-48 rounded-circle bg-success d-flex align-items-center justify-content-center">
+                    <i class="ti ti-certificate text-white fs-6"></i>
+                  </div>
+                  <div>
+                    <h6 class="fw-semibold mb-0">Grade A Certificate</h6>
+                    <p class="text-muted fs-2 mb-0">Valid: 2026-05-10 – 2027-05-10</p>
+                  </div>
+                </div>
+                <p class="text-muted fs-3 mb-3">Your premises have been awarded <strong>Grade A</strong> following the MOH supervisory review. Download your official certificate below.</p>
+                <button class="btn btn-success w-100" onclick="alert('Certificate PDF download will be available once the system is live.');">
+                  <i class="ti ti-download me-1"></i> Download Certificate (PDF)
+                </button>
+              </div>
+
+              <!-- Quick Info -->
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="fw-semibold mb-3">Grading Scale Reference</h6>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-success-subtle text-success px-3">Grade A</span>
+                    <span class="text-muted fs-3">80 – 100 points</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-primary-subtle text-primary px-3">Grade B</span>
+                    <span class="text-muted fs-3">60 – 79 points</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-warning-subtle text-warning px-3">Grade C</span>
+                    <span class="text-muted fs-3">40 – 59 points</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-danger-subtle text-danger px-3">Fail</span>
+                    <span class="text-muted fs-3">Below 40 points</span>
+                  </div>
+                  <hr>
+                  <p class="text-muted fs-2 mb-0">
+                    <i class="ti ti-info-circle me-1"></i>
+                    Certificates must be displayed visibly at the premises at all times. Renewal inspections are required annually.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Scripts ════════════════════════════════════════════════════ -->
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+
+  <script>
+    /* ── Mock data per branch ─────────────────────────────────────── */
+    const RESULTS = {
+      'br-1': {
+        id: '#INS-2026-4412',
+        premises: 'Golden Rice Restaurant — No. 45, Ward Place, Colombo 07',
+        phi: 'K. Perera (PHI/COL/04)',
+        date: '2026-05-04',
+        decisionDate: '2026-05-10',
+        validUntil: '2027-05-10',
+        totalScore: 82,
+        grade: 'A',
+        status: 'Approved',
+        mohOfficer: 'Dr. S. Rathnayake (MOH/COL)',
+        recommendations: '"Premises maintained well. Recommended for Grade A. Minor structural issues notified for follow-up in 3 months."',
+        mohComments: '"Inspection verified and approved. FBO is advised to address structural deficiencies within the notified 3-month window. Grade A certificate issued."',
+        categories: [
+          { name: '1. Environmental Conditions',       max: 10, score: 8, remark: 'Satisfactory' },
+          { name: '2. Structure & Design',             max: 10, score: 6, remark: 'Minor cracks in walls' },
+          { name: '3. Water Supply & Sanitation',      max: 10, score: 9, remark: 'Excellent' },
+          { name: '4. Pest Control',                   max: 10, score: 8, remark: 'Satisfactory' },
+          { name: '5. Food Handling Practices',        max: 15, score: 13, remark: 'Good hygiene observed' },
+          { name: '6. Personal Hygiene',               max: 10, score: 9, remark: 'All staff in uniform' },
+          { name: '7. Food Storage',                   max: 10, score: 8, remark: 'Satisfactory' },
+          { name: '8. Equipment & Utensils',           max: 10, score: 8, remark: 'Clean and well-maintained' },
+          { name: '9. Waste Disposal',                 max: 10, score: 7, remark: 'Adequate bins present' },
+          { name: '10. Records & Documentation',       max:  5, score: 6, remark: 'Up-to-date — bonus pts' }
+        ]
+      },
+      'br-2': {
+        id: '#INS-2026-3881',
+        premises: 'Golden Rice Express — No. 12, Kandy Road, Gampaha',
+        phi: 'D. Jayasinghe (PHI/GAM/02)',
+        date: '2026-04-20',
+        decisionDate: '2026-04-28',
+        validUntil: '2027-04-28',
+        totalScore: 74,
+        grade: 'B',
+        status: 'Approved',
+        mohOfficer: 'Dr. M. Fernando (MOH/GAM)',
+        recommendations: '"Adequate compliance maintained. Recommended for Grade B. Improvement required in waste disposal procedures."',
+        mohComments: '"Inspection reviewed and approved at Grade B. FBO must implement waste disposal improvements prior to next inspection."',
+        categories: [
+          { name: '1. Environmental Conditions',       max: 10, score: 7, remark: 'Satisfactory' },
+          { name: '2. Structure & Design',             max: 10, score: 7, remark: 'Satisfactory' },
+          { name: '3. Water Supply & Sanitation',      max: 10, score: 8, remark: 'Good' },
+          { name: '4. Pest Control',                   max: 10, score: 7, remark: 'Satisfactory' },
+          { name: '5. Food Handling Practices',        max: 15, score: 11, remark: 'Adequate' },
+          { name: '6. Personal Hygiene',               max: 10, score: 8, remark: 'Good' },
+          { name: '7. Food Storage',                   max: 10, score: 7, remark: 'Minor issues noted' },
+          { name: '8. Equipment & Utensils',           max: 10, score: 7, remark: 'Adequate' },
+          { name: '9. Waste Disposal',                 max: 10, score: 5, remark: 'Needs improvement' },
+          { name: '10. Records & Documentation',       max:  5, score: 7, remark: 'Complete' }
+        ]
+      },
+      'br-3': {
+        id: '#INS-2026-4100',
+        premises: 'Golden Rice Bakery — No. 88, Temple Street, Kandy',
+        phi: 'R. Amarasinghe (PHI/KAN/07)',
+        date: '2026-05-01',
+        decisionDate: '2026-05-08',
+        validUntil: '2027-05-08',
+        totalScore: 91,
+        grade: 'A',
+        status: 'Approved',
+        mohOfficer: 'Dr. P. Wickramasinghe (MOH/KAN)',
+        recommendations: '"Exemplary hygiene standards. Strong compliance across all categories. Grade A recommended without reservation."',
+        mohComments: '"Outstanding compliance. Grade A certificate issued. FBO commended for high standards."',
+        categories: [
+          { name: '1. Environmental Conditions',       max: 10, score: 9,  remark: 'Excellent' },
+          { name: '2. Structure & Design',             max: 10, score: 9,  remark: 'Excellent' },
+          { name: '3. Water Supply & Sanitation',      max: 10, score: 10, remark: 'Perfect' },
+          { name: '4. Pest Control',                   max: 10, score: 9,  remark: 'Excellent' },
+          { name: '5. Food Handling Practices',        max: 15, score: 14, remark: 'Excellent' },
+          { name: '6. Personal Hygiene',               max: 10, score: 10, remark: 'Perfect' },
+          { name: '7. Food Storage',                   max: 10, score: 9,  remark: 'Excellent' },
+          { name: '8. Equipment & Utensils',           max: 10, score: 9,  remark: 'Excellent' },
+          { name: '9. Waste Disposal',                 max: 10, score: 8,  remark: 'Good' },
+          { name: '10. Records & Documentation',       max:  5, score: 4,  remark: 'Complete' }
+        ]
+      }
+    };
+
+    function gradeClass(g) {
+      return { A: 'grade-a', B: 'grade-b', C: 'grade-c' }[g] || 'grade-f';
+    }
+    function gradeColor(g) {
+      return { A: 'success', B: 'primary', C: 'warning', F: 'danger' }[g] || 'danger';
+    }
+
+    function loadResult() {
+      const branchId = document.getElementById('branch-select').value;
+      const r = RESULTS[branchId];
+      if (!r) return;
+
+      const color = gradeColor(r.grade);
+
+      // Grade ring
+      const ring = document.getElementById('grade-ring');
+      ring.className = 'grade-ring ' + gradeClass(r.grade);
+      document.getElementById('grade-letter').textContent = r.grade;
+      document.getElementById('grade-score').textContent  = r.totalScore + ' / 100';
+
+      // Summary
+      document.getElementById('result-title').textContent          = 'H-800 Inspection Audit: ' + r.id;
+      document.getElementById('result-status-badge').textContent    = r.status;
+      document.getElementById('result-status-badge').className      = 'badge bg-' + color;
+      document.getElementById('result-premises').textContent        = r.premises;
+      document.getElementById('result-phi').textContent             = r.phi;
+      document.getElementById('result-date').textContent            = r.date;
+      document.getElementById('result-decision-date').textContent   = r.decisionDate;
+      document.getElementById('result-valid').textContent           = r.validUntil;
+
+      // Scores table
+      const tbody = document.getElementById('score-tbody');
+      tbody.innerHTML = '';
+      r.categories.forEach(c => {
+        const pct  = Math.min(100, Math.round((c.score / c.max) * 100));
+        const barcl = pct >= 80 ? 'bg-success' : pct >= 60 ? 'bg-primary' : pct >= 40 ? 'bg-warning' : 'bg-danger';
+        tbody.innerHTML += `
+          <tr>
+            <td class="fs-3">${c.name}</td>
+            <td class="text-center">${c.max}</td>
+            <td class="text-center fw-semibold">${c.score}</td>
+            <td>
+              <div class="score-bar-wrap">
+                <div class="score-bar-fill ${barcl}" style="width:${pct}%"></div>
+              </div>
+            </td>
+            <td class="text-muted fs-3">${c.remark}</td>
+          </tr>`;
+      });
+
+      // Footer row
+      const footPct = r.totalScore;
+      const footBar = footPct >= 80 ? 'bg-success' : footPct >= 60 ? 'bg-primary' : footPct >= 40 ? 'bg-warning' : 'bg-danger';
+      document.getElementById('foot-score').textContent = r.totalScore;
+      document.getElementById('foot-bar').className     = 'score-bar-fill ' + footBar;
+      document.getElementById('foot-bar').style.width   = footPct + '%';
+      document.getElementById('foot-grade').textContent  = 'Grade ' + r.grade;
+      document.getElementById('foot-grade').className    = 'badge bg-' + color + '-subtle text-' + color;
+
+      // Text panels
+      document.getElementById('result-recommendations').textContent = r.recommendations;
+      document.getElementById('result-moh-comments').textContent    = r.mohComments;
+      document.getElementById('result-moh-officer').textContent     = r.mohOfficer;
+
+      // Certificate card
+      document.getElementById('cert-panel').querySelector('h6').textContent = 'Grade ' + r.grade + ' Certificate';
+      document.getElementById('cert-panel').querySelector('p').textContent  = 'Valid: ' + r.decisionDate + ' – ' + r.validUntil;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadResult);
+  </script>
+  <script src="./_role.js"></script>
+</body>
+</html>

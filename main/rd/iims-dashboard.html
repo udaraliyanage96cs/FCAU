@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Regional Director Dashboard</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <!-- Sidebar is dynamically populated by _role.js -->
+    <aside class="left-sidebar with-vertical">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none"><i class="ti ti-x"></i></a>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
+      </div>
+    </aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <div class="card bg-indigo-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-sm-9">
+                  <h4 class="fw-semibold mb-8">Regional Director Dashboard</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-sm-3 d-none d-sm-block text-center">
+                  <img src="../../assets/images/backgrounds/track-bg.png" alt="" class="img-fluid mb-n7" style="max-height:100px;" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KPI Summary cards -->
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle">
+                      <i class="ti ti-building-store text-primary fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Total Premises</span>
+                      <h3 class="mb-0 fw-semibold">12,842</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-success fs-2 fw-semibold"><i class="ti ti-arrow-up"></i> +8.4%</span>
+                    <span class="text-muted fs-2">Western Province</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-warning-subtle">
+                      <i class="ti ti-gavel text-warning fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Escalated Appeals</span>
+                      <h3 class="mb-0 fw-semibold">5</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-danger fs-2 fw-semibold"><i class="ti ti-alert-triangle"></i> Action Required</span>
+                    <span class="text-muted fs-2">Awaiting RD decision</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-success-subtle">
+                      <i class="ti ti-clipboard-check text-success fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Inspections (WP)</span>
+                      <h3 class="mb-0 fw-semibold">5,420</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-success fs-2 fw-semibold"><i class="ti ti-arrow-up"></i> +12%</span>
+                    <span class="text-muted fs-2">This month</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="card overflow-hidden hover-img">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="round-48 rounded-circle d-flex align-items-center justify-content-center bg-danger-subtle">
+                      <i class="ti ti-shield-alert text-danger fs-6"></i>
+                    </div>
+                    <div class="ms-3">
+                      <span class="text-muted fs-2">Critical Failures</span>
+                      <h3 class="mb-0 fw-semibold">18</h3>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="text-danger fs-2 fw-semibold">Immediate Audit</span>
+                    <span class="text-muted fs-2">Grade D locations</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold">Inspection Quality Metrics</h5>
+                  <p class="card-subtitle text-muted mb-4">Western Province MOH Areas Performance</p>
+                  <div id="rd-coverage-chart" style="height: 300px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold">Appeals Resolution Rate</h5>
+                  <p class="card-subtitle text-muted mb-3">Overall breakdown of escalated disputes</p>
+                  <div id="rd-appeals-chart" style="height: 300px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Escalated Appeals Queue -->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h5 class="card-title fw-semibold mb-0">Escalated Appeals Queue (Requires RD Intervention)</h5>
+                    <a href="./iims-appeals.html" class="btn btn-sm btn-indigo text-white" style="background-color: #6366F1;">Manage All Appeals</a>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Appeal ID</th>
+                          <th>Establishment</th>
+                          <th>Contested Action</th>
+                          <th>MOH Territory</th>
+                          <th>Date Escalated</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><span class="fw-semibold">APP-2026-085</span></td>
+                          <td>City Bakery & Confections</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Closure Order</span></td>
+                          <td>Maharagama MOH</td>
+                          <td>2026-05-10</td>
+                          <td><span class="badge bg-danger">Escalated to RD</span></td>
+                          <td><a href="./iims-appeals.html" class="btn btn-sm btn-outline-danger">Review Appeal</a></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">APP-2026-091</span></td>
+                          <td>Lanka Food Distributors</td>
+                          <td><span class="badge bg-warning-subtle text-warning">License Suspension</span></td>
+                          <td>Colombo West MOH</td>
+                          <td>2026-05-12</td>
+                          <td><span class="badge bg-danger">Escalated to RD</span></td>
+                          <td><a href="./iims-appeals.html" class="btn btn-sm btn-outline-danger">Review Appeal</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script>
+    var coverageOptions = {
+      series: [{name:'Target Inspections',data:[600,750,800,720,900,850]},{name:'Completed Inspections',data:[550,680,740,710,820,790]}],
+      chart: {type:'bar',height:300,toolbar:{show:false},fontFamily:'inherit'},
+      plotOptions:{bar:{horizontal:false,columnWidth:'55%',borderRadius:4}},
+      dataLabels:{enabled:false},
+      xaxis:{categories:['Colombo MC','Dehiwala','Maharagama','Gampaha MC','Negombo','Kaduwela']},
+      colors:['#6366F1','#10B981'],
+    };
+    new ApexCharts(document.querySelector("#rd-coverage-chart"), coverageOptions).render();
+
+    var appealsOptions = {
+      series: [45, 15, 8],
+      chart: {type:'donut',height:300,fontFamily:'inherit'},
+      labels:['Resolved/Upheld','Overturned','Pending RD Review'],
+      colors:['#10B981','#FFAE1F','#EF4444'],
+      legend:{position:'bottom'}
+    };
+    new ApexCharts(document.querySelector("#rd-appeals-chart"), appealsOptions).render();
+  </script>
+  <script src="./_role.js"></script>
+</body>
+</html>

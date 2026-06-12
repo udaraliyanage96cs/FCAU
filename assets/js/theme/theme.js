@@ -75,7 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
                      window.location.pathname.includes('/fbo/') || 
                      window.location.pathname.includes('/trader/') || 
                      window.location.pathname.includes('/salt/') || 
-                     window.location.pathname.includes('/water/');
+                     window.location.pathname.includes('/water/') ||
+                     window.location.pathname.includes('/rd/') ||
+                     window.location.pathname.includes('/ab/');
     if (!isSubDir) {
       let topbarNavList = headerNavbar.querySelector('.navbar-nav.flex-row.ms-auto');
       if (!topbarNavList) {

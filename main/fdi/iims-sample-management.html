@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FDI Sample Management — register and track export commodity, bottled water, and iodised salt samples sent to approved laboratories." />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS – FDI Sample Management</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+
+    <!-- ═══ Sidebar ═══════════════════════════════════════════════════ -->
+    <aside class="left-sidebar with-vertical"><div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+        <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
+        <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none"><i class="ti ti-x"></i></a>
+      </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
+    </div></aside>
+
+    <!-- ═══ Page Wrapper ══════════════════════════════════════════════ -->
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0">
+        <ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul>
+        <div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div>
+        <a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between">
+          <ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul>
+        </div></div>
+      </nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+
+          <!-- ── Page Header ── -->
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-sm-9 col-12">
+                  <h4 class="fw-semibold mb-8">Sample Custody Register</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Sample Management</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-sm-3 d-none d-sm-block text-end">
+                  <i class="ti ti-test-pipe" style="font-size:64px;opacity:.12;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── KPI Cards ── -->
+          <div class="row mb-4">
+            <div class="col-md-3 col-6">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3 class="fw-bold text-primary mb-0">47</h3>
+                  <span class="text-muted fs-2">Pending Lab Results</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3 class="fw-bold text-warning mb-0">12</h3>
+                  <span class="text-muted fs-2">In Transit</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3 class="fw-bold text-success mb-0">384</h3>
+                  <span class="text-muted fs-2">Compliant (YTD)</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3 class="fw-bold text-danger mb-0">9</h3>
+                  <span class="text-muted fs-2">Non-Compliant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Register New Sample ── -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-3">Register New Sample</h5>
+              <div class="row g-3">
+                <div class="col-md-3">
+                  <label class="form-label">Sample Reference No.</label>
+                  <input type="text" class="form-control" value="2026/FDI/COL/031" readonly>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Sample Type</label>
+                  <select class="form-select" id="sample-type-select" onchange="toggleSampleTypeFields()">
+                    <option value="export">Export Commodity</option>
+                    <option value="water">Bottled Water</option>
+                    <option value="salt">Iodised Salt</option>
+                  </select>
+                </div>
+                <div class="col-md-3" id="field-commodity">
+                  <label class="form-label">Commodity / Product</label>
+                  <input type="text" class="form-control" placeholder="e.g., Desiccated Coconut">
+                </div>
+                <div class="col-md-3" id="field-brand" style="display:none;">
+                  <label class="form-label">Brand Name</label>
+                  <input type="text" class="form-control" placeholder="e.g., AquaPure 500ml">
+                </div>
+                <div class="col-md-3" id="field-batch">
+                  <label class="form-label">Batch / Lot No.</label>
+                  <input type="text" class="form-control" placeholder="Manufacturer's batch ID">
+                </div>
+                <div class="col-md-3" id="field-exporter" >
+                  <label class="form-label">Exporter / Manufacturer</label>
+                  <select class="form-select">
+                    <option>Ceylon Export Foods Ltd.</option>
+                    <option>Pacific Coconut Exports</option>
+                    <option>Lanka AquaBev Pvt Ltd</option>
+                    <option>National Salt Authority</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Sampling Objective</label>
+                  <select class="form-select">
+                    <option>Routine Monitoring</option>
+                    <option>Pre-Export Clearance</option>
+                    <option>Targeted Surveillance</option>
+                    <option>Compliance Enforcement</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Target Laboratory</label>
+                  <select class="form-select">
+                    <option>Medical Research Institute (MRI)</option>
+                    <option>Industrial Technology Institute (ITI)</option>
+                    <option>SGS Lanka (Pvt) Ltd</option>
+                    <option>National Water Supply & Drainage Board Lab</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label">Collection Date</label>
+                  <input type="date" class="form-control" value="2026-06-12">
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <button class="btn btn-primary w-100" onclick="alert('Sample registered and QR code generated.')">
+                    <i class="ti ti-qrcode me-1"></i>Generate QR & Register
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Sample Registry Tabs ── -->
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+                <h5 class="card-title fw-semibold mb-0">Sample Registry</h5>
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                  <!-- Tab-style type filter -->
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Sample type filter">
+                    <input type="radio" class="btn-check" name="stype" id="st-all" checked>
+                    <label class="btn btn-outline-secondary" for="st-all" onclick="filterTable('all')">All</label>
+
+                    <input type="radio" class="btn-check" name="stype" id="st-export">
+                    <label class="btn btn-outline-secondary" for="st-export" onclick="filterTable('export')">
+                      <i class="ti ti-package-export me-1"></i>Export
+                    </label>
+
+                    <input type="radio" class="btn-check" name="stype" id="st-water">
+                    <label class="btn btn-outline-secondary" for="st-water" onclick="filterTable('water')">
+                      <i class="ti ti-droplet me-1"></i>Water
+                    </label>
+
+                    <input type="radio" class="btn-check" name="stype" id="st-salt">
+                    <label class="btn btn-outline-secondary" for="st-salt" onclick="filterTable('salt')">
+                      <i class="ti ti-salt me-1"></i>Salt
+                    </label>
+                  </div>
+                  <!-- Status filter -->
+                  <select class="form-select form-select-sm" style="width:auto;" id="status-filter" onchange="filterTable()">
+                    <option value="">All Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Transit">In Transit</option>
+                    <option value="Testing">Testing</option>
+                    <option value="Completed">Completed</option>
+                  </select>
+                  <button class="btn btn-sm btn-outline-success">
+                    <i class="ti ti-download me-1"></i>Export CSV
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="sample-table">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Ref No.</th>
+                      <th>Type</th>
+                      <th>Product / Commodity</th>
+                      <th>Batch</th>
+                      <th>Manufacturer / Exporter</th>
+                      <th>Objective</th>
+                      <th>Laboratory</th>
+                      <th>Status</th>
+                      <th>Result</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sample-tbody">
+                    <!-- Export samples -->
+                    <tr data-type="export">
+                      <td><span class="fw-semibold">2026/FDI/COL/030</span></td>
+                      <td><span class="badge bg-purple-subtle text-purple" style="background:#ede9fe;color:#6d28d9;">Export</span></td>
+                      <td>Desiccated Coconut</td>
+                      <td>DC-2026-881</td>
+                      <td>Ceylon Export Foods Ltd.</td>
+                      <td><span class="badge bg-info-subtle text-info">Pre-Export</span></td>
+                      <td>ITI</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                      <td><span class="badge bg-success-subtle text-success">Compliant</span></td>
+                      <td><button class="btn btn-sm btn-outline-primary">View Report</button></td>
+                    </tr>
+                    <tr data-type="export">
+                      <td><span class="fw-semibold">2026/FDI/COL/029</span></td>
+                      <td><span class="badge" style="background:#ede9fe;color:#6d28d9;">Export</span></td>
+                      <td>Canned Tuna (in brine)</td>
+                      <td>CT-2026-112</td>
+                      <td>Pacific Seafood Exports</td>
+                      <td><span class="badge bg-danger-subtle text-danger">Enforcement</span></td>
+                      <td>MRI</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                      <td><span class="badge bg-danger-subtle text-danger">Histamine Exceeded</span></td>
+                      <td><button class="btn btn-sm btn-outline-danger">Critical Alert</button></td>
+                    </tr>
+                    <tr data-type="export">
+                      <td><span class="fw-semibold">2026/FDI/COL/026</span></td>
+                      <td><span class="badge" style="background:#ede9fe;color:#6d28d9;">Export</span></td>
+                      <td>Black Pepper (Ground)</td>
+                      <td>BP-2026-445</td>
+                      <td>Kandy Spice Exports</td>
+                      <td><span class="badge bg-info-subtle text-info">Pre-Export</span></td>
+                      <td>SGS Lanka</td>
+                      <td><span class="badge bg-warning text-dark">Testing</span></td>
+                      <td><span class="text-muted">Awaiting</span></td>
+                      <td><button class="btn btn-sm btn-outline-secondary">Track</button></td>
+                    </tr>
+
+                    <!-- Water samples -->
+                    <tr data-type="water">
+                      <td><span class="fw-semibold">2026/FDI/COL/028</span></td>
+                      <td><span class="badge bg-primary-subtle text-primary">Water</span></td>
+                      <td>AquaPure Still 500ml</td>
+                      <td>AP-2026-WB22</td>
+                      <td>Lanka AquaBev Pvt Ltd</td>
+                      <td><span class="badge bg-warning-subtle text-warning">Surveillance</span></td>
+                      <td>NWSDB Lab</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                      <td><span class="badge bg-success-subtle text-success">Compliant</span></td>
+                      <td><button class="btn btn-sm btn-outline-primary">View Report</button></td>
+                    </tr>
+                    <tr data-type="water">
+                      <td><span class="fw-semibold">2026/FDI/COL/025</span></td>
+                      <td><span class="badge bg-primary-subtle text-primary">Water</span></td>
+                      <td>CrystalDrop Sparkling 330ml</td>
+                      <td>CD-2026-SP08</td>
+                      <td>HydroSri Beverages</td>
+                      <td><span class="badge bg-info-subtle text-info">Routine</span></td>
+                      <td>MRI</td>
+                      <td><span class="badge bg-primary text-white">In Transit</span></td>
+                      <td><span class="text-muted">-</span></td>
+                      <td><button class="btn btn-sm btn-outline-secondary">Track</button></td>
+                    </tr>
+                    <tr data-type="water">
+                      <td><span class="fw-semibold">2026/FDI/COL/022</span></td>
+                      <td><span class="badge bg-primary-subtle text-primary">Water</span></td>
+                      <td>NatureFresh 1L</td>
+                      <td>NF-2026-001A</td>
+                      <td>Green Valley Waters</td>
+                      <td><span class="badge bg-info-subtle text-info">Routine</span></td>
+                      <td>ITI</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                      <td><span class="badge bg-danger-subtle text-danger">Nitrates Above Limit</span></td>
+                      <td><button class="btn btn-sm btn-outline-danger">Critical Alert</button></td>
+                    </tr>
+
+                    <!-- Salt samples -->
+                    <tr data-type="salt">
+                      <td><span class="fw-semibold">2026/FDI/COL/027</span></td>
+                      <td><span class="badge bg-warning-subtle text-warning">Salt</span></td>
+                      <td>Iodised Table Salt (1kg)</td>
+                      <td>ST-2026-IOD44</td>
+                      <td>National Salt Authority</td>
+                      <td><span class="badge bg-info-subtle text-info">Routine</span></td>
+                      <td>MRI</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                      <td><span class="badge bg-success-subtle text-success">Iodine OK (35ppm)</span></td>
+                      <td><button class="btn btn-sm btn-outline-primary">View Report</button></td>
+                    </tr>
+                    <tr data-type="salt">
+                      <td><span class="fw-semibold">2026/FDI/COL/024</span></td>
+                      <td><span class="badge bg-warning-subtle text-warning">Salt</span></td>
+                      <td>Cooking Salt Fine Grade</td>
+                      <td>SF-2026-CK09</td>
+                      <td>Hambantota Salt Co.</td>
+                      <td><span class="badge bg-danger-subtle text-danger">Enforcement</span></td>
+                      <td>ITI</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                      <td><span class="badge bg-danger-subtle text-danger">Low Iodine (8ppm)</span></td>
+                      <td><button class="btn btn-sm btn-outline-danger">Critical Alert</button></td>
+                    </tr>
+                    <tr data-type="salt">
+                      <td><span class="fw-semibold">2026/FDI/COL/021</span></td>
+                      <td><span class="badge bg-warning-subtle text-warning">Salt</span></td>
+                      <td>Sea Salt Premium</td>
+                      <td>SP-2026-SS03</td>
+                      <td>Ceylon Sea Salt Ltd.</td>
+                      <td><span class="badge bg-warning-subtle text-warning">Surveillance</span></td>
+                      <td>MRI</td>
+                      <td><span class="badge bg-warning text-dark">Testing</span></td>
+                      <td><span class="text-muted">Awaiting</span></td>
+                      <td><button class="btn btn-sm btn-outline-secondary">Track</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+
+  <script>
+    /* ── Type-filter tab logic ──────────────────────────────────────── */
+    var activeType = 'all';
+
+    function filterTable(type) {
+      if (type !== undefined) activeType = type;
+      var statusFilter = document.getElementById('status-filter').value.toLowerCase();
+      var rows = document.querySelectorAll('#sample-tbody tr');
+      rows.forEach(function(row) {
+        var rowType   = row.getAttribute('data-type');
+        var statusEl  = row.querySelector('td:nth-child(8) .badge');
+        var rowStatus = statusEl ? statusEl.textContent.toLowerCase() : '';
+
+        var typeOk   = (activeType === 'all' || rowType === activeType);
+        var statusOk = (!statusFilter || rowStatus.includes(statusFilter));
+        row.style.display = (typeOk && statusOk) ? '' : 'none';
+      });
+    }
+
+    /* ── Toggle form fields based on sample type ────────────────────── */
+    function toggleSampleTypeFields() {
+      var type = document.getElementById('sample-type-select').value;
+      document.getElementById('field-commodity').style.display = (type === 'salt' || type === 'export') ? '' : 'none';
+      document.getElementById('field-brand').style.display     = (type === 'water') ? '' : 'none';
+    }
+  </script>
+  <script src="./_role.js"></script>
+</body>
+</html>

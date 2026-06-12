@@ -128,17 +128,12 @@
                 <div class="card-body">
                   <h5 class="card-title fw-semibold mb-4">Supervisory Decision</h5>
                   <form>
-                    <div class="mb-3"><label class="form-label">Audit Determination</label>
-                      <select class="form-select">
-                        <option>Approve Assessment & Issue Grade</option>
-                        <option>Approve with Amendments</option>
-                        <option>Reject & Order Re-inspection</option>
-                        <option>Escalate for Legal Action</option>
-                      </select>
-                    </div>
                     <div class="mb-3"><label class="form-label">Reviewer Remarks</label><textarea class="form-control" rows="4" placeholder="Enter supervisory comments..."></textarea></div>
                     <div class="mb-3"><div class="form-check"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Notify FBO of Result via SMS/Email</label></div></div>
-                    <button type="submit" class="btn btn-primary w-100"><i class="ti ti-check me-1"></i>Finalize Review</button>
+                    <div class="d-grid gap-2">
+                      <button type="submit" class="btn btn-success w-100" onclick="alert('Inspection Approved successfully!'); window.location.href='./iims-premises-list.html'; return false;"><i class="ti ti-circle-check me-1"></i>Approve Inspection</button>
+                      <button type="button" class="btn btn-warning w-100" onclick="alert('Inspection returned for corrections.'); window.location.href='./iims-premises-list.html'; return false;"><i class="ti ti-arrow-back me-1"></i>Return for corrections</button>
+                    </div>
                   </form>
                 </div>
               </div>
