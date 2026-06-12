@@ -52,7 +52,7 @@
     document.head.appendChild(s);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function init() {
     injectStyles();
 
     var brand = document.querySelector('.brand-logo');
@@ -119,5 +119,11 @@
         '</a>';
       navList.appendChild(signOutLi);
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
