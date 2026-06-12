@@ -255,6 +255,28 @@
             </div>
           </label>
 
+          <label class="role-card" id="card-rd"
+                 style="--rc:#6366F1;--rc-rgb:99,102,241;"
+                 onclick="selectRole('rd')">
+            <input type="radio" name="role" value="rd">
+            <div class="role-icon"><i class="ti ti-user-check"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#6366F1;">RD</span>
+              <span class="role-name">Regional Director</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-ab"
+                 style="--rc:#EC4899;--rc-rgb:236,72,153;"
+                 onclick="selectRole('ab')">
+            <input type="radio" name="role" value="ab">
+            <div class="role-icon"><i class="ti ti-gavel"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#EC4899;">AB</span>
+              <span class="role-name">Appeal Board</span>
+            </div>
+          </label>
+
         </div>
 
         <!-- Sign In Button -->
@@ -297,7 +319,9 @@
       fbo:    './fbo/iims-dashboard.html',
       trader: './trader/index.html',
       salt:   './salt/index.html',
-      water:  './water/index.html'
+      water:  './water/index.html',
+      rd:     './rd/iims-dashboard.html',
+      ab:     './ab/iims-dashboard.html'
     };
 
     function selectRole(role) {

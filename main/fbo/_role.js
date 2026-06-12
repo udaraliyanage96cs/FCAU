@@ -16,8 +16,9 @@
       { type: 'cap', label: 'My Account' },
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',           href: './iims-dashboard.html' },
       { type: 'link', icon: 'ti ti-user-plus',        label: 'Registration Wizard', href: './iims-fbo-registration.html' },
-      { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals', href: './iims-appeals.html' },
-      { type: 'link', icon: 'ti ti-gavel',            label: 'Legal History',       href: './iims-legal-history.html' }
+      { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals',   href: './iims-appeals.html' },
+      { type: 'link', icon: 'ti ti-gavel',            label: 'Legal History',         href: './iims-legal-history.html' },
+      { type: 'link', icon: 'ti ti-clipboard-check', label: 'Inspection Results',     href: './iims-inspection-results.html' }
     ]
   };
 

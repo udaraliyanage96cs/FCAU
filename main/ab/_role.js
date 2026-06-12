@@ -1,47 +1,23 @@
 /* ============================================================
-   IIMS Role Script — FDI (Food & Drug Inspector – Border/Trade)
-   Injected into every page inside /main/fdi/
+   IIMS Role Script — AB (Appeal Board)
+   Injected into every page inside /main/ab/
    ============================================================ */
 (function () {
   'use strict';
 
   var ROLE = {
-    id: 'fdi',
-    name: 'Food & Drug Inspector',
-    subtitle: 'Colombo Port Entry',
-    badge: 'FDI',
-    color: '#8B5CF6',
-    colorLight: '#F5F3FF',
+    id: 'ab',
+    name: 'Appeal Board',
+    subtitle: 'National Food Safety Appeals',
+    badge: 'AB',
+    color: '#EC4899',
+    colorLight: '#FDF2F8',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-dashboard.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',            href: './iims-dashboard.html' },
 
-      { type: 'cap', label: 'Import Control' },
-      { type: 'link', icon: 'ti ti-package-import',      label: 'Import Pipeline',     href: './iims-import-control.html' },
-      { type: 'link', icon: 'ti ti-file-invoice',        label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
-      { type: 'link', icon: 'ti ti-shield-check',        label: 'Border Inspection',   href: './iims-import-inspection.html' },
-
-      { type: 'cap', label: 'Export Control' },
-      { type: 'link', icon: 'ti ti-package-export',      label: 'Export Control',      href: './iims-export-control.html' },
-      { type: 'link', icon: 'ti ti-certificate',         label: 'Health Certificate',  href: './iims-export-app.html' },
-      { type: 'link', icon: 'ti ti-building-factory-2',  label: 'Exporter Registry',   href: './iims-exporter-registration.html' },
-
-      { type: 'cap', label: 'Salt Manufacturing' },
-      { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
-      { type: 'link', icon: 'ti ti-file-plus',           label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
-      { type: 'link', icon: 'ti ti-refresh',             label: 'Salt Renewal',        href: './iims-salt-renewal.html' },
-      { type: 'link', icon: 'ti ti-edit',                label: 'Salt Amendment',      href: './iims-salt-amendment.html' },
-
-      { type: 'cap', label: 'Bottled Water' },
-      { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
-      { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
-      { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
-
-      { type: 'cap', label: 'Laboratory' },
-      { type: 'link', icon: 'ti ti-test-pipe',           label: 'Sample Management',   href: './iims-sample-management.html' },
-
-      { type: 'cap', label: 'System' },
-      { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }
+      { type: 'cap', label: 'Appeals' },
+      { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals',  href: './iims-appeals.html' }
     ]
   };
 
@@ -108,7 +84,7 @@
       });
     }
 
-    /* top-right avatar icon → login page */
+    /* top-right avatar icon */
     var topAvatar = document.getElementById('drop1');
     if (topAvatar) {
       topAvatar.addEventListener('click', function (e) {
