@@ -23,7 +23,7 @@
 
       { type: 'cap', label: 'Export Control' },
       { type: 'link', icon: 'ti ti-package-export',      label: 'Export Control',      href: './iims-export-control.html' },
-      { type: 'link', icon: 'ti ti-certificate',         label: 'Health Cert App',     href: './iims-export-app.html' },
+      { type: 'link', icon: 'ti ti-certificate',         label: 'Health Certificate',  href: './iims-export-app.html' },
       { type: 'link', icon: 'ti ti-building-factory-2',  label: 'Exporter Registry',   href: './iims-exporter-registration.html' },
 
       { type: 'cap', label: 'Salt Manufacturing' },
@@ -73,7 +73,7 @@
     document.head.appendChild(s);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function init() {
     injectStyles();
 
     var brand = document.querySelector('.brand-logo');
@@ -140,5 +140,11 @@
         '</a>';
       navList.appendChild(signOutLi);
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
