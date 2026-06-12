@@ -100,8 +100,10 @@
             <td><code>${b.regNo}</code></td>
             <td><span class="badge bg-warning">${b.status}</span></td>
             <td>
-              <button class="btn btn-sm btn-success me-2" onclick="approveBusiness('${b.id}')"><i class="ti ti-check me-1"></i>Approve</button>
-              <button class="btn btn-sm btn-outline-danger" onclick="rejectBusiness('${b.id}')"><i class="ti ti-x me-1"></i>Reject</button>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-sm btn-success" onclick="approveBusiness('${b.id}')"><i class="ti ti-check me-1"></i>Approve</button>
+                <button class="btn btn-sm btn-outline-danger" onclick="rejectBusiness('${b.id}')"><i class="ti ti-x me-1"></i>Reject</button>
+              </div>
             </td>
           </tr>
         `;
