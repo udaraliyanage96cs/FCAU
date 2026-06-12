@@ -68,7 +68,7 @@
     document.head.appendChild(s);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function init() {
     injectStyles();
 
     /* role banner below brand logo */
@@ -139,5 +139,11 @@
         '</a>';
       navList.appendChild(signOutLi);
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
