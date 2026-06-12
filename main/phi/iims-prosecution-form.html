@@ -77,11 +77,11 @@
           <div class="card shadow-lg">
             <div class="card-body">
               <h5 class="fw-semibold mb-4 text-primary"><i class="ti ti-gavel me-2"></i>Court Plaint Formulation</h5>
-              <form>
+              <form onsubmit="event.preventDefault(); alert('Prosecution case record saved successfully!'); window.location.href='./iims-enforcement.html';">
                 <div class="row g-4">
                   <div class="col-md-12">
                     <label class="form-label fw-bold">Legal Foundation <span class="text-danger">*</span></label>
-                    <div class="d-flex gap-4">
+                    <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-4">
                       <div class="form-check"><input class="form-check-input" type="radio" name="legalBasis" id="foodAct" checked><label class="form-check-label" for="foodAct">Food Act No. 26 of 1980</label></div>
                       <div class="form-check"><input class="form-check-input" type="radio" name="legalBasis" id="regulations"><label class="form-check-label" for="regulations">Specific Regulations</label></div>
                       <div class="form-check"><input class="form-check-input" type="radio" name="legalBasis" id="both"><label class="form-check-label" for="both">Both (Composite Charge)</label></div>
