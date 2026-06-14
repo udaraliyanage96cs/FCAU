@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Seizure & Destruction Order</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -71,48 +71,75 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Seizure & Destruction Order Formulation</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-enforcement.html">Enforcement</a></li><li class="breadcrumb-item active">New Seizure Order</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
-                  </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Seizure Details</h5>
+                  <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label">Establishment</label><select class="form-select"><option>Golden Rice Restaurant</option><option>Fresh Mart</option></select></div>
+                    <div class="col-md-6"><label class="form-label">Seizure Date</label><input type="date" class="form-control" value="2026-05-05"></div>
+                    
+                    <div class="col-12"><hr></div>
+                    
+                    <h6 class="fw-semibold mt-2">Inventory of Seized Items</h6>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead class="table-light"><tr><th>Item Description</th><th>Quantity</th><th>Unit</th><th>Reason for Seizure</th><th>Action</th></tr></thead>
+                        <tbody>
+                          <tr>
+                            <td><input type="text" class="form-control form-control-sm" value="Expired Frozen Chicken"></td>
+                            <td><input type="number" class="form-control form-control-sm" value="25"></td>
+                            <td><select class="form-select form-select-sm"><option>KG</option><option>Units</option><option>Litres</option></select></td>
+                            <td><select class="form-select form-select-sm"><option>Expired</option><option>Adulterated</option><option>Unlabeled</option></select></td>
+                            <td><button class="btn btn-sm btn-danger"><i class="ti ti-trash"></i></button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <button class="btn btn-sm btn-outline-primary"><i class="ti ti-plus me-1"></i>Add Item</button>
+                    </div>
 
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
-                  </div>
+                    <div class="col-12"><hr></div>
 
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
-                  </div>
+                    <div class="col-md-12">
+                      <label class="form-label fw-semibold">Legal Basis for Destruction</label>
+                      <textarea class="form-control" rows="3" placeholder="Cite sections of Food Act / Regulations..."></textarea>
+                    </div>
 
-                  <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
+                    <div class="col-md-6">
+                      <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="ownerConsent">
+                        <label class="form-check-label" for="ownerConsent">Owner provided voluntary consent for destruction</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">If no consent, Magistrate Order Reference</label>
+                      <input type="text" class="form-control" placeholder="e.g. MC/GALLE/2026/123">
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
 
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Order Preview</h5>
+                  <div class="border p-3 bg-light rounded fs-2" style="min-height:300px; font-family:'Courier New', Courier, monospace;">
+                    <div class="text-center fw-bold mb-3">MINISTRY OF HEALTH - SRI LANKA<br>FORM OF SEIZURE AND DESTRUCTION</div>
+                    <p>Order ID: SEZ-2026-TEMP</p>
+                    <p>Pursuant to Section 26 of the Food Act No. 26 of 1980, the following items have been seized from Golden Rice Restaurant...</p>
+                    <!-- ... -->
+                  </div>
+                  <div class="mt-4 d-grid gap-2">
+                    <button class="btn btn-primary"><i class="ti ti-printer me-1"></i>Generate PDF Order</button>
+                    <button class="btn btn-success"><i class="ti ti-send me-1"></i>Finalize & Record</button>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

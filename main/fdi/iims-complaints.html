@@ -4,7 +4,14 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Complaint Management</title>
+  <style>
+    @media (min-width: 576px) {
+      .w-sm-auto {
+        width: auto !important;
+      }
+    }
+  </style>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -61,7 +68,7 @@
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
-      </ul>      </nav>
+      </ul></nav>
       
     </div></aside>
 
@@ -71,54 +78,112 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Complaint Management</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Complaints</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
+          <div class="row">
+            <!-- New Complaint Form -->
+            <div class="col-lg-5">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-3"><i class="ti ti-message-plus me-1"></i>Register New Complaint</h5>
+                  <div class="mb-3"><label class="form-label">Complainant Name</label><input type="text" class="form-control" placeholder="Optional - can be anonymous"></div>
+                  <div class="mb-3"><label class="form-label">Contact Number</label><input type="tel" class="form-control" placeholder="+94 7X XXX XXXX"></div>
+                  <div class="mb-3"><label class="form-label">Complaint Category <span class="text-danger">*</span></label>
+                    <select class="form-select"><option>Food Poisoning / Illness</option><option>Unhygienic Premises</option><option>Expired Products</option><option>Foreign Objects in Food</option><option>Adulterated Food</option><option>Unlicensed Operation</option><option>Misleading Labels</option><option>Other</option></select>
                   </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
-                  </div>
-
-                  <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
+                  <div class="mb-3"><label class="form-label">Establishment (if known)</label><input type="text" class="form-control" placeholder="Search establishment name or address..."></div>
+                  <div class="mb-3"><label class="form-label">Location / Address <span class="text-danger">*</span></label><textarea class="form-control" rows="2" placeholder="Describe the location"></textarea></div>
+                  <div class="mb-3"><label class="form-label">Description <span class="text-danger">*</span></label><textarea class="form-control" rows="3" placeholder="Detailed description of the complaint..."></textarea></div>
+                  <div class="mb-3"><label class="form-label">Evidence (Photos)</label><input type="file" class="form-control" accept="image/*" multiple></div>
+                  <div class="mb-3"><label class="form-label">Priority</label>
+                    <div class="d-flex flex-wrap gap-2 gap-sm-3">
+                      <div class="form-check"><input class="form-check-input" type="radio" name="priority" id="pLow"><label class="form-check-label" for="pLow">Low</label></div>
+                      <div class="form-check"><input class="form-check-input" type="radio" name="priority" id="pMed" checked><label class="form-check-label" for="pMed">Medium</label></div>
+                      <div class="form-check"><input class="form-check-input" type="radio" name="priority" id="pHigh"><label class="form-check-label" for="pHigh">High</label></div>
+                      <div class="form-check"><input class="form-check-input" type="radio" name="priority" id="pCrit"><label class="form-check-label" for="pCrit">Critical</label></div>
                     </div>
                   </div>
+                  <button class="btn btn-primary w-100"><i class="ti ti-send me-1"></i>Submit Complaint</button>
+                </div>
+              </div>
+            </div>
 
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
+            <!-- Complaint Tickets -->
+            <div class="col-lg-7">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="card-title fw-semibold mb-0">Active Complaints</h5>
+                    <select class="form-select form-select-sm" style="width:auto;"><option>All Status</option><option>New</option><option>Assigned</option><option>Under Investigation</option><option>Resolved</option></select>
+                  </div>
+
+                  <!-- Ticket Items -->
+                  <div class="border rounded p-3 mb-3">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                          <span class="fw-semibold">CMP-2026-1842</span>
+                          <span class="badge bg-danger">Critical</span>
+                          <span class="badge bg-warning-subtle text-warning">Under Investigation</span>
+                        </div>
+                        <p class="mb-1 text-muted fs-2">Food Poisoning / Illness - Reported mass food poisoning at wedding catering</p>
+                        <small class="text-muted"><i class="ti ti-map-pin me-1"></i>Maharagama | <i class="ti ti-clock me-1"></i>2 hours ago | <i class="ti ti-user me-1"></i>Assigned: K. Perera</small>
+                      </div>
+                      <button class="btn btn-sm btn-outline-primary flex-shrink-0 w-100 w-sm-auto">View</button>
+                    </div>
+                  </div>
+                  <div class="border rounded p-3 mb-3">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                          <span class="fw-semibold">CMP-2026-1841</span>
+                          <span class="badge bg-warning">High</span>
+                          <span class="badge bg-info-subtle text-info">Assigned</span>
+                        </div>
+                        <p class="mb-1 text-muted fs-2">Unhygienic Premises - Cockroach infestation reported at restaurant</p>
+                        <small class="text-muted"><i class="ti ti-map-pin me-1"></i>Colombo 07 | <i class="ti ti-clock me-1"></i>1 day ago | <i class="ti ti-user me-1"></i>Assigned: M. Silva</small>
+                      </div>
+                      <button class="btn btn-sm btn-outline-primary flex-shrink-0 w-100 w-sm-auto">View</button>
+                    </div>
+                  </div>
+                  <div class="border rounded p-3 mb-3">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                          <span class="fw-semibold">CMP-2026-1840</span>
+                          <span class="badge bg-primary">Medium</span>
+                          <span class="badge bg-primary-subtle text-primary">New</span>
+                        </div>
+                        <p class="mb-1 text-muted fs-2">Expired Products - Multiple expired canned goods found at supermarket</p>
+                        <small class="text-muted"><i class="ti ti-map-pin me-1"></i>Dehiwala | <i class="ti ti-clock me-1"></i>2 days ago | <i class="ti ti-user me-1"></i>Unassigned</small>
+                      </div>
+                      <button class="btn btn-sm btn-outline-warning flex-shrink-0 w-100 w-sm-auto">Assign</button>
+                    </div>
+                  </div>
+                  <div class="border rounded p-3 mb-3">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                          <span class="fw-semibold">CMP-2026-1839</span>
+                          <span class="badge bg-secondary">Low</span>
+                          <span class="badge bg-success-subtle text-success">Resolved</span>
+                        </div>
+                        <p class="mb-1 text-muted fs-2">Misleading Labels - Incorrect nutritional information on packaging</p>
+                        <small class="text-muted"><i class="ti ti-map-pin me-1"></i>Kandy | <i class="ti ti-clock me-1"></i>5 days ago | <i class="ti ti-user me-1"></i>Resolved by: R. Jayawardena</small>
+                      </div>
+                      <button class="btn btn-sm btn-outline-success flex-shrink-0 w-100 w-sm-auto">Report</button>
+                    </div>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -126,6 +191,7 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
 </body>
 </html>

@@ -34,6 +34,11 @@
       { type: 'link', icon: 'ti ti-lock',             label: 'Seizure Order',      href: './iims-seizure-order.html' },
       { type: 'link', icon: 'ti ti-scale',            label: 'Prosecution Form',   href: './iims-prosecution-form.html' },
 
+            { type: 'cap', label: 'Bottled Water' },
+      { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
+      { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
+      { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
+
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts',             href: './iims-alerts.html' }
     ]

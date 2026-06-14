@@ -15,7 +15,11 @@
     nav: [
       { type: 'cap', label: 'My Account' },
       { type: 'link', icon: 'ti ti-file-invoice',     label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
-      { type: 'link', icon: 'ti ti-certificate',      label: 'Export Health Cert',  href: './iims-export-app.html' }
+      { type: 'link', icon: 'ti ti-certificate',      label: 'Export Health Cert',  href: './iims-export-app.html' },
+
+      { type: 'cap', label: 'Trade Operator Registration' },
+      { type: 'link', icon: 'ti ti-package-import',   label: 'Importer Registration', href: './iims-importer-registration.html' },
+      { type: 'link', icon: 'ti ti-package-export',   label: 'Exporter Registration', href: './iims-exporter-registration.html' }
     ]
   };
 

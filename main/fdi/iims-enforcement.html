@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Enforcement & Legal</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -61,7 +61,7 @@
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
-      </ul>      </nav>
+      </ul></nav>
       
     </div></aside>
 
@@ -71,54 +71,121 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Enforcement & Legal Actions</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Enforcement</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
-                  </div>
+          <!-- Tabs -->
+          <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#prosecutions">Prosecution Cases</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#seizures">Seizure & Destruction</a></li>
+          </ul>
 
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
+          <div class="tab-content">
+            <!-- Prosecutions -->
+            <div class="tab-pane fade show active" id="prosecutions">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="card-title fw-semibold mb-0">Active Prosecution Cases</h5>
+                    <button class="btn btn-sm btn-primary"><i class="ti ti-plus me-1"></i>New Case</button>
                   </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
-                  </div>
-
-                  <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
-                    </div>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
-                  </div>
+                  <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+                    <thead class="table-light"><tr><th>Case ID</th><th>Accused Entity</th><th>Legal Basis</th><th>Violated Codes</th><th>Court</th><th>Statute Deadline</th><th>Next Hearing</th><th>Verdict</th><th>Fine (LKR)</th><th>Action</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="fw-semibold">PRO-2026-0042</span></td>
+                        <td>Harbor Fish Market</td>
+                        <td><span class="badge bg-danger-subtle text-danger">Act & Regs</span></td>
+                        <td><span class="badge bg-secondary-subtle text-secondary me-1">S.26</span><span class="badge bg-secondary-subtle text-secondary">S.28</span></td>
+                        <td>Galle MC</td>
+                        <td><span class="text-danger fw-semibold">2026-07-30</span></td>
+                        <td>2026-05-20</td>
+                        <td><span class="badge bg-warning">Pending</span></td>
+                        <td>-</td>
+                        <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="fw-semibold">PRO-2026-0041</span></td>
+                        <td>Quick Bites Cafe</td>
+                        <td><span class="badge bg-warning-subtle text-warning">Regulations</span></td>
+                        <td><span class="badge bg-secondary-subtle text-secondary">S.14</span></td>
+                        <td>Colombo MC</td>
+                        <td>2026-09-15</td>
+                        <td>2026-06-10</td>
+                        <td><span class="badge bg-warning">Pending</span></td>
+                        <td>-</td>
+                        <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="fw-semibold">PRO-2026-0038</span></td>
+                        <td>Night Delight Bakery</td>
+                        <td><span class="badge bg-danger-subtle text-danger">Act</span></td>
+                        <td><span class="badge bg-secondary-subtle text-secondary">S.26</span></td>
+                        <td>Kandy MC</td>
+                        <td>2026-06-20</td>
+                        <td>-</td>
+                        <td><span class="badge bg-success">Convicted</span></td>
+                        <td class="fw-semibold">Rs. 50,000</td>
+                        <td><button class="btn btn-sm btn-outline-success">Closed</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="fw-semibold">PRO-2026-0035</span></td>
+                        <td>Sunrise Dairy Farm</td>
+                        <td><span class="badge bg-danger-subtle text-danger">Act & Regs</span></td>
+                        <td><span class="badge bg-secondary-subtle text-secondary me-1">S.20</span><span class="badge bg-secondary-subtle text-secondary">S.22</span></td>
+                        <td>Matale MC</td>
+                        <td>2026-05-18</td>
+                        <td>-</td>
+                        <td><span class="badge bg-secondary">Discharged</span></td>
+                        <td>-</td>
+                        <td><button class="btn btn-sm btn-outline-secondary">Closed</button></td>
+                      </tr>
+                    </tbody>
+                  </table></div>
                 </div>
-              </form>
+              </div>
+            </div>
+
+            <!-- Seizures -->
+            <div class="tab-pane fade" id="seizures">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="card-title fw-semibold mb-0">Seizure & Destruction Records</h5>
+                    <a href="iims-seizure-order.html" class="btn btn-sm btn-primary"><i class="ti ti-plus me-1"></i>Record Seizure</a>
+                  </div>
+                  <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+                    <thead class="table-light"><tr><th>Seizure ID</th><th>Officer</th><th>Inventory</th><th>Reason</th><th>Owner Consent</th><th>Magistrate Order</th><th>Disposal Date</th><th>Action</th></tr></thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="fw-semibold">SEZ-2026-0018</span></td>
+                        <td>K. Perera</td><td>250kg expired frozen meat</td><td>Putrid / Expired</td>
+                        <td><span class="badge bg-success">Yes</span></td><td>N/A</td><td>2026-05-03</td>
+                        <td><button class="btn btn-sm btn-outline-primary">View</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="fw-semibold">SEZ-2026-0017</span></td>
+                        <td>M. Silva</td><td>120 units unregistered supplements</td><td>Unregistered Product</td>
+                        <td><span class="badge bg-danger">No</span></td><td><span class="badge bg-primary">Obtained</span></td><td>2026-04-28</td>
+                        <td><button class="btn btn-sm btn-outline-primary">View</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="fw-semibold">SEZ-2026-0016</span></td>
+                        <td>R. Jayawardena</td><td>500kg insect-infested rice</td><td>Insect Infestation</td>
+                        <td><span class="badge bg-success">Yes</span></td><td>N/A</td><td>2026-04-22</td>
+                        <td><button class="btn btn-sm btn-outline-primary">View</button></td>
+                      </tr>
+                    </tbody>
+                  </table></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -126,6 +193,7 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
 </body>
 </html>

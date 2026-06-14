@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Export Application</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -71,45 +71,41 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Export Health Certificate Application (Phase 2)</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-export-control.html">Export Control</a></li><li class="breadcrumb-item active">New Application</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
+          <div class="card shadow-lg border-top border-4 border-primary">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
+              <h5 class="card-title fw-semibold mb-4">Exporter & Consignment Details</h5>
               <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
+                <div class="row g-4">
+                  <div class="col-md-6"><label class="form-label fw-semibold">Exporter Establishment</label><select class="form-select"><option>Ceylon Spice Co. (EXP-001)</option><option>Ocean Catch Ltd. (EXP-042)</option></select></div>
+                  <div class="col-md-6"><label class="form-label fw-semibold">Destination Country</label><select class="form-select"><option>Germany</option><option>Japan</option><option>USA</option><option>UK</option></select></div>
+
+                  <div class="col-md-4"><label class="form-label fw-semibold">Commodity</label><input type="text" class="form-control" placeholder="e.g. Frozen Tuna"></div>
+                  <div class="col-md-4"><label class="form-label fw-semibold">Quantity / Weight</label><div class="input-group"><input type="number" class="form-control"><span class="input-group-text">KG</span></div></div>
+                  <div class="col-md-4"><label class="form-label fw-semibold">Proposed Export Date</label><input type="date" class="form-control"></div>
+
+                  <div class="col-12"><hr></div>
+                  
+                  <h6 class="fw-semibold">Financial Settlement (Phase 2)</h6>
+                  <div class="col-md-6">
+                    <label class="form-label">Fee Type</label>
+                    <select class="form-select">
+                      <option>Certificate Processing Fee (Rs. 5000)</option>
+                      <option>Lab Analysis Fee (Rs. 15000)</option>
                     </select>
                   </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
+                  <div class="col-md-6">
+                    <label class="form-label">Payment Evidence</label>
                     <input type="file" class="form-control">
                   </div>
 
                   <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
+                    <div class="d-flex flex-column flex-sm-row justify-content-end gap-2">
+                      <button type="button" class="btn btn-outline-secondary" onclick="history.back()">Back</button>
+                      <button type="submit" class="btn btn-primary px-4"><i class="ti ti-device-floppy me-1"></i>Submit Application</button>
                     </div>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
                   </div>
                 </div>
               </form>

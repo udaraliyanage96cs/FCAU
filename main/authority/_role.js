@@ -1,50 +1,35 @@
 /* ============================================================
-   IIMS Role Script — FDI (Food & Drug Inspector – Border/Trade)
-   Injected into every page inside /main/fdi/
+   IIMS Role Script — Authority (Higher Level Officer)
+   Injected into every page inside /main/authority/
    ============================================================ */
 (function () {
   'use strict';
 
   var ROLE = {
-    id: 'fdi',
-    name: 'Food & Drug Inspector',
-    subtitle: 'Colombo Port Entry',
-    badge: 'FDI',
-    color: '#8B5CF6',
-    colorLight: '#F5F3FF',
+    id: 'authority',
+    name: 'Authority (HLO)',
+    subtitle: 'Ministry of Health, Sri Lanka',
+    badge: 'AUTHORITY',
+    color: '#DC2626',
+    colorLight: '#FEF2F2',
     nav: [
       { type: 'cap', label: 'Home' },
       { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-dashboard.html' },
 
       { type: 'cap', label: 'Import Control' },
       { type: 'link', icon: 'ti ti-package-import',      label: 'Import Pipeline',     href: './iims-import-control.html' },
-      { type: 'link', icon: 'ti ti-file-invoice',        label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
-      { type: 'link', icon: 'ti ti-shield-check',        label: 'Border Inspection',   href: './iims-import-inspection.html' },
 
       { type: 'cap', label: 'Export Control' },
-      { type: 'link', icon: 'ti ti-package-export',      label: 'Export Control',      href: './iims-export-control.html' },
-      { type: 'link', icon: 'ti ti-certificate',         label: 'Health Certificate',  href: './iims-export-app.html' },
+      { type: 'link', icon: 'ti ti-package-export',      label: 'Export Pipeline',     href: './iims-export-control.html' },
       { type: 'link', icon: 'ti ti-building-factory-2',  label: 'Exporter Registry',   href: './iims-exporter-registration.html' },
 
-      { type: 'cap', label: 'Salt Manufacturing' },
-      { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
-      { type: 'link', icon: 'ti ti-file-plus',           label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
-      { type: 'link', icon: 'ti ti-refresh',             label: 'Salt Renewal',        href: './iims-salt-renewal.html' },
-      { type: 'link', icon: 'ti ti-edit',                label: 'Salt Amendment',      href: './iims-salt-amendment.html' },
-
-      { type: 'cap', label: 'Bottled Water' },
+      { type: 'cap', label: 'Specialized Mfg' },
       { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
-      { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
-      { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
+      { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
 
-      { type: 'cap', label: 'Laboratory' },
-      { type: 'link', icon: 'ti ti-test-pipe',           label: 'Sample Management',   href: './iims-sample-management.html' },
-
-      { type: 'cap', label: 'Compliance' },
-      { type: 'link', icon: 'ti ti-message-report',      label: 'Complaints Ledger',   href: './iims-complaints.html' },
-      { type: 'link', icon: 'ti ti-gavel',               label: 'Enforcement',         href: './iims-enforcement.html' },
-      { type: 'link', icon: 'ti ti-lock',                label: 'Seizure Order',       href: './iims-seizure-order.html' },
-      { type: 'link', icon: 'ti ti-scale',               label: 'Prosecution Form',    href: './iims-prosecution-form.html' },
+      { type: 'cap', label: 'Compliance & Governance' },
+      { type: 'link', icon: 'ti ti-scale',               label: 'Grievance & Appeals', href: './iims-appeals.html' },
+      { type: 'link', icon: 'ti ti-history',             label: 'Risk Assessment History', href: './iims-risk-history.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }
@@ -76,7 +61,7 @@
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active{background-color:' + ROLE.color + ' !important;color:#fff !important;}',
       '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);

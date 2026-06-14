@@ -1,5 +1,5 @@
 /* ============================================================
-   IIMS Role Script — SALT (Common Salt Products Manufacturer)
+   IIMS Role Script — Salt Manufacturer
    Injected into every page inside /main/salt/
    ============================================================ */
 (function () {
@@ -8,20 +8,26 @@
   var ROLE = {
     id: 'salt',
     name: 'Salt Manufacturer',
-    subtitle: 'Registered Salt Production Entity',
-    badge: 'SALT',
-    color: '#3B82F6',
-    colorLight: '#EFF6FF',
+    subtitle: 'Processing & Refinement Facility',
+    badge: 'SALT_MFG',
+    color: '#059669',
     nav: [
-      { type: 'cap', label: 'Salt Products' },
-      { type: 'link', icon: 'ti ti-file-plus',        label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
-      { type: 'link', icon: 'ti ti-refresh',          label: 'Salt Renewal',        href: './iims-salt-renewal.html' },
-      { type: 'link', icon: 'ti ti-edit',             label: 'Salt Amendment',      href: './iims-salt-amendment.html' }
+      { type: 'cap', label: 'Home' },
+      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-salt-manufacturing.html' },
+
+      { type: 'cap', label: 'Salt Manufacturing' },
+      { type: 'link', icon: 'ti ti-file-text',          label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
+      { type: 'link', icon: 'ti ti-refresh',            label: 'Annual Renewal',      href: './iims-salt-renewal.html' },
+      { type: 'link', icon: 'ti ti-edit',               label: 'Amendment Request',   href: './iims-salt-amendment.html' },
+      { type: 'link', icon: 'ti ti-certificate',        label: 'Brand Registration',  href: './iims-salt-brands.html' },
+
+      { type: 'cap', label: 'System' },
+      { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }
     ]
   };
 
   function buildNav() {
-    var cur = window.location.pathname.split('/').pop() || 'iims-salt-registration-form.html';
+    var cur = window.location.pathname.split('/').pop() || 'iims-salt-manufacturing.html';
     return ROLE.nav.map(function (item) {
       if (item.type === 'cap') {
         return '<li class="nav-small-cap">' +
@@ -45,7 +51,7 @@
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active{background-color:' + ROLE.color + ' !important;color:#fff !important;}',
       '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);
@@ -111,8 +117,8 @@
         '          color:' + ROLE.color + ';padding:6px 12px;border:1.5px solid ' + ROLE.color + '55;' +
         '          border-radius:8px;margin-left:8px;text-decoration:none;transition:all .2s;' +
         '          cursor:pointer;" ' +
-        '   onmouseover="this.style.background=\'' + ROLE.color + '15\'" ' +
-        '   onmouseout="this.style.background=\'transparent\'">' +
+        '   onmouseover="this.style.background='' + ROLE.color + '15'" ' +
+        '   onmouseout="this.style.background='transparent'">' +
         '  <i class="ti ti-logout" style="font-size:15px;"></i>' +
         '  <span>Sign Out</span>' +
         '</a>';

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Prosecution Management</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -71,45 +71,64 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Prosecution Action Routing</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-enforcement.html">Enforcement</a></li><li class="breadcrumb-item active">Prosecution Case</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
+          <div class="card shadow-lg">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
+              <h5 class="fw-semibold mb-4 text-primary"><i class="ti ti-gavel me-2"></i>Court Plaint Formulation</h5>
+              <form onsubmit="event.preventDefault(); alert('Prosecution case record saved successfully!'); window.location.href='./iims-enforcement.html';">
+                <div class="row g-4">
                   <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
-                  </div>
-
-                  <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
+                    <label class="form-label fw-bold">Legal Foundation <span class="text-danger">*</span></label>
+                    <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-4">
+                      <div class="form-check"><input class="form-check-input" type="radio" name="legalBasis" id="foodAct" checked><label class="form-check-label" for="foodAct">Food Act No. 26 of 1980</label></div>
+                      <div class="form-check"><input class="form-check-input" type="radio" name="legalBasis" id="regulations"><label class="form-check-label" for="regulations">Specific Regulations</label></div>
+                      <div class="form-check"><input class="form-check-input" type="radio" name="legalBasis" id="both"><label class="form-check-label" for="both">Both (Composite Charge)</label></div>
                     </div>
                   </div>
 
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
+                  <div class="col-md-6"><label class="form-label">Accused Entity / Person</label><input type="text" class="form-control" value="Harbor Fish Market" readonly></div>
+                  <div class="col-md-6"><label class="form-label">Jurisdiction Court</label><select class="form-select"><option>Colombo Magistrate's Court</option><option>Gampaha Magistrate's Court</option><option>Kandy Magistrate's Court</option></select></div>
+
+                  <div class="col-md-12">
+                    <label class="form-label">Violated Sections / Codes</label>
+                    <select class="form-select select2" multiple>
+                      <option selected>S.26 - Adulterated Food</option>
+                      <option selected>S.28 - Misleading Labeling</option>
+                      <option>S.14 - Unlicensed Premises</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4"><label class="form-label">Statute Deadline</label><input type="date" class="form-control" value="2026-07-30"></div>
+                  <div class="col-md-4"><label class="form-label">First Calling Date</label><input type="date" class="form-control"></div>
+                  <div class="col-md-4"><label class="form-label">Case Number (Once Issued)</label><input type="text" class="form-control" placeholder="e.g. B/4452/2026"></div>
+
+                  <div class="col-12"><hr></div>
+
+                  <div class="col-md-12">
+                    <h6 class="fw-semibold">Final Disposition (Record when Case is Closed)</h6>
+                    <div class="row g-3 mt-1">
+                      <div class="col-md-4">
+                        <label class="form-label">Judicial Verdict</label>
+                        <select class="form-select"><option>Pending</option><option>Convicted</option><option>Discharged</option><option>Withdrawn</option></select>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">Penalty / Fine (LKR)</label>
+                        <input type="number" class="form-control">
+                      </div>
+                      <div class="col-md-4">
+                        <label class="form-label">Verdict Date</label>
+                        <input type="date" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 mt-4">
+                    <div class="d-flex flex-column flex-sm-row justify-content-end gap-2">
+                      <button type="button" class="btn btn-outline-secondary" onclick="history.back()">Cancel</button>
+                      <button type="submit" class="btn btn-primary px-4"><i class="ti ti-device-floppy me-1"></i>Save Case Record</button>
+                    </div>
                   </div>
                 </div>
               </form>

@@ -244,6 +244,61 @@
             </div>
           </label>
 
+          <label class="role-card" id="card-salt-cao"
+                 style="--rc:#0F766E;--rc-rgb:15,118,110;"
+                 onclick="selectRole('salt-cao')">
+            <input type="radio" name="role" value="salt-cao">
+            <div class="role-icon"><i class="ti ti-building"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#0F766E;">CAO</span>
+              <span class="role-name">Central Authority Off.</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-salt-dfdi"
+                 style="--rc:#B45309;--rc-rgb:180,83,9;"
+                 onclick="selectRole('salt-dfdi')">
+            <input type="radio" name="role" value="salt-dfdi">
+            <div class="role-icon"><i class="ti ti-shield"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#B45309;">DFDI</span>
+              <span class="role-name">District FD Inspector</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-salt-ad"
+                 style="--rc:#4338CA;--rc-rgb:67,56,202;"
+                 onclick="selectRole('salt-ad')">
+            <input type="radio" name="role" value="salt-ad">
+            <div class="role-icon"><i class="ti ti-user-check"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#4338CA;">AD</span>
+              <span class="role-name">Assistant Director</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-salt-dir"
+                 style="--rc:#BE185D;--rc-rgb:190,24,93;"
+                 onclick="selectRole('salt-dir')">
+            <input type="radio" name="role" value="salt-dir">
+            <div class="role-icon"><i class="ti ti-user-crown"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#BE185D;">DIR</span>
+              <span class="role-name">Salt Director</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-salt-dg"
+                 style="--rc:#7C3AED;--rc-rgb:124,58,237;"
+                 onclick="selectRole('salt-dg')">
+            <input type="radio" name="role" value="salt-dg">
+            <div class="role-icon"><i class="ti ti-crown"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#7C3AED;">DG</span>
+              <span class="role-name">Director General (Salt)</span>
+            </div>
+          </label>
+
           <label class="role-card" id="card-water"
                  style="--rc:#14B8A6;--rc-rgb:20,184,166;"
                  onclick="selectRole('water')">
@@ -277,6 +332,50 @@
             </div>
           </label>
 
+          <label class="role-card" id="card-fcau"
+                 style="--rc:#D97706;--rc-rgb:217,119,6;"
+                 onclick="selectRole('fcau')">
+            <input type="radio" name="role" value="fcau">
+            <div class="role-icon"><i class="ti ti-briefcase"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#D97706;">FCAU</span>
+              <span class="role-name">FCAU Officer</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-authority"
+                 style="--rc:#DC2626;--rc-rgb:220,38,38;"
+                 onclick="selectRole('authority')">
+            <input type="radio" name="role" value="authority">
+            <div class="role-icon"><i class="ti ti-crown"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#DC2626;">AUTH</span>
+              <span class="role-name">Authority (HLO)</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-ddg"
+                 style="--rc:#BE185D;--rc-rgb:190,24,93;"
+                 onclick="selectRole('ddg')">
+            <input type="radio" name="role" value="ddg">
+            <div class="role-icon"><i class="ti ti-user-check"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#BE185D;">DDG</span>
+              <span class="role-name">DDG (Water)</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-dg"
+                 style="--rc:#7C3AED;--rc-rgb:124,58,237;"
+                 onclick="selectRole('dg')">
+            <input type="radio" name="role" value="dg">
+            <div class="role-icon"><i class="ti ti-crown"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#7C3AED;">DG</span>
+              <span class="role-name">Director General (Water)</span>
+            </div>
+          </label>
+
         </div>
 
         <!-- Sign In Button -->
@@ -285,9 +384,16 @@
         </button>
 
         <!-- Footer -->
-        <div class="auth-footer d-flex justify-content-between align-items-center mt-3">
-          <a href="javascript:void(0)">Forgot Password?</a>
-          <a href="./iims-fbo-registration.html" class="fw-bold" style="color: #10B981; text-decoration: none;"><i class="ti ti-user-plus me-1"></i>FBO Registration</a>
+        <div class="auth-footer d-flex flex-column gap-2 mt-3">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <a href="javascript:void(0)">Forgot Password?</a>
+            <a href="./iims-fbo-registration.html" class="fw-bold" style="color: #10B981; text-decoration: none;"><i class="ti ti-user-plus me-1"></i>FBO Registration</a>
+          </div>
+          <div class="d-flex justify-content-center gap-3 mt-1" style="font-size:12px;">
+            <a href="./iims-importer-registration.html" class="fw-bold" style="color: #8B5CF6; text-decoration: none;"><i class="ti ti-package-import me-1"></i>Importer Reg</a>
+            <span style="color:rgba(255,255,255,.2);">|</span>
+            <a href="./iims-exporter-registration.html" class="fw-bold" style="color: #3B82F6; text-decoration: none;"><i class="ti ti-package-export me-1"></i>Exporter Reg</a>
+          </div>
         </div>
         <div class="public-link">
           <a href="./public/iims-public-complaint.html">
@@ -309,19 +415,27 @@
   <script>
     var selectedRole = 'phi';
 
-    // Role → index page mapping
     var rolePortals = {
-      phi:    './phi/iims-dashboard.html',
-      moh:    './moh/iims-dashboard.html',
-      admin:  './admin/iims-dashboard.html',
-      fdi:    './fdi/iims-dashboard.html',
-      lab:    './lab/iims-dashboard.html',
-      fbo:    './fbo/iims-dashboard.html',
-      trader: './trader/index.html',
-      salt:   './salt/index.html',
-      water:  './water/index.html',
-      rd:     './rd/iims-dashboard.html',
-      ab:     './ab/iims-dashboard.html'
+      phi:         './phi/iims-dashboard.html',
+      moh:         './moh/iims-dashboard.html',
+      admin:       './admin/iims-dashboard.html',
+      fdi:         './fdi/iims-dashboard.html',
+      lab:         './lab/iims-dashboard.html',
+      fbo:         './fbo/iims-dashboard.html',
+      trader:      './trader/index.html',
+      salt:        './salt/index.html',
+      'salt-cao':  './salt-cao/index.html',
+      'salt-dfdi': './salt-dfdi/index.html',
+      'salt-ad':   './salt-ad/index.html',
+      'salt-dir':  './salt-dir/index.html',
+      'salt-dg':   './salt-dg/index.html',
+      water:       './water/index.html',
+      rd:          './rd/iims-dashboard.html',
+      ab:          './ab/iims-dashboard.html',
+      fcau:        './fcau/iims-dashboard.html',
+      authority:   './authority/iims-dashboard.html',
+      ddg:         './ddg/iims-dashboard.html',
+      dg:          './dg/iims-dashboard.html'
     };
 
     function selectRole(role) {

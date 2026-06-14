@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Grievance & Appeals</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -61,7 +61,7 @@
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
-      </ul>      </nav>
+      </ul></nav>
       
     </div></aside>
 
@@ -71,54 +71,143 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Grievance and Appeals Workflow</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-premises-list.html">Premises</a></li><li class="breadcrumb-item active">Appeals</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
-                  </div>
+          <!-- KPI Cards -->
+          <div class="row mb-3">
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-primary mb-0">14</h3><span class="text-muted fs-2">Pending Appeals</span></div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-warning mb-0">5</h3><span class="text-muted fs-2">Under Review</span></div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-success mb-0">38</h3><span class="text-muted fs-2">Resolved (MTD)</span></div></div></div>
+            <div class="col-md-3"><div class="card"><div class="card-body text-center"><h3 class="fw-bold text-danger mb-0">2</h3><span class="text-muted fs-2">Escalated to RD</span></div></div></div>
+          </div>
 
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
-                  </div>
-
-                  <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
+          <div class="row">
+            <!-- Appeal Details / Action Matrix -->
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center justify-content-between gap-3 mb-4">
+                    <h5 class="card-title fw-semibold mb-0">Appeals Queue</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                      <select class="form-select form-select-sm" style="width:auto;"><option>All Status</option><option>New Submission</option><option>MOH Review</option><option>RD Escalation</option><option>Resolved</option></select>
                     </div>
                   </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light"><tr><th>Appeal ID</th><th>Establishment</th><th>Contested Action</th><th>Date Filed</th><th>Status</th><th>Actions</th></tr></thead>
+                      <tbody>
+                        <tr>
+                          <td><span class="fw-semibold">APP-2026-088</span></td>
+                          <td>Golden Rice Restaurant</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Grade D Assessment</span></td>
+                          <td>2026-05-04</td>
+                          <td><span class="badge bg-warning">MOH Review</span></td>
+                          <td><button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Review</button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">APP-2026-087</span></td>
+                          <td>Fresh Mart Supermarket</td>
+                          <td><span class="badge bg-warning-subtle text-warning">Registration Rejection</span></td>
+                          <td>2026-05-02</td>
+                          <td><span class="badge bg-primary">New</span></td>
+                          <td><button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">Review</button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">APP-2026-085</span></td>
+                          <td>City Bakery</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Closure Order</span></td>
+                          <td>2026-04-28</td>
+                          <td><span class="badge bg-danger">RD Escalation</span></td>
+                          <td><button class="btn btn-sm btn-outline-danger">Track</button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">APP-2026-082</span></td>
+                          <td>Sunrise Dairy Farm</td>
+                          <td><span class="badge bg-info-subtle text-info">Suspension</span></td>
+                          <td>2026-04-20</td>
+                          <td><span class="badge bg-success">Resolved - Upheld</span></td>
+                          <td><button class="btn btn-sm btn-outline-secondary">History</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-              </form>
+              </div>
+            </div>
+
+            <!-- Lodge Appeal Form (for internal manual entry if needed) -->
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-3">Lodge Administrative Appeal</h5>
+                  <p class="text-muted fs-2">Manually enter an appeal received via physical mail or walk-in.</p>
+                  <form>
+                    <div class="mb-3"><label class="form-label">Establishment / FBO</label><input type="text" class="form-control" placeholder="Search FBO ID..."></div>
+                    <div class="mb-3"><label class="form-label">Contested Decision Ref #</label><input type="text" class="form-control" placeholder="e.g. H800-2026-1122"></div>
+                    <div class="mb-3"><label class="form-label">Appeal Justification</label><textarea class="form-control" rows="4" placeholder="Reasons for appeal..."></textarea></div>
+                    <div class="mb-3"><label class="form-label">Supporting Evidence</label><input type="file" class="form-control" multiple></div>
+                    <button type="button" class="btn btn-primary w-100"><i class="ti ti-gavel me-1"></i>Submit Appeal</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Review Modal -->
+  <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-semibold">Appeal Review: APP-2026-088</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row mb-4">
+            <div class="col-6">
+              <h6 class="fw-semibold">Original Decision</h6>
+              <div class="p-3 bg-light rounded">
+                <p class="mb-1"><strong>Action:</strong> Grade D Assessment</p>
+                <p class="mb-1"><strong>Date:</strong> 2026-05-01</p>
+                <p class="mb-1"><strong>Inspector:</strong> K. Perera (PHI)</p>
+                <a href="#" class="btn btn-sm btn-outline-primary mt-2">View H-800 Form</a>
+              </div>
+            </div>
+            <div class="col-6">
+              <h6 class="fw-semibold">Appeal Details</h6>
+              <div class="p-3 bg-light rounded">
+                <p class="mb-1"><strong>Filed By:</strong> Golden Rice Restaurant</p>
+                <p class="mb-1"><strong>Claim:</strong> Cage 3 & 4 scores were unfairly deducted. Evidence of proper ventilation provided.</p>
+                <a href="#" class="btn btn-sm btn-outline-secondary mt-2"><i class="ti ti-paperclip me-1"></i>View Attachments (2)</a>
+              </div>
+            </div>
+          </div>
+          <h6 class="fw-semibold">MOH Review Decision</h6>
+          <div class="mb-3"><label class="form-label">Determination</label>
+            <select class="form-select">
+              <option>Pending Decision</option>
+              <option>Upheld (Original Decision Stands)</option>
+              <option>Overturned (Original Decision Reversed)</option>
+              <option>Modified (Partial Amendment)</option>
+              <option>Remanded (Re-inspection Ordered)</option>
+            </select>
+          </div>
+          <div class="mb-3"><label class="form-label">Review Remarks</label><textarea class="form-control" rows="3" placeholder="Official remarks for the record..."></textarea></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Escalate to RD</button>
+          <button type="button" class="btn btn-primary">Finalize Decision</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -126,6 +215,7 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
 </body>
 </html>

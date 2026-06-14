@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Import Control</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -61,7 +61,7 @@
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
-      </ul>      </nav>
+      </ul></nav>
       
     </div></aside>
 
@@ -71,54 +71,83 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Import Control Module</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Import Control</li></ol></nav></div></div></div>
           </div>
 
+          <!-- Pipeline Status -->
+          <div class="row mb-3">
+            <div class="col-md-2"><div class="card border-start border-4 border-primary"><div class="card-body py-2 text-center"><h4 class="fw-bold text-primary mb-0">24</h4><small class="text-muted">Pre-Import</small></div></div></div>
+            <div class="col-md-2"><div class="card border-start border-4 border-info"><div class="card-body py-2 text-center"><h4 class="fw-bold text-info mb-0">18</h4><small class="text-muted">Doc Verification</small></div></div></div>
+            <div class="col-md-2"><div class="card border-start border-4 border-warning"><div class="card-body py-2 text-center"><h4 class="fw-bold text-warning mb-0">12</h4><small class="text-muted">Border Inspection</small></div></div></div>
+            <div class="col-md-2"><div class="card border-start border-4 border-secondary"><div class="card-body py-2 text-center"><h4 class="fw-bold text-secondary mb-0">8</h4><small class="text-muted">Lab Testing</small></div></div></div>
+            <div class="col-md-2"><div class="card border-start border-4 border-success"><div class="card-body py-2 text-center"><h4 class="fw-bold text-success mb-0">342</h4><small class="text-muted">Released (MTD)</small></div></div></div>
+            <div class="col-md-2"><div class="card border-start border-4 border-danger"><div class="card-body py-2 text-center"><h4 class="fw-bold text-danger mb-0">7</h4><small class="text-muted">Rejected</small></div></div></div>
+          </div>
+
+          <!-- Import Queue -->
           <div class="card">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
-                  </div>
-
-                  <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
-                    </div>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
-                  </div>
+              <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center justify-content-between gap-3 mb-4">
+                <h5 class="card-title fw-semibold mb-0">Import Consignment Queue</h5>
+                <div class="d-flex flex-wrap gap-2 align-items-center">
+                  <select class="form-select form-select-sm" style="width:auto;"><option>All Stages</option><option>Pre-Import Entry</option><option>Document Verification</option><option>Border Inspection</option><option>Lab Testing</option><option>Label Verification</option><option>Released</option><option>Rejected</option></select>
+                  <select class="form-select form-select-sm" style="width:auto;"><option>All Ports</option><option>Colombo Port</option><option>BIA</option><option>Hambantota</option></select>
+                  <!-- New Entry CTA -->
+                  <a href="./iims-import-entry.html" class="btn btn-sm btn-primary">New Entry</a>
                 </div>
-              </form>
+              </div>
+              <div class="table-responsive"><table class="table table-hover align-middle mb-0">
+                <thead class="table-light"><tr><th>FCAU No.</th><th>Importer</th><th>Commodity</th><th>Origin</th><th>Port</th><th>Category</th><th>Stage</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="fw-semibold text-primary">I-2026-004521</span></td>
+                    <td>Global Foods (Pvt) Ltd</td><td>Canned Tuna</td><td>Thailand</td><td>Colombo</td>
+                    <td><span class="badge bg-info-subtle text-info">Canned Goods</span></td>
+                    <td><span class="badge bg-warning">Border Inspection</span></td>
+                    <td><span class="badge bg-warning-subtle text-warning">Awaiting FDI</span></td>
+                    <td><button class="btn btn-sm btn-primary">Inspect</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="fw-semibold text-primary">I-2026-004520</span></td>
+                    <td>Ceylon Spice Imports</td><td>Dried Chilli</td><td>India</td><td>Colombo</td>
+                    <td><span class="badge bg-warning-subtle text-warning">Spices</span></td>
+                    <td><span class="badge bg-secondary">Lab Testing</span></td>
+                    <td><span class="badge bg-secondary-subtle text-secondary">Aflatoxin Test</span></td>
+                    <td><button class="btn btn-sm btn-outline-secondary">Track</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="fw-semibold text-primary">I-2026-004519</span></td>
+                    <td>Premium Dairy Ltd</td><td>UHT Milk</td><td>New Zealand</td><td>Colombo</td>
+                    <td><span class="badge bg-primary-subtle text-primary">Dairy</span></td>
+                    <td><span class="badge bg-info">Doc Verification</span></td>
+                    <td><span class="badge bg-info-subtle text-info">Pending Review</span></td>
+                    <td><button class="btn btn-sm btn-outline-info">Review Docs</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="fw-semibold text-primary">I-2026-004518</span></td>
+                    <td>Island Fresh Produce</td><td>Fresh Apples</td><td>Australia</td><td>BIA</td>
+                    <td><span class="badge bg-success-subtle text-success">Fresh Produce</span></td>
+                    <td><span class="badge bg-danger">Label Reject</span></td>
+                    <td><span class="badge bg-danger-subtle text-danger">Trilingual Violation</span></td>
+                    <td><div class="dropdown"><button class="btn btn-sm btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">Action</button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#">Supp. Label (1 month)</a></li><li><a class="dropdown-item text-danger" href="#">Reject & Return</a></li></ul></div></td>
+                  </tr>
+                  <tr>
+                    <td><span class="fw-semibold text-primary">I-2026-004517</span></td>
+                    <td>Tropical Beverages</td><td>Fruit Juice</td><td>Malaysia</td><td>Colombo</td>
+                    <td><span class="badge bg-info-subtle text-info">Beverages</span></td>
+                    <td><span class="badge bg-success">Released</span></td>
+                    <td><span class="badge bg-success-subtle text-success">Cleared</span></td>
+                    <td><button class="btn btn-sm btn-outline-success">Certificate</button></td>
+                  </tr>
+                </tbody>
+              </table></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -126,6 +155,7 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
 </body>
 </html>

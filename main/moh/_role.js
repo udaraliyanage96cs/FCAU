@@ -35,6 +35,11 @@
       { type: 'cap', label: 'Enforcement' },
       { type: 'link', icon: 'ti ti-gavel',            label: 'Enforcement',          href: './iims-enforcement.html' },
 
+            { type: 'cap', label: 'Bottled Water' },
+      { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
+      { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
+      { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
+
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts',               href: './iims-alerts.html' }
     ]

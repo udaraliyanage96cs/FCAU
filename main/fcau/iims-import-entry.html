@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Pre-Import Entry</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -71,45 +71,61 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Pre-Import Consignment Entry</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-import-control.html">Import Control</a></li><li class="breadcrumb-item active">New Entry</li></ol></nav></div></div></div>
           </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
+              <h5 class="card-title fw-semibold mb-4">Consignment Registration (Phase 01)</h5>
+              <form onsubmit="event.preventDefault(); alert('Consignment submitted successfully for verification!'); window.location.href='./iims-import-control.html';">
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">Importer Profile</label>
+                    <select name="importer_profile" class="form-select"><option value="IMP-0042">Global Foods (Pvt) Ltd (IMP-0042)</option><option value="IMP-0081">Ceylon Spice Imports (IMP-0081)</option></select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">ASYCUDA / BL Number</label>
+                    <input name="bl_number" type="text" class="form-control" placeholder="Enter BL or ASYCUDA Ref #">
                   </div>
 
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold">Commodity Type</label>
+                    <select name="commodity_type" class="form-select"><option value="canned">Canned Goods</option><option value="dairy">Dairy Products</option><option value="fresh">Fresh Produce</option><option value="spices">Spices</option></select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold">Country of Origin</label>
+                    <select name="origin_country" class="form-select"><option value="thailand">Thailand</option><option value="india">India</option><option value="australia">Australia</option><option value="malaysia">Malaysia</option></select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold">Expected Port of Entry</label>
+                    <select name="port_of_entry" class="form-select"><option value="colombo">Colombo Port</option><option value="bia">BIA Terminal</option><option value="hambantota">Hambantota Port</option></select>
                   </div>
 
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
+                  <div class="col-12"><hr></div>
+
+                  <h6 class="fw-semibold">Document Uploads (Verification Node)</h6>
+                  <div class="col-md-6">
+                    <label class="form-label">Health Certificate (from Origin)</label>
+                    <input name="doc_health_certificate" type="file" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Product Label (Specimen)</label>
+                    <input name="doc_product_label" type="file" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Certificate of Analysis (COA)</label>
+                    <input name="doc_coa" type="file" class="form-control">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Commercial Invoice</label>
+                    <input name="doc_invoice" type="file" class="form-control">
                   </div>
 
                   <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
+                    <div class="d-flex flex-column flex-sm-row justify-content-end gap-2">
+                      <button type="button" class="btn btn-outline-secondary">Save as Draft</button>
+                      <button type="submit" class="btn btn-primary px-4"><i class="ti ti-send me-1"></i>Submit for Verification</button>
                     </div>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
                   </div>
                 </div>
               </form>

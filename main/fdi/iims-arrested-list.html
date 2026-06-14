@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Registration Amendment</title>
+  <title>IIMS - Arrested Register</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -71,48 +71,42 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Registration Amendment Request</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Amendment</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Arrested Person Register</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-enforcement.html">Enforcement</a></li><li class="breadcrumb-item active">Arrested Register</li></ol></nav></div></div></div>
           </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4 text-primary">Alteration Categories</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-12">
-                    <label class="form-label">Nature of Modification <span class="text-danger">*</span></label>
-                    <select class="form-select border-primary">
-                      <option selected disabled>Select Modification Type...</option>
-                      <option>Change of Physical Location (Full Site Audit Required)</option>
-                      <option>Change of Registered Address (Administrative)</option>
-                      <option>Change of Legal Ownership / Director Board</option>
-                      <option>Facility Layout Expansion (Infrastructure Inspection Required)</option>
-                      <option>Addition of New Product Line / Category</option>
-                    </select>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6>Detailed Justification</h6>
-                    <textarea class="form-control" rows="4" placeholder="Explain the reasons for amendment..."></textarea>
-                  </div>
-
-                  <div class="col-md-12 mt-4">
-                    <h6 class="fw-semibold">Supporting Documents for Amendment</h6>
-                    <p class="small text-muted mb-2">Upload only documents relevant to the specific change (e.g., Transfer Deed, New Site Plan).</p>
-                    <input type="file" class="form-control">
-                  </div>
-
-                  <div class="col-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-info-circle me-1"></i> Amendments must be filed within 14 days of the actual change. Significant alterations will trigger a fresh field inspection.
-                    </div>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Amendment Request</button>
-                  </div>
-                </div>
-              </form>
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <h5 class="fw-semibold mb-0">Custody Records</h5>
+                <button class="btn btn-primary"><i class="ti ti-plus me-1"></i>New Entry</button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                  <thead class="table-light"><tr><th>Arrest ID</th><th>Full Name</th><th>NIC</th><th>Violation Basis</th><th>Date of Arrest</th><th>Police Station</th><th>Bail Status</th><th>Actions</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="fw-bold">ARR-2026-001</span></td>
+                      <td>Jagath Kumara</td>
+                      <td>197544210V</td>
+                      <td><span class="badge bg-danger-subtle text-danger">Adulteration</span></td>
+                      <td>2026-05-02</td>
+                      <td>Borella Police</td>
+                      <td><span class="badge bg-warning">Remanded</span></td>
+                      <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="fw-bold">ARR-2026-002</span></td>
+                      <td>M. Faizal</td>
+                      <td>198211094V</td>
+                      <td><span class="badge bg-warning-subtle text-warning">Expired Goods</span></td>
+                      <td>2026-05-05</td>
+                      <td>Fort Police</td>
+                      <td><span class="badge bg-success">Police Bail</span></td>
+                      <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

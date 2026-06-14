@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <title>IIMS - Salt Brand Registration</title>
+  <style>
+    .packing-card {
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .packing-card:hover {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.03);
+    }
+    .packing-card.selected {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.08);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .packing-card input[type="checkbox"] {
+      display: none;
+    }
+  </style>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical"><div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none"><i class="ti ti-x"></i></a>
+      </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
+        <!-- Sidebar placeholder -->
+      </ul></nav>
+    </div></aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Salt Brand Registration (Multiple Brands)</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-salt-manufacturing.html">Salt Manufacturing</a></li><li class="breadcrumb-item active">Brand Registration</li></ol></nav></div></div></div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="card shadow-sm border-0">
+                <div class="card-body">
+                  <h5 class="fw-semibold mb-3">Add Commercial Salt Brand</h5>
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label fw-bold">Brand Name</label>
+                      <input type="text" id="brandName" class="form-control" placeholder="e.g. PureLanka Salt">
+                    </div>
+                    
+                    <div class="col-12">
+                      <label class="form-label fw-bold">Packing Sizes</label>
+                      <div class="row g-2">
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="50g" id="s50"><label class="form-check-label" for="s50">50g</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="100g" id="s100"><label class="form-check-label" for="s100">100g</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="250g" id="s250"><label class="form-check-label" for="s250">250g</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="500g" id="s500"><label class="form-check-label" for="s500">500g</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="1kg" id="s1k" checked><label class="form-check-label" for="s1k">1kg</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="5kg" id="s5k"><label class="form-check-label" for="s5k">5kg</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="10kg" id="s10k"><label class="form-check-label" for="s10k">10kg</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="25kg" id="s25k"><label class="form-check-label" for="s25k">25kg</label></div></div>
+                        <div class="col-4"><div class="form-check"><input class="form-check-input size-check" type="checkbox" value="50kg" id="s50k"><label class="form-check-label" for="s50k">50kg</label></div></div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label fw-bold">Iodine Level (ppm)</label>
+                      <input type="number" id="iodineLevel" class="form-control" value="15" placeholder="e.g. 15">
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label fw-bold">Packing Types</label>
+                      <div class="row g-2">
+                        <div class="col-6">
+                          <div class="packing-card" onclick="togglePackingCard(this)">
+                            <input type="checkbox" class="packing-check" value="Polythene" id="pPoly" checked>
+                            <i class="ti ti-package fs-6 text-primary d-block mb-1"></i>
+                            <span class="fs-2 fw-semibold">Polythene Bag</span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="packing-card" onclick="togglePackingCard(this)">
+                            <input type="checkbox" class="packing-check" value="Glass Bottle" id="pGlass">
+                            <i class="ti ti-glass fs-6 text-primary d-block mb-1"></i>
+                            <span class="fs-2 fw-semibold">Glass Bottle</span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="packing-card" onclick="togglePackingCard(this)">
+                            <input type="checkbox" class="packing-check" value="Cardboard Box" id="pCard">
+                            <i class="ti ti-box fs-6 text-primary d-block mb-1"></i>
+                            <span class="fs-2 fw-semibold">Cardboard Box</span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="packing-card" onclick="togglePackingCard(this)">
+                            <input type="checkbox" class="packing-check" value="Plastic Tub" id="pTub">
+                            <i class="ti ti-cylinder fs-6 text-primary d-block mb-1"></i>
+                            <span class="fs-2 fw-semibold">Plastic Tub</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 pt-2">
+                      <button type="button" class="btn btn-primary w-100" onclick="addBrandToList()">
+                        <i class="ti ti-plus me-1"></i> Add Brand to Batch
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="card shadow-sm border-0">
+                <div class="card-body">
+                  <h5 class="fw-semibold mb-3">Brands Added to Current Batch</h5>
+                  <div class="table-responsive">
+                    <table class="table table-bordered align-middle">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Brand Name</th>
+                          <th>Packing Sizes</th>
+                          <th>Iodine Level</th>
+                          <th>Packing Types</th>
+                          <th style="width: 80px;">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="brandsTableBody">
+                        <tr>
+                          <td><span class="fw-bold">Lanka Salt Premium</span></td>
+                          <td>1kg, 5kg, 10kg</td>
+                          <td><span class="badge bg-success-subtle text-success">15 ppm</span></td>
+                          <td>Polythene Bag, Cardboard Box</td>
+                          <td><button class="btn btn-sm btn-outline-danger" onclick="removeRow(this)">Remove</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="text-end mt-4">
+                    <button type="button" class="btn btn-success px-4" onclick="submitBatch()">
+                      <i class="ti ti-circle-check me-1"></i> Register All Brands
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/vendor.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../assets/js/theme/app.init.js"></script>
+  <script src="../assets/js/theme/theme.js"></script>
+  <script src="../assets/js/theme/app.min.js"></script>
+  <script src="../assets/js/theme/sidebarmenu.js"></script>
+
+  <script>
+    function togglePackingCard(card) {
+      card.classList.toggle('selected');
+      var cb = card.querySelector('input[type="checkbox"]');
+      cb.checked = card.classList.contains('selected');
+    }
+
+    // Initialize selected states
+    document.querySelectorAll('.packing-card').forEach(function(card){
+      var cb = card.querySelector('input[type="checkbox"]');
+      if(cb && cb.checked) {
+        card.classList.add('selected');
+      }
+    });
+
+    function addBrandToList() {
+      var name = document.getElementById('brandName').value.trim();
+      if(!name) {
+        alert("Please enter a Brand Name.");
+        return;
+      }
+
+      var sizes = [];
+      document.querySelectorAll('.size-check:checked').forEach(function(cb){
+        sizes.push(cb.value);
+      });
+      if(sizes.length === 0) {
+        alert("Please select at least one packing size.");
+        return;
+      }
+
+      var ppm = document.getElementById('iodineLevel').value.trim();
+      if(!ppm) {
+        alert("Please specify the Iodine level.");
+        return;
+      }
+
+      var packTypes = [];
+      document.querySelectorAll('.packing-check:checked').forEach(function(cb){
+        packTypes.push(cb.value);
+      });
+      if(packTypes.length === 0) {
+        alert("Please select at least one packing type.");
+        return;
+      }
+
+      var tbody = document.getElementById('brandsTableBody');
+      var row = document.createElement('tr');
+      row.innerHTML = 
+        '<td><span class="fw-bold">' + name + '</span></td>' +
+        '<td>' + sizes.join(', ') + '</td>' +
+        '<td><span class="badge bg-success-subtle text-success">' + ppm + ' ppm</span></td>' +
+        '<td>' + packTypes.join(', ') + '</td>' +
+        '<td><button class="btn btn-sm btn-outline-danger" onclick="removeRow(this)">Remove</button></td>';
+      tbody.appendChild(row);
+
+      // Reset form fields
+      document.getElementById('brandName').value = '';
+      document.querySelectorAll('.size-check').forEach(function(cb){
+        cb.checked = (cb.value === '1kg');
+      });
+      document.getElementById('iodineLevel').value = '15';
+      document.querySelectorAll('.packing-card').forEach(function(card){
+        var cb = card.querySelector('input[type="checkbox"]');
+        cb.checked = (cb.value === 'Polythene');
+        if(cb.checked) card.classList.add('selected');
+        else card.classList.remove('selected');
+      });
+    }
+
+    function removeRow(btn) {
+      btn.closest('tr').remove();
+    }
+
+    function submitBatch() {
+      var rows = document.querySelectorAll('#brandsTableBody tr');
+      if(rows.length === 0) {
+        alert("No brands added in the current batch.");
+        return;
+      }
+      alert("Success! Registered " + rows.length + " salt brands. Awaiting Central Authority review.");
+    }
+  </script>
+</body>
+</html>
