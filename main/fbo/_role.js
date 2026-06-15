@@ -7,7 +7,7 @@
 
   var ROLE = {
     id: 'fbo',
-    name: 'Business Owner',
+    name: 'Food Business Owner',
     subtitle: 'Registered FBO Entity',
     badge: 'FBO',
     color: '#10B981',
@@ -18,7 +18,7 @@
       { type: 'link', icon: 'ti ti-user-plus',        label: 'Registration Wizard', href: './iims-fbo-registration.html' },
       { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals',   href: './iims-appeals.html' },
       { type: 'link', icon: 'ti ti-gavel',            label: 'Legal History',         href: './iims-legal-history.html' },
-      { type: 'link', icon: 'ti ti-clipboard-check', label: 'Inspection Results',     href: './iims-inspection-results.html' }
+      { type: 'link', icon: 'ti ti-clipboard-check', label: 'Inspection Results',     href: './iims-inspections-list.html' }
     ]
   };
 

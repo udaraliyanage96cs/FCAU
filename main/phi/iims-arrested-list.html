@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,7 +53,7 @@
         <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Compliance</span></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-complaints.html"><span><i class="ti ti-message-report"></i></span><span class="hide-menu">Complaints</span></a></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-enforcement.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Enforcement</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-arrested-list.html"><span><i class="ti ti-user-cancel"></i></span><span class="hide-menu">Arrested Register</span></a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="./iims-arrested-list.html"><span><i class="ti ti-user-minus"></i></span><span class="hide-menu">Arrested Register</span></a></li>
 
         <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">System</span></li>
         <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-chart-pie"></i></span><span class="hide-menu">IIMS Dashboard</span></a></li>
@@ -70,38 +70,66 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Arrested Person Register</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-enforcement.html">Enforcement</a></li><li class="breadcrumb-item active">Arrested Register</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-sm-9 col-12">
+                  <h4 class="fw-semibold mb-8">Arrested Person Register</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-enforcement.html">Enforcement</a></li>
+                      <li class="breadcrumb-item active">Arrested Register</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-sm-3 col-12 text-sm-end mt-2 mt-sm-0">
+                  <a href="./iims-arrest-form.html" class="btn btn-primary">
+                    <i class="ti ti-plus me-1"></i>New Entry
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h5 class="fw-semibold mb-0">Custody Records</h5>
-                <button class="btn btn-primary"><i class="ti ti-plus me-1"></i>New Entry</button>
-              </div>
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
               <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
-                  <thead class="table-light"><tr><th>Arrest ID</th><th>Full Name</th><th>NIC</th><th>Violation Basis</th><th>Date of Arrest</th><th>Police Station</th><th>Bail Status</th><th>Actions</th></tr></thead>
+                  <thead class="table-light">
+                    <tr>
+                      <th class="ps-4">Arrest ID</th>
+                      <th>Full Name</th>
+                      <th>NIC</th>
+                      <th>Violation Basis</th>
+                      <th>Date of Arrest</th>
+                      <th>Police Station</th>
+                      <th>Bail Status</th>
+                      <th class="text-center">Actions</th>
+                    </tr>
+                  </thead>
                   <tbody>
                     <tr>
-                      <td><span class="fw-bold">ARR-2026-001</span></td>
+                      <td class="ps-4"><span class="fw-semibold text-dark">ARR-2026-001</span></td>
                       <td>Jagath Kumara</td>
                       <td>197544210V</td>
                       <td><span class="badge bg-danger-subtle text-danger">Adulteration</span></td>
                       <td>2026-05-02</td>
                       <td>Borella Police</td>
-                      <td><span class="badge bg-warning">Remanded</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                      <td><span class="badge bg-warning-subtle text-warning rounded-pill py-1 px-3 fs-2 fw-semibold">Remanded</span></td>
+                      <td class="text-center">
+                        <button class="btn btn-sm btn-outline-primary" onclick="alert('Record details will be available once system is live.')">Details</button>
+                      </td>
                     </tr>
                     <tr>
-                      <td><span class="fw-bold">ARR-2026-002</span></td>
+                      <td class="ps-4"><span class="fw-semibold text-dark">ARR-2026-002</span></td>
                       <td>M. Faizal</td>
                       <td>198211094V</td>
                       <td><span class="badge bg-warning-subtle text-warning">Expired Goods</span></td>
                       <td>2026-05-05</td>
                       <td>Fort Police</td>
-                      <td><span class="badge bg-success">Police Bail</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                      <td><span class="badge bg-success-subtle text-success rounded-pill py-1 px-3 fs-2 fw-semibold">Police Bail</span></td>
+                      <td class="text-center">
+                        <button class="btn btn-sm btn-outline-primary" onclick="alert('Record details will be available once system is live.')">Details</button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

@@ -124,32 +124,11 @@
             </div>
           </div>
 
-          <!-- ── Filter / Selector Bar ── -->
-          <div class="card border-0 shadow-sm mb-4">
-            <div class="card-body py-3">
-              <div class="row g-3 align-items-end">
-                <div class="col-md-4">
-                  <label class="form-label fw-semibold">Branch / Premises</label>
-                  <select class="form-select" id="branch-select" onchange="loadResult()">
-                    <option value="br-1">Golden Rice – Colombo 07</option>
-                    <option value="br-2">Golden Rice Express – Gampaha</option>
-                    <option value="br-3">Golden Rice Bakery – Kandy</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label fw-semibold">Inspection Year</label>
-                  <select class="form-select" id="year-select" onchange="loadResult()">
-                    <option value="2026">2026</option>
-                    <option value="2025">2025</option>
-                  </select>
-                </div>
-                <div class="col-md-auto">
-                  <button class="btn btn-outline-secondary" onclick="loadResult()">
-                    <i class="ti ti-refresh me-1"></i>Refresh
-                  </button>
-                </div>
-              </div>
-            </div>
+          <!-- ── Navigation ── -->
+          <div class="mb-4">
+            <a href="./iims-inspections-list.html" class="btn btn-outline-primary d-inline-flex align-items-center gap-1">
+              <i class="ti ti-arrow-left fs-4"></i> Back to Inspection List
+            </a>
           </div>
 
           <!-- ── Main Content ── -->
@@ -447,7 +426,8 @@
     }
 
     function loadResult() {
-      const branchId = document.getElementById('branch-select').value;
+      const urlParams = new URLSearchParams(window.location.search);
+      const branchId = urlParams.get('branchId') || 'br-1';
       const r = RESULTS[branchId];
       if (!r) return;
 

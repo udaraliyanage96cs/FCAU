@@ -75,65 +75,48 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-7">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title fw-semibold mb-4">Analytical Parameters Entry</h5>
-                  <form>
-                    <div class="row g-3">
-                      <div class="col-md-6"><label class="form-label">Moisture (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit < 6.00%"></div>
-                      <div class="col-md-6"><label class="form-label">NaCl Purity (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit >= 97.00%"></div>
-                      <div class="col-md-6"><label class="form-label">Iodine Concentration (mg/kg)</label><input type="number" step="0.01" class="form-control" placeholder="Limit 15.0 - 30.0"></div>
-                      <div class="col-md-6"><label class="form-label">Insoluble Matter (%)</label><input type="number" step="0.01" class="form-control" placeholder="Limit < 0.50%"></div>
-                      
-                      <div class="col-md-12"><hr></div>
-                      
-                      <div class="col-md-6">
-                        <label class="form-label">Microbiology: Salmonella</label>
-                        <select class="form-select"><option>Not Detected</option><option>Detected</option></select>
-                      </div>
-                      <div class="col-md-6">
-                        <label class="form-label">Microbiology: E. Coli</label>
-                        <select class="form-select"><option>Not Detected</option><option>Detected</option></select>
-                      </div>
-
-                      <div class="col-md-12 mt-4">
-                        <label class="form-label fw-semibold">Analytical Conclusion</label>
-                        <textarea class="form-control" rows="3" placeholder="Summary of findings..."></textarea>
-                      </div>
-
-                      <div class="col-12 mt-3">
-                        <div class="form-check"><input class="form-check-input" type="checkbox" id="compliant"><label class="form-check-label" for="compliant">The sample meets all national standards (Schedule III)</label></div>
-                      </div>
-
-                      <div class="col-12 mt-4 text-end">
-                        <button type="submit" class="btn btn-primary px-4"><i class="ti ti-check me-1"></i>Finalize & Dispatch to PHI</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-5">
+            <div class="col-lg-8 mx-auto">
               <div class="card bg-primary-subtle border-0">
                 <div class="card-body">
-                  <h5 class="fw-semibold mb-3">Upload Formal Report (PDF)</h5>
+                  <h5 class="fw-semibold mb-3 fs-5">Upload Formal Report (PDF)</h5>
                   <p class="fs-2 text-muted mb-4">The system will use OCR to attempt automatic extraction of parameters if a PDF is uploaded.</p>
-                  <div class="border-2 border-dashed border-primary rounded-4 p-5 text-center bg-white mb-4">
+                  <div class="border border-2 border-dashed border-primary rounded-4 p-5 text-center bg-white mb-4">
                     <i class="ti ti-file-upload fs-10 text-primary mb-3"></i>
-                    <h6>Drop Lab Report PDF here</h6>
-                    <small>Only signed PDF files are accepted</small>
-                    <input type="file" class="d-none" id="fileUpload">
+                    <h6 class="fw-semibold mt-2">Drop Lab Report PDF here</h6>
+                    <span class="text-muted fs-2">Only signed PDF files are accepted</span>
+                    <input type="file" class="d-none" id="fileUpload" onchange="handleFileSelected()">
                     <button class="btn btn-primary d-block mx-auto mt-3" onclick="document.getElementById('fileUpload').click()">Browse Files</button>
                   </div>
-                  <div class="alert alert-info border-0 fs-2">
-                    <i class="ti ti-info-circle me-1"></i> Manual entry is required if OCR cannot confirm certain parameters.
+                  <div id="file-details" class="alert alert-success border-0 fs-3 mb-4" style="display:none;">
+                    <i class="ti ti-circle-check me-1"></i> Selected File: <strong id="selected-filename"></strong>
+                  </div>
+                  <div class="alert alert-info border-0 fs-2 mb-4">
+                    <i class="ti ti-info-circle me-1"></i> The uploaded report will be linked to the sample record and dispatched to the PHI.
+                  </div>
+                  <div class="text-end">
+                    <button id="btn-submit-report" class="btn btn-primary px-4" onclick="submitReport()" disabled>
+                      <i class="ti ti-check me-1"></i>Finalize & Dispatch to PHI
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <script>
+            function handleFileSelected() {
+              const input = document.getElementById('fileUpload');
+              if (input.files && input.files.length > 0) {
+                document.getElementById('selected-filename').textContent = input.files[0].name;
+                document.getElementById('file-details').style.display = 'block';
+                document.getElementById('btn-submit-report').removeAttribute('disabled');
+              }
+            }
+            function submitReport() {
+              alert('Lab report uploaded and dispatched to PHI successfully!');
+              window.location.href = './iims-sample-management.html';
+            }
+          </script>
         </div>
       </div>
     </div>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View the list of official H-800 inspection audits and compliance grades for your registered food premises." />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS – Inspection Results List</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+
+    <!-- ═══ Sidebar ═══════════════════════════════════════════════════ -->
+    <aside class="left-sidebar with-vertical">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav"></ul>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- ═══ Page Wrapper ══════════════════════════════════════════════ -->
+    <div class="page-wrapper">
+      <header class="topbar">
+        <div class="with-vertical">
+          <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav">
+              <li class="nav-item nav-icon-hover-bg rounded-circle ms-n2">
+                <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a>
+              </li>
+            </ul>
+            <div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div>
+            <a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <i class="ti ti-dots fs-7"></i>
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div class="d-flex align-items-center justify-content-between">
+                <ul class="navbar-nav flex-row ms-auto align-items-center">
+                  <li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+
+          <!-- ── Page Header ── -->
+          <div class="card bg-success-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-sm-9 col-12">
+                  <h4 class="fw-semibold mb-8">Inspection Results</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Inspection Results</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-sm-3 d-none d-sm-block text-end">
+                  <i class="ti ti-clipboard-check" style="font-size:64px;opacity:.15;"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Filter Bar ── -->
+          <div class="card mb-4 border-0">
+            <div class="card-body">
+              <div class="row g-3 align-items-end">
+                <div class="col-12 col-md-4">
+                  <label class="form-label mb-1">Search Premises</label>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search by premises name or audit ID..." oninput="filterTable()">
+                </div>
+                <div class="col-6 col-md-3">
+                  <label class="form-label mb-1">Grade</label>
+                  <select id="grade-filter" class="form-select" onchange="filterTable()">
+                    <option value="">All Grades</option>
+                    <option value="A">Grade A</option>
+                    <option value="B">Grade B</option>
+                  </select>
+                </div>
+                <div class="col-6 col-md-3">
+                  <label class="form-label mb-1">Year</label>
+                  <select id="year-filter" class="form-select" onchange="filterTable()">
+                    <option value="">All Years</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-2" id="clear-btn-col" style="display: none;">
+                  <button id="clear-btn" class="btn btn-outline-secondary w-100" onclick="clearFilters()">
+                    <i class="ti ti-x me-1"></i> Clear
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Results Count ── -->
+          <div id="results-count-msg" class="mb-3" style="display: none;">
+            <p class="text-muted small mb-0">
+              <i class="ti ti-info-circle me-1"></i>
+              Showing <strong id="results-count-num">0</strong> result(s).
+            </p>
+          </div>
+
+          <!-- ── Data Table ── -->
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="inspections-table">
+                  <thead class="table-light">
+                    <tr>
+                      <th class="ps-4">Audit ID</th>
+                      <th>Premises</th>
+                      <th>Inspection Date</th>
+                      <th>Score</th>
+                      <th class="text-center">Grade</th>
+                      <th class="text-center">Status</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inspections-tbody">
+                    <!-- Dynamically populated from RESULTS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Scripts ════════════════════════════════════════════════════ -->
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  
+  <script>
+    /* ── Mock data per branch ─────────────────────────────────────── */
+    const RESULTS = {
+      'br-1': {
+        id: '#INS-2026-4412',
+        premises: 'Golden Rice Restaurant — No. 45, Ward Place, Colombo 07',
+        date: '2026-05-04',
+        totalScore: 82,
+        grade: 'A',
+        status: 'Approved'
+      },
+      'br-2': {
+        id: '#INS-2026-3881',
+        premises: 'Golden Rice Express — No. 12, Kandy Road, Gampaha',
+        date: '2026-04-20',
+        totalScore: 74,
+        grade: 'B',
+        status: 'Approved'
+      },
+      'br-3': {
+        id: '#INS-2026-4100',
+        premises: 'Golden Rice Bakery — No. 88, Temple Street, Kandy',
+        date: '2026-05-01',
+        totalScore: 91,
+        grade: 'A',
+        status: 'Approved'
+      }
+    };
+
+    function gradeColor(g) {
+      return { A: 'success', B: 'primary', C: 'warning', F: 'danger' }[g] || 'danger';
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('inspections-tbody');
+      tbody.innerHTML = '';
+
+      const searchVal = document.getElementById('search-input').value.toLowerCase();
+      const gradeFilterVal = document.getElementById('grade-filter').value;
+      const yearFilterVal = document.getElementById('year-filter').value;
+
+      let count = 0;
+      const keys = Object.keys(RESULTS);
+
+      keys.forEach(key => {
+        const r = RESULTS[key];
+        const matchesSearch = r.premises.toLowerCase().includes(searchVal) || r.id.toLowerCase().includes(searchVal);
+        const matchesGrade = !gradeFilterVal || r.grade === gradeFilterVal;
+        const matchesYear = !yearFilterVal || r.date.startsWith(yearFilterVal);
+
+        if (matchesSearch && matchesGrade && matchesYear) {
+          count++;
+          const color = gradeColor(r.grade);
+
+          tbody.innerHTML += `
+            <tr>
+              <td class="ps-4 fw-semibold text-dark">${r.id}</td>
+              <td>${r.premises}</td>
+              <td>${r.date}</td>
+              <td><strong class="text-dark">${r.totalScore}</strong> / 100</td>
+              <td class="text-center">
+                <span class="badge bg-${color}-subtle text-${color} px-3 rounded-pill py-1 fs-2 fw-semibold">Grade ${r.grade}</span>
+              </td>
+              <td class="text-center">
+                <span class="badge bg-success-subtle text-success px-3 rounded-pill py-1 fs-2 fw-semibold">${r.status}</span>
+              </td>
+              <td class="text-center">
+                <a href="./iims-inspection-results.html?branchId=${key}" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1">
+                  <i class="ti ti-eye fs-4"></i> View Results
+                </a>
+              </td>
+            </tr>
+          `;
+        }
+      });
+
+      // Handle active filter indications
+      const hasActiveFilters = searchVal || gradeFilterVal || yearFilterVal;
+      const clearCol = document.getElementById('clear-btn-col');
+      const countMsg = document.getElementById('results-count-msg');
+      const countNum = document.getElementById('results-count-num');
+
+      if (hasActiveFilters) {
+        clearCol.style.display = 'block';
+        countMsg.style.display = 'block';
+        countNum.textContent = count;
+      } else {
+        clearCol.style.display = 'none';
+        countMsg.style.display = 'none';
+      }
+
+      if (count === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="text-center text-muted py-5">
+              <div class="py-4">
+                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto mb-3" style="width:56px; height:56px;">
+                  <i class="ti ti-database fs-4 text-muted"></i>
+                </div>
+                <p class="mb-1 fs-3 fw-semibold">No inspection results found.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    function filterTable() {
+      renderTable();
+    }
+
+    function clearFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('grade-filter').value = '';
+      document.getElementById('year-filter').value = '';
+      renderTable();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderTable);
+  </script>
+  <script src="./_role.js"></script>
+</body>
+</html>

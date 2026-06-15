@@ -90,7 +90,7 @@
                 <div class="d-flex align-items-center gap-3 flex-nowrap">
                   <div class="d-flex align-items-center gap-2" id="step-indicator-1"><div class="round-36 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold">1</div><span class="fw-semibold text-primary d-none d-md-inline-block">Identity</span></div>
                   <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
-                  <div class="d-flex align-items-center gap-2" id="step-indicator-2"><div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">2</div><span class="text-muted d-none d-md-inline-block">Business Info</span></div>
+                  <div class="d-flex align-items-center gap-2" id="step-indicator-2"><div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">2</div><span class="text-muted d-none d-md-inline-block">Food Business Info</span></div>
                   <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
                   <div class="d-flex align-items-center gap-2" id="step-indicator-3"><div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">3</div><span class="text-muted d-none d-md-inline-block">Location</span></div>
                   <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
@@ -121,7 +121,7 @@
                     <input type="tel" class="form-control" placeholder="+94 7X XXX XXXX">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label">Business Registration Number</label>
+                    <label class="form-label">Food Business Registration Number</label>
                     <input type="text" class="form-control" placeholder="Optional for sole traders">
                   </div>
                   <div class="col-md-6 mb-3">
@@ -133,15 +133,19 @@
 
               <!-- Step 2: Business Info (hidden) -->
               <div id="step-2" style="display:none;">
-                <h5 class="fw-semibold mb-4">Business & Premises Information</h5>
+                <h5 class="fw-semibold mb-4">Food Business & Premises Information</h5>
                 <div class="row">
-                  <div class="col-md-6 mb-3">
+                  <div class="col-md-4 mb-3">
                     <label class="form-label">Trading Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="Business trading name">
+                    <input type="text" class="form-control" placeholder="Food Business trading name">
                   </div>
-                  <div class="col-md-6 mb-3">
+                  <div class="col-md-4 mb-3">
                     <label class="form-label">Food Category <span class="text-danger">*</span></label>
-                    <select class="form-select"><option>Select category...</option><option>A1 - Food Manufacturing</option><option>A2 - Restaurant / Hotel</option><option>A3 - Open Market / Fair</option><option>H1 - Food Warehouse</option><option>H2 - Retail / Supermarket</option><option>I1 - Food Processing</option><option>I2 - Catering Services</option><option>J1 - Street Food Vendor</option><option>K1 - Bakery / Confectionery</option><option>L1 - Meat / Fish Processing</option></select>
+                    <select class="form-select" id="food-category"><option>Select category...</option><option>A1 - Food Manufacturing</option><option>A2 - Restaurant / Hotel</option><option>A3 - Open Market / Fair</option><option>H1 - Food Warehouse</option><option>H2 - Retail / Supermarket</option><option>I1 - Food Processing</option><option>I2 - Catering Services</option><option>J1 - Street Food Vendor</option><option>K1 - Bakery / Confectionery</option><option>L1 - Meat / Fish Processing</option></select>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label">Food Sub Category <span class="text-danger">*</span></label>
+                    <select class="form-select" id="food-sub-category"><option>Select sub category...</option><option value="Bakery Products">Bakery Products</option><option value="Cooked Meals">Cooked Meals / Catering</option><option value="Dairy Products">Dairy & Milk Products</option><option value="Beverages">Beverages (Bottled / Fresh)</option><option value="Raw Meat / Fish">Raw Meat / Poultry / Fish</option><option value="Spices & Grains">Spices, Condiments & Grains</option><option value="Confectioneries">Confectioneries & Sweets</option></select>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label class="form-label">Floor Area (sq.ft.) <span class="text-danger">*</span></label>
@@ -221,7 +225,7 @@
                     <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="form-label">Business Registration Certificate</label>
+                    <label class="form-label">Food Business Registration Certificate</label>
                     <input type="file" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
                   </div>
                   <div class="col-md-6 mb-3">
@@ -259,9 +263,10 @@
                   </div>
                   <div class="col-md-6">
                     <div class="card bg-light border-0"><div class="card-body">
-                      <h6 class="fw-semibold mb-3"><i class="ti ti-building-store me-2"></i>Business Details</h6>
+                      <h6 class="fw-semibold mb-3"><i class="ti ti-building-store me-2"></i>Food Business Details</h6>
                       <p class="mb-1"><strong>Trading Name:</strong> <span class="text-muted">[From Step 2]</span></p>
                       <p class="mb-1"><strong>Category:</strong> <span class="text-muted">[From Step 2]</span></p>
+                      <p class="mb-1"><strong>Sub Category:</strong> <span class="text-muted">[From Step 2]</span></p>
                       <p class="mb-1"><strong>Location:</strong> <span class="text-muted">[From Step 3]</span></p>
                       <p class="mb-0"><strong>GN Division:</strong> <span class="text-muted">[From Step 3]</span></p>
                     </div></div>
@@ -355,8 +360,9 @@
       const nic = document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value;
       const email = document.querySelector('#step-1 input[placeholder="verified@email.com"]').value;
       const contact = document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value;
-      const tradeName = document.querySelector('#step-2 input[placeholder="Business trading name"]').value;
-      const category = document.querySelector('#step-2 select').value;
+      const tradeName = document.querySelector('#step-2 input[placeholder="Food Business trading name"]').value;
+      const category = document.getElementById('food-category').value;
+      const subCategory = document.getElementById('food-sub-category').value;
       const address = document.querySelector('#step-3 textarea').value;
       const gn = document.querySelector('#step-3 select:nth-of-type(4)') ? document.querySelector('#step-3 select:nth-of-type(4)').value : 'Colombo 07 - 508A';
 
@@ -374,9 +380,10 @@
       const review2 = document.querySelector('#step-5 .row .col-md-6:nth-of-type(2) .card-body');
       if (review2) {
         review2.innerHTML = `
-          <h6 class="fw-semibold mb-3"><i class="ti ti-building-store me-2"></i>Business Details</h6>
+          <h6 class="fw-semibold mb-3"><i class="ti ti-building-store me-2"></i>Food Business Details</h6>
           <p class="mb-1"><strong>Trading Name:</strong> <span class="text-dark">${tradeName || 'N/A'}</span></p>
           <p class="mb-1"><strong>Category:</strong> <span class="text-dark">${category || 'N/A'}</span></p>
+          <p class="mb-1"><strong>Sub Category:</strong> <span class="text-dark">${subCategory || 'N/A'}</span></p>
           <p class="mb-1"><strong>Location:</strong> <span class="text-dark">${address || 'N/A'}</span></p>
           <p class="mb-0"><strong>GN Division:</strong> <span class="text-dark">${gn || 'N/A'}</span></p>
         `;
@@ -397,8 +404,17 @@
           
           document.querySelector('#step-1 input[placeholder="Enter full name as per NIC"]').value = app.applicantName;
           document.querySelector('#step-1 input[placeholder="e.g., 200012345678"]').value = app.applicantNic;
-          document.querySelector('#step-2 input[placeholder="Business trading name"]').value = selectedBranch ? selectedBranch.name : '';
+          document.querySelector('#step-2 input[placeholder="Food Business trading name"]').value = selectedBranch ? selectedBranch.name : '';
           document.querySelector('#step-3 textarea').value = app.address;
+
+          if (app.mains && app.mains.length > 0) {
+            const catSelect = document.getElementById('food-category');
+            if (catSelect) catSelect.value = app.mains[0];
+          }
+          if (app.subs && app.subs.length > 0) {
+            const subCatSelect = document.getElementById('food-sub-category');
+            if (subCatSelect) subCatSelect.value = app.subs[0];
+          }
         }
         return;
       }
@@ -409,19 +425,31 @@
 
         if (selectedBranch) {
           // Pre-fill Step 2
-          const tradingNameInput = document.querySelector('#step-2 input[placeholder="Business trading name"]');
+          const tradingNameInput = document.querySelector('#step-2 input[placeholder="Food Business trading name"]');
           if (tradingNameInput) {
             tradingNameInput.value = selectedBranch.name;
             tradingNameInput.readOnly = true;
           }
 
           // Pre-fill Category select if matches
-          const catSelect = document.querySelector('#step-2 select');
-          if (catSelect) {
+          const catSelect = document.getElementById('food-category');
+          if (catSelect && selectedBranch.mains && selectedBranch.mains.length > 0) {
             // Find option that matches
             const mainCat = selectedBranch.mains[0]; // e.g. "A2 - Restaurant / Hotel"
             for (let option of catSelect.options) {
               if (option.text.includes(mainCat) || mainCat.includes(option.text)) {
+                option.selected = true;
+                break;
+              }
+            }
+          }
+
+          // Pre-fill Sub Category select if matches
+          const subCatSelect = document.getElementById('food-sub-category');
+          if (subCatSelect && selectedBranch.subs && selectedBranch.subs.length > 0) {
+            const subCat = selectedBranch.subs[0]; // e.g. "Cooked Meals"
+            for (let option of subCatSelect.options) {
+              if (option.value === subCat || option.text.includes(subCat) || subCat.includes(option.text)) {
                 option.selected = true;
                 break;
               }
@@ -458,6 +486,8 @@
       const email = document.querySelector('#step-1 input[placeholder="verified@email.com"]').value;
       const contact = document.querySelector('#step-1 input[placeholder="+94 7X XXX XXXX"]').value;
       const address = document.querySelector('#step-3 textarea').value;
+      const category = document.getElementById('food-category').value;
+      const subCategory = document.getElementById('food-sub-category').value;
 
       const applications = JSON.parse(localStorage.getItem('fcau_applications')) || [];
 
@@ -469,8 +499,8 @@
         applicantNic: nic,
         email: email,
         contact: contact,
-        mains: selectedBranch ? selectedBranch.mains : ["A2 - Restaurant / Hotel"],
-        subs: selectedBranch ? selectedBranch.subs : ["Cooked Meals"],
+        mains: category ? [category] : (selectedBranch ? selectedBranch.mains : ["A2 - Restaurant / Hotel"]),
+        subs: subCategory ? [subCategory] : (selectedBranch ? selectedBranch.subs : ["Cooked Meals"]),
         address: address,
         district: document.querySelector('#step-3 select:nth-of-type(2)') ? document.querySelector('#step-3 select:nth-of-type(2)').value : 'Colombo',
         mohArea: document.querySelector('#step-3 select:nth-of-type(3)') ? document.querySelector('#step-3 select:nth-of-type(3)').value : 'Colombo MC',
