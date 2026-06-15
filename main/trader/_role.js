@@ -14,7 +14,6 @@
     colorLight: '#F5F3FF',
     nav: [
       { type: 'cap', label: 'My Account' },
-      { type: 'link', icon: 'ti ti-file-invoice',     label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
       { type: 'link', icon: 'ti ti-certificate',      label: 'Export Health Cert',  href: './iims-export-app.html' },
 
       { type: 'cap', label: 'Trade Operator Registration' },
@@ -24,7 +23,7 @@
   };
 
   function buildNav() {
-    var cur = window.location.pathname.split('/').pop() || 'iims-import-entry.html';
+    var cur = window.location.pathname.split('/').pop() || 'iims-export-app.html';
     return ROLE.nav.map(function (item) {
       if (item.type === 'cap') {
         return '<li class="nav-small-cap">' +
