@@ -106,7 +106,7 @@
         navbar.appendChild(navList);
       }
     }
-    if (navList) {
+    if (navList && !navList.querySelector('a[href*="iims-login"]')) {
       var signOutLi = document.createElement('li');
       signOutLi.className = 'nav-item';
       signOutLi.innerHTML =
