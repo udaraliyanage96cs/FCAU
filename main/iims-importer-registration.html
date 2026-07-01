@@ -6,91 +6,89 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <title>IIMS - Importer Registration</title>
 </head>
-<body class="link-sidebar">
+<body class="bg-light">
   <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
-  <div id="main-wrapper">
-    <aside class="left-sidebar with-vertical"><div>
-      <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
-          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none"><i class="ti ti-x"></i></a>
+  
+  <header class="bg-white border-bottom py-3 mb-4 shadow-sm">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-2">
+        <img src="../assets/images/logos/favicon.png" alt="Logo" width="40" height="40" />
+        <div>
+          <h4 class="fw-bold mb-0 text-primary">FCAU IIMS</h4>
+          <span class="fs-2 text-muted">Ministry of Health, Sri Lanka</span>
+        </div>
       </div>
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
-        <!-- Sidebar placeholder -->
-      </ul></nav>
-    </div></aside>
+      <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
+    </div>
+  </header>
 
-    <div class="page-wrapper">
-      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
-
-      <div class="body-wrapper">
-        <div class="container-fluid">
-          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3">
-              <div class="row align-items-center">
-                <div class="col-sm-9 col-12">
-                  <h4 class="fw-semibold mb-8">Importer Entity Registration</h4>
-                  <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-login.html">Sign In</a></li>
-                      <li class="breadcrumb-item active">Importer Registry</li>
-                    </ol>
-                  </nav>
-                </div>
-                <div class="col-sm-3 col-12 text-sm-end mt-2 mt-sm-0">
-                  <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
-                </div>
-              </div>
-            </div>
+  <div class="container py-2" style="max-width: 1000px;">
+    <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+      <div class="card-body px-4 py-3">
+        <div class="row align-items-center">
+          <div class="col-sm-9 col-12">
+            <h4 class="fw-semibold mb-1 text-primary">Importer Entity Registration</h4>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a class="text-muted" href="./iims-login.html">Sign In</a></li>
+                <li class="breadcrumb-item active">Importer Registry</li>
+              </ol>
+            </nav>
           </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="fw-semibold mb-4">Importer Business & Customs Credentials</h5>
-              <form onsubmit="alert('Importer registration submitted successfully. Awaiting FCAU verification!'); return false;">
-                <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label">Importer Entity Name</label><input type="text" class="form-control" required placeholder="e.g. Lanka Food Distributors"></div>
-                  <div class="col-md-6"><label class="form-label">Business Registration Number (BRN)</label><input type="text" class="form-control" required placeholder="e.g. PV-85923"></div>
-                  <div class="col-md-4"><label class="form-label">Taxpayer Identification Number (TIN)</label><input type="text" class="form-control" required placeholder="e.g. 1094829-232"></div>
-                  <div class="col-md-4"><label class="form-label">VAT Registration Number</label><input type="text" class="form-control" placeholder="e.g. 1094829-7000"></div>
-                  <div class="col-md-4"><label class="form-label">Customs House Agent (CHA) License No</label><input type="text" class="form-control" required placeholder="e.g. CHA-504"></div>
-                  
-                  <div class="col-md-12"><hr></div>
-                  
-                  <h6 class="fw-semibold">Warehousing & Storage Facilities</h6>
-                  <div class="col-md-6"><label class="form-label">Primary Warehouse Address</label><input type="text" class="form-control" required placeholder="e.g. No. 42, Harbor Rd, Colombo 13"></div>
-                  <div class="col-md-3">
-                    <label class="form-label">Storage Capacity (Metric Tons)</label>
-                    <input type="number" class="form-control" placeholder="e.g. 500">
-                  </div>
-                  <div class="col-md-3">
-                    <label class="form-label">Cold Storage Facility Available?</label>
-                    <select class="form-select">
-                      <option>No Cold Storage</option>
-                      <option>Chilled Storage (0 - 4°C)</option>
-                      <option>Frozen Storage (-18°C or below)</option>
-                    </select>
-                  </div>
-                  
-                  <div class="col-md-6"><label class="form-label">Upload Importer License & BRN (PDF)</label><input type="file" class="form-control" required></div>
-                  <div class="col-md-6"><label class="form-label">Upload Warehouse Inspection Certificate</label><input type="file" class="form-control"></div>
-
-                  <div class="col-md-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-alert-circle me-1"></i> Registration as an importer requires a documentary check by the Food Control Administration Unit (FCAU) before shipping entries can be declared.
-                    </div>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Registration Application</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+          <div class="col-sm-3 col-12 text-sm-end mt-2 mt-sm-0">
+            <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="fw-semibold mb-4">Importer Business & Customs Credentials</h5>
+        <form onsubmit="alert('Importer registration submitted successfully. Awaiting FCAU verification!'); return false;">
+          <div class="row g-3">
+            <div class="col-md-6"><label class="form-label">Importer Entity Name</label><input type="text" class="form-control" required placeholder="e.g. Lanka Food Distributors"></div>
+            <div class="col-md-6"><label class="form-label">Business Registration Number (BRN)</label><input type="text" class="form-control" required placeholder="e.g. PV-85923"></div>
+            <div class="col-md-4"><label class="form-label">Taxpayer Identification Number (TIN)</label><input type="text" class="form-control" required placeholder="e.g. 1094829-232"></div>
+            <div class="col-md-4"><label class="form-label">VAT Registration Number</label><input type="text" class="form-control" placeholder="e.g. 1094829-7000"></div>
+            <div class="col-md-4"><label class="form-label">Customs House Agent (CHA) License No</label><input type="text" class="form-control" required placeholder="e.g. CHA-504"></div>
+            
+            <div class="col-md-12"><hr></div>
+            
+            <h6 class="fw-semibold">Warehousing & Storage Facilities</h6>
+            <div class="col-md-6"><label class="form-label">Primary Warehouse Address</label><input type="text" class="form-control" required placeholder="e.g. No. 42, Harbor Rd, Colombo 13"></div>
+            <div class="col-md-3">
+              <label class="form-label">Storage Capacity (Metric Tons)</label>
+              <input type="number" class="form-control" placeholder="e.g. 500">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Cold Storage Facility Available?</label>
+              <select class="form-select">
+                <option>No Cold Storage</option>
+                <option>Chilled Storage (0 - 4°C)</option>
+                <option>Frozen Storage (-18°C or below)</option>
+              </select>
+            </div>
+            
+            <div class="col-md-6"><label class="form-label">Upload Importer License & BRN (PDF)</label><input type="file" class="form-control" required></div>
+            <div class="col-md-6"><label class="form-label">Upload Warehouse Inspection Certificate</label><input type="file" class="form-control"></div>
+
+            <div class="col-md-12 mt-4">
+              <div class="alert alert-warning border-0 fs-2">
+                <i class="ti ti-alert-circle me-1"></i> Registration as an importer requires a documentary check by the Food Control Administration Unit (FCAU) before shipping entries can be declared.
+              </div>
+            </div>
+
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-primary px-4">Submit Registration Application</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
+  
+  <div class="dark-transparent sidebartoggler"></div>
   <script src="../assets/js/vendor.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -98,5 +96,6 @@
   <script src="../assets/js/theme/theme.js"></script>
   <script src="../assets/js/theme/app.min.js"></script>
   <script src="../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
 </html>
