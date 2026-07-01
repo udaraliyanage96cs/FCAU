@@ -18,6 +18,7 @@
 
       { type: 'cap', label: 'Supervision' },
       { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals',  href: './iims-appeals.html' },
+      { type: 'link', icon: 'ti ti-users',            label: 'Assign Appeals',       href: './iims-assign-appeal.html' },
 
       { type: 'cap', label: 'Analytics' },
       { type: 'link', icon: 'ti ti-chart-bar',        label: 'Reports & Analytics',  href: './iims-reports.html' }

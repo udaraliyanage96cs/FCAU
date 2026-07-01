@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Regional Director Assign Appeals</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <!-- Sidebar is dynamically populated by _role.js -->
+    <aside class="left-sidebar with-vertical">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none"><i class="ti ti-x"></i></a>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
+      </div>
+    </aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumb Card -->
+          <div class="card bg-indigo-subtle shadow-none position-relative overflow-hidden mb-4" style="background-color: #EEF2FF !important;">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8" style="color: #6366F1;">Assign Premises Application Appeals</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Assign Appeals</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Metrics Cards -->
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3 class="fw-bold text-danger mb-0" id="metric-pending">3</h3>
+                  <span class="text-muted fs-2">Appeals Awaiting Board Assignment</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3 class="fw-bold text-success mb-0" id="metric-assigned">2</h3>
+                  <span class="text-muted fs-2">Appeals Dispatched to Boards</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h3 class="fw-bold text-primary mb-0">3</h3>
+                  <span class="text-muted fs-2">Active Panels/Appeal Boards</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Appeals Section -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header bg-white border-bottom py-3">
+                  <h5 class="card-title fw-semibold mb-0"><i class="ti ti-clock me-2 text-danger"></i>Pending Premises Appeal Assignments</h5>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Appeal ID</th>
+                          <th>Premises Name</th>
+                          <th>Location (MOH Area)</th>
+                          <th>Rejection Grounds</th>
+                          <th>Escalated On</th>
+                          <th style="width: 280px;">Select Target Appeal Board</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="pending-table-body">
+                        <tr id="row-APP-PR-102">
+                          <td><span class="fw-semibold">APP-PR-102</span></td>
+                          <td>Sunshine Food Processors</td>
+                          <td>Kaduwela MOH Area</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Waste Disposal Non-compliance</span></td>
+                          <td>2026-06-15</td>
+                          <td>
+                            <select class="form-select select-board" data-appeal-id="APP-PR-102">
+                              <option value="" selected disabled>Choose Board Panel...</option>
+                              <option value="Appeal Board Panel 01 (Western Province - General)">Appeal Board Panel 01 (Western Province - General)</option>
+                              <option value="Appeal Board Panel 02 (Industrial & Manufacturing Panel)">Appeal Board Panel 02 (Industrial & Manufacturing Panel)</option>
+                              <option value="Appeal Board Panel 03 (High-Risk Technical Committee)">Appeal Board Panel 03 (High-Risk Technical Committee)</option>
+                            </select>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm btn-indigo text-white fw-semibold" style="background-color: #6366F1;" onclick="dispatchAppeal('APP-PR-102', 'Sunshine Food Processors', 'Kaduwela MOH Area')">
+                              <i class="ti ti-send me-1"></i> Assign &amp; Dispatch
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="row-APP-PR-103">
+                          <td><span class="fw-semibold">APP-PR-103</span></td>
+                          <td>Royal Cold Storage & Logistics</td>
+                          <td>Colombo West MOH Area</td>
+                          <td><span class="badge bg-warning-subtle text-warning">Structural Ventilation Requirements</span></td>
+                          <td>2026-06-18</td>
+                          <td>
+                            <select class="form-select select-board" data-appeal-id="APP-PR-103">
+                              <option value="" selected disabled>Choose Board Panel...</option>
+                              <option value="Appeal Board Panel 01 (Western Province - General)">Appeal Board Panel 01 (Western Province - General)</option>
+                              <option value="Appeal Board Panel 02 (Industrial & Manufacturing Panel)">Appeal Board Panel 02 (Industrial & Manufacturing Panel)</option>
+                              <option value="Appeal Board Panel 03 (High-Risk Technical Committee)">Appeal Board Panel 03 (High-Risk Technical Committee)</option>
+                            </select>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm btn-indigo text-white fw-semibold" style="background-color: #6366F1;" onclick="dispatchAppeal('APP-PR-103', 'Royal Cold Storage & Logistics', 'Colombo West MOH Area')">
+                              <i class="ti ti-send me-1"></i> Assign &amp; Dispatch
+                            </button>
+                          </td>
+                        </tr>
+                        <tr id="row-APP-PR-104">
+                          <td><span class="fw-semibold">APP-PR-104</span></td>
+                          <td>City Bakery & Milling Unit</td>
+                          <td>Maharagama MOH Area</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Pest Control Infrastructure Gap</span></td>
+                          <td>2026-06-20</td>
+                          <td>
+                            <select class="form-select select-board" data-appeal-id="APP-PR-104">
+                              <option value="" selected disabled>Choose Board Panel...</option>
+                              <option value="Appeal Board Panel 01 (Western Province - General)">Appeal Board Panel 01 (Western Province - General)</option>
+                              <option value="Appeal Board Panel 02 (Industrial & Manufacturing Panel)">Appeal Board Panel 02 (Industrial & Manufacturing Panel)</option>
+                              <option value="Appeal Board Panel 03 (High-Risk Technical Committee)">Appeal Board Panel 03 (High-Risk Technical Committee)</option>
+                            </select>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm btn-indigo text-white fw-semibold" style="background-color: #6366F1;" onclick="dispatchAppeal('APP-PR-104', 'City Bakery & Milling Unit', 'Maharagama MOH Area')">
+                              <i class="ti ti-send me-1"></i> Assign &amp; Dispatch
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Assigned Appeals Registry Section -->
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header bg-white border-bottom py-3">
+                  <h5 class="card-title fw-semibold mb-0"><i class="ti ti-checkbox me-2 text-success"></i>Dispatched Appeals Registry</h5>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Appeal ID</th>
+                          <th>Premises Name</th>
+                          <th>Location Area</th>
+                          <th>Assigned Board Panel</th>
+                          <th>Date Dispatched</th>
+                          <th>Status</th>
+                          <th>Docket Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="assigned-table-body">
+                        <tr>
+                          <td><span class="fw-semibold">APP-PR-100</span></td>
+                          <td>Valley Dairy Factory</td>
+                          <td>Gampaha MOH Area</td>
+                          <td>Appeal Board Panel 02 (Industrial &amp; Manufacturing Panel)</td>
+                          <td>2026-06-10</td>
+                          <td><span class="badge bg-success-subtle text-success">Dispatched</span></td>
+                          <td><span class="badge bg-warning">Awaiting Hearing</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="fw-semibold">APP-PR-101</span></td>
+                          <td>Kandy Spice Millers</td>
+                          <td>Kandy MOH Area</td>
+                          <td>Appeal Board Panel 01 (Western Province - General)</td>
+                          <td>2026-06-12</td>
+                          <td><span class="badge bg-success-subtle text-success">Dispatched</span></td>
+                          <td><span class="badge bg-primary">In Review</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+  <script>
+    var pendingCount = 3;
+    var assignedCount = 2;
+
+    function dispatchAppeal(appealId, premisesName, area) {
+      var rowEl = document.getElementById('row-' + appealId);
+      var selectEl = rowEl.querySelector('.select-board');
+      var selectedBoard = selectEl.value;
+
+      if (!selectedBoard) {
+        alert('Please select a target Appeal Board Panel before dispatching.');
+        return;
+      }
+
+      // Confirm assignment
+      var confirmAssign = confirm('Are you sure you want to assign Appeal ' + appealId + ' (' + premisesName + ') to "' + selectedBoard + '"?');
+      if (!confirmAssign) {
+        return;
+      }
+
+      // Remove from pending table
+      rowEl.remove();
+
+      // Add to assigned registry table
+      var today = new Date().toISOString().split('T')[0];
+      var assignedTable = document.getElementById('assigned-table-body');
+      var newRow = document.createElement('tr');
+      newRow.innerHTML = 
+        '<td><span class="fw-semibold">' + appealId + '</span></td>' +
+        '<td>' + premisesName + '</td>' +
+        '<td>' + area + '</td>' +
+        '<td>' + selectedBoard + '</td>' +
+        '<td>' + today + '</td>' +
+        '<td><span class="badge bg-success-subtle text-success">Dispatched</span></td>' +
+        '<td><span class="badge bg-warning">Awaiting Hearing</span></td>';
+      
+      assignedTable.appendChild(newRow);
+
+      // Update counters
+      pendingCount--;
+      assignedCount++;
+      document.getElementById('metric-pending').textContent = pendingCount;
+      document.getElementById('metric-assigned').textContent = assignedCount;
+
+      alert('Appeal ' + appealId + ' has been successfully assigned and dispatched to ' + selectedBoard + '.');
+
+      // If pending table is empty, show empty message
+      var pendingBody = document.getElementById('pending-table-body');
+      if (pendingBody.children.length === 0) {
+        pendingBody.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-4"><i class="ti ti-inbox fs-7 d-block mb-2"></i>No pending appeal assignments. All premises appeals have been dispatched.</td></tr>';
+      }
+    }
+  </script>
+  <script src="./_role.js"></script>
+</body>
+</html>
