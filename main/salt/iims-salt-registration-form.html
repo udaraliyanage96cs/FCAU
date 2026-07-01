@@ -77,27 +77,36 @@
           <div class="card">
             <div class="card-body">
               <h5 class="fw-semibold mb-4 text-primary">Establishment Detail (Lagoon or Factory)</h5>
-              <form>
+              <form id="saltRegForm">
                 <div class="row g-3">
+                  <div class="col-md-12">
+                    <label class="form-label" for="facilityName">Establishment / Facility Name</label>
+                    <input type="text" class="form-control" id="facilityName" placeholder="e.g. Hambantota Salt Works" required>
+                  </div>
+                  
                   <div class="col-md-6">
-                    <label class="form-label">Facility Type</label>
-                    <select class="form-select"><option>Processing Factory</option><option>Extraction Lagoon</option><option>Both (Integrated)</option></select>
+                    <label class="form-label" for="facilityType">Facility Type</label>
+                    <select class="form-select" id="facilityType">
+                      <option>Processing Factory</option>
+                      <option>Extraction Lagoon</option>
+                      <option>Both (Integrated)</option>
+                    </select>
                   </div>
                   <div class="col-md-6"><label class="form-label">Product Classification</label>
                     <div class="d-flex gap-3 pt-2">
-                      <div class="form-check"><input class="form-check-input" type="checkbox" checked><label class="form-check-label">Iodized Food Grade</label></div>
-                      <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Non-Iodized Industrial</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" id="productIodized" checked><label class="form-check-label" for="productIodized">Iodized Food Grade</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" id="productIndustrial"><label class="form-check-label" for="productIndustrial">Non-Iodized Industrial</label></div>
                     </div>
                   </div>
 
                   <div class="col-md-12"><hr></div>
 
-                  <div class="col-md-4"><label class="form-label">Administrative District</label><select class="form-select"><option>Hambantota</option><option>Puttalam</option><option>Mannar</option></select></div>
-                  <div class="col-md-4"><label class="form-label">GN Division</label><input type="text" class="form-control"></div>
-                  <div class="col-md-4"><label class="form-label">Local Authority Name</label><input type="text" class="form-control"></div>
+                  <div class="col-md-4"><label class="form-label" for="district">Administrative District</label><select class="form-select" id="district"><option>Hambantota</option><option>Puttalam</option><option>Mannar</option></select></div>
+                  <div class="col-md-4"><label class="form-label" for="gnDivision">GN Division</label><input type="text" class="form-control" id="gnDivision" required></div>
+                  <div class="col-md-4"><label class="form-label" for="localAuthority">Local Authority Name</label><input type="text" class="form-control" id="localAuthority" required></div>
 
-                  <div class="col-md-6"><label class="form-label">GPS Latitude</label><input type="text" class="form-control" placeholder="e.g. 6.1248"></div>
-                  <div class="col-md-6"><label class="form-label">GPS Longitude</label><input type="text" class="form-control" placeholder="e.g. 81.1245"></div>
+                  <div class="col-md-6"><label class="form-label" for="gpsLatitude">GPS Latitude</label><input type="text" class="form-control" id="gpsLatitude" placeholder="e.g. 6.1248" required></div>
+                  <div class="col-md-6"><label class="form-label" for="gpsLongitude">GPS Longitude</label><input type="text" class="form-control" id="gpsLongitude" placeholder="e.g. 81.1245" required></div>
 
                   <div class="col-md-12 mt-4">
                     <h6 class="fw-semibold">Document Uploads</h6>
@@ -105,11 +114,11 @@
                       <table class="table table-sm table-bordered">
                         <thead class="table-light"><tr><th>Document Category</th><th>Action</th></tr></thead>
                         <tbody>
-                          <tr><td>Business Registration (Certified Copy)</td><td><input type="file" class="form-control form-control-sm"></td></tr>
-                          <tr><td>Architectural Building Plans</td><td><input type="file" class="form-control form-control-sm"></td></tr>
-                          <tr><td>Site Plan marked on Survey Plan</td><td><input type="file" class="form-control form-control-sm"></td></tr>
-                          <tr><td>Process Flow Charts</td><td><input type="file" class="form-control form-control-sm"></td></tr>
-                          <tr><td>High-Resolution Product Labels</td><td><input type="file" class="form-control form-control-sm"></td></tr>
+                          <tr><td>Business Registration (Certified Copy)</td><td><input type="file" class="form-control form-control-sm" required></td></tr>
+                          <tr><td>Architectural Building Plans</td><td><input type="file" class="form-control form-control-sm" required></td></tr>
+                          <tr><td>Site Plan marked on Survey Plan</td><td><input type="file" class="form-control form-control-sm" required></td></tr>
+                          <tr><td>Process Flow Charts</td><td><input type="file" class="form-control form-control-sm" required></td></tr>
+                          <tr><td>High-Resolution Product Labels</td><td><input type="file" class="form-control form-control-sm" required></td></tr>
                         </tbody>
                       </table>
                     </div>
@@ -133,6 +142,140 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Seed initial applications if not already set
+      if (!localStorage.getItem('fcau_salt_applications')) {
+        var initialApps = [
+          {
+            id: "SM-2026-001",
+            facilityName: "Lanka Salt Ltd",
+            facilityType: "Both (Integrated)",
+            classification: "Iodized Food Grade",
+            district: "Hambantota",
+            gnDivision: "Bundala",
+            localAuthority: "Hambantota Municipal Council",
+            latitude: 6.1248,
+            longitude: 81.1245,
+            status: "Active",
+            submittedDate: "2026-05-10",
+            documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"],
+            paid: true,
+            inspectionFee: 24450,
+            baseFee: 10000,
+            totalFee: 34450,
+            receiptNo: "REC-2026-001"
+          },
+          {
+            id: "SM-2026-002",
+            facilityName: "Hambantota Salt Works",
+            facilityType: "Processing Factory",
+            classification: "Iodized Food Grade",
+            district: "Hambantota",
+            gnDivision: "Maha Lewaya",
+            localAuthority: "Hambantota MC",
+            latitude: 6.1248,
+            longitude: 81.1245,
+            status: "Pending Initial Validation",
+            submittedDate: "2026-07-01",
+            documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"]
+          },
+          {
+            id: "SM-2026-003",
+            facilityName: "Puttalam Salt Extraction",
+            facilityType: "Extraction Lagoon",
+            classification: "Non-Iodized Industrial",
+            district: "Puttalam",
+            gnDivision: "Puttalam East",
+            localAuthority: "Puttalam Urban Council",
+            latitude: 8.0333,
+            longitude: 79.8333,
+            status: "Pending Initial Validation",
+            submittedDate: "2026-07-01",
+            documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"]
+          }
+        ];
+        localStorage.setItem('fcau_salt_applications', JSON.stringify(initialApps));
+      }
+
+      var form = document.getElementById('saltRegForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          var facilityName = document.getElementById('facilityName').value;
+          var facilityType = document.getElementById('facilityType').value;
+          var productIodized = document.getElementById('productIodized').checked;
+          var productIndustrial = document.getElementById('productIndustrial').checked;
+          var district = document.getElementById('district').value;
+          var gnDivision = document.getElementById('gnDivision').value;
+          var localAuthority = document.getElementById('localAuthority').value;
+          var gpsLatitude = document.getElementById('gpsLatitude').value;
+          var gpsLongitude = document.getElementById('gpsLongitude').value;
+
+          var classes = [];
+          if (productIodized) classes.push("Iodized Food Grade");
+          if (productIndustrial) classes.push("Non-Iodized Industrial");
+          var classification = classes.join(" & ") || "Not Specified";
+
+          var apps = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+          
+          var regId = 'SM-2026-00' + (apps.length + 1);
+
+          var newApp = {
+            id: regId,
+            facilityName: facilityName,
+            facilityType: facilityType,
+            classification: classification,
+            district: district,
+            gnDivision: gnDivision,
+            localAuthority: localAuthority,
+            latitude: parseFloat(gpsLatitude) || 6.1248,
+            longitude: parseFloat(gpsLongitude) || 81.1245,
+            status: "Pending Initial Validation",
+            submittedDate: new Date().toISOString().split('T')[0],
+            documents: [
+              "Business Registration (Certified Copy)",
+              "Architectural Building Plans",
+              "Site Plan marked on Survey Plan",
+              "Process Flow Charts",
+              "High-Resolution Product Labels"
+            ]
+          };
+
+          apps.push(newApp);
+          localStorage.setItem('fcau_salt_applications', JSON.stringify(apps));
+
+          // Save alerts
+          var alerts = JSON.parse(localStorage.getItem('fcau_salt_alerts')) || [];
+          alerts.unshift({
+            id: 'ALT-' + Date.now(),
+            title: 'Application Submitted',
+            message: 'Your registration application for ' + facilityName + ' (' + regId + ') has been successfully queued for preliminary validation.',
+            date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+            unread: true
+          });
+          localStorage.setItem('fcau_salt_alerts', JSON.stringify(alerts));
+
+          var btn = form.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          btn.innerHTML = '<i class="ti ti-loader" style="animation:spin .7s linear infinite; display:inline-block;"></i> Submitting...';
+          
+          setTimeout(function() {
+            btn.className = "btn btn-success px-4";
+            btn.innerHTML = '<i class="ti ti-check"></i> Submitted!';
+            
+            setTimeout(function() {
+              window.location.href = './iims-salt-manufacturing.html';
+            }, 1000);
+          }, 1000);
+        });
+      }
+    });
+  </script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 <script src="./_role.js"></script>
 </body>
 </html>

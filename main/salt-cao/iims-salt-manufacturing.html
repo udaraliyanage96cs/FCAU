@@ -70,34 +70,317 @@
 
       <div class="body-wrapper">
         <div class="container-fluid">
+          
+          <!-- Header and Breadcrumb -->
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Common Salt Manufacturing</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Salt Manufacturing</li></ol></nav></div></div></div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Salt Registration & Iodization</h5>
-              <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                  <thead class="table-light"><tr><th>Reg No</th><th>Manufacturer</th><th>Type</th><th>Iodization Status</th><th>Transport Permits</th><th>Actions</th></tr></thead>
-                  <tbody>
-                    <tr>
-                      <td>SM-2026-001</td>
-                      <td>Lanka Salt Ltd</td>
-                      <td>Refined Iodized</td>
-                      <td><span class="badge bg-success-subtle text-success">Compliant (>15ppm)</span></td>
-                      <td><span class="badge bg-primary">Active</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">Salt Manufacturing - Central Authority</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-salt-manufacturing.html">Home</a></li>
+                      <li class="breadcrumb-item active">Validation Registry</li>
+                    </ol>
+                  </nav>
+                </div>
               </div>
             </div>
+          </div>
+
+          <!-- KPI Counters Row -->
+          <div class="row mb-4">
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm bg-primary text-white">
+                <div class="card-body p-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-circle bg-white bg-opacity-20 p-2 text-white"><i class="ti ti-file-text fs-6"></i></div>
+                    <div>
+                      <h6 class="text-white bg-opacity-70 mb-0 fs-2 fw-medium">Total Registered</h6>
+                      <h4 class="text-white mb-0 fw-bold" id="kpiTotal">0</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm bg-warning text-white">
+                <div class="card-body p-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-circle bg-white bg-opacity-20 p-2 text-white"><i class="ti ti-clock fs-6"></i></div>
+                    <div>
+                      <h6 class="text-white bg-opacity-70 mb-0 fs-2 fw-medium">Awaiting Validation</h6>
+                      <h4 class="text-white mb-0 fw-bold" id="kpiPendingVal">0</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm bg-info text-white">
+                <div class="card-body p-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-circle bg-white bg-opacity-20 p-2 text-white"><i class="ti ti-wallet fs-6"></i></div>
+                    <div>
+                      <h6 class="text-white bg-opacity-70 mb-0 fs-2 fw-medium">Awaiting Payment</h6>
+                      <h4 class="text-white mb-0 fw-bold" id="kpiPendingPay">0</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border-0 shadow-sm bg-success text-white">
+                <div class="card-body p-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-circle bg-white bg-opacity-20 p-2 text-white"><i class="ti ti-circle-check fs-6"></i></div>
+                    <div>
+                      <h6 class="text-white bg-opacity-70 mb-0 fs-2 fw-medium">Paid & Routed</h6>
+                      <h4 class="text-white mb-0 fw-bold" id="kpiRouted">0</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nav Tabs for Segmented Queues -->
+          <div class="card">
+            <div class="card-body p-0">
+              <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active py-3 fw-semibold text-primary" id="val-tab" data-bs-toggle="tab" data-bs-target="#val-pane" type="button" role="tab" aria-controls="val-pane" aria-selected="true">
+                    <i class="ti ti-clock me-1"></i> Awaiting Preliminary Validation <span class="badge bg-warning ms-1" id="qValCount">0</span>
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link py-3 fw-semibold text-primary" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay-pane" type="button" role="tab" aria-controls="pay-pane" aria-selected="false">
+                    <i class="ti ti-wallet me-1"></i> Pending Payment Processing <span class="badge bg-info ms-1" id="qPayCount">0</span>
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link py-3 fw-semibold text-primary" id="comp-tab" data-bs-toggle="tab" data-bs-target="#comp-pane" type="button" role="tab" aria-controls="comp-pane" aria-selected="false">
+                    <i class="ti ti-checkbox me-1"></i> Completed & Routed <span class="badge bg-success ms-1" id="qCompCount">0</span>
+                  </button>
+                </li>
+              </ul>
+
+              <div class="tab-content p-4" id="myTabContent">
+                
+                <!-- Tab 1: Validation Queue -->
+                <div class="tab-pane fade show active" id="val-pane" role="tabpanel" aria-labelledby="val-tab" tabindex="0">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>App ID</th>
+                          <th>Facility Name</th>
+                          <th>Location / Coordinates</th>
+                          <th>Classification</th>
+                          <th>Submission Date</th>
+                          <th>Status</th>
+                          <th class="text-end">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody id="queueValTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Tab 2: Payment Queue -->
+                <div class="tab-pane fade" id="pay-pane" role="tabpanel" aria-labelledby="pay-tab" tabindex="0">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>App ID</th>
+                          <th>Facility Name</th>
+                          <th>Distance</th>
+                          <th>Base Fee</th>
+                          <th>Inspection Fee</th>
+                          <th>Total Amount</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="queuePayTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Tab 3: Completed Queue -->
+                <div class="tab-pane fade" id="comp-pane" role="tabpanel" aria-labelledby="comp-tab" tabindex="0">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>App ID</th>
+                          <th>Facility Name</th>
+                          <th>District</th>
+                          <th>Total Paid</th>
+                          <th>Receipt No</th>
+                          <th>Status</th>
+                          <th class="text-end">Routing Info</th>
+                        </tr>
+                      </thead>
+                      <tbody id="queueCompTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CAO Review & Validation Modal ── -->
+  <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-teal text-white">
+          <h5 class="modal-title text-white" id="reviewModalLabel"><i class="ti ti-shield-check me-2"></i>Preliminary Application Review</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <!-- Left Info Panel -->
+            <div class="col-md-6 border-end">
+              <h6 class="fw-semibold text-teal mb-3">Establishment Dossier</h6>
+              <div class="mb-3 fs-2">
+                <label class="text-muted mb-0">APPLICATION REF</label>
+                <div class="fw-bold" id="revAppId">-</div>
+              </div>
+              <div class="mb-3 fs-2">
+                <label class="text-muted mb-0">ESTABLISHMENT NAME</label>
+                <div class="fw-bold" id="revFacilityName">-</div>
+              </div>
+              <div class="mb-3 fs-2">
+                <label class="text-muted mb-0">FACILITY TYPE & CLASSIFICATION</label>
+                <div class="fw-bold" id="revFacilityType">-</div>
+              </div>
+              <div class="mb-3 fs-2">
+                <label class="text-muted mb-0">GPS COORDINATES</label>
+                <div class="fw-bold text-dark" id="revCoords">-</div>
+              </div>
+              <div class="mb-3 fs-2">
+                <label class="text-muted mb-0">GN DIVISION & LOCAL AUTHORITY</label>
+                <div class="fw-bold text-dark" id="revGov">-</div>
+              </div>
+            </div>
+
+            <!-- Right Checklist Panel -->
+            <div class="col-md-6">
+              <h6 class="fw-semibold text-teal mb-3">Document Compliance Checklist</h6>
+              <p class="fs-1 text-muted mb-2">Check each statutory document for legibility, digital signatures, and regulatory conformity:</p>
+              
+              <div class="form-check mb-2">
+                <input class="form-check-input check-verify" type="checkbox" id="chkBR" onchange="checkVerifyForm()">
+                <label class="form-check-label fs-2" for="chkBR">Business Registration certified copy matches details <a href="javascript:void(0)" class="text-teal text-decoration-underline" onclick="simDocOpen('Business Registration')"><i class="ti ti-eye"></i> View</a></label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input check-verify" type="checkbox" id="chkABP" onchange="checkVerifyForm()">
+                <label class="form-check-label fs-2" for="chkABP">Architectural Building Plans conform to layout guidelines <a href="javascript:void(0)" class="text-teal text-decoration-underline" onclick="simDocOpen('Building Plan')"><i class="ti ti-eye"></i> View</a></label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input check-verify" type="checkbox" id="chkSP" onchange="checkVerifyForm()">
+                <label class="form-check-label fs-2" for="chkSP">Site Survey Plan accurately charts the boundaries <a href="javascript:void(0)" class="text-teal text-decoration-underline" onclick="simDocOpen('Survey Plan')"><i class="ti ti-eye"></i> View</a></label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input check-verify" type="checkbox" id="chkPFC" onchange="checkVerifyForm()">
+                <label class="form-check-label fs-2" for="chkPFC">Process Flow Charts depict iodization cycle accurately <a href="javascript:void(0)" class="text-teal text-decoration-underline" onclick="simDocOpen('Process Chart')"><i class="ti ti-eye"></i> View</a></label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input check-verify" type="checkbox" id="chkPL" onchange="checkVerifyForm()">
+                <label class="form-check-label fs-2" for="chkPL">High-Res Product Labels fulfill statutory requirements <a href="javascript:void(0)" class="text-teal text-decoration-underline" onclick="simDocOpen('Product Labels')"><i class="ti ti-eye"></i> View</a></label>
+              </div>
+            </div>
+
+            <!-- Dynamic Fee Calculation Section (Shows when checkVerifyForm is complete) -->
+            <div class="col-12 mt-2 d-none" id="feeCalculatorSection">
+              <div class="p-3 border-teal-subtle bg-teal-subtle-10 rounded">
+                <h6 class="fw-semibold text-teal mb-2"><i class="ti ti-calculator"></i> Algorithm-Based Dynamic Fee Calculation</h6>
+                <div class="row g-2 fs-2 text-dark">
+                  <div class="col-sm-6">
+                    <span class="text-muted">Central Office Location:</span> <strong class="text-dark">Colombo Office (6.9271, 79.8612)</strong>
+                  </div>
+                  <div class="col-sm-6">
+                    <span class="text-muted">Calculated Highway Distance:</span> <strong class="text-primary" id="calcDistance">- km</strong>
+                  </div>
+                  <div class="col-sm-4 mt-2">
+                    <div class="bg-white p-2 border rounded text-center">
+                      <span class="text-muted d-block fs-1">BASE REGISTRATION</span>
+                      <strong class="text-dark fs-3">10,000.00 LKR</strong>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 mt-2">
+                    <div class="bg-white p-2 border rounded text-center">
+                      <span class="text-muted d-block fs-1">DISTANCE TRAVEL FEE</span>
+                      <strong class="text-dark fs-3" id="calcTravelFee">- LKR</strong>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 mt-2">
+                    <div class="bg-primary-subtle text-primary p-2 border border-primary-subtle rounded text-center">
+                      <span class="d-block fs-1 fw-bold">TOTAL STATUTORY DUE</span>
+                      <strong class="fs-3 fw-extrabold" id="calcTotalDue">- LKR</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Return for Correction Comment Box -->
+            <div class="col-12 d-none" id="correctionSection">
+              <div class="p-3 bg-danger-subtle rounded border border-danger-subtle">
+                <h6 class="fw-semibold text-danger mb-2"><i class="ti ti-alert-triangle"></i> Return Correction Requirements</h6>
+                <textarea class="form-control" id="correctionNotes" rows="3" placeholder="Enter clear instructions detailing what parts of the submission need amendment or refiling..."></textarea>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <div>
+            <button type="button" class="btn btn-outline-danger" id="btnToggleCorrection">
+              <i class="ti ti-arrow-back-up me-1"></i> Return for Correction
+            </button>
+          </div>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="btnApprovePayment" disabled>
+              <i class="ti ti-circle-check me-1"></i> Approve for Payment
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Simulated File Viewer Modal -->
+  <div class="modal fade" id="docViewerModal" tabindex="-1" aria-hidden="true" style="z-index: 1060;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-2 border-primary">
+        <div class="modal-header bg-dark text-white py-2">
+          <h6 class="modal-title text-white" id="docViewerTitle">Document Viewer</h6>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="bg-light d-flex align-items-center justify-content-center flex-column" style="height: 350px;">
+            <i class="ti ti-file-certificate text-muted mb-2" style="font-size: 80px;"></i>
+            <h5 class="fw-semibold text-dark mb-1" id="docViewerType">Business Registration certified copy</h5>
+            <p class="text-muted fs-2 mb-3">Dynamic Mock Preview (200 DPI)</p>
+            <div class="badge bg-success-subtle text-success border border-success-subtle"><i class="ti ti-shield-check"></i> Signatures Validated</div>
+          </div>
+        </div>
+        <div class="modal-footer py-1">
+          <button type="button" class="btn btn-dark btn-sm" data-bs-dismiss="modal">Close Preview</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -107,6 +390,336 @@
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Colombo coordinates constant
+      var COLOMBO_LAT = 6.9271;
+      var COLOMBO_LON = 79.8612;
+
+      // Seed data if empty
+      var initialApps = [
+        {
+          id: "SM-2026-001",
+          facilityName: "Lanka Salt Ltd",
+          facilityType: "Both (Integrated)",
+          classification: "Iodized Food Grade",
+          district: "Hambantota",
+          gnDivision: "Bundala",
+          localAuthority: "Hambantota Municipal Council",
+          latitude: 6.1248,
+          longitude: 81.1245,
+          status: "Active",
+          submittedDate: "2026-05-10",
+          documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"],
+          paid: true,
+          inspectionFee: 24450,
+          baseFee: 10000,
+          totalFee: 34450,
+          receiptNo: "REC-2026-001",
+          paymentDate: "2026-05-12 11:34 AM"
+        },
+        {
+          id: "SM-2026-002",
+          facilityName: "Hambantota Salt Works",
+          facilityType: "Processing Factory",
+          classification: "Iodized Food Grade",
+          district: "Hambantota",
+          gnDivision: "Maha Lewaya",
+          localAuthority: "Hambantota MC",
+          latitude: 6.1248,
+          longitude: 81.1245,
+          status: "Pending Initial Validation",
+          submittedDate: "2026-07-01",
+          documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"]
+        },
+        {
+          id: "SM-2026-003",
+          facilityName: "Puttalam Salt Extraction",
+          facilityType: "Extraction Lagoon",
+          classification: "Non-Iodized Industrial",
+          district: "Puttalam",
+          gnDivision: "Puttalam East",
+          localAuthority: "Puttalam Urban Council",
+          latitude: 8.0333,
+          longitude: 79.8333,
+          status: "Pending Initial Validation",
+          submittedDate: "2026-07-01",
+          documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"]
+        }
+      ];
+
+      if (!localStorage.getItem('fcau_salt_applications')) {
+        localStorage.setItem('fcau_salt_applications', JSON.stringify(initialApps));
+      }
+
+      // Haversine calculation function
+      function calculateDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371; // km
+        var dLat = (lat2 - lat1) * Math.PI / 180;
+        var dLon = (lon2 - lon1) * Math.PI / 180;
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+      }
+
+      // Render Dashboard
+      function renderDashboard() {
+        var appsData = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+
+        // Count KPIs
+        var total = appsData.length;
+        var pendingVal = appsData.filter(function(a) { return a.status === 'Pending Initial Validation'; }).length;
+        var pendingPay = appsData.filter(function(a) { return a.status === 'Pending Payment'; }).length;
+        var routed = appsData.filter(function(a) { return a.status === 'Pending District Inspection' || a.status === 'Active'; }).length;
+
+        document.getElementById('kpiTotal').textContent = total;
+        document.getElementById('kpiPendingVal').textContent = pendingVal;
+        document.getElementById('kpiPendingPay').textContent = pendingPay;
+        document.getElementById('kpiRouted').textContent = routed;
+
+        document.getElementById('qValCount').textContent = pendingVal;
+        document.getElementById('qPayCount').textContent = pendingPay;
+        document.getElementById('qCompCount').textContent = routed;
+
+        // Render Tables
+        var bodyVal = document.getElementById('queueValTableBody');
+        var bodyPay = document.getElementById('queuePayTableBody');
+        var bodyComp = document.getElementById('queueCompTableBody');
+
+        bodyVal.innerHTML = '';
+        bodyPay.innerHTML = '';
+        bodyComp.innerHTML = '';
+
+        if (pendingVal === 0) {
+          bodyVal.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-4">No applications awaiting validation.</td></tr>';
+        }
+        if (pendingPay === 0) {
+          bodyPay.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-4">No pending payments.</td></tr>';
+        }
+        if (routed === 0) {
+          bodyComp.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-4">No completed applications.</td></tr>';
+        }
+
+        appsData.forEach(function(app) {
+          if (app.status === 'Pending Initial Validation') {
+            bodyVal.innerHTML += '<tr>' +
+              '<td class="fw-bold">' + app.id + '</td>' +
+              '<td><span class="fw-semibold">' + app.facilityName + '</span></td>' +
+              '<td><div>' + app.district + ' District</div><div class="fs-1 text-muted">[' + app.latitude.toFixed(4) + ', ' + app.longitude.toFixed(4) + ']</div></td>' +
+              '<td>' + app.classification + '</td>' +
+              '<td>' + app.submittedDate + '</td>' +
+              '<td><span class="badge bg-warning-subtle text-warning">Pending Review</span></td>' +
+              '<td class="text-end">' +
+                '<button class="btn btn-xs btn-outline-teal" onclick="openReviewModal(\'' + app.id + '\')"><i class="ti ti-shield-check"></i> Validate Application</button>' +
+              '</td>' +
+              '</tr>';
+          } else if (app.status === 'Pending Payment') {
+            var insFeeText = app.inspectionFee ? app.inspectionFee.toLocaleString() + ' LKR' : 'Not Calculated';
+            var totalFeeText = app.totalFee ? app.totalFee.toLocaleString() + ' LKR' : 'Not Calculated';
+            var distText = app.distanceKm ? app.distanceKm.toFixed(1) + ' km' : 'N/A';
+
+            bodyPay.innerHTML += '<tr>' +
+              '<td class="fw-bold">' + app.id + '</td>' +
+              '<td><span class="fw-semibold">' + app.facilityName + '</span></td>' +
+              '<td>' + distText + '</td>' +
+              '<td>10,000.00 LKR</td>' +
+              '<td>' + insFeeText + '</td>' +
+              '<td class="fw-bold text-primary">' + totalFeeText + '</td>' +
+              '<td><span class="badge bg-info-subtle text-info border border-info-subtle">Awaiting IPG Invoice Payment</span></td>' +
+              '</tr>';
+          } else if (app.status === 'Pending District Inspection' || app.status === 'Active') {
+            var recNo = app.receiptNo || 'REC-2026-9014';
+            var payLabel = app.totalFee ? app.totalFee.toLocaleString() + ' LKR' : '10,000.00 LKR';
+            var statusBadge = app.status === 'Active' 
+              ? '<span class="badge bg-success-subtle text-success">Active License</span>'
+              : '<span class="badge bg-secondary-subtle text-secondary">Awaiting Field Inspection</span>';
+            var districtEscText = 'District Inspector Hambantota (DFDI Perera)';
+            if (app.district === 'Puttalam') districtEscText = 'District Inspector Puttalam (DFDI Fernando)';
+            else if (app.district === 'Mannar') districtEscText = 'District Inspector Mannar (DFDI Jesuthasan)';
+
+            bodyComp.innerHTML += '<tr>' +
+              '<td class="fw-bold">' + app.id + '</td>' +
+              '<td><div class="fw-semibold">' + app.facilityName + '</div><div class="fs-1 text-muted">' + app.facilityType + '</div></td>' +
+              '<td>' + app.district + '</td>' +
+              '<td class="fw-semibold">' + payLabel + '</td>' +
+              '<td>' + recNo + '</td>' +
+              '<td>' + statusBadge + '</td>' +
+              '<td class="text-end text-muted fs-2"><i class="ti ti-mail-forward"></i> Routed to: <span class="fw-semibold text-dark">' + districtEscText + '</span></td>' +
+              '</tr>';
+          }
+        });
+      }
+
+      renderDashboard();
+
+      // Open review modal and compute dynamic fees
+      window.openReviewModal = function(id) {
+        var appsData = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+        var app = appsData.find(function(a) { return a.id === id; });
+        if (!app) return;
+
+        // Reset check boxes and controls
+        document.querySelectorAll('.check-verify').forEach(function(c) { c.checked = false; });
+        document.getElementById('feeCalculatorSection').classList.add('d-none');
+        document.getElementById('correctionSection').classList.add('d-none');
+        document.getElementById('btnApprovePayment').disabled = true;
+        document.getElementById('correctionNotes').value = '';
+
+        // Assign details
+        document.getElementById('revAppId').textContent = app.id;
+        document.getElementById('revFacilityName').textContent = app.facilityName;
+        document.getElementById('revFacilityType').textContent = app.facilityType + ' (' + app.classification + ')';
+        document.getElementById('revCoords').textContent = 'Latitude: ' + app.latitude.toFixed(5) + ', Longitude: ' + app.longitude.toFixed(5);
+        document.getElementById('revGov').textContent = 'GN Division: ' + app.gnDivision + ' | Local Authority: ' + app.localAuthority;
+
+        // Distance and fee computation
+        var distance = calculateDistance(COLOMBO_LAT, COLOMBO_LON, app.latitude, app.longitude);
+        var baseReg = 10000;
+        var inspectionTravel = Math.round(distance * 150); // 150 LKR per km
+        var totalCost = baseReg + inspectionTravel;
+
+        document.getElementById('calcDistance').textContent = distance.toFixed(2) + ' km';
+        document.getElementById('calcTravelFee').textContent = inspectionTravel.toLocaleString('en-US', {minimumFractionDigits: 2}) + ' LKR';
+        document.getElementById('calcTotalDue').textContent = totalCost.toLocaleString('en-US', {minimumFractionDigits: 2}) + ' LKR';
+
+        // Bind Action buttons
+        document.getElementById('btnApprovePayment').onclick = function() {
+          app.status = 'Pending Payment';
+          app.distanceKm = distance;
+          app.baseFee = baseReg;
+          app.inspectionFee = inspectionTravel;
+          app.totalFee = totalCost;
+
+          // Save state back
+          var updatedApps = appsData.map(function(item) {
+            return item.id === app.id ? app : item;
+          });
+          localStorage.setItem('fcau_salt_applications', JSON.stringify(updatedApps));
+
+          // Save dynamic alerts for Salt Manufacturer
+          var alerts = JSON.parse(localStorage.getItem('fcau_salt_alerts')) || [];
+          alerts.unshift({
+            id: 'ALT-' + Date.now(),
+            title: 'Invoice Issued: Registration Approved for Payment',
+            message: 'Your registration application for ' + app.facilityName + ' (' + app.id + ') has passed preliminary validation. Total due is ' + totalCost.toLocaleString() + ' LKR.',
+            date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+            unread: true
+          });
+          localStorage.setItem('fcau_salt_alerts', JSON.stringify(alerts));
+
+          // Close modal
+          var reviewModalEl = document.getElementById('reviewModal');
+          var bootstrapModal = bootstrap.Modal.getInstance(reviewModalEl);
+          bootstrapModal.hide();
+
+          // Re-render
+          renderDashboard();
+        };
+
+        // Bind correction action toggle
+        document.getElementById('btnToggleCorrection').onclick = function() {
+          var corrSect = document.getElementById('correctionSection');
+          var feeSect = document.getElementById('feeCalculatorSection');
+          var btnApprove = document.getElementById('btnApprovePayment');
+
+          if (corrSect.classList.contains('d-none')) {
+            corrSect.classList.remove('d-none');
+            feeSect.classList.add('d-none');
+            btnApprove.disabled = true;
+            document.querySelectorAll('.check-verify').forEach(function(c) { c.checked = false; });
+            
+            // Transform button to action submit
+            var btnToggle = document.getElementById('btnToggleCorrection');
+            btnToggle.innerHTML = '<i class="ti ti-check me-1"></i> Submit Return for Correction';
+            btnToggle.className = 'btn btn-danger';
+          } else {
+            // Process correction submit
+            var notesText = document.getElementById('correctionNotes').value.trim();
+            if (!notesText) {
+              alert('Please enter correction notes first.');
+              return;
+            }
+            app.status = 'Returned for Correction';
+            app.correctionNotes = notesText;
+
+            var updatedApps = appsData.map(function(item) {
+              return item.id === app.id ? app : item;
+            });
+            localStorage.setItem('fcau_salt_applications', JSON.stringify(updatedApps));
+
+            var alerts = JSON.parse(localStorage.getItem('fcau_salt_alerts')) || [];
+            alerts.unshift({
+              id: 'ALT-' + Date.now(),
+              title: 'Application Returned for Correction',
+              message: 'Your registration form for ' + app.facilityName + ' (' + app.id + ') requires corrections: "' + notesText + '"',
+              date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+              unread: true
+            });
+            localStorage.setItem('fcau_salt_alerts', JSON.stringify(alerts));
+
+            var reviewModalEl = document.getElementById('reviewModal');
+            var bootstrapModal = bootstrap.Modal.getInstance(reviewModalEl);
+            bootstrapModal.hide();
+
+            renderDashboard();
+
+            // Restore toggle button
+            var btnToggle = document.getElementById('btnToggleCorrection');
+            btnToggle.innerHTML = '<i class="ti ti-arrow-back-up me-1"></i> Return for Correction';
+            btnToggle.className = 'btn btn-outline-danger';
+          }
+        };
+
+        var reviewModalEl = document.getElementById('reviewModal');
+        var myModal = new bootstrap.Modal(reviewModalEl);
+        myModal.show();
+      };
+
+      // Control dynamic review checks
+      window.checkVerifyForm = function() {
+        var allChecked = true;
+        document.querySelectorAll('.check-verify').forEach(function(c) {
+          if (!c.checked) allChecked = false;
+        });
+
+        var feeSect = document.getElementById('feeCalculatorSection');
+        var corrSect = document.getElementById('correctionSection');
+        var btnApprove = document.getElementById('btnApprovePayment');
+        var btnToggle = document.getElementById('btnToggleCorrection');
+
+        if (allChecked) {
+          feeSect.classList.remove('d-none');
+          corrSect.classList.add('d-none');
+          btnApprove.disabled = false;
+          
+          btnToggle.innerHTML = '<i class="ti ti-arrow-back-up me-1"></i> Return for Correction';
+          btnToggle.className = 'btn btn-outline-danger';
+        } else {
+          feeSect.classList.add('d-none');
+          btnApprove.disabled = true;
+        }
+      };
+
+      // Document simulation preview modal
+      window.simDocOpen = function(docType) {
+        document.getElementById('docViewerTitle').textContent = 'Document Viewer: ' + docType;
+        document.getElementById('docViewerType').textContent = docType + ' statutory certified file';
+        var myModal = new bootstrap.Modal(document.getElementById('docViewerModal'));
+        myModal.show();
+      };
+    });
+  </script>
+  <style>
+    .bg-teal-subtle-10 { background-color: rgba(20, 184, 166, 0.08) !important; }
+    .border-teal-subtle { border: 1px solid rgba(20, 184, 166, 0.2) !important; }
+    .text-teal { color: #14B8A6 !important; }
+    .bg-teal { background-color: #14B8A6 !important; }
+    .btn-outline-teal { border-color: #14B8A6 !important; color: #14B8A6 !important; }
+    .btn-outline-teal:hover { background-color: #14B8A6 !important; color: white !important; }
+    .btn-xs { padding: 4px 8px; font-size: 11px; }
+  </style>
 <script src="./_role.js"></script>
 </body>
 </html>

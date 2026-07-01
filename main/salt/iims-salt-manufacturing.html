@@ -70,34 +70,161 @@
 
       <div class="body-wrapper">
         <div class="container-fluid">
+          
+          <!-- Header and Breadcrumb -->
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Common Salt Manufacturing</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Salt Manufacturing</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-8">Common Salt Manufacturing Dashboard</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-salt-manufacturing.html">Home</a></li>
+                      <li class="breadcrumb-item active">Salt Manufacturing</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-4 text-end">
+                  <a href="./iims-salt-registration-form.html" class="btn btn-primary d-inline-flex align-items-center gap-1">
+                    <i class="ti ti-plus fs-4"></i> New Facility Registration
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
+          <!-- Alert Notifications (Internal alerts list) -->
+          <div id="alertsContainer"></div>
+
+          <!-- Applications Registry -->
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Salt Registration & Iodization</h5>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="card-title fw-semibold mb-0">My Registration Applications</h5>
+                <span class="badge bg-primary-subtle text-primary" id="appCounter">Total: 0</span>
+              </div>
               <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
-                  <thead class="table-light"><tr><th>Reg No</th><th>Manufacturer</th><th>Type</th><th>Iodization Status</th><th>Transport Permits</th><th>Actions</th></tr></thead>
-                  <tbody>
+                  <thead class="table-light">
                     <tr>
-                      <td>SM-2026-001</td>
-                      <td>Lanka Salt Ltd</td>
-                      <td>Refined Iodized</td>
-                      <td><span class="badge bg-success-subtle text-success">Compliant (>15ppm)</span></td>
-                      <td><span class="badge bg-primary">Active</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                      <th>App ID</th>
+                      <th>Facility Name</th>
+                      <th>Type & Classification</th>
+                      <th>Coordinates</th>
+                      <th>Submission Date</th>
+                      <th>Status</th>
+                      <th class="text-end">Actions</th>
                     </tr>
+                  </thead>
+                  <tbody id="applicationsTableBody">
+                    <!-- Dynamic Rows Injected Here -->
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ── Payment Review Modal ── -->
+  <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title text-white" id="paymentModalLabel"><i class="ti ti-wallet me-2"></i>Preliminary Invoice & Payment Setup</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="p-3 border rounded bg-light">
+                <h6 class="fw-semibold text-primary mb-3">Facility & Location Details</h6>
+                <p class="mb-1 text-muted fs-2">APPLICATION REFERENCE</p>
+                <p class="fw-bold mb-3" id="invAppId">-</p>
+                <p class="mb-1 text-muted fs-2">ESTABLISHMENT NAME</p>
+                <p class="fw-bold mb-3" id="invFacilityName">-</p>
+                <p class="mb-1 text-muted fs-2">LOCATION (DISTRICT & COORDINATES)</p>
+                <p class="fw-semibold mb-0" id="invLocation">-</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 border rounded bg-light">
+                <h6 class="fw-semibold text-primary mb-3">Statutory Fee Breakdown</h6>
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Base Registration Fee:</span>
+                  <strong class="text-dark">10,000.00 LKR</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span id="invDistanceLabel">Distance-Based Inspection Fee:</span>
+                  <strong class="text-dark" id="invInspectionFee">0.00 LKR</strong>
+                </div>
+                <hr class="my-2">
+                <div class="d-flex justify-content-between align-items-center pt-1">
+                  <span class="fs-4 fw-bold text-dark">Total Amount Due:</span>
+                  <span class="fs-5 fw-extrabold text-primary" id="invTotalFee">0.00 LKR</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Developer Panel: Encrypted Financial Payload -->
+            <div class="col-12 mt-3">
+              <div class="card border-primary-subtle bg-primary-subtle-10">
+                <div class="card-header bg-dark text-light d-flex justify-content-between align-items-center py-2">
+                  <span class="fs-2 text-warning fw-bold"><i class="ti ti-brand-javascript me-1"></i>Developer console: Secured Financial Payload</span>
+                  <span class="badge bg-success fs-1">AES-256 & SHA-256</span>
+                </div>
+                <div class="card-body p-2 bg-dark">
+                  <pre class="text-success mb-0 fs-2" style="max-height: 150px; overflow-y: auto;"><code id="payloadCode"></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="proceedToPayBtn">
+            <i class="ti ti-credit-card me-1"></i> Proceed to Payment Portal
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Receipt Modal ── -->
+  <div class="modal fade" id="receiptModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body p-4 text-center">
+          <div class="text-success mb-3"><i class="ti ti-checkbox fs-9"></i></div>
+          <h4 class="fw-bold mb-1">Official Payment Receipt</h4>
+          <p class="text-muted fs-2">Food Control Administration Unit (FCAU)</p>
+          <hr>
+          <div class="text-start fs-2 mb-3">
+            <div class="d-flex justify-content-between mb-1"><span>Receipt No:</span><strong id="recNo">-</strong></div>
+            <div class="d-flex justify-content-between mb-1"><span>Payment Date:</span><strong id="recDate">-</strong></div>
+            <div class="d-flex justify-content-between mb-1"><span>Application Ref:</span><strong id="recAppRef">-</strong></div>
+            <div class="d-flex justify-content-between mb-1"><span>Establishment:</span><strong id="recFacility">-</strong></div>
+            <div class="d-flex justify-content-between mb-1"><span>Status:</span><strong class="text-success">Paid & Verified</strong></div>
+          </div>
+          <div class="bg-light p-3 rounded mb-3 text-start">
+            <div class="d-flex justify-content-between fs-2 text-muted mb-1"><span>Base Reg Cost:</span><span>10,000.00 LKR</span></div>
+            <div class="d-flex justify-content-between fs-2 text-muted mb-1"><span>Inspection Travel Fee:</span><span id="recInspectFee">-</span></div>
+            <hr class="my-1">
+            <div class="d-flex justify-content-between fw-bold text-dark fs-3"><span>Total Amount:</span><span id="recTotal">-</span></div>
+          </div>
+          <p class="text-muted fs-1 mb-3">Cryptographic verification token signature verified asynchronously. Workflow state transitioned to "Pending District Inspection".</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary w-100 btn-sm" onclick="window.print()"><i class="ti ti-printer me-1"></i>Print</button>
+            <button class="btn btn-primary w-100 btn-sm" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -107,6 +234,239 @@
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Seed default applications if not already there
+      var initialApps = [
+        {
+          id: "SM-2026-001",
+          facilityName: "Lanka Salt Ltd",
+          facilityType: "Both (Integrated)",
+          classification: "Iodized Food Grade",
+          district: "Hambantota",
+          gnDivision: "Bundala",
+          localAuthority: "Hambantota Municipal Council",
+          latitude: 6.1248,
+          longitude: 81.1245,
+          status: "Active",
+          submittedDate: "2026-05-10",
+          documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"],
+          paid: true,
+          inspectionFee: 24450,
+          baseFee: 10000,
+          totalFee: 34450,
+          receiptNo: "REC-2026-001",
+          paymentDate: "2026-05-12 11:34 AM"
+        },
+        {
+          id: "SM-2026-002",
+          facilityName: "Hambantota Salt Works",
+          facilityType: "Processing Factory",
+          classification: "Iodized Food Grade",
+          district: "Hambantota",
+          gnDivision: "Maha Lewaya",
+          localAuthority: "Hambantota MC",
+          latitude: 6.1248,
+          longitude: 81.1245,
+          status: "Pending Initial Validation",
+          submittedDate: "2026-07-01",
+          documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"]
+        },
+        {
+          id: "SM-2026-003",
+          facilityName: "Puttalam Salt Extraction",
+          facilityType: "Extraction Lagoon",
+          classification: "Non-Iodized Industrial",
+          district: "Puttalam",
+          gnDivision: "Puttalam East",
+          localAuthority: "Puttalam Urban Council",
+          latitude: 8.0333,
+          longitude: 79.8333,
+          status: "Pending Initial Validation",
+          submittedDate: "2026-07-01",
+          documents: ["Business Registration (Certified Copy)", "Architectural Building Plans", "Site Plan", "Process Flow Charts", "Product Labels"]
+        }
+      ];
+
+      if (!localStorage.getItem('fcau_salt_applications')) {
+        localStorage.setItem('fcau_salt_applications', JSON.stringify(initialApps));
+      }
+
+      var apps = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+
+      // Render alerts if any
+      var alerts = JSON.parse(localStorage.getItem('fcau_salt_alerts')) || [];
+      var alertsContainer = document.getElementById('alertsContainer');
+      if (alertsContainer && alerts.length > 0) {
+        var alertHtml = alerts.slice(0, 2).map(function(alt) {
+          return '<div class="alert alert-info alert-dismissible fade show" role="alert">' +
+                 '<strong>' + alt.title + '</strong>: ' + alt.message +
+                 ' <span class="fs-1 text-muted ms-2">(' + alt.date + ')</span>' +
+                 '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                 '</div>';
+        }).join('');
+        alertsContainer.innerHTML = alertHtml;
+      }
+
+      // Check URL query parameters for simulated return callbacks
+      var urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('payment') === 'success') {
+        var successAppId = urlParams.get('appId');
+        // Add dynamic notification
+        var successHtml = '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                          '<strong><i class="ti ti-circle-check-filled me-1"></i>Payment Confirmation Received!</strong> ' +
+                          'Ledger updated successfully for ' + successAppId + '. Workflow has transitioned to "Pending District Inspection".' +
+                          '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                          '</div>';
+        if (alertsContainer) {
+          alertsContainer.insertAdjacentHTML('afterbegin', successHtml);
+        }
+        // Remove query parameters
+        window.history.replaceState({}, document.title, window.location.pathname);
+      } else if (urlParams.get('payment') === 'cancel') {
+        var cancelHtml = '<div class="alert alert-warning alert-dismissible fade show" role="alert">' +
+                         '<strong>Payment Canceled:</strong> You canceled the payment checkout session. Fees remain outstanding.' +
+                         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                         '</div>';
+        if (alertsContainer) {
+          alertsContainer.insertAdjacentHTML('afterbegin', cancelHtml);
+        }
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+
+      // Render Table Rows
+      function renderTable() {
+        var body = document.getElementById('applicationsTableBody');
+        var counter = document.getElementById('appCounter');
+        if (!body) return;
+
+        var appsData = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+        counter.textContent = 'Total: ' + appsData.length;
+
+        if (appsData.length === 0) {
+          body.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-4">No applications registered. Click "New Facility Registration" to get started.</td></tr>';
+          return;
+        }
+
+        var html = '';
+        appsData.forEach(function(app) {
+          var statusBadge = '';
+          var actionsHtml = '';
+
+          // Determine status styles
+          if (app.status === 'Active') {
+            statusBadge = '<span class="badge bg-success-subtle text-success"><i class="ti ti-circle-check me-1"></i>Active Registered</span>';
+            actionsHtml = '<button class="btn btn-xs btn-outline-info me-1" onclick="showReceipt(\'' + app.id + '\')"><i class="ti ti-file-text"></i> Receipt</button>';
+          } else if (app.status === 'Pending Initial Validation') {
+            statusBadge = '<span class="badge bg-warning-subtle text-warning"><i class="ti ti-clock me-1"></i>Pending Validation</span>';
+            actionsHtml = '<span class="text-muted fs-2">Document Audit In Progress</span>';
+          } else if (app.status === 'Pending Payment') {
+            statusBadge = '<span class="badge bg-primary-subtle text-primary border border-primary-subtle"><i class="ti ti-wallet me-1"></i>Pending Payment</span>';
+            actionsHtml = '<button class="btn btn-xs btn-primary d-inline-flex align-items-center gap-1" onclick="openPaymentModal(\'' + app.id + '\')"><i class="ti ti-credit-card fs-2"></i> Pay Invoice</button>';
+          } else if (app.status === 'Pending District Inspection') {
+            statusBadge = '<span class="badge bg-secondary-subtle text-secondary"><i class="ti ti-map-pin me-1"></i>Pending Inspection</span>';
+            actionsHtml = '<button class="btn btn-xs btn-outline-info me-1" onclick="showReceipt(\'' + app.id + '\')"><i class="ti ti-file-text"></i> Receipt</button>';
+          } else if (app.status === 'Returned for Correction') {
+            statusBadge = '<span class="badge bg-danger-subtle text-danger"><i class="ti ti-alert-triangle me-1"></i>Correction Required</span>';
+            actionsHtml = '<a href="./iims-salt-registration-form.html" class="btn btn-xs btn-outline-danger"><i class="ti ti-edit"></i> Edit Form</a>';
+          }
+
+          html += '<tr>' +
+                  '<td class="fw-bold">' + app.id + '</td>' +
+                  '<td><div class="fw-semibold">' + app.facilityName + '</div><div class="fs-1 text-muted">' + app.district + ' District</div></td>' +
+                  '<td><div class="fs-2 fw-medium text-dark">' + app.facilityType + '</div><div class="fs-1 text-muted">' + app.classification + '</div></td>' +
+                  '<td class="fs-2 text-muted">[' + app.latitude.toFixed(4) + ', ' + app.longitude.toFixed(4) + ']</td>' +
+                  '<td class="fs-2">' + app.submittedDate + '</td>' +
+                  '<td>' + statusBadge + '</td>' +
+                  '<td class="text-end">' + actionsHtml + '</td>' +
+                  '</tr>';
+        });
+
+        body.innerHTML = html;
+      }
+
+      renderTable();
+
+      // Open Payment Modal and build payload
+      window.openPaymentModal = function(id) {
+        var appsData = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+        var app = appsData.find(function(a) { return a.id === id; });
+        if (!app) return;
+
+        document.getElementById('invAppId').textContent = app.id;
+        document.getElementById('invFacilityName').textContent = app.facilityName;
+        document.getElementById('invLocation').textContent = app.district + ' District (GPS: ' + app.latitude.toFixed(4) + ', ' + app.longitude.toFixed(4) + ')';
+        
+        var base = app.baseFee || 10000;
+        var inspect = app.inspectionFee || 0;
+        var total = app.totalFee || 10000;
+
+        document.getElementById('invDistanceLabel').innerHTML = 'Distance-Based Inspection Fee (' + (app.distanceKm ? app.distanceKm.toFixed(1) : '0') + ' km):';
+        document.getElementById('invInspectionFee').textContent = inspect.toLocaleString('en-US', {minimumFractionDigits: 2}) + ' LKR';
+        document.getElementById('invTotalFee').textContent = total.toLocaleString('en-US', {minimumFractionDigits: 2}) + ' LKR';
+
+        // Build Payload
+        var payloadObj = {
+          applicationId: app.id,
+          facilityName: app.facilityName,
+          baseRegistrationFee: base,
+          distanceBasedInspectionFee: inspect,
+          totalLkrAmount: total,
+          currency: "LKR",
+          secureChecksum: CryptoJS_sim_sha256(app.id + total),
+          callbackUrls: {
+            success: window.location.origin + window.location.pathname + '?payment=success&appId=' + app.id,
+            cancel: window.location.origin + window.location.pathname + '?payment=cancel&appId=' + app.id
+          }
+        };
+
+        document.getElementById('payloadCode').textContent = JSON.stringify(payloadObj, null, 2);
+
+        // Bind redirect click
+        document.getElementById('proceedToPayBtn').onclick = function() {
+          var modalEl = document.getElementById('paymentModal');
+          var bootstrapModal = bootstrap.Modal.getInstance(modalEl);
+          bootstrapModal.hide();
+          
+          window.location.href = '../iims-ipg.html?appId=' + app.id + '&amount=' + total + '&facility=' + encodeURIComponent(app.facilityName);
+        };
+
+        var myModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+        myModal.show();
+      };
+
+      // Mock Checksum Generator
+      function CryptoJS_sim_sha256(str) {
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+          hash = (hash << 5) - hash + str.charCodeAt(i);
+          hash |= 0; 
+        }
+        return "sha256_" + Math.abs(hash).toString(16) + "e49702063f554694";
+      }
+
+      // Show Receipt details
+      window.showReceipt = function(id) {
+        var appsData = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+        var app = appsData.find(function(a) { return a.id === id; });
+        if (!app) return;
+
+        document.getElementById('recNo').textContent = app.receiptNo || 'REC-2026-9042';
+        document.getElementById('recDate').textContent = app.paymentDate || new Date().toLocaleString();
+        document.getElementById('recAppRef').textContent = app.id;
+        document.getElementById('recFacility').textContent = app.facilityName;
+        document.getElementById('recInspectFee').textContent = (app.inspectionFee || 0).toLocaleString('en-US', {minimumFractionDigits: 2}) + ' LKR';
+        document.getElementById('recTotal').textContent = (app.totalFee || 10000).toLocaleString('en-US', {minimumFractionDigits: 2}) + ' LKR';
+
+        var myModal = new bootstrap.Modal(document.getElementById('receiptModal'));
+        myModal.show();
+      };
+    });
+  </script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .bg-primary-subtle-10 { background-color: rgba(93, 135, 255, 0.08) !important; }
+  </style>
 <script src="./_role.js"></script>
 </body>
 </html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" data-color-theme="Blue_Theme">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <title>LankaPay - Government Digital Payment Gateway</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+    .ipg-card {
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .ipg-header {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      border-bottom: 2px solid #eab308;
+      padding: 24px;
+    }
+    .emblem {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    .terminal-box {
+      font-family: 'Courier Prime', monospace;
+      background: #090d16;
+      border: 1px solid #14532d;
+      border-radius: 8px;
+      color: #22c55e;
+      padding: 15px;
+      height: 250px;
+      overflow-y: auto;
+    }
+    .nav-tabs .nav-link {
+      color: #94a3b8;
+      border-bottom: 2px solid transparent;
+      font-weight: 600;
+    }
+    .nav-tabs .nav-link.active {
+      color: #f59e0b !important;
+      border-bottom-color: #f59e0b !important;
+      background: transparent !important;
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+    }
+    .form-control-ipg {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff !important;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .form-control-ipg:focus {
+      background: rgba(255,255,255,0.08);
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+      outline: none;
+    }
+    .btn-pay {
+      background: linear-gradient(135deg, #eab308, #ca8a04);
+      color: #0f172a !important;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+    .btn-pay:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(234, 179, 8, 0.3);
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background: #22c55e;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ipg-card">
+    <!-- Header -->
+    <div class="ipg-header text-white d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-3">
+        <div class="bg-white rounded-circle p-1 d-flex align-items-center justify-content-center" style="width: 54px; height: 54px;">
+          <i class="ti ti-building-bank fs-7 text-primary"></i>
+        </div>
+        <div>
+          <h4 class="text-white mb-0 fw-bold">LankaPay Gateway</h4>
+          <span class="fs-1 text-warning fw-semibold"><i class="ti ti-lock"></i> Central Government Payment Portal</span>
+        </div>
+      </div>
+      <div class="text-end">
+        <span class="fs-1 text-muted d-block">TOTAL PAYABLE</span>
+        <h3 class="text-warning mb-0 fw-extrabold" id="totalAmount">0.00 LKR</h3>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="p-4">
+      <div class="row g-4">
+        <!-- Transaction Detail Summary -->
+        <div class="col-md-4">
+          <div class="p-3 rounded bg-slate-900 border border-slate-800 text-white" style="background-color: #111827;">
+            <h6 class="fw-semibold text-warning mb-3">Invoice Details</h6>
+            <div class="fs-2 mb-3">
+              <span class="text-muted d-block mb-1">MERCHANT NAME</span>
+              <strong class="text-light">Food Control Administration Unit (FCAU)</strong>
+            </div>
+            <div class="fs-2 mb-3">
+              <span class="text-muted d-block mb-1">APPLICATION REFERENCE</span>
+              <strong class="text-light" id="appRef">-</strong>
+            </div>
+            <div class="fs-2 mb-3">
+              <span class="text-muted d-block mb-1">FACILITY NAME</span>
+              <strong class="text-light" id="facName">-</strong>
+            </div>
+            <div class="fs-2">
+              <span class="text-muted d-block mb-1">SETTLEMENT CURRENCY</span>
+              <strong class="text-light">Sri Lankan Rupee (LKR)</strong>
+            </div>
+            <hr class="my-3 border-secondary bg-opacity-20">
+            <p class="fs-1 text-muted mb-0"><i class="ti ti-info-circle"></i> Payments are processed securely under the Sri Lanka Digital Payments Guideline V2.0.</p>
+          </div>
+        </div>
+
+        <!-- Omnichannel Methods -->
+        <div class="col-md-8">
+          <div class="card bg-slate-800 border-0 p-3 mb-0" style="background-color: #1e293b;">
+            <ul class="nav nav-tabs border-bottom border-secondary mb-3" id="tabList" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="card-tab" data-bs-toggle="tab" data-bs-target="#card-pane" type="button" role="tab"><i class="ti ti-credit-card"></i> Card Payment</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="cefts-tab" data-bs-toggle="tab" data-bs-target="#cefts-pane" type="button" role="tab"><i class="ti ti-building-bank"></i> CEFTS Transfer</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile-pane" type="button" role="tab"><i class="ti ti-device-mobile"></i> Mobile Money</button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="tabContent">
+              <!-- Tab 1: Cards -->
+              <div class="tab-pane fade show active text-white" id="card-pane" role="tabpanel">
+                <form id="cardForm">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label fs-2 text-light">Cardholder Name</label>
+                      <input type="text" class="form-control form-control-ipg" placeholder="e.g. W.M. Perera" required>
+                    </div>
+                    <div class="col-md-8">
+                      <label class="form-label fs-2 text-light">Card Number</label>
+                      <input type="text" class="form-control form-control-ipg" placeholder="4000 1234 5678 9010" maxlength="19" required>
+                    </div>
+                    <div class="col-md-2">
+                      <label class="form-label fs-2 text-light">Expiry Date</label>
+                      <input type="text" class="form-control form-control-ipg" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="col-md-2">
+                      <label class="form-label fs-2 text-light">CVV</label>
+                      <input type="password" class="form-control form-control-ipg" placeholder="***" maxlength="3" required>
+                    </div>
+                    <div class="col-12 mt-4">
+                      <button type="submit" class="btn btn-pay w-100 py-3"><i class="ti ti-shield-lock"></i> Authorize & Settle Payment</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Tab 2: CEFTS -->
+              <div class="tab-pane fade text-white" id="cefts-pane" role="tabpanel">
+                <form id="ceftsForm">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label fs-2 text-light">Select Bank</label>
+                      <select class="form-select form-control-ipg" required>
+                        <option value="">-- Choose issuing Bank --</option>
+                        <option>Bank of Ceylon (BOC)</option>
+                        <option>People's Bank</option>
+                        <option>Commercial Bank of Ceylon</option>
+                        <option>Hatton National Bank (HNB)</option>
+                        <option>Sampath Bank</option>
+                        <option>Seylan Bank</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label fs-2 text-light">Online Banking User ID / Account Number</label>
+                      <input type="text" class="form-control form-control-ipg" placeholder="Enter bank login identifier" required>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label fs-2 text-light">Password / PIN</label>
+                      <input type="password" class="form-control form-control-ipg" placeholder="••••••••" required>
+                    </div>
+                    <div class="col-12 mt-4">
+                      <button type="submit" class="btn btn-pay w-100 py-3"><i class="ti ti-shield-lock"></i> Settle via CEFTS Transfer</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Tab 3: Mobile Pay -->
+              <div class="tab-pane fade text-white" id="mobile-pane" role="tabpanel">
+                <form id="mobileForm">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label fs-2 text-light">Mobile Operator Wallet</label>
+                      <select class="form-select form-control-ipg" required>
+                        <option>eZ Cash (Dialog)</option>
+                        <option>mCash (Mobitel)</option>
+                        <option>FriMi (Nations Trust Bank)</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label fs-2 text-light">Mobile Number</label>
+                      <input type="text" class="form-control form-control-ipg" placeholder="e.g. 0771234567" required>
+                    </div>
+                    <div class="col-12 mt-4">
+                      <button type="submit" class="btn btn-pay w-100 py-3"><i class="ti ti-shield-lock"></i> Settle via Mobile Pay</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Dynamic Developer Webhook console Section (Collapsible) -->
+        <div class="col-12">
+          <div class="card border-success shadow-none bg-slate-900 mb-0" style="background-color: #0b111e; border: 1px solid #166534;">
+            <div class="card-header bg-success bg-opacity-10 text-success d-flex justify-content-between align-items-center py-2" style="border-bottom: 1px solid #166534;">
+              <span class="fw-bold fs-2"><i class="ti ti-terminal me-1"></i>Developer Webhook Console (Asynchronous Webhook Simulator)</span>
+              <span class="badge bg-success-subtle text-success fs-1">Ledger Update Engine</span>
+            </div>
+            <div class="card-body p-2">
+              <div class="terminal-box" id="terminal">
+                <span class="text-muted">Waiting for user checkout authorization...</span><span class="cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 2FA OTP Modal -->
+  <div class="modal fade" id="otpModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" style="z-index: 1080;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-white" style="background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1);">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-white"><i class="ti ti-shield-lock text-warning me-1"></i>3D Secure 2.0 Verification</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-4">
+          <p class="fs-2 text-light">A one-time passcode (OTP) has been dispatched to your registered contact number. Please enter it below to confirm settlement.</p>
+          <div class="my-4">
+            <input type="text" class="form-control form-control-ipg text-center fw-bold fs-6 mx-auto w-50" id="otpInput" placeholder="Enter 6-digit Code" maxlength="6" style="letter-spacing: 4px;">
+            <button class="btn btn-xs btn-outline-warning mt-2" onclick="autofillOtp()">Simulate Autofill OTP</button>
+          </div>
+          <p class="fs-1 text-muted mb-0"><i class="ti ti-info-circle"></i> Simulated sandbox OTP is <strong class="text-warning">884920</strong></p>
+        </div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-warning btn-sm" onclick="verifyOtp()">Verify & Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/vendor.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var appId, amount, facilityName;
+    var terminal = document.getElementById('terminal');
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Parse Query parameters
+      var urlParams = new URLSearchParams(window.location.search);
+      appId = urlParams.get('appId') || 'SM-2026-002';
+      amount = parseFloat(urlParams.get('amount') || '34450').toLocaleString('en-US', {minimumFractionDigits: 2}) + ' LKR';
+      facilityName = decodeURIComponent(urlParams.get('facility') || 'Hambantota Salt Works');
+
+      document.getElementById('totalAmount').textContent = amount;
+      document.getElementById('appRef').textContent = appId;
+      document.getElementById('facName').textContent = facilityName;
+
+      // Handle checkout submits
+      document.getElementById('cardForm').onsubmit = handleAuthorizeSubmit;
+      document.getElementById('ceftsForm').onsubmit = handleAuthorizeSubmit;
+      document.getElementById('mobileForm').onsubmit = handleAuthorizeSubmit;
+    });
+
+    function handleAuthorizeSubmit(e) {
+      e.preventDefault();
+      var myModal = new bootstrap.Modal(document.getElementById('otpModal'));
+      myModal.show();
+    }
+
+    function autofillOtp() {
+      document.getElementById('otpInput').value = '884920';
+    }
+
+    function verifyOtp() {
+      var otp = document.getElementById('otpInput').value.trim();
+      if (otp !== '884920') {
+        alert('Invalid OTP. Please enter 884920 to verify the transaction.');
+        return;
+      }
+
+      // Hide Modal
+      var modalEl = document.getElementById('otpModal');
+      var bootstrapModal = bootstrap.Modal.getInstance(modalEl);
+      bootstrapModal.hide();
+
+      // Begin Webhook simulation logs
+      startWebhookSimulation();
+    }
+
+    function writeLog(text, color, delay, callback) {
+      setTimeout(function() {
+        var span = document.createElement('div');
+        if (color) span.style.color = color;
+        span.innerHTML = text;
+        terminal.appendChild(span);
+        terminal.scrollTop = terminal.scrollHeight;
+        if (callback) callback();
+      }, delay);
+    }
+
+    function startWebhookSimulation() {
+      terminal.innerHTML = '';
+      
+      writeLog('=== LANKAPAY GATEWAY: TRANSACTION INITIATION ===', '#eab308', 100);
+      writeLog('[IPG GATEWAY] Authorizing card credentials with central credit switch...', null, 500);
+      writeLog('[IPG GATEWAY] 2FA validation token matches: TRUE', '#22c55e', 900);
+      writeLog('[IPG GATEWAY] Settlement request code: 00 (APPROVED)', '#22c55e', 1300);
+      
+      writeLog('------------------------------------------------', '#475569', 1600);
+      writeLog('[IPG GATEWAY] Constructing cryptographically signed webhook payload...', null, 2000);
+      
+      // Build webhook JSON
+      var webhookPayload = {
+        transactionId: "TXN-IPG-" + Math.floor(Math.random() * 800000 + 100000),
+        applicationId: appId,
+        amountSettled: parseFloat(amount.replace(/[^0-9.]/g, '')),
+        currency: "LKR",
+        status: "SUCCESS",
+        settlementTimestamp: new Date().toISOString(),
+        issuerSignature: "rsa_sha256_sig_39ac8b4d1b827e89cb"
+      };
+
+      var payloadStr = JSON.stringify(webhookPayload, null, 2).replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
+
+      writeLog('[IPG GATEWAY] Payload details:<br><span style="color:#60a5fa;">' + payloadStr + '</span>', null, 2500);
+      
+      writeLog('[IPG GATEWAY] Dispatching asynchronous webhook to FCAU system webhook receiver (https://fcau.gov.lk/api/webhook/ipg)...', null, 3800);
+      writeLog('[FCAU IIMS] Asynchronous Webhook Intercepted!', '#f59e0b', 4300);
+      writeLog('[FCAU IIMS] Verifying cryptographic signature against stored public keys...', null, 4800);
+      writeLog('[FCAU IIMS] Public key matched (lankapay_ipg_pub.pem) & signature is valid. Transaction integrity: OK.', '#22c55e', 5400);
+      writeLog('[FCAU IIMS] Updating administrative financial ledger record...', null, 5800);
+      writeLog('[FCAU IIMS] LEDGER UPDATE: Ref: ' + appId + ' set to PAID.', '#22c55e', 6400);
+      
+      writeLog('------------------------------------------------', '#475569', 6700);
+      writeLog('[FCAU IIMS] Generation of digital receipt in progress...', null, 7100);
+      writeLog('[FCAU IIMS] OVERARCHING WORKFLOW STATE TRANSITION: "Pending District Inspection".', '#38bdf8', 7600);
+      writeLog('[FCAU IIMS] Routing alert dispatched to relevant District Inspector.', '#38bdf8', 8100);
+      
+      writeLog('=== SETTLEMENT COMPLETE: SUCCESS ===', '#22c55e', 8600, function() {
+        // Save state in localStorage
+        var appsData = JSON.parse(localStorage.getItem('fcau_salt_applications')) || [];
+        var updated = appsData.map(function(app) {
+          if (app.id === appId) {
+            app.status = 'Pending District Inspection';
+            app.paid = true;
+            app.receiptNo = 'REC-2026-' + Math.floor(Math.random() * 80000 + 10000);
+            app.paymentDate = new Date().toLocaleString();
+          }
+          return app;
+        });
+        localStorage.setItem('fcau_salt_applications', JSON.stringify(updated));
+
+        // Save notification/alert for Salt Manufacturer
+        var alerts = JSON.parse(localStorage.getItem('fcau_salt_alerts')) || [];
+        alerts.unshift({
+          id: 'ALT-' + Date.now(),
+          title: 'Payment Confirmed: Webhook Verified',
+          message: 'Payment of ' + amount + ' for application ' + appId + ' was successfully received and cryptographically verified. Application state transitioned to "Pending District Inspection".',
+          date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+          unread: true
+        });
+        localStorage.setItem('fcau_salt_alerts', JSON.stringify(alerts));
+
+        // Redirect back
+        writeLog('<span class="fw-bold text-white">Payment settled successfully! Redirecting you back to FCAU portal in 3 seconds...</span>', '#22c55e', 9000);
+        setTimeout(function() {
+          window.location.href = './salt/iims-salt-manufacturing.html?payment=success&appId=' + appId;
+        }, 12000);
+      });
+    }
+  </script>
+</body>
+</html>
