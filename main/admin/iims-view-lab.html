@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Laboratory Profile</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical"><div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
+    </div></aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumb Header -->
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8" id="headerLabName">Laboratory Profile</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-labs.html">Laboratory Directory</a></li>
+                      <li class="breadcrumb-item active" aria-current="page" id="breadcrumbLabId">View Laboratory</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content Grid -->
+          <div class="row">
+            
+            <!-- Left Panel: Laboratory Profile Card -->
+            <div class="col-lg-4">
+              <div class="card overflow-hidden">
+                <!-- Color header -->
+                <div class="py-5 bg-indigo text-center position-relative">
+                  <div class="bg-white rounded-circle p-1 d-inline-flex align-items-center justify-content-center mb-2 shadow-sm" style="width: 80px; height: 80px;">
+                    <i class="ti ti-flask text-primary fs-7"></i>
+                  </div>
+                  <h5 class="text-white fw-semibold mb-1" id="profileLabName">-</h5>
+                  <span class="badge text-white" style="background-color: rgba(255, 255, 255, 0.25);" id="profileLabId">-</span>
+                </div>
+                
+                <div class="card-body">
+                  <div class="mb-4">
+                    <label class="text-muted fs-1 mb-1">REGISTRATION STATUS</label>
+                    <div id="profileStatus">-</div>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <label class="text-muted fs-1 mb-1">TESTING SPECIALIZATION</label>
+                    <div class="fw-semibold text-dark fs-3" id="profileCategory">-</div>
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="text-muted fs-1 mb-1">FACILITY GEOLOCATION</label>
+                    <div class="d-flex align-items-center text-dark gap-2">
+                      <i class="ti ti-map-pin text-muted"></i>
+                      <span id="profileLocation">-</span>
+                    </div>
+                  </div>
+
+                  <hr class="my-4">
+
+                  <h6 class="fw-semibold mb-3">Authorized Representative</h6>
+                  <div class="d-flex flex-column gap-3 fs-2">
+                    <div>
+                      <div class="text-muted fs-1 mb-0">FULL NAME</div>
+                      <div class="fw-bold text-dark" id="profileRepName">-</div>
+                    </div>
+                    <div>
+                      <div class="text-muted fs-1 mb-0">EMAIL ADDRESS</div>
+                      <a href="#" class="fw-semibold text-primary" id="profileRepEmail">-</a>
+                    </div>
+                    <div>
+                      <div class="text-muted fs-1 mb-0">TELEPHONE NUMBER</div>
+                      <div class="fw-semibold text-dark" id="profileRepPhone">-</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 pt-2 d-flex gap-2">
+                    <a href="#" class="btn btn-primary btn-sm flex-fill" id="btnEditProfile"><i class="ti ti-edit me-1"></i>Edit Profile</a>
+                    <a href="iims-labs.html" class="btn btn-outline-secondary btn-sm flex-fill">Back to List</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Panel: Dynamic Stats & Tests Log -->
+            <div class="col-lg-8">
+              
+              <!-- KPI Row -->
+              <div class="row mb-4">
+                <div class="col-sm-6">
+                  <div class="card border-0 shadow-sm bg-info-subtle mb-0">
+                    <div class="card-body p-3">
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-info bg-opacity-20 p-2 text-info"><i class="ti ti-report fs-5"></i></div>
+                        <div>
+                          <h6 class="text-muted mb-0 fs-2 fw-medium">Total Tests Dispatched</h6>
+                          <h4 class="text-dark mb-0 fw-bold">142</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card border-0 shadow-sm bg-success-subtle mb-0">
+                    <div class="card-body p-3">
+                      <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-success bg-opacity-20 p-2 text-success"><i class="ti ti-shield-check fs-5"></i></div>
+                        <div>
+                          <h6 class="text-muted mb-0 fs-2 fw-medium">Quality Compliance Rating</h6>
+                          <h4 class="text-dark mb-0 fw-bold">99.3%</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recent Submissions Card -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-3">Recent Analytical Reports</h5>
+                  <p class="fs-2 text-muted mb-4">A log of chemical, residue, and microbial samples parsed by this lab in the last 30 days.</p>
+                  
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 fs-2">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Sample Ref</th>
+                          <th>Food Item / Target</th>
+                          <th>Dispatched Date</th>
+                          <th>Result Flag</th>
+                          <th>PDF Report</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>SMP-26-8902</strong></td>
+                          <td>Bottled Drinking Water (pH, Coliform)</td>
+                          <td>2026-05-12</td>
+                          <td><span class="badge bg-success-subtle text-success">Satisfactory</span></td>
+                          <td><a href="javascript:void(0)" class="text-primary text-decoration-underline"><i class="ti ti-download"></i> View Report</a></td>
+                        </tr>
+                        <tr>
+                          <td><strong>SMP-26-8841</strong></td>
+                          <td>Iodized Salt (Iodine Content Analysis)</td>
+                          <td>2026-05-09</td>
+                          <td><span class="badge bg-success-subtle text-success">Satisfactory</span></td>
+                          <td><a href="javascript:void(0)" class="text-primary text-decoration-underline"><i class="ti ti-download"></i> View Report</a></td>
+                        </tr>
+                        <tr>
+                          <td><strong>SMP-26-8651</strong></td>
+                          <td>Frozen Fish Fillet (Salmonella Check)</td>
+                          <td>2026-04-28</td>
+                          <td><span class="badge bg-danger-subtle text-danger">Failed / Contaminated</span></td>
+                          <td><a href="javascript:void(0)" class="text-primary text-decoration-underline text-danger"><i class="ti ti-alert-triangle"></i> Download PDF</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lab Audit trail / accreditation details -->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-3">Accreditation Certifications</h5>
+                  <div class="d-flex flex-column gap-3">
+                    <div class="d-flex align-items-center justify-content-between p-2 border rounded">
+                      <div class="d-flex align-items-center gap-3">
+                        <i class="ti ti-certificate fs-6 text-primary"></i>
+                        <div>
+                          <div class="fw-semibold text-dark fs-2">ISO/IEC 17025:2017</div>
+                          <div class="fs-1 text-muted">General Requirements for competence of testing & calibration labs</div>
+                        </div>
+                      </div>
+                      <span class="badge bg-success">Accredited</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between p-2 border rounded">
+                      <div class="d-flex align-items-center gap-3">
+                        <i class="ti ti-award fs-6 text-primary"></i>
+                        <div>
+                          <div class="fw-semibold text-dark fs-2">SLAB (Sri Lanka Accreditation Board)</div>
+                          <div class="fs-1 text-muted">Chemical Testing Accreditation No. TL 041-02</div>
+                        </div>
+                      </div>
+                      <span class="badge bg-success">Accredited</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Parse Query parameters
+      var urlParams = new URLSearchParams(window.location.search);
+      var labId = urlParams.get('id');
+
+      if (!labId) {
+        alert("No Laboratory ID specified.");
+        window.location.href = 'iims-labs.html';
+        return;
+      }
+
+      var labs = JSON.parse(localStorage.getItem('fcau_iims_labs')) || [];
+      var lab = labs.find(function(l) { return l.id === labId; });
+
+      if (!lab) {
+        alert("Laboratory " + labId + " not found.");
+        window.location.href = 'iims-labs.html';
+        return;
+      }
+
+      // Fill values
+      document.getElementById('breadcrumbLabId').textContent = "Profile: " + labId;
+      document.getElementById('headerLabName').textContent = lab.name + " (" + labId + ")";
+      document.getElementById('profileLabName').textContent = lab.name;
+      document.getElementById('profileLabId').textContent = labId;
+      document.getElementById('profileCategory').textContent = lab.category;
+      document.getElementById('profileLocation').textContent = lab.location;
+      document.getElementById('profileRepName').textContent = lab.repName;
+      document.getElementById('profileRepEmail').textContent = lab.repEmail;
+      document.getElementById('profileRepPhone').textContent = lab.repPhone;
+
+      // Status badge
+      var statusBadge = '';
+      if (lab.status === 'Active') {
+        statusBadge = '<span class="badge bg-success-subtle text-success border border-success-subtle"><i class="ti ti-circle-check me-1"></i>Active / Accredited</span>';
+      } else if (lab.status === 'Suspended') {
+        statusBadge = '<span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i class="ti ti-circle-x me-1"></i>Suspended</span>';
+      } else {
+        statusBadge = '<span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="ti ti-clock me-1"></i>Awaiting Accreditation</span>';
+      }
+      document.getElementById('profileStatus').innerHTML = statusBadge;
+
+      // Update Edit Link
+      document.getElementById('btnEditProfile').setAttribute('href', 'iims-update-lab.html?id=' + labId);
+    });
+  </script>
+<script src="./_role.js"></script>
+</body>
+</html>

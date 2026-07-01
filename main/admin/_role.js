@@ -22,6 +22,7 @@
       { type: 'link', icon: 'ti ti-users',            label: 'User Directory',          href: './iims-user-management.html' },
       { type: 'link', icon: 'ti ti-user-plus',        label: 'Add New User',            href: './iims-add-user.html' },
       { type: 'link', icon: 'ti ti-user-check',       label: 'User Sign-up',            href: './iims-user-signup.html' },
+      { type: 'link', icon: 'ti ti-flask',            label: 'Lab Directory',           href: './iims-labs.html' },
 
       { type: 'cap', label: 'System Config' },
       { type: 'link', icon: 'ti ti-settings',         label: 'Inspection Config',       href: './iims-inspection-config.html' },

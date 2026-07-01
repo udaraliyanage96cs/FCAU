@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Laboratory Directory</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical"><div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
+    </div></aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumb Header -->
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">Laboratory Directory</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-user-management.html">User Management</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Labs Directory</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alert Container for success messages -->
+          <div id="alertContainer"></div>
+
+          <!-- Filters & Data Card -->
+          <div class="card">
+            <div class="card-body">
+              <div class="row g-3 align-items-center justify-content-between mb-4">
+                <!-- Title & Add Button -->
+                <div class="col-md-4 d-flex align-items-center gap-3">
+                  <h5 class="card-title fw-semibold mb-0">Registered Laboratories</h5>
+                  <span class="badge bg-indigo-subtle text-indigo" id="labCountBadge">3 Labs</span>
+                </div>
+                <!-- Filters and Add Action -->
+                <div class="col-md-8">
+                  <div class="d-flex flex-wrap gap-2 justify-content-md-end">
+                    <!-- Search Input -->
+                    <div class="position-relative" style="width: 240px;">
+                      <input type="text" class="form-control form-control-sm ps-5" id="searchFilter" placeholder="Search by name, representative...">
+                      <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                    </div>
+                    <!-- Category Filter -->
+                    <select class="form-select form-select-sm" style="width: auto;" id="categoryFilter">
+                      <option value="">All Categories</option>
+                      <option value="General Food Safety">General Food Safety</option>
+                      <option value="Microbiological Analysis">Microbiological Analysis</option>
+                      <option value="Chemical Testing">Chemical Testing</option>
+                      <option value="Toxicology & Heavy Metals">Toxicology & Heavy Metals</option>
+                    </select>
+                    <!-- Status Filter -->
+                    <select class="form-select form-select-sm" style="width: auto;" id="statusFilter">
+                      <option value="">All Statuses</option>
+                      <option value="Active">Active</option>
+                      <option value="Suspended">Suspended</option>
+                      <option value="Awaiting Accreditation">Awaiting Accreditation</option>
+                    </select>
+                    <!-- Add Lab Link -->
+                    <a href="iims-add-lab.html" class="btn btn-primary btn-sm"><i class="ti ti-plus me-1"></i>Register New Lab</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Labs Grid/Table -->
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Lab ID</th>
+                      <th>Laboratory Details</th>
+                      <th>Category</th>
+                      <th>Accreditation / Status</th>
+                      <th>Representative Contact</th>
+                      <th class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="labTableBody">
+                    <!-- Dynamic Rows Injected Here -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Empty State container -->
+              <div class="text-center py-5 d-none" id="emptyState">
+                <i class="ti ti-flask text-muted mb-2" style="font-size: 48px;"></i>
+                <h5 class="fw-semibold text-dark">No Laboratories Found</h5>
+                <p class="text-muted fs-2">Try adjusting your filters or register a new laboratory in the system.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sample seed data
+      var seedLabs = [
+        {
+          id: "LAB-001",
+          name: "National Food Safety Laboratory",
+          location: "Colombo 07",
+          category: "General Food Safety",
+          status: "Active",
+          repName: "Dr. Priyantha Perera",
+          repEmail: "priyantha@nfsl.gov.lk",
+          repPhone: "+94 11 269 1234"
+        },
+        {
+          id: "LAB-002",
+          name: "Microbiology Research Institute",
+          location: "Kandy",
+          category: "Microbiological Analysis",
+          status: "Active",
+          repName: "Prof. Anura de Silva",
+          repEmail: "anura@mri.lk",
+          repPhone: "+94 81 223 5678"
+        },
+        {
+          id: "LAB-003",
+          name: "Industrial Technology Institute (ITI)",
+          location: "Colombo 03",
+          category: "Chemical Testing",
+          status: "Active",
+          repName: "Mrs. K. Samanthi",
+          repEmail: "samanthi@iti.lk",
+          repPhone: "+94 11 237 9876"
+        }
+      ];
+
+      // Load or seed
+      if (!localStorage.getItem('fcau_iims_labs')) {
+        localStorage.setItem('fcau_iims_labs', JSON.stringify(seedLabs));
+      }
+
+      // Check URL parameters for flash alerts
+      var urlParams = new URLSearchParams(window.location.search);
+      var alertAction = urlParams.get('alert');
+      if (alertAction) {
+        var alertMsg = "";
+        var alertClass = "success";
+        if (alertAction === 'created') alertMsg = "Laboratory has been successfully registered.";
+        if (alertAction === 'updated') alertMsg = "Laboratory details have been successfully updated.";
+        if (alertAction === 'deleted') {
+          alertMsg = "Laboratory record has been deleted.";
+          alertClass = "danger";
+        }
+        
+        document.getElementById('alertContainer').innerHTML = 
+          '<div class="alert alert-' + alertClass + ' alert-dismissible fade show" role="alert">' +
+          '  <i class="ti ti-circle-check me-2"></i>' + alertMsg +
+          '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+          '</div>';
+      }
+
+      // Render lab registry
+      function renderLabs() {
+        var labs = JSON.parse(localStorage.getItem('fcau_iims_labs')) || [];
+        var searchVal = document.getElementById('searchFilter').value.toLowerCase();
+        var catVal = document.getElementById('categoryFilter').value;
+        var statVal = document.getElementById('statusFilter').value;
+
+        var filteredLabs = labs.filter(function(lab) {
+          var matchesSearch = !searchVal || 
+            lab.name.toLowerCase().includes(searchVal) ||
+            lab.id.toLowerCase().includes(searchVal) ||
+            lab.location.toLowerCase().includes(searchVal) ||
+            lab.repName.toLowerCase().includes(searchVal) ||
+            lab.repEmail.toLowerCase().includes(searchVal);
+
+          var matchesCategory = !catVal || lab.category === catVal;
+          var matchesStatus = !statVal || lab.status === statVal;
+
+          return matchesSearch && matchesCategory && matchesStatus;
+        });
+
+        // Update badge
+        document.getElementById('labCountBadge').textContent = filteredLabs.length + (filteredLabs.length === 1 ? ' Lab' : ' Labs');
+
+        var tbody = document.getElementById('labTableBody');
+        tbody.innerHTML = '';
+
+        if (filteredLabs.length === 0) {
+          tbody.parentElement.classList.add('d-none');
+          document.getElementById('emptyState').classList.remove('d-none');
+          return;
+        }
+
+        tbody.parentElement.classList.remove('d-none');
+        document.getElementById('emptyState').classList.add('d-none');
+
+        filteredLabs.forEach(function(lab) {
+          var statusBadge = '';
+          if (lab.status === 'Active') {
+            statusBadge = '<span class="badge bg-success-subtle text-success border border-success-subtle"><i class="ti ti-circle-check me-1"></i>Active</span>';
+          } else if (lab.status === 'Suspended') {
+            statusBadge = '<span class="badge bg-danger-subtle text-danger border border-danger-subtle"><i class="ti ti-circle-x me-1"></i>Suspended</span>';
+          } else {
+            statusBadge = '<span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="ti ti-clock me-1"></i>Awaiting Accreditation</span>';
+          }
+
+          var row = '<tr>' +
+            '  <td><strong class="text-dark">' + lab.id + '</strong></td>' +
+            '  <td>' +
+            '    <div class="fw-semibold text-dark fs-3">' + lab.name + '</div>' +
+            '    <div class="fs-1 text-muted"><i class="ti ti-map-pin me-1"></i>' + lab.location + '</div>' +
+            '  </td>' +
+            '  <td><span class="fs-2 text-dark">' + lab.category + '</span></td>' +
+            '  <td>' + statusBadge + '</td>' +
+            '  <td>' +
+            '    <div class="fw-medium text-dark">' + lab.repName + '</div>' +
+            '    <div class="fs-1 text-muted">' + lab.repEmail + ' | ' + lab.repPhone + '</div>' +
+            '  </td>' +
+            '  <td class="text-end">' +
+            '    <div class="d-flex justify-content-end gap-1">' +
+            '      <a href="iims-view-lab.html?id=' + lab.id + '" class="btn btn-xs btn-outline-primary"><i class="ti ti-eye"></i> View</a>' +
+            '      <a href="iims-update-lab.html?id=' + lab.id + '" class="btn btn-xs btn-outline-secondary"><i class="ti ti-edit"></i> Edit</a>' +
+            '      <button class="btn btn-xs btn-outline-danger" onclick="deleteLab(\'' + lab.id + '\')"><i class="ti ti-trash"></i></button>' +
+            '    </div>' +
+            '  </td>' +
+            '</tr>';
+          tbody.innerHTML += row;
+        });
+      }
+
+      // Delete lab
+      window.deleteLab = function(id) {
+        if (confirm("Are you sure you want to delete laboratory registration for " + id + "?")) {
+          var labs = JSON.parse(localStorage.getItem('fcau_iims_labs')) || [];
+          labs = labs.filter(function(l) { return l.id !== id; });
+          localStorage.setItem('fcau_iims_labs', JSON.stringify(labs));
+          window.location.href = 'iims-labs.html?alert=deleted';
+        }
+      }
+
+      // Bind filter changes
+      document.getElementById('searchFilter').addEventListener('input', renderLabs);
+      document.getElementById('categoryFilter').addEventListener('change', renderLabs);
+      document.getElementById('statusFilter').addEventListener('change', renderLabs);
+
+      // First load render
+      renderLabs();
+    });
+  </script>
+<script src="./_role.js"></script>
+</body>
+</html>
