@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -149,17 +149,17 @@
             <div class="card-body p-0">
               <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active py-3 fw-semibold text-primary" id="val-tab" data-bs-toggle="tab" data-bs-target="#val-pane" type="button" role="tab" aria-controls="val-pane" aria-selected="true">
+                  <button class="nav-link active py-3 fw-semibold" id="val-tab" data-bs-toggle="tab" data-bs-target="#val-pane" type="button" role="tab" aria-controls="val-pane" aria-selected="true">
                     <i class="ti ti-clock me-1"></i> Awaiting Preliminary Validation <span class="badge bg-warning ms-1" id="qValCount">0</span>
                   </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link py-3 fw-semibold text-primary" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay-pane" type="button" role="tab" aria-controls="pay-pane" aria-selected="false">
+                  <button class="nav-link py-3 fw-semibold" id="pay-tab" data-bs-toggle="tab" data-bs-target="#pay-pane" type="button" role="tab" aria-controls="pay-pane" aria-selected="false">
                     <i class="ti ti-wallet me-1"></i> Pending Payment Processing <span class="badge bg-info ms-1" id="qPayCount">0</span>
                   </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link py-3 fw-semibold text-primary" id="comp-tab" data-bs-toggle="tab" data-bs-target="#comp-pane" type="button" role="tab" aria-controls="comp-pane" aria-selected="false">
+                  <button class="nav-link py-3 fw-semibold" id="comp-tab" data-bs-toggle="tab" data-bs-target="#comp-pane" type="button" role="tab" aria-controls="comp-pane" aria-selected="false">
                     <i class="ti ti-checkbox me-1"></i> Completed & Routed <span class="badge bg-success ms-1" id="qCompCount">0</span>
                   </button>
                 </li>
@@ -719,6 +719,23 @@
     .btn-outline-teal { border-color: #14B8A6 !important; color: #14B8A6 !important; }
     .btn-outline-teal:hover { background-color: #14B8A6 !important; color: white !important; }
     .btn-xs { padding: 4px 8px; font-size: 11px; }
+    
+    /* Nav Tabs overrides to resolve active text visibility bug */
+    .nav-tabs .nav-link {
+      color: var(--bs-primary) !important;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: all 0.2s ease-in-out;
+    }
+    .nav-tabs .nav-link:hover {
+      color: var(--bs-primary-dark, #49beff) !important;
+      opacity: 0.85;
+    }
+    .nav-tabs .nav-link.active {
+      color: #fff !important;
+      background-color: var(--bs-primary) !important;
+      border-color: var(--bs-primary) !important;
+    }
   </style>
 <script src="./_role.js?v=2"></script>
 </body>

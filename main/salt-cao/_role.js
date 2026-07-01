@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    IIMS Role Script â€” Central Authority Officer
    Injected into every page inside /main/salt-cao/
    ============================================================ */
@@ -85,7 +85,7 @@
     if (logoutBtn) {
       logoutBtn.style.cursor = 'pointer';
       logoutBtn.addEventListener('click', function () {
-        window.location.href = '/main/iims-login.html';
+        window.location.href = '../iims-login.html';
       });
     }
 
@@ -94,7 +94,7 @@
     if (topAvatar) {
       topAvatar.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = '/main/iims-login.html';
+        window.location.href = '../iims-login.html';
       });
     }
 
@@ -112,7 +112,7 @@
       var signOutLi = document.createElement('li');
       signOutLi.className = 'nav-item';
       signOutLi.innerHTML =
-        '<a href="/main/iims-login.html" ' +
+        '<a href="../iims-login.html" ' +
         '   style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;' +
         '          color:' + ROLE.color + ';padding:6px 12px;border:1.5px solid ' + ROLE.color + '55;' +
         '          border-radius:8px;margin-left:8px;text-decoration:none;transition:all .2s;' +

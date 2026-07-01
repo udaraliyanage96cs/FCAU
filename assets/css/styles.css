@@ -54957,10 +54957,13 @@ aside.left-sidebar .sidebar-link i {
   color: rgba(255, 255, 255, 0.85) !important;
 }
 
+aside.left-sidebar .sidebar-link.active {
+  background-color: #5d87ff !important;
+}
+
 aside.left-sidebar .sidebar-link.active,
 aside.left-sidebar .sidebar-link.active i,
 aside.left-sidebar .sidebar-link.active .hide-menu {
-  background-color: #5d87ff !important;
   color: #ffffff !important;
 }
 
