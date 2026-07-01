@@ -1,5 +1,5 @@
-/* ============================================================
-   IIMS Role Script — Salt Manufacturer
+﻿/* ============================================================
+   IIMS Role Script â€” Salt Manufacturer
    Injected into every page inside /main/salt/
    ============================================================ */
 (function () {
@@ -80,7 +80,7 @@
     var topbar = document.querySelector('.topbar');
     if (topbar) topbar.style.borderBottom = '2px solid ' + ROLE.color + '55';
 
-    /* sign-out button → login page */
+    /* sign-out button â†’ login page */
     var logoutBtn = document.querySelector('[aria-label="logout"]');
     if (logoutBtn) {
       logoutBtn.style.cursor = 'pointer';
@@ -89,7 +89,7 @@
       });
     }
 
-    /* top-right avatar icon → login page */
+    /* top-right avatar icon â†’ login page */
     var topAvatar = document.getElementById('drop1');
     if (topAvatar) {
       topAvatar.addEventListener('click', function (e) {
@@ -117,8 +117,8 @@
         '          color:' + ROLE.color + ';padding:6px 12px;border:1.5px solid ' + ROLE.color + '55;' +
         '          border-radius:8px;margin-left:8px;text-decoration:none;transition:all .2s;' +
         '          cursor:pointer;" ' +
-        '   onmouseover="this.style.background='' + ROLE.color + '15'" ' +
-        '   onmouseout="this.style.background='transparent'">' +
+        '   onmouseover="this.style.background=\'' + ROLE.color + '15\'" ' +
+        '   onmouseout="this.style.background=\'transparent\'">' +
         '  <i class="ti ti-logout" style="font-size:15px;"></i>' +
         '  <span>Sign Out</span>' +
         '</a>';
@@ -132,3 +132,4 @@
     init();
   }
 })();
+
