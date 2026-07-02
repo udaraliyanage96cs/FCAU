@@ -5,18 +5,34 @@
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
   <title>IIMS - Importer Registration</title>
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 320px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+    }
+    .form-section-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
   <div id="main-wrapper">
     <aside class="left-sidebar with-vertical"><div>
       <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
+          <a href="./iims-export-app.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
           <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none"><i class="ti ti-x"></i></a>
       </div>
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
-        <!-- Sidebar placeholder -->
-      </ul></nav>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
     </div></aside>
 
     <div class="page-wrapper">
@@ -28,16 +44,13 @@
             <div class="card-body px-4 py-3">
               <div class="row align-items-center">
                 <div class="col-sm-9 col-12">
-                  <h4 class="fw-semibold mb-8">Importer Entity Registration</h4>
+                  <h4 class="fw-semibold mb-8">Importer Registration</h4>
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a class="text-muted" href="../iims-login.html">Sign In</a></li>
-                      <li class="breadcrumb-item active">Importer Registry</li>
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-export-app.html">Home</a></li>
+                      <li class="breadcrumb-item active">Importer Registration</li>
                     </ol>
                   </nav>
-                </div>
-                <div class="col-sm-3 col-12 text-sm-end mt-2 mt-sm-0">
-                  <a href="../iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
                 </div>
               </div>
             </div>
@@ -45,52 +58,142 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4">Importer Business & Customs Credentials</h5>
-              <form onsubmit="alert('Importer registration submitted successfully. Awaiting FCAU verification!'); return false;">
-                <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label">Importer Entity Name</label><input type="text" class="form-control" required placeholder="e.g. Lanka Food Distributors"></div>
-                  <div class="col-md-6"><label class="form-label">Business Registration Number (BRN)</label><input type="text" class="form-control" required placeholder="e.g. PV-85923"></div>
-                  <div class="col-md-4"><label class="form-label">Taxpayer Identification Number (TIN)</label><input type="text" class="form-control" required placeholder="e.g. 1094829-232"></div>
-                  <div class="col-md-4"><label class="form-label">VAT Registration Number</label><input type="text" class="form-control" placeholder="e.g. 1094829-7000"></div>
-                  <div class="col-md-4"><label class="form-label">Customs House Agent (CHA) License No</label><input type="text" class="form-control" required placeholder="e.g. CHA-504"></div>
-                  
-                  <div class="col-md-12"><hr></div>
-                  
-                  <h6 class="fw-semibold">Warehousing & Storage Facilities</h6>
-                  <div class="col-md-6"><label class="form-label">Primary Warehouse Address</label><input type="text" class="form-control" required placeholder="e.g. No. 42, Harbor Rd, Colombo 13"></div>
-                  <div class="col-md-3">
-                    <label class="form-label">Storage Capacity (Metric Tons)</label>
-                    <input type="number" class="form-control" placeholder="e.g. 500">
+              <form id="importer-reg-form" onsubmit="submitImporterRegistration(event)">
+                
+                <!-- Section 1: Company Information -->
+                <div class="mb-4">
+                  <div class="form-section-title mb-3">
+                    <div class="bg-primary-subtle text-primary p-2 rounded">
+                      <i class="ti ti-building-store"></i>
+                    </div>
+                    <span>Company Information</span>
                   </div>
-                  <div class="col-md-3">
-                    <label class="form-label">Cold Storage Facility Available?</label>
-                    <select class="form-select">
-                      <option>No Cold Storage</option>
-                      <option>Chilled Storage (0 - 4°C)</option>
-                      <option>Frozen Storage (-18°C or below)</option>
-                    </select>
-                  </div>
-                  
-                  <div class="col-md-6"><label class="form-label">Upload Importer License & BRN (PDF)</label><input type="file" class="form-control" required></div>
-                  <div class="col-md-6"><label class="form-label">Upload Warehouse Inspection Certificate</label><input type="file" class="form-control"></div>
-
-                  <div class="col-md-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-alert-circle me-1"></i> Registration as an importer requires a documentary check by the Food Control Administration Unit (FCAU) before shipping entries can be declared.
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label">Legal Company Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" placeholder="e.g. Food Imports (Pvt) Ltd" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Business Registration No <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" placeholder="e.g. PV-123456" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">NIC Number</label>
+                      <input type="text" class="form-control" placeholder="e.g. 199012345678 or 901234567V">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">TIN Number <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" placeholder="9-digit Taxpayer ID" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">VAT Number <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" placeholder="VAT Registration Number" required>
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit Registration Application</button>
+                <hr class="my-4">
+
+                <!-- Section 2: Contact Information -->
+                <div class="mb-4">
+                  <div class="form-section-title mb-3">
+                    <div class="bg-primary-subtle text-primary p-2 rounded">
+                      <i class="ti ti-phone"></i>
+                    </div>
+                    <span>Contact Information</span>
+                  </div>
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label class="form-label">Contact Person Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" placeholder="Contact person full name" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" placeholder="e.g. 0771234567" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Official Email <span class="text-danger">*</span></label>
+                      <input type="email" class="form-control" placeholder="e.g. imports@company.com" required>
+                    </div>
                   </div>
                 </div>
+
+                <hr class="my-4">
+
+                <!-- Section 3: Warehouse Location -->
+                <div class="mb-4">
+                  <div class="form-section-title mb-3">
+                    <div class="bg-primary-subtle text-primary p-2 rounded">
+                      <i class="ti ti-map-pin"></i>
+                    </div>
+                    <span>Warehouse Location (Spatial Data)</span>
+                  </div>
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Latitude <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="lat-field" placeholder="e.g. 6.9271" required value="6.9271">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Longitude <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="lng-field" placeholder="e.g. 79.8612" required value="79.8612">
+                    </div>
+                  </div>
+                  <div class="mb-2">
+                    <label class="form-label fw-semibold"><i class="ti ti-map-2 me-1"></i>Warehouse Location Map</label>
+                    <div id="map"></div>
+                    <small class="text-muted mt-2 d-block">Click on the map or drag the pin to set your warehouse location.</small>
+                  </div>
+                </div>
+
+                <hr class="my-4">
+
+                <!-- Section 4: Required Documents -->
+                <div class="mb-4">
+                  <div class="form-section-title mb-3">
+                    <div class="bg-primary-subtle text-primary p-2 rounded">
+                      <i class="ti ti-cloud-upload"></i>
+                    </div>
+                    <span>Required Verification Documents</span>
+                  </div>
+                  <div class="row g-3">
+                    <div class="col-md-6 col-lg-4">
+                      <label class="form-label">Business Registration Certificate <span class="text-danger">*</span></label>
+                      <input type="file" class="form-control" required>
+                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <label class="form-label">VAT Certificate <span class="text-danger">*</span></label>
+                      <input type="file" class="form-control" required>
+                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <label class="form-label">Director Board Details Document <span class="text-danger">*</span></label>
+                      <input type="file" class="form-control" required>
+                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mt-lg-3">
+                      <label class="form-label">EDB Certificate <span class="text-danger">*</span></label>
+                      <input type="file" class="form-control" required>
+                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer Buttons -->
+                <div class="d-flex justify-content-end gap-2 mt-4 border-top pt-3">
+                  <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                  <button type="submit" class="btn btn-primary px-4">Submit Registration</button>
+                </div>
+
               </form>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
+
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -98,6 +201,40 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
-<script src="./_role.js"></script>
+  <script src="./_role.js"></script>
+
+  <script>
+    var map, marker;
+    function initMap() {
+      map = L.map('map').setView([6.9271, 79.8612], 8); // View Sri Lanka
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      marker = L.marker([6.9271, 79.8612], {draggable: true}).addTo(map);
+
+      marker.on('dragend', function (e) {
+        var position = marker.getLatLng();
+        document.getElementById('lat-field').value = position.lat.toFixed(4);
+        document.getElementById('lng-field').value = position.lng.toFixed(4);
+      });
+
+      map.on('click', function(e) {
+        marker.setLatLng(e.latlng);
+        document.getElementById('lat-field').value = e.latlng.lat.toFixed(4);
+        document.getElementById('lng-field').value = e.latlng.lng.toFixed(4);
+      });
+    }
+
+    function submitImporterRegistration(e) {
+      e.preventDefault();
+      alert("Importer registration submitted successfully! Awaiting FCAU review and validation.");
+      window.location.href = "./iims-export-app.html";
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      initMap();
+    });
+  </script>
 </body>
 </html>

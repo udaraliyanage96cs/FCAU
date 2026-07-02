@@ -15,11 +15,12 @@
     nav: [
       { type: 'cap', label: 'Home' },
       { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-dashboard.html' },
+      { type: 'link', icon: 'ti ti-search',              label: 'Import Inspection',   href: './iims-import-inspection.html' },
 
       { type: 'cap', label: 'Import Control' },
       { type: 'link', icon: 'ti ti-package-import',      label: 'Import Pipeline',     href: './iims-import-control.html' },
       { type: 'link', icon: 'ti ti-file-invoice',        label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
-      { type: 'link', icon: 'ti ti-shield-check',        label: 'Border Inspection',   href: './iims-import-inspection.html' },
+      { type: 'link', icon: 'ti ti-shield-check',        label: 'Border Inspection',   href: './iims-do-import-inspection.html' },
 
       { type: 'cap', label: 'Export Control' },
       { type: 'link', icon: 'ti ti-package-export',      label: 'Export Control',      href: './iims-export-control.html' },

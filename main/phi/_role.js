@@ -109,8 +109,9 @@
     }
 
     /* top-right avatar icon → profile page */
-    var topAvatar = document.getElementById('drop1');
+    var topAvatar = document.getElementById('drop1') || document.querySelector('.topbar img.rounded-circle');
     if (topAvatar) {
+      topAvatar.style.cursor = 'pointer';
       topAvatar.addEventListener('click', function (e) {
         e.preventDefault();
         window.location.href = './iims-profile.html';

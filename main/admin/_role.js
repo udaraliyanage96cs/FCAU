@@ -14,13 +14,19 @@
     colorLight: '#EEF2FF',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-dashboard.html' },
-      { type: 'link', icon: 'ti ti-notes',            label: 'MOH Reviews',        href: './iims-moh-reviews.html' },
-      { type: 'link', icon: 'ti ti-user-circle',      label: 'Exporter Profiles',  href: './iims-exporter-profiles.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',               href: './iims-dashboard.html' },
+      { type: 'link', icon: 'ti ti-map-2',            label: 'Risk Heatmaps',           href: './iims-risk-heatmaps.html' },
+      { type: 'link', icon: 'ti ti-building-store',   label: 'Business Approvals',      href: './iims-business-approvals.html' },
 
-      { type: 'cap', label: 'Administration' },
-      { type: 'link', icon: 'ti ti-users',            label: 'Access Control',     href: './iims-user-management.html' },
-      { type: 'link', icon: 'ti ti-activity',         label: 'Activity Management',href: './iims-activity-management.html' },
+      { type: 'cap', label: 'User Management' },
+      { type: 'link', icon: 'ti ti-users',            label: 'User Directory',          href: './iims-user-management.html' },
+      { type: 'link', icon: 'ti ti-user-plus',        label: 'Add New User',            href: './iims-add-user.html' },
+      { type: 'link', icon: 'ti ti-user-check',       label: 'User Sign-up',            href: './iims-user-signup.html' },
+      { type: 'link', icon: 'ti ti-flask',            label: 'Lab Directory',           href: './iims-labs.html' },
+
+      { type: 'cap', label: 'System Config' },
+      { type: 'link', icon: 'ti ti-settings',         label: 'Inspection Config',       href: './iims-inspection-config.html' },
+      { type: 'link', icon: 'ti ti-mail-opened',      label: 'Notification Templates',  href: './iims-notification-templates.html' },
       {
         type: 'link-parent',
         icon: 'ti ti-file-text',
@@ -33,7 +39,14 @@
           { label: 'Frequency Rules',      href: './iims-frequency-rules.html' },
           { label: 'H800 Forms',           href: './iims-h800-forms.html' }
         ]
-      }
+      },
+
+      { type: 'cap', label: 'Analytics' },
+      { type: 'link', icon: 'ti ti-chart-bar',        label: 'Reports & Analytics',     href: './iims-reports.html' },
+      { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts Center',           href: './iims-alerts.html' },
+
+      { type: 'cap', label: 'Help' },
+      { type: 'link', icon: 'ti ti-book',             label: 'Prototype Guide',         href: './iims-guide.html' }
     ]
   };
 
@@ -114,7 +127,50 @@
 
     /* rebuild sidebar nav */
     var nav = document.getElementById('sidebarnav');
-    if (nav) nav.innerHTML = buildNav();
+    if (nav) {
+      nav.innerHTML = buildNav();
+      
+      // Bind toggle event listeners to the links
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          const isActive = this.classList.contains("active");
+          const parentUl = this.closest("ul");
+          
+          if (!isActive) {
+            // hide any open menus and remove all other classes
+            parentUl.querySelectorAll("ul").forEach(function (submenu) {
+              submenu.classList.remove("in");
+            });
+            parentUl.querySelectorAll("a").forEach(function (navLink) {
+              navLink.classList.remove("active");
+            });
+            
+            // open our new menu and add the open class
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+              submenu.classList.add("in");
+            }
+            this.classList.add("active");
+          } else {
+            this.classList.remove("active");
+            parentUl.classList.remove("active");
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+              submenu.classList.remove("in");
+            }
+          }
+        });
+      });
+      
+      // Expand sub-menus on load if active child matches
+      nav.querySelectorAll("ul.collapse.first-level.show").forEach(function (submenu) {
+        submenu.classList.add("in");
+        var parentLink = submenu.previousElementSibling;
+        if (parentLink) {
+          parentLink.classList.add("active");
+        }
+      });
+    }
 
     /* update profile chip */
     var ph6 = document.querySelector('.fixed-profile h6');
