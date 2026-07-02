@@ -14,26 +14,26 @@
     colorLight: '#EEF2FF',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',               href: './iims-dashboard.html' },
-      { type: 'link', icon: 'ti ti-map-2',            label: 'Risk Heatmaps',           href: './iims-risk-heatmaps.html' },
-      { type: 'link', icon: 'ti ti-building-store',   label: 'Business Approvals',      href: './iims-business-approvals.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-dashboard.html' },
+      { type: 'link', icon: 'ti ti-notes',            label: 'MOH Reviews',        href: './iims-moh-reviews.html' },
+      { type: 'link', icon: 'ti ti-user-circle',      label: 'Exporter Profiles',  href: './iims-exporter-profiles.html' },
 
-      { type: 'cap', label: 'User Management' },
-      { type: 'link', icon: 'ti ti-users',            label: 'User Directory',          href: './iims-user-management.html' },
-      { type: 'link', icon: 'ti ti-user-plus',        label: 'Add New User',            href: './iims-add-user.html' },
-      { type: 'link', icon: 'ti ti-user-check',       label: 'User Sign-up',            href: './iims-user-signup.html' },
-      { type: 'link', icon: 'ti ti-flask',            label: 'Lab Directory',           href: './iims-labs.html' },
-
-      { type: 'cap', label: 'System Config' },
-      { type: 'link', icon: 'ti ti-settings',         label: 'Inspection Config',       href: './iims-inspection-config.html' },
-      { type: 'link', icon: 'ti ti-mail-opened',      label: 'Notification Templates',  href: './iims-notification-templates.html' },
-
-      { type: 'cap', label: 'Analytics' },
-      { type: 'link', icon: 'ti ti-chart-bar',        label: 'Reports & Analytics',     href: './iims-reports.html' },
-      { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts Center',           href: './iims-alerts.html' },
-
-      { type: 'cap', label: 'Help' },
-      { type: 'link', icon: 'ti ti-book',             label: 'Prototype Guide',         href: './iims-guide.html' }
+      { type: 'cap', label: 'Administration' },
+      { type: 'link', icon: 'ti ti-users',            label: 'Access Control',     href: './iims-user-management.html' },
+      { type: 'link', icon: 'ti ti-activity',         label: 'Activity Management',href: './iims-activity-management.html' },
+      {
+        type: 'link-parent',
+        icon: 'ti ti-file-text',
+        label: 'Grading & Form',
+        children: [
+          { label: 'Food Classifications', href: './iims-food-classifications.html' },
+          { label: 'Criteria Domains',     href: './iims-criteria-domains.html' },
+          { label: 'Criteria Config',      href: './iims-criteria-config.html' },
+          { label: 'Master Config',        href: './iims-master-config.html' },
+          { label: 'Frequency Rules',      href: './iims-frequency-rules.html' },
+          { label: 'H800 Forms',           href: './iims-h800-forms.html' }
+        ]
+      }
     ]
   };
 
@@ -45,6 +45,36 @@
         return '<li class="nav-small-cap">' +
                '<i class="ti ti-dots nav-small-cap-icon fs-4"></i>' +
                '<span class="hide-menu">' + item.label + '</span></li>';
+      }
+      if (item.type === 'link-parent') {
+        var isOpen = item.children.some(function(child) {
+          return cur === child.href.replace('./', '');
+        });
+        var activeClass = isOpen ? ' active' : '';
+        var showClass = isOpen ? ' show' : '';
+        var expanded = isOpen ? 'true' : 'false';
+        
+        var submenuHtml = item.children.map(function(child) {
+          var childActive = (cur === child.href.replace('./', '')) ? ' active' : '';
+          return '<li class="sidebar-item">' +
+                 '<a href="' + child.href + '" class="sidebar-link' + childActive + '">' +
+                 '<div class="round-16 d-flex align-items-center justify-content-center">' +
+                 '<i class="ti ti-circle" style="font-size: 8px;"></i>' +
+                 '</div>' +
+                 '<span class="hide-menu">' + child.label + '</span>' +
+                 '</a>' +
+                 '</li>';
+        }).join('');
+        
+        return '<li class="sidebar-item">' +
+               '<a class="sidebar-link has-arrow' + activeClass + '" href="javascript:void(0)" aria-expanded="' + expanded + '">' +
+               '<span><i class="' + item.icon + '"></i></span>' +
+               '<span class="hide-menu">' + item.label + '</span>' +
+               '</a>' +
+               '<ul aria-expanded="' + expanded + '" class="collapse first-level' + showClass + '">' +
+               submenuHtml +
+               '</ul>' +
+               '</li>';
       }
       var active = (cur === item.href.replace('./', '')) ? ' active' : '';
       return '<li class="sidebar-item">' +
