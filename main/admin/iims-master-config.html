@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Master Configurations</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical"><div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+        <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+          IIMS
+        </a>
+        <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+          <i class="ti ti-x"></i>
+        </a>
+      </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
+    </div></aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">Master Configuration Rules</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item active">Master Config</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
+                <div>
+                  <h5 class="fw-semibold mb-1">Master Configuration Rules</h5>
+                  <p class="text-muted fs-2 mb-0">Manage score weights and denominator deductions by criteria</p>
+                </div>
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                  <div class="position-relative">
+                    <input type="text" id="search-input" class="form-control ps-5" placeholder="Search by code, ID or desc..." style="width: 220px;">
+                    <i class="ti ti-search position-absolute start-0 top-50 translate-middle-y ms-3 text-muted"></i>
+                  </div>
+                  <button class="btn btn-outline-primary" onclick="applyFilters()">Apply</button>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRuleModal"><i class="ti ti-plus me-1"></i>Add Rule</button>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Config ID</th>
+                      <th>Classification</th>
+                      <th>Sub-Class.</th>
+                      <th>Criteria Item</th>
+                      <th>Scores</th>
+                      <th>Max Score Weight</th>
+                      <th>Denom. Deduction</th>
+                      <th>Status</th>
+                      <th class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rules-tbody">
+                    <!-- Rendered by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Rule Modal -->
+  <div class="modal fade" id="addRuleModal" tabindex="-1" aria-labelledby="addRuleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0 pb-0">
+          <h5 class="modal-title fw-semibold" id="addRuleModalLabel">Add Configuration Rule</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="add-rule-form" onsubmit="saveRule(event)">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Classification</label>
+              <select id="rule-class" class="form-select" required>
+                <option value="Restaurants and Cafes">Restaurants and Cafes</option>
+                <option value="Bakeries">Bakeries</option>
+                <option value="Global">Global / All Classifications</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Sub-Classification (Optional)</label>
+              <select id="rule-subclass" class="form-select">
+                <option value="None">None (Global to Classification)</option>
+                <option value="Fast Food">Fast Food</option>
+                <option value="Artisanal Bakery">Artisanal Bakery</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Link to Form Version (Optional)</label>
+              <select id="rule-form" class="form-select">
+                <option value="None">None (Global rule)</option>
+                <option value="form 12">Form 12</option>
+                <option value="form 11">Form 11</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Criteria Item</label>
+              <select id="rule-crit" class="form-select" required>
+                <option value="[BLD-01] Structural soundness (BUILDING)">[BLD-01] Structural soundness (BUILDING)</option>
+                <option value="[FOOD-02] Temperature control (FOOD_HANDLER)">[FOOD-02] Temperature control (FOOD_HANDLER)</option>
+                <option value="[GEN-02] Freedom from objectionable odors (GENERAL)">[GEN-02] Freedom from objectionable odors (GENERAL)</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Scores (Comma separated)</label>
+              <input type="text" id="rule-scores" class="form-control" value="1,2,5,6" placeholder="e.g. 1,2,5">
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Denominator Deduction</label>
+              <input type="number" id="rule-deduct" class="form-control" value="0" min="0" required>
+              <small class="text-muted">Total per classification/form must not exceed 80.</small>
+            </div>
+            <div class="d-flex justify-content-end gap-2 mt-4">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Create Rule</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="./_role.js"></script>
+
+  <script>
+    var rules = [
+      { id: "019ef29d...", class: "Restaurants and Cafes", subclass: "Fast Food", crit: "[BLD-01] Structural soundness (BUILDING)", scores: "1,2,5,6", weight: "5 (Max)", deduct: "0", status: "Active" },
+      { id: "019ef2df...", class: "Restaurants and Cafes", subclass: "-", crit: "[BLD-01] Structural soundness (BUILDING)", scores: "1,2,5,6", weight: "5 (Max)", deduct: "0", status: "Active" },
+      { id: "019ef2de...", class: "Restaurants and Cafes", subclass: "-", crit: "[BLD-01] Structural soundness (BUILDING)", scores: "1,2,5,6", weight: "5 (Max)", deduct: "0", status: "Active" },
+      { id: "019ef2dc...", class: "Restaurants and Cafes", subclass: "-", crit: "[BLD-01] Structural soundness (BUILDING)", scores: "1,2,5,6", weight: "5 (Max)", deduct: "0", status: "Active" },
+      { id: "019ef29a...", class: "Restaurants and Cafes", subclass: "Fast Food", crit: "[BLD-01] Structural soundness (BUILDING)", scores: "1,2,5,6", weight: "6 (Max)", deduct: "6", status: "Active" },
+      { id: "019ef2de...", class: "Restaurants and Cafes", subclass: "-", crit: "[BLD-01] Structural soundness (BUILDING)", scores: "1,2,5,6", weight: "5 (Max)", deduct: "0", status: "Active" },
+      { id: "019ef2de...", class: "Restaurants and Cafes", subclass: "-", crit: "GEN-02 Freedom from objectionable odors", scores: "1,2,5,6", weight: "5 (Max)", deduct: "0", status: "Active" }
+    ];
+
+    function renderRules(data) {
+      var tbody = document.getElementById('rules-tbody');
+      tbody.innerHTML = '';
+      data.forEach(function(item) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td><span class="text-muted fs-1">' + item.id + '</span></td>' +
+          '<td><span class="fw-semibold text-dark fs-2">' + item.class + '</span></td>' +
+          '<td><span class="text-muted fs-2">' + item.subclass + '</span></td>' +
+          '<td><span class="fw-semibold text-dark fs-2">' + item.crit + '</span></td>' +
+          '<td><span class="fw-bold text-primary fs-2">' + item.scores + '</span></td>' +
+          '<td><span class="fw-bold text-dark fs-2">' + item.weight + '</span></td>' +
+          '<td><span class="fw-bold text-danger fs-2">' + item.deduct + '</span></td>' +
+          '<td><span class="text-success fw-semibold fs-2">' + item.status + '</span></td>' +
+          '<td class="text-end">' +
+          '  <div class="d-flex align-items-center justify-content-end gap-1">' +
+          '    <button class="btn btn-sm btn-info px-2" title="Edit"><i class="ti ti-edit fs-3"></i></button>' +
+          '    <button class="btn btn-sm btn-warning px-2" title="Toggle Status"><i class="ti ti-key fs-3"></i></button>' +
+          '  </div>' +
+          '</td>';
+        tbody.appendChild(tr);
+      });
+    }
+
+    function applyFilters() {
+      var query = document.getElementById('search-input').value.toLowerCase();
+      var filtered = rules.filter(function(item) {
+        return item.class.toLowerCase().includes(query) || item.crit.toLowerCase().includes(query) || item.id.toLowerCase().includes(query);
+      });
+      renderRules(filtered);
+    }
+
+    function saveRule(e) {
+      e.preventDefault();
+      var cl = document.getElementById('rule-class').value;
+      var sub = document.getElementById('rule-subclass').value;
+      var cr = document.getElementById('rule-crit').value;
+      var sc = document.getElementById('rule-scores').value;
+      var de = document.getElementById('rule-deduct').value;
+
+      var newRule = {
+        id: "019ef" + Math.floor(Math.random()*100000) + "...",
+        class: cl,
+        subclass: sub === "None" ? "-" : sub,
+        crit: cr,
+        scores: sc,
+        weight: "5 (Max)",
+        deduct: de,
+        status: "Active"
+      };
+
+      rules.push(newRule);
+
+      var modalEl = document.getElementById('addRuleModal');
+      var modal = bootstrap.Modal.getInstance(modalEl);
+      modal.hide();
+
+      document.getElementById('add-rule-form').reset();
+      renderRules(rules);
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      renderRules(rules);
+    });
+  </script>
+</body>
+</html>
