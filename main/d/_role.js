@@ -1,47 +1,27 @@
 /* ============================================================
-   IIMS Role Script — PHI (Public Health Inspector)
-   Injected into every page inside /main/phi/
+   IIMS Role Script — Director (D)
+   Injected into every page inside /main/d/
    ============================================================ */
 (function () {
   'use strict';
 
   var ROLE = {
-    id: 'phi',
-    name: 'PHI Officer',
-    subtitle: 'Colombo West Division',
-    badge: 'PHI',
-    color: '#3B82F6',
-    colorLight: '#EFF6FF',
+    id: 'd',
+    name: 'Director (D)',
+    subtitle: 'Ministry of Health, Sri Lanka',
+    badge: 'D',
+    color: '#7C3AED',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-dashboard.html' },
-      { type: 'link', icon: 'ti ti-user',             label: 'My Profile',         href: './iims-profile.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-dashboard.html' },
 
-      { type: 'cap', label: 'Inspection' },
-      { type: 'link', icon: 'ti ti-clipboard-check',  label: 'H-800 Digital Form', href: './iims-inspection-form.html' },
-      { type: 'link', icon: 'ti ti-calendar-event',   label: 'Inspection Calendar',href: './iims-inspection-calendar.html' },
-
-      { type: 'cap', label: 'Premises' },
-      { type: 'link', icon: 'ti ti-building-store',   label: 'Premises Registry',  href: './iims-premises-list.html' },
-      { type: 'link', icon: 'ti ti-user-plus',        label: 'FBO Registration',   href: './iims-fbo-registration.html' },
-
-      { type: 'cap', label: 'Laboratory' },
-      { type: 'link', icon: 'ti ti-test-pipe',        label: 'Sample Management',  href: './iims-sample-management.html' },
-
-      { type: 'cap', label: 'Compliance' },
-      { type: 'link', icon: 'ti ti-message-report',   label: 'Complaints Ledger',  href: './iims-complaints.html' },
-      { type: 'link', icon: 'ti ti-gavel',            label: 'Enforcement',        href: './iims-enforcement.html' },
-      { type: 'link', icon: 'ti ti-lock',             label: 'Seizure Order',      href: './iims-seizure-order.html' },
-      { type: 'link', icon: 'ti ti-scale',            label: 'Prosecution Form',   href: './iims-prosecution-form.html' },
-      { type: 'link', icon: 'ti ti-user-minus',       label: 'Arrested List',      href: './iims-arrested-list.html' },
-
-            { type: 'cap', label: 'Bottled Water' },
+      { type: 'cap', label: 'Bottled Water Module' },
       { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
       { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
       { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
 
       { type: 'cap', label: 'System' },
-      { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts',             href: './iims-alerts.html' }
+      { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }
     ]
   };
 
@@ -70,7 +50,7 @@
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active{background-color:' + ROLE.color + ' !important;color:#fff !important;}',
       '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);
@@ -99,7 +79,7 @@
     var topbar = document.querySelector('.topbar');
     if (topbar) topbar.style.borderBottom = '2px solid ' + ROLE.color + '55';
 
-    /* sign-out button → login page */
+    /* sign-out button â†’ login page */
     var logoutBtn = document.querySelector('[aria-label="logout"]');
     if (logoutBtn) {
       logoutBtn.style.cursor = 'pointer';
@@ -108,13 +88,12 @@
       });
     }
 
-    /* top-right avatar icon → profile page */
-    var topAvatar = document.getElementById('drop1') || document.querySelector('.topbar img.rounded-circle');
+    /* top-right avatar icon â†’ login page */
+    var topAvatar = document.getElementById('drop1');
     if (topAvatar) {
-      topAvatar.style.cursor = 'pointer';
       topAvatar.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = './iims-profile.html';
+        window.location.href = '../iims-login.html';
       });
     }
 
@@ -152,3 +131,4 @@
     init();
   }
 })();
+

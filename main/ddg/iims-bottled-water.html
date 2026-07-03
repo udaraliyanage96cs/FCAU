@@ -88,7 +88,10 @@
                       <td>Aqua Pure</td>
                       <td><span class="badge bg-success-subtle text-success">SLS Certified</span></td>
                       <td><span class="badge bg-primary">Active</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
+                        <button class="btn btn-sm btn-warning" onclick="addRecommendation('BW-2026-001')"><i class="ti ti-message-2 me-1"></i>Add Recommendation</button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -109,5 +112,13 @@
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
+<script>
+  function addRecommendation(id) {
+    const rec = prompt("Enter DDG Recommendation for " + id + ":");
+    if (rec) {
+      alert("Recommendation submitted successfully: \"" + rec + "\"");
+    }
+  }
+</script>
 </body>
 </html>

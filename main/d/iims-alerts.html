@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Bottled Water Manufacturing</title>
+  <title>IIMS - Alerts & Notifications</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -71,57 +71,33 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Bottled Water Manufacturing</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Bottled Water</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">System Alerts & Notifications</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Alerts</li></ol></nav></div></div></div>
           </div>
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Registered Manufacturers</h5>
-              <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                  <thead class="table-light"><tr><th>Reg No</th><th>Manufacturer</th><th>Source Type</th><th>Brand Name</th><th>Certification</th><th>Status</th><th>Actions</th></tr></thead>
-                  <tbody>
-                     <tr>
-                      <td>BW-2026-001</td>
-                      <td>Aqua Pure Ltd</td>
-                      <td>Deep Tube Well</td>
-                      <td>Aqua Pure</td>
-                      <td><span class="badge bg-success-subtle text-success">SLS Certified</span></td>
-                      <td><span class="badge bg-primary">Active</span></td>
-                      <td>
-                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
-                        <button class="btn btn-sm btn-warning me-1" onclick="alert('Inspection report generated successfully!')"><i class="ti ti-file-text me-1"></i>Generate Inspection Report</button>
-                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-001')"><i class="ti ti-history me-1"></i>Inspection History</button>
-                      </td>
-                    </tr>
-                    <tr id="row-bw-002">
-                      <td>BW-2026-002</td>
-                      <td>Spring Valley Waters</td>
-                      <td>Natural Spring</td>
-                      <td>Peak Valley Springs</td>
-                      <td><span class="badge bg-warning-subtle text-warning">Awaiting Audit</span></td>
-                      <td><span class="badge bg-warning text-dark" id="status-bw-002">Pending Review</span></td>
-                      <td id="actions-bw-002">
-                        <button class="btn btn-sm btn-success me-1" onclick="approveManufacturer('BW-2026-002')"><i class="ti ti-check me-1"></i>Approve</button>
-                        <button class="btn btn-sm btn-danger me-1" onclick="rejectManufacturer('BW-2026-002')"><i class="ti ti-x me-1"></i>Reject</button>
-                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-002')"><i class="ti ti-history me-1"></i>Inspection History</button>
-                      </td>
-                    </tr>
-                    <tr id="row-bw-003">
-                      <td>BW-2026-003</td>
-                      <td>Alpine Water Ltd</td>
-                      <td>Deep Tube Well</td>
-                      <td>Alpine Frost</td>
-                      <td><span class="badge bg-warning-subtle text-warning">Awaiting Inspection</span></td>
-                      <td><span class="badge bg-secondary text-white" id="status-bw-003">Draft Recommendation</span></td>
-                      <td id="actions-bw-003">
-                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
-                        <button class="btn btn-sm btn-success me-1" onclick="issueRecommendation('BW-2026-003')"><i class="ti ti-checklist me-1"></i>Issue Full Recommendation</button>
-                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-003')"><i class="ti ti-history me-1"></i>Inspection History</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <h5 class="card-title fw-semibold mb-4">Notification Center</h5>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                  <i class="ti ti-alert-triangle text-danger fs-6 mt-1"></i>
+                  <div class="d-flex gap-2 w-100 justify-content-between">
+                    <div>
+                      <h6 class="mb-0">Critical: Sample Test Failed</h6>
+                      <p class="mb-0 opacity-75">Sample #2026/PHI/COL/046 tested positive for Salmonella.</p>
+                    </div>
+                    <small class="opacity-50 text-nowrap">10 mins ago</small>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                  <i class="ti ti-calendar-event text-warning fs-6 mt-1"></i>
+                  <div class="d-flex gap-2 w-100 justify-content-between">
+                    <div>
+                      <h6 class="mb-0">Inspection Overdue</h6>
+                      <p class="mb-0 opacity-75">Premises FBO-2026-0005 is 5 days overdue for inspection.</p>
+                    </div>
+                    <small class="opacity-50 text-nowrap">2 hrs ago</small>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -139,54 +115,5 @@
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
-<script>
-  function approveManufacturer(id) {
-    if (confirm("Are you sure you want to approve manufacturer " + id + "?")) {
-      const badge = document.getElementById('status-bw-002');
-      badge.textContent = 'Active';
-      badge.className = 'badge bg-primary';
-      
-      const actions = document.getElementById('actions-bw-002');
-      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1">View</button> <button class="btn btn-sm btn-warning me-1" onclick="alert(\'Inspection report generated successfully!\')"><i class="ti ti-file-text me-1"></i>Generate</button> <button class="btn btn-sm btn-outline-info me-1" onclick="showHistory(\'BW-2026-002\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-success fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-check-filled me-1"></i>Approved</span>';
-    }
-  }
-  function rejectManufacturer(id) {
-    if (confirm("Are you sure you want to reject manufacturer " + id + "?")) {
-      const badge = document.getElementById('status-bw-002');
-      badge.textContent = 'Rejected';
-      badge.className = 'badge bg-danger';
-      
-      const actions = document.getElementById('actions-bw-002');
-      actions.innerHTML = '<button class="btn btn-sm btn-outline-info me-1" onclick="showHistory(\'BW-2026-002\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-danger fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-x-filled me-1"></i>Rejected</span>';
-    }
-  }
-  function sendForApproval(id) {
-    if (confirm("Are you sure you want to send manufacturer " + id + " for higher approval?")) {
-      alert("Application for " + id + " has been successfully submitted to DDG & Director for approval.");
-      if (id === 'BW-2026-003') {
-        const badge = document.getElementById('status-bw-003');
-        badge.textContent = 'Awaiting Approval';
-        badge.className = 'badge bg-info text-white';
-        
-        const actions = document.getElementById('actions-bw-003');
-        actions.innerHTML = '<button class="btn btn-sm btn-outline-info me-1" onclick="showHistory(\'BW-2026-003\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-info fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-mail-forward me-1"></i> Sent for Approval</span>';
-      }
-    }
-  }
-  function issueRecommendation(id) {
-    if (confirm("Are you sure you want to issue a full recommendation for manufacturer " + id + "?")) {
-      alert("Recommendation successfully issued!");
-      const badge = document.getElementById('status-bw-003');
-      badge.textContent = 'Recommended';
-      badge.className = 'badge bg-success text-white';
-      
-      const actions = document.getElementById('actions-bw-003');
-      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1">View</button> <button class="btn btn-sm btn-info me-1" onclick="sendForApproval(\'BW-2026-003\')"><i class="ti ti-send me-1"></i>Send for Approval</button> <button class="btn btn-sm btn-outline-info" onclick="showHistory(\'BW-2026-003\')"><i class="ti ti-history me-1"></i>History</button>';
-    }
-  }
-  function showHistory(id) {
-    alert("Viewing inspection history logs for manufacturer " + id + ":\n\n- 2026-01-15: SLS Re-certification Audit (Satisfactory)\n- 2025-07-22: Routine Factory Visit (Minor Non-compliance resolved)\n- 2025-02-10: Initial Premises Grade (Grade A)");
-  }
-</script>
 </body>
 </html>

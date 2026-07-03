@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <title>IIMS - Bottled Water Premises Registration</title>
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 250px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+    }
+    .file-input-wrapper {
+      position: relative;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  
+  <header class="bg-white border-bottom py-3 mb-4 shadow-sm">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-2">
+        <img src="../assets/images/logos/favicon.png" alt="Logo" width="40" height="40" />
+        <div>
+          <h4 class="fw-bold mb-0 text-primary">FCAU IIMS</h4>
+          <span class="fs-2 text-muted">Ministry of Health, Sri Lanka</span>
+        </div>
+      </div>
+      <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
+    </div>
+  </header>
+
+  <div class="container py-2" style="max-width: 1000px;">
+    <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+      <div class="card-body px-4 py-3">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h4 class="fw-semibold mb-1 text-primary">Bottled Water Premises Registration</h4>
+            <p class="mb-0 text-muted">Complete the 5-step registration wizard to register bottled/packaged water premises with the FCAU.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wizard Card -->
+    <div class="card">
+      <div class="card-body">
+        
+        <!-- Stepper -->
+        <div class="d-flex justify-content-start justify-content-md-center overflow-x-auto pb-2 mb-4 w-100 flex-nowrap" style="scrollbar-width: thin; -webkit-overflow-scrolling: touch;">
+          <div class="d-flex align-items-center gap-3 flex-nowrap">
+            <div class="d-flex align-items-center gap-2" id="step-indicator-1">
+              <div class="round-36 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold">1</div>
+              <span class="fw-semibold text-primary d-none d-md-inline-block">Applicant</span>
+            </div>
+            <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+            
+            <div class="d-flex align-items-center gap-2" id="step-indicator-2">
+              <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">2</div>
+              <span class="text-muted d-none d-md-inline-block">Firm & Unit</span>
+            </div>
+            <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+            
+            <div class="d-flex align-items-center gap-2" id="step-indicator-3">
+              <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">3</div>
+              <span class="text-muted d-none d-md-inline-block">Product Specs</span>
+            </div>
+            <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+            
+            <div class="d-flex align-items-center gap-2" id="step-indicator-4">
+              <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">4</div>
+              <span class="text-muted d-none d-md-inline-block">Location</span>
+            </div>
+            <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+            
+            <div class="d-flex align-items-center gap-2" id="step-indicator-5">
+              <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">5</div>
+              <span class="text-muted d-none d-md-inline-block">Fees & Docs</span>
+            </div>
+          </div>
+        </div>
+
+        <form id="waterRegForm" onsubmit="event.preventDefault();">
+          
+          <!-- STEP 1: Applicant Account Details -->
+          <div id="step-1">
+            <h5 class="fw-semibold mb-4">Applicant Identity & Authorized Person Details</h5>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Full Name of Authorized Applicant</label>
+                <input type="text" class="form-control" placeholder="e.g. Priyantha Silva" id="applicant-name">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Position Held in the Firm</label>
+                <input type="text" class="form-control" placeholder="e.g. Managing Director / Partner" id="applicant-position">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">NIC / Passport Number</label>
+                <input type="text" class="form-control" placeholder="e.g. 198012345678" id="applicant-nic">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Contact Number</label>
+                <input type="tel" class="form-control" placeholder="+94 7X XXX XXXX" id="applicant-phone">
+              </div>
+              <div class="col-md-12 mb-3">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" placeholder="silva.waters@example.com" id="applicant-email">
+                <small class="text-muted">This email will serve as your portal login username.</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Portal Password</label>
+                <input type="password" class="form-control" placeholder="Minimum 8 characters" id="password">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" placeholder="Re-enter password" id="confirm-password">
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: Firm & Manufacturing Unit Details -->
+          <div id="step-2" style="display: none;">
+            <h5 class="fw-semibold mb-4">Firm & Manufacturing Unit Details</h5>
+            
+            <div class="mb-3">
+              <label class="form-label">Name of the Manufacturing Unit</label>
+              <input type="text" class="form-control" placeholder="e.g. Aqua Pure Springs Lanka" id="unit-name">
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Nature of Firm</label>
+                <select class="form-select" id="firm-nature" onchange="toggleFirmNatureFields()">
+                  <option value="" disabled selected>Select firm type...</option>
+                  <option value="public">Public Limited Company</option>
+                  <option value="private">Private Limited Company</option>
+                  <option value="partnership">Partnership Concern</option>
+                  <option value="proprietary">Proprietary Concern</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Business Registration Number</label>
+                <input type="text" class="form-control" placeholder="e.g. PV-887654" id="firm-brn">
+              </div>
+            </div>
+
+            <div class="mb-3" id="directors-section">
+              <label class="form-label" id="directors-label">Managing Director & Technical Director Details</label>
+              <textarea class="form-control" rows="3" id="firm-directors" placeholder="Enter Full Names and Addresses of the Managing Director, Technical Director, or Partners as applicable."></textarea>
+            </div>
+          </div>
+
+          <!-- STEP 3: Product Specifications & SLS Certification -->
+          <div id="step-3" style="display: none;">
+            <h5 class="fw-semibold mb-4">Product & Water Source Specifications</h5>
+            
+            <div class="mb-4">
+              <label class="form-label d-block">Nature of Food Article to be Manufactured</label>
+              <div class="border rounded p-3 bg-white">
+                <div class="form-check mb-2">
+                  <input class="form-check-input water-cat" type="checkbox" id="cat-drinking" value="drinking" checked>
+                  <label class="form-check-label" for="cat-drinking">
+                    Bottled / Packaged Drinking Water
+                  </label>
+                </div>
+                <div class="form-check mb-0">
+                  <input class="form-check-input water-cat" type="checkbox" id="cat-mineral" value="mineral">
+                  <label class="form-check-label" for="cat-mineral">
+                    Bottled / Packaged Natural Mineral Water
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Brand Name of the Product</label>
+                <input type="text" class="form-control" placeholder="e.g. Peak Valley Springs" id="brand-name">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Water Source Type</label>
+                <select class="form-select" id="source-type">
+                  <option value="Deep Tube Well" selected>Deep Tube Well</option>
+                  <option value="Natural Spring">Natural Spring</option>
+                  <option value="Dug Well">Dug Well</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Water Resource Board (WRB) Approval Code</label>
+                <input type="text" class="form-control" placeholder="e.g. WRB/SP/2026-04" id="wrb-code">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Land Extent (Perches)</label>
+                <input type="number" class="form-control" placeholder="e.g. 180" id="land-extent">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Previous Registration Number (If any)</label>
+                <input type="text" class="form-control" placeholder="e.g. Reg-2021-0044" id="prev-reg-no">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Previous Registration Date (If any)</label>
+                <input type="date" class="form-control" id="prev-reg-date">
+              </div>
+            </div>
+
+            <div class="border rounded p-3 bg-light mb-3">
+              <h6 class="fw-semibold text-dark"><i class="ti ti-certificate me-1"></i>SLS Certification (For Local Products)</h6>
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">SLS Certification Number</label>
+                  <input type="text" class="form-control bg-white" placeholder="e.g. SLS 894" id="sls-no">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">Award Date</label>
+                  <input type="date" class="form-control bg-white" id="sls-date">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: Location, Address & Boundaries mapping -->
+          <div id="step-4" style="display: none;">
+            <h5 class="fw-semibold mb-4">Premises Location & Boundaries Mapping</h5>
+            
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Province</label>
+                <select class="form-select" id="province">
+                  <option selected>Western</option>
+                  <option>Central</option>
+                  <option>Southern</option>
+                  <option>Northern</option>
+                  <option>Eastern</option>
+                  <option>North Western</option>
+                  <option>North Central</option>
+                  <option>Uva</option>
+                  <option>Sabaragamuwa</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label">District</label>
+                <select class="form-select" id="district">
+                  <option selected>Gampaha</option>
+                  <option>Colombo</option>
+                  <option>Kalutara</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label">MOH Area</label>
+                <select class="form-select" id="moh-area">
+                  <option selected>Gampaha</option>
+                  <option>Negombo</option>
+                  <option>Wattala</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">GN Division</label>
+                <select class="form-select" id="gn-division">
+                  <option selected>Gampaha Aluthgama - 201</option>
+                  <option>Yakkada - 202</option>
+                  <option>Biyagama - 203</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">PHI Area (Auto assigned)</label>
+                <input type="text" class="form-control" value="Gampaha Division 01" readonly id="phi-area">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Full Address of the Premises (with House No., Ward No., Street No., Street)</label>
+              <textarea class="form-control" rows="2" placeholder="e.g. No 15, Spring Valley Road, Gampaha" id="premises-address"></textarea>
+            </div>
+
+            <div class="border rounded p-3 bg-light mb-3">
+              <h6 class="fw-semibold text-dark mb-2"><i class="ti ti-border-all me-1"></i>Boundaries of the Premises</h6>
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label class="form-label fs-2 text-muted">North boundary</label>
+                  <input type="text" class="form-control bg-white" placeholder="e.g. Main Road" id="bound-north">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label class="form-label fs-2 text-muted">South boundary</label>
+                  <input type="text" class="form-control bg-white" placeholder="e.g. Neighbor's Land" id="bound-south">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label class="form-label fs-2 text-muted">East boundary</label>
+                  <input type="text" class="form-control bg-white" placeholder="e.g. Coconut Estate" id="bound-east">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label class="form-label fs-2 text-muted">West boundary</label>
+                  <input type="text" class="form-control bg-white" placeholder="e.g. Stream canal" id="bound-west">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Latitude</label>
+                <input type="text" class="form-control" placeholder="e.g. 7.0873" id="latitude" value="7.0873">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Longitude</label>
+                <input type="text" class="form-control" placeholder="e.g. 80.0094" id="longitude" value="80.0094">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label"><i class="ti ti-map-2 me-1"></i>Premises Spatial Mapping</label>
+              <div id="map"></div>
+              <small class="text-muted mt-1 d-block">Click on the map or drag the pin to set the exact extraction source / premises location.</small>
+            </div>
+          </div>
+
+          <!-- STEP 5: Fees Payment, Required Documents & Submit -->
+          <div id="step-5" style="display: none;">
+            <h5 class="fw-semibold mb-4">Registration Fees & Document Attachments</h5>
+            
+            <div class="border rounded p-3 bg-light mb-4">
+              <h6 class="fw-semibold text-dark mb-3"><i class="ti ti-receipt me-1"></i>Particulars of Amount Remitted as Registration Fee</h6>
+              <div class="row">
+                <div class="col-md-4 mb-2">
+                  <label class="form-label">Amount Remitted (Rs.)</label>
+                  <input type="number" class="form-control bg-white" placeholder="e.g. 5000" id="remitted-amount">
+                </div>
+                <div class="col-md-4 mb-2">
+                  <label class="form-label">Receipt Number</label>
+                  <input type="text" class="form-control bg-white" placeholder="e.g. REC/WATER/1109" id="receipt-no">
+                </div>
+                <div class="col-md-4 mb-2">
+                  <label class="form-label">Date of Payment</label>
+                  <input type="date" class="form-control bg-white" id="receipt-date">
+                </div>
+              </div>
+            </div>
+
+            <h6 class="fw-semibold mb-3">Statutory Document Uploads</h6>
+            <div class="alert alert-info py-2 fs-2 border-0"><i class="ti ti-info-circle me-1"></i> Upload scanned PDF/JPG copies (Max 5MB per file).</div>
+
+            <!-- Doc 1: Premises Sketch (Specimen Form Field 2) -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">Premises Layout Sketch (with Boundaries)</label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 5MB)</span>
+              </div>
+              <div class="file-input-wrapper" id="wrapper-sketch">
+                <input type="file" id="file-sketch" class="d-none" onchange="fileSelected('sketch')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-sketch').click()">Choose File</button>
+                <span id="name-sketch" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-circle-check text-muted fs-5"></i>
+              </div>
+            </div>
+
+            <!-- Doc 2: SLS Certificate Copy (Specimen Form Field 9.i) -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">Certified Copy of SLS Award Certificate</label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 5MB)</span>
+              </div>
+              <div class="file-input-wrapper" id="wrapper-sls">
+                <input type="file" id="file-sls" class="d-none" onchange="fileSelected('sls')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-sls').click()">Choose File</button>
+                <span id="name-sls" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-circle-check text-muted fs-5"></i>
+              </div>
+            </div>
+
+            <!-- Doc 3: Payment Receipt Scan -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">Scanned Fee Payment Receipt</label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 5MB)</span>
+              </div>
+              <div class="file-input-wrapper" id="wrapper-receipt">
+                <input type="file" id="file-receipt" class="d-none" onchange="fileSelected('receipt')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-receipt').click()">Choose File</button>
+                <span id="name-receipt" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-circle-check text-muted fs-5"></i>
+              </div>
+            </div>
+
+            <!-- Doc 4: WRB approval cert (Optional/Additional) -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">WRB Approval Reference Document (Optional)</label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 5MB)</span>
+              </div>
+              <div class="file-input-wrapper" id="wrapper-wrb">
+                <input type="file" id="file-wrb" class="d-none" onchange="fileSelected('wrb')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-wrb').click()">Choose File</button>
+                <span id="name-wrb" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-circle-check text-muted fs-5"></i>
+              </div>
+            </div>
+
+            <!-- Review Declaration -->
+            <div class="border rounded p-3 bg-light-subtle border-warning mb-4">
+              <h6 class="fw-semibold text-warning"><i class="ti ti-alert-triangle me-1"></i>Please Confirm Details Before Submission</h6>
+              <p class="fs-2 text-muted mb-3">All necessary documents required for registration are attached. The information furnished above is true and correct to the best of my knowledge and belief.</p>
+              
+              <div class="form-check mb-0">
+                <input class="form-check-input" type="checkbox" id="declaration" checked>
+                <label class="form-check-label fw-bold text-dark fs-2" for="declaration">
+                  I hereby declare that all information provided is true and correct to the best of my knowledge and belief.
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mt-4 pt-3 border-top">
+            <button class="btn btn-outline-secondary w-100 w-sm-auto" id="btn-prev" disabled><i class="ti ti-arrow-left me-1"></i>Previous</button>
+            <div class="d-flex flex-column flex-sm-row gap-2">
+              <button class="btn btn-outline-primary w-100 w-sm-auto" id="btn-save-draft" type="button"><i class="ti ti-device-floppy me-1"></i>Save Draft</button>
+              <button class="btn btn-primary w-100 w-sm-auto" id="btn-next" type="button">Next<i class="ti ti-arrow-right ms-1"></i></button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../assets/js/vendor.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../assets/js/theme/app.init.js"></script>
+  <script src="../assets/js/theme/theme.js"></script>
+  <script src="../assets/js/theme/app.min.js"></script>
+  <script src="../assets/js/theme/sidebarmenu.js"></script>
+  
+  <script>
+    var currentStep = 1;
+    var totalSteps = 5;
+    var map, marker;
+
+    function showStep(n) {
+      for (var i = 1; i <= totalSteps; i++) {
+        document.getElementById('step-' + i).style.display = i === n ? 'block' : 'none';
+      }
+      document.getElementById('btn-prev').disabled = n === 1;
+      
+      if (n === totalSteps) {
+        document.getElementById('btn-next').innerHTML = '<i class="ti ti-send me-1"></i>Submit Application';
+      } else {
+        document.getElementById('btn-next').innerHTML = 'Next<i class="ti ti-arrow-right ms-1"></i>';
+      }
+
+      for (var i = 1; i <= totalSteps; i++) {
+        var ind = document.getElementById('step-indicator-' + i);
+        var circle = ind.querySelector('div');
+        var label = ind.querySelector('span');
+        if (i <= n) {
+          circle.className = 'round-36 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold';
+          label.className = 'fw-semibold text-primary d-none d-md-inline-block';
+        } else {
+          circle.className = 'round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold';
+          label.className = 'text-muted d-none d-md-inline-block';
+        }
+      }
+
+      if (n === 4) {
+        setTimeout(initMap, 200);
+      }
+    }
+
+    // Direct navigation via stepper clicks
+    for (var i = 1; i <= totalSteps; i++) {
+      (function(stepIndex) {
+        var ind = document.getElementById('step-indicator-' + stepIndex);
+        ind.style.cursor = 'pointer';
+        ind.addEventListener('click', function() {
+          currentStep = stepIndex;
+          showStep(currentStep);
+        });
+      })(i);
+    }
+
+    document.getElementById('btn-next').addEventListener('click', function() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        alert("Bottled Water Premises Registration application submitted successfully! Status: PENDING_REVIEW. Log in credentials have been dispatched to your email.");
+        window.location.href = "./iims-login.html";
+      }
+    });
+
+    document.getElementById('btn-prev').addEventListener('click', function() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    document.getElementById('btn-save-draft').addEventListener('click', function() {
+      alert("Application saved as DRAFT successfully.");
+    });
+
+    function initMap() {
+      if (!map) {
+        map = L.map('map').setView([7.0873, 80.0094], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        marker = L.marker([7.0873, 80.0094], {draggable: true}).addTo(map);
+
+        marker.on('dragend', function (e) {
+          var position = marker.getLatLng();
+          document.getElementById('latitude').value = position.lat.toFixed(4);
+          document.getElementById('longitude').value = position.lng.toFixed(4);
+        });
+
+        map.on('click', function(e) {
+          marker.setLatLng(e.latlng);
+          document.getElementById('latitude').value = e.latlng.lat.toFixed(4);
+          document.getElementById('longitude').value = e.latlng.lng.toFixed(4);
+        });
+      }
+    }
+
+    function toggleFirmNatureFields() {
+      var nature = document.getElementById("firm-nature").value;
+      var directorsLabel = document.getElementById("directors-label");
+      var directorsText = document.getElementById("firm-directors");
+      
+      if (nature === "partnership") {
+        directorsLabel.innerHTML = 'Names and Addresses of Partners';
+        directorsText.placeholder = "Enter names and addresses of all partner concerns.";
+      } else if (nature === "proprietary") {
+        directorsLabel.innerHTML = 'Name and Address of Proprietor';
+        directorsText.placeholder = "Enter full name and address of the proprietor.";
+      } else {
+        directorsLabel.innerHTML = 'Managing Director & Technical Director Details';
+        directorsText.placeholder = "Enter MD & Technical Director details.";
+      }
+    }
+
+    function fileSelected(type) {
+      var input = document.getElementById("file-" + type);
+      var nameSpan = document.getElementById("name-" + type);
+      var wrapper = document.getElementById("wrapper-" + type);
+
+      if (input.files.length > 0) {
+        nameSpan.textContent = input.files[0].name;
+        nameSpan.classList.remove("text-muted");
+        nameSpan.classList.add("text-dark", "fw-bold");
+        wrapper.querySelector('i').className = "ti ti-circle-check text-success fs-5";
+      } else {
+        nameSpan.textContent = "No file chosen";
+        wrapper.querySelector('i').className = "ti ti-circle-check text-muted fs-5";
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      showStep(currentStep);
+    });
+  </script>
+</body>
+</html>
