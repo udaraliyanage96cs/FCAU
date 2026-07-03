@@ -1,27 +1,21 @@
 /* ============================================================
-   IIMS Role Script â€” Assistant Director
-   Injected into every page inside /main/salt-ad/
+   IIMS Role Script — Director (D)
+   Injected into every page inside /main/d/
    ============================================================ */
 (function () {
   'use strict';
 
   var ROLE = {
-    id: 'salt-ad',
-    name: 'Assistant Director',
-    subtitle: 'Salt Regulation & Approvals',
-    badge: 'AD_SALT',
-    color: '#4338CA',
+    id: 'd',
+    name: 'Director (D)',
+    subtitle: 'Ministry of Health, Sri Lanka',
+    badge: 'D',
+    color: '#7C3AED',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-salt-manufacturing.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-dashboard.html' },
 
-      { type: 'cap', label: 'Salt Manufacturing' },
-      { type: 'link', icon: 'ti ti-file-text',          label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
-      { type: 'link', icon: 'ti ti-refresh',            label: 'Annual Renewal',      href: './iims-salt-renewal.html' },
-      { type: 'link', icon: 'ti ti-edit',               label: 'Amendment Request',   href: './iims-salt-amendment.html' },
-      { type: 'link', icon: 'ti ti-certificate',        label: 'Brand Registration',  href: './iims-salt-brands.html' },
-
-      { type: 'cap', label: 'Bottled Water' },
+      { type: 'cap', label: 'Bottled Water Module' },
       { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
       { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
       { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
@@ -32,7 +26,7 @@
   };
 
   function buildNav() {
-    var cur = window.location.pathname.split('/').pop() || 'iims-salt-manufacturing.html';
+    var cur = window.location.pathname.split('/').pop() || 'iims-dashboard.html';
     return ROLE.nav.map(function (item) {
       if (item.type === 'cap') {
         return '<li class="nav-small-cap">' +

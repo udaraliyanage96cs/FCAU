@@ -88,7 +88,10 @@
                       <td>Aqua Pure</td>
                       <td><span class="badge bg-success-subtle text-success">SLS Certified</span></td>
                       <td><span class="badge bg-primary">Active</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
+                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-001')"><i class="ti ti-history me-1"></i>Inspection History</button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -109,5 +112,10 @@
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
+<script>
+  function showHistory(id) {
+    alert("Viewing inspection history logs for manufacturer " + id + ":\n\n- 2026-01-15: SLS Re-certification Audit (Satisfactory)\n- 2025-07-22: Routine Factory Visit (Minor Non-compliance resolved)\n- 2025-02-10: Initial Premises Grade (Grade A)");
+  }
+</script>
 </body>
 </html>

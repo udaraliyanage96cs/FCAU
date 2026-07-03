@@ -59,6 +59,8 @@ This document provides a comprehensive list of all functional pages within the F
 | **Bottled Water** | [iims-bottled-water.html](file:///d:/FCAU/main/iims-bottled-water.html) | Specialized module dashboard for Bottled/Packaged water. |
 | **Water Reg Form** | [iims-water-registration-form.html](file:///d:/FCAU/main/iims-water-registration-form.html) | Application for water source (Well/Spring) and initial facility approval. |
 | **Brand Registration** | [iims-water-brands.html](file:///d:/FCAU/main/iims-water-brands.html) | Registering multiple commercial brands under a single parent facility. |
+| **Water Guest Reg Wizard** | [iims-water-premises-registration.html](file:///d:/FCAU/main/iims-water-premises-registration.html) | Guest-facing multi-step wizard for new Bottled Water Premises & User Account registration. |
+| **Salt Guest Reg Wizard** | [iims-salt-premises-registration.html](file:///d:/FCAU/main/iims-salt-premises-registration.html) | Guest-facing multi-step wizard for new Common Salt Premises (Factory/Saltern) & User Account registration. |
 
 ## ⚖️ Compliance & Enforcement
 | Page | URL | Description |
