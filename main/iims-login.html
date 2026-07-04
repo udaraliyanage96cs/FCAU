@@ -223,8 +223,19 @@
             <input type="radio" name="role" value="trader">
             <div class="role-icon"><i class="ti ti-arrows-left-right"></i></div>
             <div class="role-info">
-              <span class="role-badge-pill" style="background:#8B5CF6;">TRADE</span>
-              <span class="role-name">Trade Operator</span>
+              <span class="role-badge-pill" style="background:#8B5CF6;">IMPORT</span>
+              <span class="role-name">Trade Operator ( Import )</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-trader-export"
+                 style="--rc:#3B82F6;--rc-rgb:59,130,246;"
+                 onclick="selectRole('trader-export')">
+            <input type="radio" name="role" value="trader-export">
+            <div class="role-icon"><i class="ti ti-arrows-left-right"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#3B82F6;">EXPORT</span>
+              <span class="role-name">Trade Operator ( Export )</span>
             </div>
           </label>
 
@@ -433,6 +444,7 @@
       lab:         './lab/iims-dashboard.html',
       fbo:         './fbo/iims-dashboard.html',
       trader:      './trader/index.html',
+      'trader-export': './trader-export/index.html',
       salt:        './salt/index.html',
       'salt-cao':  './salt-cao/index.html',
       'salt-dfdi': './salt-dfdi/index.html',

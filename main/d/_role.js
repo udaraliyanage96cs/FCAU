@@ -20,6 +20,9 @@
       { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
       { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
 
+      { type: 'cap', label: 'Trade Control' },
+      { type: 'link', icon: 'ti ti-package-import',      label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
+
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }
     ]

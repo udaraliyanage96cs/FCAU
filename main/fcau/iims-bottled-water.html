@@ -88,7 +88,7 @@
                       <td>Aqua Pure</td>
                       <td><span class="badge bg-success-subtle text-success">SLS Certified</span></td>
                       <td><span class="badge bg-primary">Active</span></td>
-                      <td>
+                      <td class="text-nowrap">
                         <button class="btn btn-sm btn-outline-primary me-1">View</button>
                         <button class="btn btn-sm btn-warning me-1" onclick="alert('Inspection report generated successfully!')"><i class="ti ti-file-text me-1"></i>Generate Inspection Report</button>
                         <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-001')"><i class="ti ti-history me-1"></i>Inspection History</button>
@@ -101,7 +101,7 @@
                       <td>Peak Valley Springs</td>
                       <td><span class="badge bg-warning-subtle text-warning">Awaiting Audit</span></td>
                       <td><span class="badge bg-warning text-dark" id="status-bw-002">Pending Review</span></td>
-                      <td id="actions-bw-002">
+                      <td id="actions-bw-002" class="text-nowrap">
                         <button class="btn btn-sm btn-success me-1" onclick="approveManufacturer('BW-2026-002')"><i class="ti ti-check me-1"></i>Approve</button>
                         <button class="btn btn-sm btn-danger me-1" onclick="rejectManufacturer('BW-2026-002')"><i class="ti ti-x me-1"></i>Reject</button>
                         <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-002')"><i class="ti ti-history me-1"></i>Inspection History</button>
@@ -114,7 +114,7 @@
                       <td>Alpine Frost</td>
                       <td><span class="badge bg-warning-subtle text-warning">Awaiting Inspection</span></td>
                       <td><span class="badge bg-secondary text-white" id="status-bw-003">Draft Recommendation</span></td>
-                      <td id="actions-bw-003">
+                      <td id="actions-bw-003" class="text-nowrap">
                         <button class="btn btn-sm btn-outline-primary me-1">View</button>
                         <button class="btn btn-sm btn-success me-1" onclick="issueRecommendation('BW-2026-003')"><i class="ti ti-checklist me-1"></i>Issue Full Recommendation</button>
                         <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-003')"><i class="ti ti-history me-1"></i>Inspection History</button>

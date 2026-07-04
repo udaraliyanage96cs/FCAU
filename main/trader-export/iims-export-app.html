@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Health Certificate Registry</title>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical"><div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-exporter-registration.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
+        <!-- Sidebar items injected by _role.js -->
+      </ul></nav>
+    </div></aside>
+
+    <div class="page-wrapper">
+      <header class="topbar"><div class="with-vertical"><nav class="navbar navbar-expand-lg p-0"><ul class="navbar-nav"><li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li></ul><div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div><a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a><div class="collapse navbar-collapse justify-content-end" id="navbarNav"><div class="d-flex align-items-center justify-content-between"><ul class="navbar-nav flex-row ms-auto align-items-center"><li class="nav-item"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></li></ul></div></div></nav></div></header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <!-- Page Header Card -->
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-8">Export Health Certificate Registry</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-exporter-registration.html">Home</a></li>
+                      <li class="breadcrumb-item active">Health Certificates</li>
+                    </ol>
+                  </nav>
+                </div>
+                <div class="col-4 text-end">
+                  <button class="btn btn-primary" onclick="window.location.href='./iims-add-export-app.html'">
+                    <i class="ti ti-plus me-1"></i>Request Health Certificate
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table Registry Card -->
+          <div class="card shadow-sm border-top border-4 border-primary">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="card-title fw-semibold mb-0">Issued Health Certificates</h5>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle text-nowrap mb-0 table-hover" id="registryTable">
+                  <thead class="text-dark fs-2 bg-light">
+                    <tr>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Application No</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Date Applied</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Commodity</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Vessel Name / No</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Destination</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Total Weight</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Status</h6></th>
+                      <th class="border-bottom-0 text-end"><h6 class="fw-semibold mb-0 fs-2">Actions</h6></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="row-26018">
+                      <td><span class="font-monospace fs-2">EXP-HC-26018</span></td>
+                      <td><span>2026-07-01</span></td>
+                      <td><span class="fw-semibold text-dark">Frozen Tuna</span></td>
+                      <td><span>MSC Geneva V-42A</span></td>
+                      <td><span>Japan</span></td>
+                      <td><span>12,500 KG</span></td>
+                      <td><span class="badge bg-success-subtle text-success fs-1">ISSUED</span></td>
+                      <td class="text-end">
+                        <button class="btn btn-outline-primary btn-xs" onclick="window.location.href='./iims-add-export-app.html?view=26018'">View</button>
+                      </td>
+                    </tr>
+                    <tr id="row-26017">
+                      <td><span class="font-monospace fs-2">EXP-HC-26017</span></td>
+                      <td><span>2026-06-25</span></td>
+                      <td><span class="fw-semibold text-dark">Organic Ceylon Spices</span></td>
+                      <td><span>Ocean Voyager V-12</span></td>
+                      <td><span>Germany</span></td>
+                      <td><span>4,800 KG</span></td>
+                      <td><span class="badge bg-danger-subtle text-danger fs-1">AWAITING PAYMENT</span></td>
+                      <td class="text-end text-nowrap">
+                        <button class="btn btn-outline-primary btn-xs" onclick="window.location.href='./iims-add-export-app.html?view=26017'">View</button>
+                        <button class="btn btn-success btn-xs ms-1" onclick="payApplication(event, '26017')">Pay</button>
+                      </td>
+                    </tr>
+                    <tr id="row-26016">
+                      <td><span class="font-monospace fs-2">EXP-HC-26016</span></td>
+                      <td><span>2026-06-18</span></td>
+                      <td><span class="fw-semibold text-dark">Ceylon Cinnamon</span></td>
+                      <td><span>CMA CGM Express</span></td>
+                      <td><span>USA</span></td>
+                      <td><span>6,200 KG</span></td>
+                      <td><span class="badge bg-success-subtle text-success fs-1">ISSUED</span></td>
+                      <td class="text-end text-nowrap">
+                        <button class="btn btn-outline-primary btn-xs" onclick="window.location.href='./iims-add-export-app.html?view=26016'">View</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  <script src="./_role.js"></script>
+  
+  <script>
+    function payApplication(e, id) {
+      var confirmPay = confirm('Proceed to secure Internet Payment Gateway (IPG) to settle Processing Fee of Rs. 5,000?');
+      if (confirmPay) {
+        alert('Payment Settled Successfully! Status updated to Pending Inspection.');
+        var row = document.getElementById('row-' + id);
+        if (row) {
+          var statusCell = row.querySelector('.badge');
+          if (statusCell) {
+            statusCell.className = 'badge bg-warning-subtle text-warning fs-1';
+            statusCell.textContent = 'PENDING INSPECTION';
+          }
+          var payBtn = e.target;
+          if (payBtn) payBtn.remove();
+        }
+      }
+    }
+
+    function checkIncomingApplication() {
+      var params = new URLSearchParams(window.location.search);
+      var appNo = params.get('newApp');
+      if (appNo) {
+        var date = params.get('date') || '2026-07-04';
+        var commodity = params.get('commodity') || 'Unknown Food Item';
+        var vessel = params.get('vessel') || 'N/A';
+        var consignee = params.get('consignee') || 'N/A';
+        var weight = params.get('weight') || '0 KG';
+        
+        var table = document.getElementById('registryTable').getElementsByTagName('tbody')[0];
+        
+        // Prevent duplicate append
+        var existing = document.getElementById('row-' + appNo.split('-').pop());
+        if (!existing) {
+          var newRow = table.insertRow(0);
+          newRow.id = 'row-' + appNo.split('-').pop();
+          newRow.innerHTML = 
+            '<td><span class="font-monospace fs-2">' + appNo + '</span></td>' +
+            '<td><span>' + date + '</span></td>' +
+            '<td><span class="fw-semibold text-dark">' + (commodity.length > 30 ? commodity.substring(0, 30) + '...' : commodity) + '</span></td>' +
+            '<td><span>' + vessel + '</span></td>' +
+            '<td><span>' + (consignee.includes('\n') ? consignee.split('\n')[0] : consignee) + '</span></td>' +
+            '<td><span>' + weight + '</span></td>' +
+            '<td><span class="badge bg-warning-subtle text-warning fs-1">PENDING INSPECTION</span></td>' +
+            '<td class="text-end text-nowrap">' +
+            '  <button class="btn btn-outline-primary btn-xs" onclick="window.location.href=\'./iims-add-export-app.html?view=' + appNo.split('-').pop() + '\'">View</button>' +
+            '</td>';
+        }
+      }
+    }
+    
+    document.addEventListener('DOMContentLoaded', checkIncomingApplication);
+  </script>
+</body>
+</html>

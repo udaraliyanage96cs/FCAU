@@ -2,9 +2,17 @@
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link class="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Exporter Registration</title>
+  <title>IIMS - Exporter Registry Applications</title>
+  <style>
+    .btn-xs {
+      padding: 3px 6px !important;
+      font-size: 10px !important;
+      line-height: 1.2 !important;
+      border-radius: 4px !important;
+    }
+  </style>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -19,50 +27,8 @@
           </a>
         </div>
       <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
-        
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Admin & Portals</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-user-management.html"><span><i class="ti ti-users"></i></span><span class="hide-menu">User Management</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-notification-templates.html"><span><i class="ti ti-mail-opened"></i></span><span class="hide-menu">Notification Templates</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-public-complaint.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Public Portal</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login Page</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Registration</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-fbo-registration.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">FBO Registration</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-premises-list.html"><span><i class="ti ti-building-store"></i></span><span class="hide-menu">Premises List</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-appeals.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Grievance & Appeals</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Inspection</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-form.html"><span><i class="ti ti-clipboard-check"></i></span><span class="hide-menu">H-800 Inspection</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-calendar.html"><span><i class="ti ti-calendar-event"></i></span><span class="hide-menu">Inspection Calendar</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-config.html"><span><i class="ti ti-settings"></i></span><span class="hide-menu">Inspection Config</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Laboratory</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-sample-management.html"><span><i class="ti ti-test-pipe"></i></span><span class="hide-menu">Sample Management</span></a></li>
-        
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Trade Control</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-import-control.html"><span><i class="ti ti-package-import"></i></span><span class="hide-menu">Import Control</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-export-control.html"><span><i class="ti ti-package-export"></i></span><span class="hide-menu">Export Control</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-exporter-registration.html"><span><i class="ti ti-building-factory-2"></i></span><span class="hide-menu">Exporter Registry</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Specialized Mfg</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-bottled-water.html"><span><i class="ti ti-bottle"></i></span><span class="hide-menu">Bottled Water</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-salt-manufacturing.html"><span><i class="ti ti-salt"></i></span><span class="hide-menu">Salt Manufacturing</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Compliance</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-complaints.html"><span><i class="ti ti-message-report"></i></span><span class="hide-menu">Complaints</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-enforcement.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Enforcement</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-arrested-list.html"><span><i class="ti ti-user-cancel"></i></span><span class="hide-menu">Arrested Register</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">System</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-chart-pie"></i></span><span class="hide-menu">IIMS Dashboard</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-risk-heatmaps.html"><span><i class="ti ti-map-2"></i></span><span class="hide-menu">Risk Heatmaps</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
-      </ul>      </nav>
-      
+        <!-- Sidebar items injected by _role.js -->
+      </ul></nav>
     </div></aside>
 
     <div class="page-wrapper">
@@ -71,51 +37,77 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Exporter Establishment Registration</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-export-control.html">Export Control</a></li><li class="breadcrumb-item active">Establishment Registry</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Exporter Registry</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-export-control.html">Export Control</a></li><li class="breadcrumb-item active">Exporter Registry</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
+          <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4">Business & Quality Credentials (Phase 1)</h5>
-              <form>
-                <div class="row g-3">
-                  <div class="col-md-6"><label class="form-label">Full Legal Entity Name</label><input type="text" class="form-control"></div>
-                  <div class="col-md-6"><label class="form-label">Business Registration No.</label><input type="text" class="form-control"></div>
-                  <div class="col-md-4"><label class="form-label">TIN Number</label><input type="text" class="form-control"></div>
-                  <div class="col-md-4"><label class="form-label">VAT Number</label><input type="text" class="form-control"></div>
-                  <div class="col-md-4"><label class="form-label">Date of Incorporation</label><input type="date" class="form-control"></div>
-                  
-                  <div class="col-md-12"><hr></div>
-                  
-                  <h6 class="fw-semibold">Statutory Quality Certifications</h6>
-                  <div class="col-md-6">
-                    <label class="form-label">Certification Type</label>
-                    <select class="form-select" multiple>
-                      <option>GMP (Good Manufacturing Practices)</option>
-                      <option>HACCP</option>
-                      <option>ISO 22000</option>
-                      <option>SLS Mark</option>
-                    </select>
-                  </div>
-                  <div class="col-md-6"><label class="form-label">Upload Certificates (Merge to one PDF)</label><input type="file" class="form-control"></div>
-
-                  <div class="col-md-12 mt-4">
-                    <div class="alert alert-warning border-0 fs-2">
-                      <i class="ti ti-alert-circle me-1"></i> Registration triggers a mandatory physical factory inspection by FCAU before export certificates can be applied for.
-                    </div>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-primary px-4">Submit for Credential Verification</button>
-                  </div>
-                </div>
-              </form>
+              <h5 class="card-title fw-semibold mb-4">Exporter Applications</h5>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="exportersGrid">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Temp Ref No.</th>
+                      <th>Exporter Name</th>
+                      <th>Business Reg. No.</th>
+                      <th>Food Category</th>
+                      <th>Quality Certifications</th>
+                      <th>Status</th>
+                      <th>Assigned Reg. No.</th>
+                      <th class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="row-551">
+                      <td><span class="font-monospace fs-2">TMP-EXP-551</span></td>
+                      <td><span class="fw-semibold text-dark">Ceylon Agro Exporters</span></td>
+                      <td><span class="font-monospace fs-2">PV-99182</span></td>
+                      <td><span>Spices & Agri Products</span></td>
+                      <td><span class="badge bg-light text-dark fs-1">GMP, HACCP</span></td>
+                      <td><span class="badge bg-danger-subtle text-danger status-badge">Pending Reg No</span></td>
+                      <td><span class="font-monospace fs-2 text-muted reg-no-cell">—</span></td>
+                      <td class="text-end text-nowrap actions-cell">
+                        <button class="btn btn-xs btn-outline-info me-1 btn-review" onclick="reviewDocs('551')"><i class="ti ti-file-search"></i> Review Docs</button>
+                        <button class="btn btn-xs btn-warning me-1 btn-report" onclick="inspectionReport('551')"><i class="ti ti-clipboard-check"></i> Inspection Report</button>
+                        <button class="btn btn-xs btn-success me-1 btn-issue" onclick="issueRegNo('551')"><i class="ti ti-circle-plus"></i> Issue Reg No.</button>
+                        <button class="btn btn-xs btn-success me-1" onclick="approveExporter('551')"><i class="ti ti-check"></i> Approve</button>
+                        <button class="btn btn-xs btn-danger" onclick="rejectExporter('551')"><i class="ti ti-x"></i> Reject</button>
+                      </td>
+                    </tr>
+                    <tr id="row-550">
+                      <td><span class="font-monospace fs-2">TMP-EXP-550</span></td>
+                      <td><span class="fw-semibold text-dark">Ocean Catch Ltd.</span></td>
+                      <td><span class="font-monospace fs-2">PV-98271</span></td>
+                      <td><span>Seafood</span></td>
+                      <td><span class="badge bg-light text-dark fs-1">ISO 22000, SLS</span></td>
+                      <td><span class="badge bg-success-subtle text-success status-badge">Approved & Registered</span></td>
+                      <td><span class="font-monospace fs-2 text-dark reg-no-cell">EXP-042</span></td>
+                      <td class="text-end text-nowrap actions-cell">
+                        <span class="text-success fw-bold"><i class="ti ti-circle-check me-1"></i>Approved & Registered</span>
+                      </td>
+                    </tr>
+                    <tr id="row-549">
+                      <td><span class="font-monospace fs-2">TMP-EXP-549</span></td>
+                      <td><span class="fw-semibold text-dark">Lanka Agri Impex</span></td>
+                      <td><span class="font-monospace fs-2">PV-97362</span></td>
+                      <td><span>Beverages & Tea</span></td>
+                      <td><span class="badge bg-light text-dark fs-1">GMP, ISO 22000</span></td>
+                      <td><span class="badge bg-success-subtle text-success status-badge">Approved & Registered</span></td>
+                      <td><span class="font-monospace fs-2 text-dark reg-no-cell">EXP-015</span></td>
+                      <td class="text-end text-nowrap actions-cell">
+                        <span class="text-success fw-bold"><i class="ti ti-circle-check me-1"></i>Approved & Registered</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -123,6 +115,100 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
-<script src="./_role.js"></script>
+  <script src="./_role.js"></script>
+  <script>
+    function reviewDocs(id) {
+      alert('Reviewing business licenses and statutory food safety certifications for Exporter TMP-EXP-' + id + '...');
+      var row = document.getElementById('row-' + id);
+      if (row) {
+        var btn = row.querySelector('.btn-review');
+        if (btn) {
+          btn.disabled = true;
+          btn.innerHTML = '<i class="ti ti-check"></i> Docs Reviewed';
+          btn.className = 'btn btn-xs btn-outline-info me-1 btn-review';
+        }
+      }
+    }
+
+    function inspectionReport(id) {
+      var score = prompt('Enter exporter physical establishment inspection score (0-100):', '85');
+      if (score !== null) {
+        alert('Inspection report compiled with grade ' + score + '% and attached to database record.');
+        var row = document.getElementById('row-' + id);
+        if (row) {
+          var btn = row.querySelector('.btn-report');
+          if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<i class="ti ti-clipboard-check"></i> Report Attached';
+            btn.className = 'btn btn-xs btn-warning me-1 btn-report';
+          }
+        }
+      }
+    }
+
+    function issueRegNo(id) {
+      alert('Generating official Exporter Registry Number...');
+      var officialRegNo = 'EXP-051';
+      var row = document.getElementById('row-' + id);
+      if (row) {
+        var badge = row.querySelector('.status-badge');
+        if (badge) {
+          badge.className = 'badge bg-success-subtle text-success status-badge';
+          badge.textContent = 'Reg No Issued';
+        }
+        var regCell = row.querySelector('.reg-no-cell');
+        if (regCell) {
+          regCell.textContent = officialRegNo;
+          regCell.className = 'font-monospace fs-2 text-dark reg-no-cell';
+        }
+        var btn = row.querySelector('.btn-issue');
+        if (btn) {
+          btn.remove();
+        }
+      }
+    }
+
+    function approveExporter(id) {
+      if (confirm('Approve Exporter and issue certificate of registration?')) {
+        alert('Exporter Approved and registered successfully!');
+        var row = document.getElementById('row-' + id);
+        if (row) {
+          var badge = row.querySelector('.status-badge');
+          if (badge) {
+            badge.className = 'badge bg-success text-white status-badge';
+            badge.textContent = 'Approved & Registered';
+          }
+          var regCell = row.querySelector('.reg-no-cell');
+          if (regCell && regCell.textContent === '—') {
+            regCell.textContent = 'EXP-051';
+            regCell.className = 'font-monospace fs-2 text-dark reg-no-cell';
+          }
+          var actionsCell = row.querySelector('.actions-cell');
+          if (actionsCell) {
+            actionsCell.innerHTML = '<span class="text-success fw-bold"><i class="ti ti-circle-check me-1"></i>Approved & Registered</span>';
+          }
+        }
+      }
+    }
+
+    function rejectExporter(id) {
+      var reason = prompt('Enter rejection reason:');
+      if (reason !== null) {
+        alert('Exporter registration request rejected.');
+        var row = document.getElementById('row-' + id);
+        if (row) {
+          var badge = row.querySelector('.status-badge');
+          if (badge) {
+            badge.className = 'badge bg-danger text-white status-badge';
+            badge.textContent = 'Rejected';
+          }
+          var actionsCell = row.querySelector('.actions-cell');
+          if (actionsCell) {
+            actionsCell.innerHTML = '<span class="text-danger fw-bold"><i class="ti ti-circle-x me-1"></i>Rejected</span>';
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>

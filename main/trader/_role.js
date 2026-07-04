@@ -7,28 +7,34 @@
 
   var ROLE = {
     id: 'trader',
-    name: 'Trade Operator',
-    subtitle: 'Registered Import/Export Entity',
-    badge: 'TRADE',
+    name: 'Trade Operator ( Import )',
+    subtitle: 'Registered Import Entity',
+    badge: 'IMPORT',
     color: '#8B5CF6',
     colorLight: '#F5F3FF',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-export-app.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-import-entry.html' },
       { type: 'link', icon: 'ti ti-package',           label: 'Pre-Import Entry',   href: './iims-import-entry.html' },
       { type: 'link', icon: 'ti ti-user-plus',        label: 'Importer Registration', href: './iims-importer-registration.html' }
     ]
   };
 
   function buildNav() {
-    var cur = window.location.pathname.split('/').pop() || 'iims-export-app.html';
+    var cur = window.location.pathname.split('/').pop() || 'iims-import-entry.html';
+    var matchedActive = false;
     return ROLE.nav.map(function (item) {
       if (item.type === 'cap') {
         return '<li class="nav-small-cap">' +
                '<i class="ti ti-dots nav-small-cap-icon fs-4"></i>' +
                '<span class="hide-menu">' + item.label + '</span></li>';
       }
-      var active = (cur === item.href.replace('./', '')) ? ' active' : '';
+      var isCurrent = (cur === item.href.replace('./', ''));
+      var active = '';
+      if (isCurrent && !matchedActive) {
+        active = ' active';
+        matchedActive = true;
+      }
       return '<li class="sidebar-item">' +
              '<a class="sidebar-link' + active + '" href="' + item.href + '">' +
              '<span><i class="' + item.icon + '"></i></span>' +

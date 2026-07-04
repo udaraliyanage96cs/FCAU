@@ -87,10 +87,32 @@
                       <td>Deep Tube Well</td>
                       <td>Aqua Pure</td>
                       <td><span class="badge bg-success-subtle text-success">SLS Certified</span></td>
-                      <td><span class="badge bg-primary">Active</span></td>
-                      <td>
+                      <td><span class="badge bg-primary" id="status-bw-001">Active</span></td>
+                      <td class="text-nowrap">
                         <button class="btn btn-sm btn-outline-primary me-1">View</button>
-                        <button class="btn btn-sm btn-warning" onclick="alert('Inspection report generated successfully!')"><i class="ti ti-file-text me-1"></i>Generate Inspection Report</button>
+                      </td>
+                    </tr>
+                    <tr id="row-bw-002">
+                      <td>BW-2026-002</td>
+                      <td>Spring Valley Waters</td>
+                      <td>Natural Spring</td>
+                      <td>Peak Valley Springs</td>
+                      <td><span class="badge bg-warning-subtle text-warning">Awaiting Audit</span></td>
+                      <td><span class="badge bg-warning text-dark" id="status-bw-002">Pending Review</span></td>
+                      <td id="actions-bw-002" class="text-nowrap">
+                        <button class="btn btn-sm btn-success me-1" onclick="approveManufacturer('BW-2026-002')"><i class="ti ti-check me-1"></i>Approve</button>
+                        <button class="btn btn-sm btn-danger" onclick="rejectManufacturer('BW-2026-002')"><i class="ti ti-x me-1"></i>Reject</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>BW-2026-003</td>
+                      <td>Alpine Water Ltd</td>
+                      <td>Deep Tube Well</td>
+                      <td>Alpine Frost</td>
+                      <td><span class="badge bg-warning-subtle text-warning">Awaiting Inspection</span></td>
+                      <td><span class="badge bg-secondary text-white" id="status-bw-003">Draft Recommendation</span></td>
+                      <td class="text-nowrap">
+                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
                       </td>
                     </tr>
                   </tbody>
@@ -112,5 +134,27 @@
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
+<script>
+  function approveManufacturer(id) {
+    if (confirm("Are you sure you want to approve manufacturer " + id + "?")) {
+      const badge = document.getElementById('status-bw-002');
+      badge.textContent = 'Active';
+      badge.className = 'badge bg-primary';
+      
+      const actions = document.getElementById('actions-bw-002');
+      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1">View</button> <span class="text-success fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-check-filled me-1"></i>Approved</span>';
+    }
+  }
+  function rejectManufacturer(id) {
+    if (confirm("Are you sure you want to reject manufacturer " + id + "?")) {
+      const badge = document.getElementById('status-bw-002');
+      badge.textContent = 'Rejected';
+      badge.className = 'badge bg-danger';
+      
+      const actions = document.getElementById('actions-bw-002');
+      actions.innerHTML = '<span class="text-danger fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-x-filled me-1"></i>Rejected</span>';
+    }
+  }
+</script>
 </body>
 </html>
