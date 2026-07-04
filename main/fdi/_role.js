@@ -27,16 +27,16 @@
       { type: 'link', icon: 'ti ti-certificate',         label: 'Health Certificate',  href: './iims-export-app.html' },
       { type: 'link', icon: 'ti ti-building-factory-2',  label: 'Exporter Registry',   href: './iims-exporter-registration.html' },
 
-      { type: 'cap', label: 'Salt Manufacturing' },
-      { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
-      { type: 'link', icon: 'ti ti-file-plus',           label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
-      { type: 'link', icon: 'ti ti-refresh',             label: 'Salt Renewal',        href: './iims-salt-renewal.html' },
-      { type: 'link', icon: 'ti ti-edit',                label: 'Salt Amendment',      href: './iims-salt-amendment.html' },
+      // { type: 'cap', label: 'Salt Manufacturing' },
+      // { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
+      // { type: 'link', icon: 'ti ti-file-plus',           label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
+      // { type: 'link', icon: 'ti ti-refresh',             label: 'Salt Renewal',        href: './iims-salt-renewal.html' },
+      // { type: 'link', icon: 'ti ti-edit',                label: 'Salt Amendment',      href: './iims-salt-amendment.html' },
 
-      { type: 'cap', label: 'Bottled Water' },
-      { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
-      { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
-      { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
+      // { type: 'cap', label: 'Bottled Water' },
+      // { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
+      // { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
+      // { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
 
       { type: 'cap', label: 'Laboratory' },
       { type: 'link', icon: 'ti ti-test-pipe',           label: 'Sample Management',   href: './iims-sample-management.html' },
@@ -46,6 +46,7 @@
       { type: 'link', icon: 'ti ti-gavel',               label: 'Enforcement',         href: './iims-enforcement.html' },
       { type: 'link', icon: 'ti ti-lock',                label: 'Seizure Order',       href: './iims-seizure-order.html' },
       { type: 'link', icon: 'ti ti-scale',               label: 'Prosecution Form',    href: './iims-prosecution-form.html' },
+      { type: 'link', icon: 'ti ti-user-cancel',         label: 'Arrested List',       href: './iims-arrested-list.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }

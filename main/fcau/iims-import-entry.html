@@ -2,9 +2,17 @@
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link class="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Pre-Import Entry</title>
+  <title>IIMS - Import Applications</title>
+  <style>
+    .btn-xs {
+      padding: 3px 6px !important;
+      font-size: 10px !important;
+      line-height: 1.2 !important;
+      border-radius: 4px !important;
+    }
+  </style>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -19,50 +27,8 @@
           </a>
         </div>
       <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
-        
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Admin & Portals</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-user-management.html"><span><i class="ti ti-users"></i></span><span class="hide-menu">User Management</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-notification-templates.html"><span><i class="ti ti-mail-opened"></i></span><span class="hide-menu">Notification Templates</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-public-complaint.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Public Portal</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login Page</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Registration</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-fbo-registration.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">FBO Registration</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-premises-list.html"><span><i class="ti ti-building-store"></i></span><span class="hide-menu">Premises List</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-appeals.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Grievance & Appeals</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Inspection</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-form.html"><span><i class="ti ti-clipboard-check"></i></span><span class="hide-menu">H-800 Inspection</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-calendar.html"><span><i class="ti ti-calendar-event"></i></span><span class="hide-menu">Inspection Calendar</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-inspection-config.html"><span><i class="ti ti-settings"></i></span><span class="hide-menu">Inspection Config</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Laboratory</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-sample-management.html"><span><i class="ti ti-test-pipe"></i></span><span class="hide-menu">Sample Management</span></a></li>
-        
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Trade Control</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-import-control.html"><span><i class="ti ti-package-import"></i></span><span class="hide-menu">Import Control</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-export-control.html"><span><i class="ti ti-package-export"></i></span><span class="hide-menu">Export Control</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-exporter-registration.html"><span><i class="ti ti-building-factory-2"></i></span><span class="hide-menu">Exporter Registry</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Specialized Mfg</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-bottled-water.html"><span><i class="ti ti-bottle"></i></span><span class="hide-menu">Bottled Water</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-salt-manufacturing.html"><span><i class="ti ti-salt"></i></span><span class="hide-menu">Salt Manufacturing</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Compliance</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-complaints.html"><span><i class="ti ti-message-report"></i></span><span class="hide-menu">Complaints</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-enforcement.html"><span><i class="ti ti-gavel"></i></span><span class="hide-menu">Enforcement</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-arrested-list.html"><span><i class="ti ti-user-cancel"></i></span><span class="hide-menu">Arrested Register</span></a></li>
-
-        <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">System</span></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-dashboard.html"><span><i class="ti ti-chart-pie"></i></span><span class="hide-menu">IIMS Dashboard</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-risk-heatmaps.html"><span><i class="ti ti-map-2"></i></span><span class="hide-menu">Risk Heatmaps</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-alerts.html"><span><i class="ti ti-bell-ringing"></i></span><span class="hide-menu">Alerts & Notifications</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-reports.html"><span><i class="ti ti-chart-bar"></i></span><span class="hide-menu">Reports</span></a></li>
-        <li class="sidebar-item"><a class="sidebar-link" href="./iims-guide.html"><span><i class="ti ti-book"></i></span><span class="hide-menu">Prototype Guide</span></a></li>
-      </ul>      </nav>
-      
+        <!-- Sidebar items injected by _role.js -->
+      </ul></nav>
     </div></aside>
 
     <div class="page-wrapper">
@@ -71,70 +37,90 @@
       <div class="body-wrapper">
         <div class="container-fluid">
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Pre-Import Consignment Entry</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-import-control.html">Import Control</a></li><li class="breadcrumb-item active">New Entry</li></ol></nav></div></div></div>
+            <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Import Applications</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item"><a class="text-muted" href="./iims-import-control.html">Import Control</a></li><li class="breadcrumb-item active">Import Applications</li></ol></nav></div></div></div>
           </div>
 
-          <div class="card">
+          <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Consignment Registration (Phase 01)</h5>
-              <form onsubmit="event.preventDefault(); alert('Consignment submitted successfully for verification!'); window.location.href='./iims-import-control.html';">
-                <div class="row g-4">
-                  <div class="col-md-6">
-                    <label class="form-label fw-semibold">Importer Profile</label>
-                    <select name="importer_profile" class="form-select"><option value="IMP-0042">Global Foods (Pvt) Ltd (IMP-0042)</option><option value="IMP-0081">Ceylon Spice Imports (IMP-0081)</option></select>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label fw-semibold">ASYCUDA / BL Number</label>
-                    <input name="bl_number" type="text" class="form-control" placeholder="Enter BL or ASYCUDA Ref #">
-                  </div>
-
-                  <div class="col-md-4">
-                    <label class="form-label fw-semibold">Commodity Type</label>
-                    <select name="commodity_type" class="form-select"><option value="canned">Canned Goods</option><option value="dairy">Dairy Products</option><option value="fresh">Fresh Produce</option><option value="spices">Spices</option></select>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label fw-semibold">Country of Origin</label>
-                    <select name="origin_country" class="form-select"><option value="thailand">Thailand</option><option value="india">India</option><option value="australia">Australia</option><option value="malaysia">Malaysia</option></select>
-                  </div>
-                  <div class="col-md-4">
-                    <label class="form-label fw-semibold">Expected Port of Entry</label>
-                    <select name="port_of_entry" class="form-select"><option value="colombo">Colombo Port</option><option value="bia">BIA Terminal</option><option value="hambantota">Hambantota Port</option></select>
-                  </div>
-
-                  <div class="col-12"><hr></div>
-
-                  <h6 class="fw-semibold">Document Uploads (Verification Node)</h6>
-                  <div class="col-md-6">
-                    <label class="form-label">Health Certificate (from Origin)</label>
-                    <input name="doc_health_certificate" type="file" class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Product Label (Specimen)</label>
-                    <input name="doc_product_label" type="file" class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Certificate of Analysis (COA)</label>
-                    <input name="doc_coa" type="file" class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label">Commercial Invoice</label>
-                    <input name="doc_invoice" type="file" class="form-control">
-                  </div>
-
-                  <div class="col-12 mt-4">
-                    <div class="d-flex flex-column flex-sm-row justify-content-end gap-2">
-                      <button type="button" class="btn btn-outline-secondary">Save as Draft</button>
-                      <button type="submit" class="btn btn-primary px-4"><i class="ti ti-send me-1"></i>Submit for Verification</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
+              <h5 class="card-title fw-semibold mb-4">Importer Consignment Registrations</h5>
+              <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="applicationsGrid">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Temp Ref No.</th>
+                      <th>CUSDEC / BL No.</th>
+                      <th>Importer Profile</th>
+                      <th>Commodity</th>
+                      <th>Origin</th>
+                      <th>Expected Port</th>
+                      <th>Status</th>
+                      <th>FCAU Tracking No.</th>
+                      <th class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="row-9801">
+                      <td><span class="font-monospace fs-2">TMP-IMP-9801</span></td>
+                      <td><span>BL-55928</span></td>
+                      <td>
+                        <span class="fw-semibold">Global Foods (Pvt) Ltd</span><br>
+                        <small class="badge bg-success-subtle text-success fs-1">Reg: IMP-9482</small>
+                      </td>
+                      <td><span>Refined Iodized Salt</span></td>
+                      <td><span>Thailand</span></td>
+                      <td><span>Colombo Port</span></td>
+                      <td><span class="badge bg-danger-subtle text-danger status-badge">Pending FCAU No</span></td>
+                      <td><span class="font-monospace fs-2 text-muted fcau-no-cell">—</span></td>
+                      <td class="text-end text-nowrap actions-cell">
+                        <button class="btn btn-xs btn-success" onclick="generateFcauNo('9801')"><i class="ti ti-circle-plus"></i> Generate FCAU No.</button>
+                      </td>
+                    </tr>
+                    <tr id="row-9800">
+                      <td><span class="font-monospace fs-2">TMP-IMP-9800</span></td>
+                      <td><span>BL-55927</span></td>
+                      <td>
+                        <span class="fw-semibold">Ceylon Spice Imports</span><br>
+                        <small class="badge bg-success-subtle text-success fs-1">Reg: IMP-1049</small>
+                      </td>
+                      <td><span>Dried Chilli</span></td>
+                      <td><span>India</span></td>
+                      <td><span>Colombo Port</span></td>
+                      <td><span class="badge bg-success-subtle text-success status-badge">FCAU No Generated</span></td>
+                      <td><span class="font-monospace fs-2 text-dark fcau-no-cell">I-2026-004520</span></td>
+                      <td class="text-end text-nowrap actions-cell">
+                        <button class="btn btn-xs btn-outline-info me-1 btn-verify-docs" onclick="verifyDocs('9800')"><i class="ti ti-file-search"></i> Verify Docs</button>
+                        <button class="btn btn-xs btn-success me-1" onclick="approveApp('9800')"><i class="ti ti-check"></i> Approve</button>
+                        <button class="btn btn-xs btn-danger" onclick="rejectApp('9800')"><i class="ti ti-x"></i> Reject</button>
+                      </td>
+                    </tr>
+                    <tr id="row-9799">
+                      <td><span class="font-monospace fs-2">TMP-IMP-9799</span></td>
+                      <td><span>BL-55926</span></td>
+                      <td>
+                        <span class="fw-semibold">Premium Dairy Ltd</span><br>
+                        <small class="badge bg-danger-subtle text-danger fs-1">Reg: IMP-9382</small>
+                      </td>
+                      <td><span>UHT Milk</span></td>
+                      <td><span>New Zealand</span></td>
+                      <td><span>Colombo Port</span></td>
+                      <td><span class="badge bg-success-subtle text-success status-badge">FCAU No Generated</span></td>
+                      <td><span class="font-monospace fs-2 text-dark fcau-no-cell">I-2026-004519</span></td>
+                      <td class="text-end text-nowrap actions-cell">
+                        <button class="btn btn-xs btn-outline-info me-1 btn-verify-docs" onclick="verifyDocs('9799')"><i class="ti ti-file-search"></i> Verify Docs</button>
+                        <button class="btn btn-xs btn-success me-1" onclick="approveApp('9799')"><i class="ti ti-check"></i> Approve</button>
+                        <button class="btn btn-xs btn-danger" onclick="rejectApp('9799')"><i class="ti ti-x"></i> Reject</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="dark-transparent sidebartoggler"></div>
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -142,6 +128,83 @@
   <script src="../../assets/js/theme/theme.js"></script>
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
-<script src="./_role.js"></script>
+  <script src="./_role.js"></script>
+  <script>
+    function generateFcauNo(id) {
+      if (confirm('Generate official FCAU tracking number for Temporary Reference TMP-IMP-' + id + '?')) {
+        var officialNo = 'I-2026-004522';
+        alert('Official FCAU Number successfully generated: ' + officialNo);
+        var row = document.getElementById('row-' + id);
+        if (row) {
+          var badge = row.querySelector('.status-badge');
+          if (badge) {
+            badge.className = 'badge bg-success-subtle text-success status-badge';
+            badge.textContent = 'FCAU No Generated';
+          }
+          var noCell = row.querySelector('.fcau-no-cell');
+          if (noCell) {
+            noCell.textContent = officialNo;
+            noCell.className = 'font-monospace fs-2 text-dark fcau-no-cell';
+          }
+          var actionsCell = row.querySelector('.actions-cell');
+          if (actionsCell) {
+            actionsCell.innerHTML = 
+              '<button class="btn btn-xs btn-outline-info me-1 btn-verify-docs" onclick="verifyDocs(\'' + id + '\')"><i class="ti ti-file-search"></i> Verify Docs</button>' +
+              '<button class="btn btn-xs btn-success me-1" onclick="approveApp(\'' + id + '\')"><i class="ti ti-check"></i> Approve</button>' +
+              '<button class="btn btn-xs btn-danger" onclick="rejectApp(\'' + id + '\')"><i class="ti ti-x"></i> Reject</button>';
+          }
+        }
+      }
+    }
+
+    function verifyDocs(id) {
+      alert('Documents checked and verified successfully!');
+      var row = document.getElementById('row-' + id);
+      if (row) {
+        var btn = row.querySelector('.btn-verify-docs');
+        if (btn) {
+          btn.disabled = true;
+          btn.innerHTML = '<i class="ti ti-check"></i> Verified';
+        }
+      }
+    }
+
+    function approveApp(id) {
+      if (confirm('Are you sure you want to Approve Import Application TMP-IMP-' + id + '?')) {
+        alert('Application Approved successfully!');
+        var row = document.getElementById('row-' + id);
+        if (row) {
+          var badge = row.querySelector('.status-badge');
+          if (badge) {
+            badge.className = 'badge bg-success text-white status-badge';
+            badge.textContent = 'Approved';
+          }
+          var actionsCell = row.querySelector('.actions-cell');
+          if (actionsCell) {
+            actionsCell.innerHTML = '<span class="text-success fw-bold"><i class="ti ti-circle-check me-1"></i>Approved</span>';
+          }
+        }
+      }
+    }
+
+    function rejectApp(id) {
+      var reason = prompt('Enter Rejection Reason for Application TMP-IMP-' + id + ':');
+      if (reason !== null) {
+        alert('Application Rejected. Reason: ' + reason);
+        var row = document.getElementById('row-' + id);
+        if (row) {
+          var badge = row.querySelector('.status-badge');
+          if (badge) {
+            badge.className = 'badge bg-danger text-white status-badge';
+            badge.textContent = 'Rejected';
+          }
+          var actionsCell = row.querySelector('.actions-cell');
+          if (actionsCell) {
+            actionsCell.innerHTML = '<span class="text-danger fw-bold"><i class="ti ti-circle-x me-1"></i>Rejected</span>';
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>

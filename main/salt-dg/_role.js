@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    IIMS Role Script â€” Director General
    Injected into every page inside /main/salt-dg/
    ============================================================ */
@@ -12,10 +12,8 @@
     badge: 'DG_SALT',
     color: '#7C3AED',
     nav: [
-      { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-salt-manufacturing.html' },
-
       { type: 'cap', label: 'Salt Manufacturing' },
+      { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
       { type: 'link', icon: 'ti ti-file-text',          label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
       { type: 'link', icon: 'ti ti-refresh',            label: 'Annual Renewal',      href: './iims-salt-renewal.html' },
       { type: 'link', icon: 'ti ti-edit',               label: 'Amendment Request',   href: './iims-salt-amendment.html' },

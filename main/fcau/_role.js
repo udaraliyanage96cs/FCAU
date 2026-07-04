@@ -17,20 +17,30 @@
       { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-dashboard.html' },
 
       { type: 'cap', label: 'Import Control' },
-      { type: 'link', icon: 'ti ti-package-import',      label: 'Import Pipeline',     href: './iims-import-control.html' },
-      { type: 'link', icon: 'ti ti-file-invoice',        label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
+      { type: 'link', icon: 'ti ti-file-invoice',        label: 'Importer Applications',    href: './iims-import-entry.html' },
+      { type: 'link', icon: 'ti ti-package-import',      label: 'Pre-Import Entries',     href: './iims-import-control.html' },
 
       { type: 'cap', label: 'Export Control' },
-      { type: 'link', icon: 'ti ti-package-export',      label: 'Export Pipeline',     href: './iims-export-control.html' },
-      { type: 'link', icon: 'ti ti-building-factory-2',  label: 'Exporter Registry',   href: './iims-exporter-registration.html' },
+      { type: 'link', icon: 'ti ti-building-factory-2',  label: 'Exporter Applications',   href: './iims-exporter-registration.html' },
+      { type: 'link', icon: 'ti ti-package-export',      label: 'Health Certificates',     href: './iims-export-control.html' },
 
       { type: 'cap', label: 'Specialized Mfg' },
       { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
       { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
 
+      { type: 'cap', label: 'Laboratory' },
+      { type: 'link', icon: 'ti ti-test-pipe',           label: 'Sample Management',   href: './iims-sample-management.html' },
+
       { type: 'cap', label: 'Risk & Strategy' },
       { type: 'link', icon: 'ti ti-history',             label: 'Risk Assessment History', href: './iims-risk-history.html' },
       { type: 'link', icon: 'ti ti-map-2',               label: 'Risk Heatmaps',       href: './iims-risk-heatmaps.html' },
+
+      { type: 'cap', label: 'Compliance' },
+      { type: 'link', icon: 'ti ti-message-report',      label: 'Complaints Ledger',   href: './iims-complaints.html' },
+      { type: 'link', icon: 'ti ti-gavel',               label: 'Enforcement',         href: './iims-enforcement.html' },
+      { type: 'link', icon: 'ti ti-lock',                label: 'Seizure Order',       href: './iims-seizure-order.html' },
+      { type: 'link', icon: 'ti ti-scale',               label: 'Prosecution Form',    href: './iims-prosecution-form.html' },
+      { type: 'link', icon: 'ti ti-user-cancel',         label: 'Arrested List',       href: './iims-arrested-list.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }
