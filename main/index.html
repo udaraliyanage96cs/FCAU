@@ -223,8 +223,19 @@
             <input type="radio" name="role" value="trader">
             <div class="role-icon"><i class="ti ti-arrows-left-right"></i></div>
             <div class="role-info">
-              <span class="role-badge-pill" style="background:#8B5CF6;">TRADE</span>
-              <span class="role-name">Trade Operator</span>
+              <span class="role-badge-pill" style="background:#8B5CF6;">IMPORT</span>
+              <span class="role-name">Trade Operator ( Import )</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-trader-export"
+                 style="--rc:#3B82F6;--rc-rgb:59,130,246;"
+                 onclick="selectRole('trader-export')">
+            <input type="radio" name="role" value="trader-export">
+            <div class="role-icon"><i class="ti ti-arrows-left-right"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#3B82F6;">EXPORT</span>
+              <span class="role-name">Trade Operator ( Export )</span>
             </div>
           </label>
 
@@ -367,7 +378,18 @@
             <div class="role-icon"><i class="ti ti-crown"></i></div>
             <div class="role-info">
               <span class="role-badge-pill" style="background:#7C3AED;">DG</span>
-              <span class="role-name">Director General (Water)</span>
+              <span class="role-name">Director General (DG)</span>
+            </div>
+          </label>
+
+          <label class="role-card" id="card-d"
+                 style="--rc:#7C3AED;--rc-rgb:124,58,237;"
+                 onclick="selectRole('d')">
+            <input type="radio" name="role" value="d">
+            <div class="role-icon"><i class="ti ti-crown"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#7C3AED;">D</span>
+              <span class="role-name">Director (D)</span>
             </div>
           </label>
 
@@ -384,7 +406,11 @@
             <a href="javascript:void(0)">Forgot Password?</a>
             <a href="./iims-fbo-registration.html" class="fw-bold" style="color: #10B981; text-decoration: none;"><i class="ti ti-user-plus me-1"></i>FBO Registration</a>
           </div>
-          <div class="d-flex justify-content-center gap-3 mt-1" style="font-size:12px;">
+          <div class="d-flex justify-content-center flex-wrap gap-2 mt-1" style="font-size:11px;">
+            <a href="./iims-water-premises-registration.html" class="fw-bold" style="color: #14B8A6; text-decoration: none;"><i class="ti ti-droplet me-1"></i>Water Premises Reg</a>
+            <span style="color:#cbd5e1;">|</span>
+            <a href="./iims-salt-premises-registration.html" class="fw-bold" style="color: #F59E0B; text-decoration: none;"><i class="ti ti-salt me-1"></i>Salt Premises Reg</a>
+            <span style="color:#cbd5e1;">|</span>
             <a href="./iims-importer-registration.html" class="fw-bold" style="color: #8B5CF6; text-decoration: none;"><i class="ti ti-package-import me-1"></i>Importer Reg</a>
             <span style="color:#cbd5e1;">|</span>
             <a href="./iims-exporter-registration.html" class="fw-bold" style="color: #3B82F6; text-decoration: none;"><i class="ti ti-package-export me-1"></i>Exporter Reg</a>
@@ -418,6 +444,7 @@
       lab:         './lab/iims-dashboard.html',
       fbo:         './fbo/iims-dashboard.html',
       trader:      './trader/index.html',
+      'trader-export': './trader-export/index.html',
       salt:        './salt/index.html',
       'salt-cao':  './salt-cao/index.html',
       'salt-dfdi': './salt-dfdi/index.html',
@@ -430,7 +457,8 @@
       fcau:        './fcau/iims-dashboard.html',
       authority:   './authority/iims-dashboard.html',
       ddg:         './ddg/iims-dashboard.html',
-      dg:          './dg/iims-dashboard.html'
+      dg:          './dg/iims-dashboard.html',
+      d:           './d/iims-dashboard.html'
     };
 
     function selectRole(role) {
