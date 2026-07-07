@@ -1,10 +1,108 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 <head>
-  <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <title>IIMS - Exporter Registration</title>
+  <style>
+    .step-indicator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .step-indicator::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #E2E8F0;
+      z-index: 1;
+    }
+    .step-item {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #64748B;
+      transition: all 0.3s;
+    }
+    .step-item.active .step-circle {
+      background-color: #5d87ff;
+      border-color: #5d87ff;
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(93, 135, 255, 0.15);
+    }
+    .step-item.completed .step-circle {
+      background-color: #13deb9;
+      border-color: #13deb9;
+      color: #fff;
+    }
+    .step-label {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #64748B;
+      text-align: center;
+    }
+    .step-item.active .step-label {
+      color: #5d87ff;
+      font-weight: 600;
+    }
+    .step-item.completed .step-label {
+      color: #13deb9;
+    }
+    .signature-pad-container {
+      border: 2px dashed #CBD5E1;
+      border-radius: 8px;
+      background-color: #F8FAFC;
+      position: relative;
+      width: 100%;
+      height: 150px;
+    }
+    .signature-pad-canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+    }
+    .table-input {
+      border: 1px solid #DFE5EF;
+      border-radius: 4px;
+      padding: 4px 8px;
+      width: 100%;
+      font-size: 0.85rem;
+    }
+    .table-input:focus {
+      outline: none;
+      border-color: #5d87ff;
+    }
+    .other-specify {
+      display: none;
+      margin-top: 8px;
+    }
+  </style>
 </head>
 <body class="bg-light">
   <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -23,15 +121,16 @@
   </header>
 
   <div class="container py-2" style="max-width: 1000px;">
+    <!-- Main Info Banner -->
     <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
       <div class="card-body px-4 py-3">
         <div class="row align-items-center">
           <div class="col-sm-9 col-12">
-            <h4 class="fw-semibold mb-1 text-primary">Exporter Establishment Registration</h4>
+            <h4 class="fw-semibold mb-1 text-primary">Food (Export) Establishment Registration</h4>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="text-muted" href="./iims-login.html">Sign In</a></li>
-                <li class="breadcrumb-item active">Establishment Registry</li>
+                <li class="breadcrumb-item active">Exporter Establishment Registry</li>
               </ol>
             </nav>
           </div>
@@ -42,46 +141,579 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-body">
-        <h5 class="fw-semibold mb-4">Business & Quality Credentials (Phase 1)</h5>
-        <form>
-          <div class="row g-3">
-            <div class="col-md-6"><label class="form-label">Full Legal Entity Name</label><input type="text" class="form-control"></div>
-            <div class="col-md-6"><label class="form-label">Business Registration No.</label><input type="text" class="form-control"></div>
-            <div class="col-md-4"><label class="form-label">TIN Number</label><input type="text" class="form-control"></div>
-            <div class="col-md-4"><label class="form-label">VAT Number</label><input type="text" class="form-control"></div>
-            <div class="col-md-4"><label class="form-label">Date of Incorporation</label><input type="date" class="form-control"></div>
-            
-            <div class="col-md-12"><hr></div>
-            
-            <h6 class="fw-semibold">Statutory Quality Certifications</h6>
-            <div class="col-md-6">
-              <label class="form-label">Certification Type</label>
-              <select class="form-select" multiple>
-                <option>GMP (Good Manufacturing Practices)</option>
-                <option>HACCP</option>
-                <option>ISO 22000</option>
-                <option>SLS Mark</option>
-              </select>
-            </div>
-            <div class="col-md-6"><label class="form-label">Upload Certificates (Merge to one PDF)</label><input type="file" class="form-control"></div>
+    <!-- Official Header Details -->
+    <div class="border border-primary rounded p-3 mb-4 bg-primary-subtle text-primary d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div>
+        <h6 class="fw-bold mb-0">FOOD CONTROL ADMINISTRATION UNIT</h6>
+        <span class="fs-2 text-dark font-medium d-block">Ministry of Health, Sri Lanka</span>
+        <small class="fs-1 text-muted">386, Rev. Baddegama Wimalawansa Mawatha, Colombo - 10, Sri Lanka | TEL/FAX: +94 112368727</small>
+      </div>
+      <div class="text-end">
+        <span class="badge bg-primary text-white fs-3 p-2 font-semibold">Reg. No: PA/EOH/FCAU/EXP/ ______ / ______</span>
+      </div>
+    </div>
 
-            <div class="col-md-12 mt-4">
-              <div class="alert alert-warning border-0 fs-2">
-                <i class="ti ti-alert-circle me-1"></i> Registration triggers a mandatory physical factory inspection by FCAU before export certificates can be applied for.
+    <div class="card">
+      <div class="card-body p-4">
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+          <div class="step-item active" id="step-ind-1" style="cursor: pointer;" onclick="jumpToTab(0)">
+            <div class="step-circle" id="circle-1">1</div>
+            <div class="step-label">Company Profile</div>
+          </div>
+          <div class="step-item" id="step-ind-2" style="cursor: pointer;" onclick="jumpToTab(1)">
+            <div class="step-circle" id="circle-2">2</div>
+            <div class="step-label">Registrations & Leaders</div>
+          </div>
+          <div class="step-item" id="step-ind-3" style="cursor: pointer;" onclick="jumpToTab(2)">
+            <div class="step-circle" id="circle-3">3</div>
+            <div class="step-label">Class & Standards</div>
+          </div>
+          <div class="step-item" id="step-ind-4" style="cursor: pointer;" onclick="jumpToTab(3)">
+            <div class="step-circle" id="circle-4">4</div>
+            <div class="step-label">Declaration</div>
+          </div>
+        </div>
+
+        <form id="exporterRegForm" onsubmit="submitForm(event)">
+          
+          <!-- STEP 1: Company Profile -->
+          <div class="wizard-step" id="step-1">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-building me-2"></i>1. General Company & Addresses</h5>
+            
+            <div class="row g-3">
+              <div class="col-md-12">
+                <label class="form-label fw-semibold">01. Name of Company <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="company_name" placeholder="Enter full legal company name" required />
+              </div>
+              
+              <div class="col-md-12"><hr class="my-2"></div>
+              
+              <div class="col-md-12">
+                <label class="form-label fw-semibold">02. Address of Company</label>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-2 text-muted">2.1 Office Address <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="address_office" rows="3" placeholder="Enter company head office address" required></textarea>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-2 text-muted">2.2 Factory Address <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="address_factory" rows="3" placeholder="Enter production factory address" required></textarea>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-2 text-muted">2.3 Warehouse Address <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="address_warehouse" rows="3" placeholder="Enter storage/warehouse address" required></textarea>
+              </div>
+              
+              <div class="col-md-12"><hr class="my-2"></div>
+
+              <div class="col-md-12">
+                <label class="form-label fw-semibold">3. Contact Nos</label>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-2 text-muted">Office Telephone <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="contact_office" placeholder="Office Phone" required />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-2 text-muted">Factory Telephone</label>
+                <input type="tel" class="form-control" id="contact_factory" placeholder="Factory Phone" />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fs-2 text-muted">Warehouse Telephone</label>
+                <input type="tel" class="form-control" id="contact_warehouse" placeholder="Warehouse Phone" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fs-2 text-muted">Fax Number</label>
+                <input type="tel" class="form-control" id="contact_fax" placeholder="Fax Number" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fs-2 text-muted">Email Address <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="contact_email" placeholder="official@company.com" required />
               </div>
             </div>
 
-            <div class="col-12 text-end">
-              <button type="submit" class="btn btn-primary px-4">Submit for Credential Verification</button>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-primary px-4" onclick="nextPrev(1)">Next: Registrations <i class="ti ti-arrow-right ms-1"></i></button>
             </div>
           </div>
+
+          <!-- STEP 2: Business Registrations & Leadership -->
+          <div class="wizard-step" id="step-2" style="display: none;">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-id me-2"></i>2. Statutory Registrations & Organization Heads</h5>
+            
+            <div class="row g-3">
+              <!-- B/R Number and date -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">4. Business Registration (B/R) Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="br_number" placeholder="e.g. PV-123456" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">B/R Registration Date <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="br_date" required />
+              </div>
+
+              <!-- Tin and Vat -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">06. TIN Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="tin_number" placeholder="9-digit Taxpayer ID" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">TIN Registration Date <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="tin_date" required />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">07. VAT Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="vat_number" placeholder="VAT Registration Number" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">VAT Registration Date <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="vat_date" required />
+              </div>
+
+              <div class="col-md-12"><hr class="my-2"></div>
+
+              <!-- 5. Details of head of the institute Table -->
+              <div class="col-md-12">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <label class="form-label fw-semibold mb-0">5. Details of Head of the Institute (Director/CEO/Owner)</label>
+                  <button type="button" class="btn btn-outline-primary btn-sm" onclick="addHeadRow()"><i class="ti ti-plus me-1"></i>Add Row</button>
+                </div>
+                <div class="table-responsive border rounded">
+                  <table class="table table-hover align-middle mb-0" id="headTable">
+                    <thead class="table-light">
+                      <tr>
+                        <th style="width: 50px;">S/N</th>
+                        <th>Name <span class="text-danger">*</span></th>
+                        <th>Position <span class="text-danger">*</span></th>
+                        <th>Tel. No. <span class="text-danger">*</span></th>
+                        <th>Fax</th>
+                        <th>Email <span class="text-danger">*</span></th>
+                        <th style="width: 50px;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Row 1 -->
+                      <tr>
+                        <td>1</td>
+                        <td><input type="text" class="table-input" name="head_name[]" placeholder="Full Name" required /></td>
+                        <td><input type="text" class="table-input" name="head_position[]" placeholder="Position" required /></td>
+                        <td><input type="tel" class="table-input" name="head_tel[]" placeholder="Telephone" required /></td>
+                        <td><input type="tel" class="table-input" name="head_fax[]" placeholder="Fax" /></td>
+                        <td><input type="email" class="table-input" name="head_email[]" placeholder="Email" required /></td>
+                        <td><button type="button" class="btn btn-outline-danger btn-sm p-1 border-0" onclick="removeHeadRow(this)"><i class="ti ti-trash fs-5"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="col-md-12"><hr class="my-2"></div>
+
+              <!-- Statutory Board Registrations -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">08. EDB Registration No. <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="edb_number" placeholder="EDB Number" required />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">EDB Registration Date <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="edb_date" required />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">09. Coconut Board Registration No. <span class="text-muted">(If relevant)</span></label>
+                <input type="text" class="form-control" id="coconut_number" placeholder="Coconut Board No" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Coconut Board Registration Date</label>
+                <input type="date" class="form-control" id="coconut_date" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">10. Tea Board Registration No. <span class="text-muted">(If relevant)</span></label>
+                <input type="text" class="form-control" id="tea_number" placeholder="Tea Board No" />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Tea Board Registration Date</label>
+                <input type="date" class="form-control" id="tea_date" />
+              </div>
+
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary px-4" onclick="nextPrev(-1)"><i class="ti ti-arrow-left me-1"></i> Back</button>
+              <button type="button" class="btn btn-primary px-4" onclick="nextPrev(1)">Next: Business Details <i class="ti ti-arrow-right ms-1"></i></button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Business Classification & Quality Standards -->
+          <div class="wizard-step" id="step-3" style="display: none;">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-list-check me-2"></i>3. Business Classification & Quality Standards</h5>
+            
+            <div class="row g-3">
+              <!-- Type of Business -->
+              <div class="col-md-6">
+                <div class="card border shadow-none mb-0">
+                  <div class="card-body p-3">
+                    <label class="form-label fw-semibold mb-2">1. Type of Business <span class="text-danger">*</span></label>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input business-type-check" type="checkbox" id="type_producer" value="Producer Exporter" />
+                      <label class="form-check-label" for="type_producer">Producer Exporter</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input business-type-check" type="checkbox" id="type_producer_hyphen" value="Producer-Exporter" />
+                      <label class="form-check-label" for="type_producer_hyphen">Producer-Exporter</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input business-type-check" type="checkbox" id="type_agent" value="Agent" />
+                      <label class="form-check-label" for="type_agent">Agent</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input business-type-check" type="checkbox" id="type_trading" value="Trading House" />
+                      <label class="form-check-label" for="type_trading">Trading House</label>
+                    </div>
+                    <div class="form-check mb-0">
+                      <input class="form-check-input business-type-check" type="checkbox" id="type_other" value="Other" onchange="toggleSpecify('type_other', 'type_other_specify')" />
+                      <label class="form-check-label" for="type_other">Other (Specify)</label>
+                    </div>
+                    <input type="text" class="form-control other-specify" id="type_other_specify" placeholder="Please specify business type" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Legal Status -->
+              <div class="col-md-6">
+                <div class="card border shadow-none mb-0">
+                  <div class="card-body p-3">
+                    <label class="form-label fw-semibold mb-2">2. Legal Status <span class="text-danger">*</span></label>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input legal-status-check" type="checkbox" id="status_proprietorship" value="Proprietorship" />
+                      <label class="form-check-label" for="status_proprietorship">Proprietorship</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input legal-status-check" type="checkbox" id="status_public" value="Public Quoted Company" />
+                      <label class="form-check-label" for="status_public">Public Quoted Company</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input legal-status-check" type="checkbox" id="status_partnership" value="Partnership" />
+                      <label class="form-check-label" for="status_partnership">Partnership</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input legal-status-check" type="checkbox" id="status_state" value="State Owned" />
+                      <label class="form-check-label" for="status_state">State Owned</label>
+                    </div>
+                    <div class="form-check mb-2">
+                      <input class="form-check-input legal-status-check" type="checkbox" id="status_private" value="Private Ltd Company" />
+                      <label class="form-check-label" for="status_private">Private Ltd Company</label>
+                    </div>
+                    <div class="form-check mb-0">
+                      <input class="form-check-input legal-status-check" type="checkbox" id="status_other" value="Other" onchange="toggleSpecify('status_other', 'status_other_specify')" />
+                      <label class="form-check-label" for="status_other">Other (Specify)</label>
+                    </div>
+                    <input type="text" class="form-control other-specify" id="status_other_specify" placeholder="Please specify legal status" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 13. Nature of the company -->
+              <div class="col-md-12">
+                <div class="card border shadow-none mb-0">
+                  <div class="card-body p-3">
+                    <label class="form-label fw-semibold mb-2">13. Nature of the Company <span class="text-danger">*</span></label>
+                    
+                    <div class="row align-items-center mb-3">
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                          <input class="form-check-input nature-check" type="checkbox" id="nature_manufacturer" value="Manufacturer and exporter" />
+                          <label class="form-check-label fw-semibold" for="nature_manufacturer">Manufacturer and exporter</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm" id="nature_manufacturer_details" placeholder="Describe manufacturing capabilities" />
+                      </div>
+                    </div>
+
+                    <div class="row align-items-center mb-3">
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                          <input class="form-check-input nature-check" type="checkbox" id="nature_only_exporter" value="Only exporter" onchange="toggleSpecify('nature_only_exporter', 'buyers_list_container')" />
+                          <label class="form-check-label fw-semibold" for="nature_only_exporter">Only exporter <span class="fs-1 text-muted">(buyer list required)</span></label>
+                        </div>
+                      </div>
+                      <div class="col-sm-8">
+                        <div id="buyers_list_container" style="display: none;">
+                          <div class="d-flex align-items-center gap-2">
+                            <input type="text" class="form-control form-control-sm" id="nature_only_exporter_details" placeholder="Describe exporter channels" />
+                            <input type="file" class="d-none" id="buyer_list_file" />
+                            <button type="button" class="btn btn-outline-secondary btn-sm text-nowrap" onclick="document.getElementById('buyer_list_file').click()">Upload Buyer List</button>
+                            <span id="buyer_file_label" class="fs-1 text-muted text-truncate" style="max-width: 150px;">No file</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row align-items-center mb-0">
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                          <input class="form-check-input nature-check" type="checkbox" id="nature_re_exporter" value="Re-exporter" />
+                          <label class="form-check-label fw-semibold" for="nature_re_exporter">Re-exporter</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control form-control-sm" id="nature_re_exporter_details" placeholder="Describe re-exporting operations" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quality standard certificates -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">11. Quality Standard Certificates <span class="text-danger">*</span></label>
+                <div class="border rounded p-3 bg-white mb-2">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input cert-check" type="checkbox" id="cert_gmp" value="GMP" />
+                    <label class="form-check-label" for="cert_gmp">GMP (Good Manufacturing Practices)</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input cert-check" type="checkbox" id="cert_haccp" value="HACCP" />
+                    <label class="form-check-label" for="cert_haccp">HACCP Certificate</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input cert-check" type="checkbox" id="cert_iso" value="ISO 22000" />
+                    <label class="form-check-label" for="cert_iso">ISO 22000 Standard</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input cert-check" type="checkbox" id="cert_sls" value="SLS Mark" />
+                    <label class="form-check-label" for="cert_sls">SLS Quality Mark</label>
+                  </div>
+                  <div class="form-check mb-0">
+                    <input class="form-check-input cert-check" type="checkbox" id="cert_other" value="Other" onchange="toggleSpecify('cert_other', 'cert_other_specify')" />
+                    <label class="form-check-label" for="cert_other">Other Standard</label>
+                  </div>
+                  <input type="text" class="form-control form-control-sm other-specify" id="cert_other_specify" placeholder="Specify other certificate" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fs-2 text-muted">Upload Quality Certificates (Merged PDF) <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control" id="quality_certs_file" required />
+                </div>
+              </div>
+
+              <!-- Production list -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">12. Production List</label>
+                <textarea class="form-control mb-2" id="production_list" rows="3" placeholder="Enter brief summary of production items"></textarea>
+                <div class="mb-3">
+                  <label class="form-label fs-2 text-muted">Attach Complete Production List <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control" id="production_list_file" required />
+                </div>
+              </div>
+
+              <!-- Freely available in local market -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">14. Is the production freely available in the local market? <span class="text-danger">*</span></label>
+                <div class="d-flex gap-4 align-items-center py-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="local_market" id="local_yes" value="Yes" checked onchange="toggleSpecify('local_no', 'local_market_explain')" />
+                    <label class="form-check-label" for="local_yes">Yes, Freely Available</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="local_market" id="local_no" value="No" onchange="toggleSpecify('local_no', 'local_market_explain')" />
+                    <label class="form-check-label" for="local_no">No, Export Only</label>
+                  </div>
+                </div>
+                <textarea class="form-control other-specify" id="local_market_explain" rows="2" placeholder="Please explain why it is not available in local market"></textarea>
+              </div>
+
+              <!-- Exporting countries -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">15. Exporting Countries</label>
+                <textarea class="form-control mb-2" id="export_countries" rows="2" placeholder="List target exporting countries (e.g. UK, USA, Japan)"></textarea>
+                <div class="mb-3">
+                  <label class="form-label fs-2 text-muted">Attach Complete List of Exporting Countries <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control" id="export_countries_file" required />
+                </div>
+              </div>
+
+              <div class="col-md-12"><hr class="my-2"></div>
+
+              <!-- China Export Section -->
+              <div class="col-md-12">
+                <div class="card border border-warning bg-warning-subtle shadow-none mb-0">
+                  <div class="card-body p-3">
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" id="china_exporter" onchange="toggleSpecify('china_exporter', 'china_export_table_container')" />
+                      <label class="form-check-label fw-semibold text-warning-emphasis" for="china_exporter">
+                        <i class="ti ti-alert-triangle me-1"></i> Check this box if your company exports products to China
+                      </label>
+                    </div>
+
+                    <div id="china_export_table_container" style="display: none;">
+                      <div class="d-flex align-items-center justify-content-between mb-2">
+                        <label class="form-label fw-semibold text-dark mb-0">For companies exporting to China Details</label>
+                        <button type="button" class="btn btn-outline-warning btn-sm text-dark bg-white" onclick="addChinaRow()"><i class="ti ti-plus me-1"></i>Add Row</button>
+                      </div>
+                      <div class="table-responsive border rounded bg-white">
+                        <table class="table table-hover align-middle mb-0" id="chinaTable">
+                          <thead class="table-light">
+                            <tr>
+                              <th style="width: 50px;">S/N</th>
+                              <th>Products for approval <span class="text-danger">*</span></th>
+                              <th>HS Code <span class="text-danger">*</span></th>
+                              <th>Last date of trade to China <span class="text-danger">*</span></th>
+                              <th style="width: 50px;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td><input type="text" class="table-input" name="china_product[]" placeholder="Product Name" /></td>
+                              <td><input type="text" class="table-input" name="china_hs[]" placeholder="HS Code (e.g. 0902.10)" /></td>
+                              <td><input type="date" class="table-input" name="china_date[]" /></td>
+                              <td><button type="button" class="btn btn-outline-danger btn-sm p-1 border-0" onclick="removeChinaRow(this)"><i class="ti ti-trash fs-5"></i></button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary px-4" onclick="nextPrev(-1)"><i class="ti ti-arrow-left me-1"></i> Back</button>
+              <button type="button" class="btn btn-primary px-4" onclick="nextPrev(1)">Next: Declaration <i class="ti ti-arrow-right ms-1"></i></button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Declarations & Contacts -->
+          <div class="wizard-step" id="step-4" style="display: none;">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-license me-2"></i>4. Contact Person & Declarations</h5>
+            
+            <div class="row g-3">
+              <!-- 16. Details of the agent / person to contact if needed -->
+              <div class="col-md-12">
+                <label class="form-label fw-semibold">16. Details of the agent / person to contact if needed <span class="text-danger">*</span></label>
+                <div class="card border shadow-none mb-0">
+                  <div class="card-body p-3">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label fs-2 text-muted">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control form-control-sm" id="agent_name" placeholder="Contact Person Name" required />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fs-2 text-muted">Position <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control form-control-sm" id="agent_position" placeholder="Position" required />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fs-2 text-muted">Tel. No. <span class="text-danger">*</span></label>
+                        <input type="tel" class="form-control form-control-sm" id="agent_tel" placeholder="Telephone No" required />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label fs-2 text-muted">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control form-control-sm" id="agent_email" placeholder="agent@email.com" required />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Changes Notice -->
+              <div class="col-md-12 mt-3">
+                <div class="alert alert-warning border-0 fs-2 d-flex align-items-center gap-2 mb-0">
+                  <i class="ti ti-info-circle text-warning fs-5"></i>
+                  <span><strong>Note :-</strong> If this report state above changes, the necessary information inform with be provided to the FCAU within 14 days.</span>
+                </div>
+              </div>
+
+              <!-- Declarations -->
+              <div class="col-md-12 mt-2">
+                <div class="card border border-primary bg-primary-subtle shadow-none mb-0">
+                  <div class="card-body p-3 text-dark">
+                    <div class="form-check mb-2">
+                      <input class="form-check-input" type="checkbox" id="decl_true" required />
+                      <label class="form-check-label fs-3 fw-semibold text-primary-emphasis" for="decl_true">
+                        I hereby state that the aforesaid details and the attached documents are true, correct and genuine to the best of my knowledge. <span class="text-danger">*</span>
+                      </label>
+                    </div>
+                    <div class="form-check mb-0">
+                      <input class="form-check-input" type="checkbox" id="decl_register" required />
+                      <label class="form-check-label fs-3 fw-semibold text-primary-emphasis" for="decl_register">
+                        I understand that the above company will be registered at the Food Control Administration Unit of the ministry of health. <span class="text-danger">*</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Applicant Details & Signature -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Name of the Applicant <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="applicant_name" placeholder="Full name of applicant" required />
+                <label class="form-label fw-semibold mt-3">Position of the Applicant <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="applicant_position" placeholder="e.g. Managing Director" required />
+                <label class="form-label fw-semibold mt-3">Date <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="applicant_date" required />
+              </div>
+
+              <!-- Drawing Canvas Signature pad -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold d-flex justify-content-between align-items-center">
+                  <span>Draw Digital Signature <span class="text-danger">*</span></span>
+                  <button type="button" class="btn btn-link text-danger p-0 fs-2" onclick="clearSignature()"><i class="ti ti-refresh"></i> Clear</button>
+                </label>
+                <div class="signature-pad-container">
+                  <canvas class="signature-pad-canvas" id="sig_canvas"></canvas>
+                </div>
+                <input type="hidden" id="signature_data" required />
+                
+                <div class="mt-3">
+                  <label class="form-label fs-2 text-muted">Or Upload Scanned Signature <span class="text-muted">(Optional)</span></label>
+                  <input type="file" class="form-control" id="sig_upload" accept=".png,.jpg,.jpeg" onchange="loadUploadedSignature(event)" />
+                </div>
+              </div>
+
+              <!-- Mandatory physical inspection warning -->
+              <div class="col-md-12 mt-3">
+                <div class="alert alert-danger border-0 fs-2 d-flex align-items-center gap-2 mb-0">
+                  <i class="ti ti-alert-triangle text-danger fs-5"></i>
+                  <span><strong>IMPORTANT:</strong> Registration triggers a mandatory physical factory inspection by FCAU before export health certificates can be issued.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary px-4" onclick="nextPrev(-1)"><i class="ti ti-arrow-left me-1"></i> Back</button>
+              <button type="submit" class="btn btn-success px-5"><i class="ti ti-cloud-upload me-1"></i> Submit Application</button>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>
   </div>
-  
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center p-4">
+          <div class="round-60 rounded-circle bg-success-subtle text-success d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 70px; height: 70px;">
+            <i class="ti ti-circle-check fs-9"></i>
+          </div>
+          <h4 class="fw-bold mb-2">Application Submitted Successfully!</h4>
+          <p class="text-muted fs-3 mb-4">Your application for Food (Export) Establishment Registration has been sent for official verification. Your temporary registration reference is:</p>
+          <div class="alert alert-primary bg-primary-subtle text-primary fw-bold fs-4 py-2 border-0 mb-4">
+            PA/EOH/FCAU/EXP/2026/0894
+          </div>
+          <button type="button" class="btn btn-primary px-4" onclick="window.location.href='./iims-login.html'">Proceed to Portal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="dark-transparent sidebartoggler"></div>
   <script src="../assets/js/vendor.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -91,5 +723,257 @@
   <script src="../assets/js/theme/app.min.js"></script>
   <script src="../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+  <script>
+    var currentTab = 0; // Current step tab (0 = step 1)
+    var canvas, ctx, drawing = false;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Set default date for applicant
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('applicant_date').value = today;
+      document.getElementById('br_date').value = today;
+      document.getElementById('tin_date').value = today;
+      document.getElementById('vat_date').value = today;
+      document.getElementById('edb_date').value = today;
+
+      showTab(currentTab);
+      initSignaturePad();
+    });
+
+    function showTab(n) {
+      var tabs = document.getElementsByClassName("wizard-step");
+      tabs[n].style.display = "block";
+      
+      // Update Step Indicators
+      updateIndicators(n);
+
+      if (n === 3) {
+        // Redraw canvas context if step 4 is displayed
+        setTimeout(resizeCanvas, 100);
+      }
+    }
+
+    function updateIndicators(n) {
+      for (var i = 1; i <= 4; i++) {
+        var ind = document.getElementById("step-ind-" + i);
+        var circle = document.getElementById("circle-" + i);
+        
+        ind.className = "step-item";
+        if (i < n + 1) {
+          ind.className = "step-item completed";
+          circle.innerHTML = '<i class="ti ti-check"></i>';
+        } else if (i === n + 1) {
+          ind.className = "step-item active";
+          circle.innerHTML = i;
+        } else {
+          circle.innerHTML = i;
+        }
+      }
+    }
+
+    function jumpToTab(n) {
+      var tabs = document.getElementsByClassName("wizard-step");
+      tabs[currentTab].style.display = "none";
+      currentTab = n;
+      showTab(currentTab);
+      document.querySelector('.card').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function nextPrev(n) {
+      var tabs = document.getElementsByClassName("wizard-step");
+      
+      tabs[currentTab].style.display = "none";
+      currentTab = currentTab + n;
+      
+      showTab(currentTab);
+      // Scroll to top of card
+      document.querySelector('.card').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function validateForm() {
+      return true; // Input validation bypassed as requested
+    }
+
+    function toggleSpecify(checkboxId, inputId) {
+      const checkbox = document.getElementById(checkboxId);
+      const input = document.getElementById(inputId);
+      if (checkbox && input) {
+        input.style.display = checkbox.checked ? 'block' : 'none';
+      }
+    }
+
+    // Dynamic Row Actions for Details of Head of Institute
+    function addHeadRow() {
+      const table = document.getElementById("headTable").getElementsByTagName('tbody')[0];
+      const rowCount = table.rows.length;
+      const newRow = table.insertRow(rowCount);
+      
+      newRow.innerHTML = `
+        <td>${rowCount + 1}</td>
+        <td><input type="text" class="table-input" name="head_name[]" placeholder="Full Name" required /></td>
+        <td><input type="text" class="table-input" name="head_position[]" placeholder="Position" required /></td>
+        <td><input type="tel" class="table-input" name="head_tel[]" placeholder="Telephone" required /></td>
+        <td><input type="tel" class="table-input" name="head_fax[]" placeholder="Fax" /></td>
+        <td><input type="email" class="table-input" name="head_email[]" placeholder="Email" required /></td>
+        <td><button type="button" class="btn btn-outline-danger btn-sm p-1 border-0" onclick="removeHeadRow(this)"><i class="ti ti-trash fs-5"></i></button></td>
+      `;
+    }
+
+    function removeHeadRow(button) {
+      const table = document.getElementById("headTable").getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+        const row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        
+        // Re-index rows
+        for (let i = 0; i < table.rows.length; i++) {
+          table.rows[i].cells[0].innerHTML = i + 1;
+        }
+      } else {
+        alert("At least one head of the institute must be registered.");
+      }
+    }
+
+    // Dynamic Row Actions for China Export details
+    function addChinaRow() {
+      const table = document.getElementById("chinaTable").getElementsByTagName('tbody')[0];
+      const rowCount = table.rows.length;
+      const newRow = table.insertRow(rowCount);
+      
+      newRow.innerHTML = `
+        <td>${rowCount + 1}</td>
+        <td><input type="text" class="table-input" name="china_product[]" placeholder="Product Name" required /></td>
+        <td><input type="text" class="table-input" name="china_hs[]" placeholder="HS Code" required /></td>
+        <td><input type="date" class="table-input" name="china_date[]" required /></td>
+        <td><button type="button" class="btn btn-outline-danger btn-sm p-1 border-0" onclick="removeChinaRow(this)"><i class="ti ti-trash fs-5"></i></button></td>
+      `;
+    }
+
+    function removeChinaRow(button) {
+      const table = document.getElementById("chinaTable").getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+        const row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        
+        // Re-index rows
+        for (let i = 0; i < table.rows.length; i++) {
+          table.rows[i].cells[0].innerHTML = i + 1;
+        }
+      } else {
+        alert("Please register at least one product or uncheck China export if not applicable.");
+      }
+    }
+
+    // Uploaded buyer list file label update
+    document.getElementById("buyer_list_file")?.addEventListener("change", function(e) {
+      const fileLabel = document.getElementById("buyer_file_label");
+      if (e.target.files.length > 0) {
+        fileLabel.textContent = e.target.files[0].name;
+        fileLabel.classList.remove("text-muted");
+        fileLabel.classList.add("text-success", "fw-semibold");
+      }
+    });
+
+    // Signature Pad Actions
+    function initSignaturePad() {
+      canvas = document.getElementById('sig_canvas');
+      ctx = canvas.getContext('2d');
+      
+      // Events for drawing
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseout', stopDrawing);
+      
+      // Touch events for mobile
+      canvas.addEventListener('touchstart', function(e) {
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousedown", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+      }, false);
+      
+      canvas.addEventListener('touchmove', function(e) {
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousemove", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
+        e.preventDefault();
+      }, false);
+      
+      canvas.addEventListener('touchend', function(e) {
+        var mouseEvent = new MouseEvent("mouseup", {});
+        canvas.dispatchEvent(mouseEvent);
+      }, false);
+    }
+
+    function resizeCanvas() {
+      var rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      
+      // Setup line style
+      ctx.strokeStyle = "#1A202C";
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = "round";
+    }
+
+    function startDrawing(e) {
+      drawing = true;
+      var rect = canvas.getBoundingClientRect();
+      ctx.beginPath();
+      ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+    }
+
+    function draw(e) {
+      if (!drawing) return;
+      var rect = canvas.getBoundingClientRect();
+      ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+      ctx.stroke();
+    }
+
+    function stopDrawing() {
+      if (!drawing) return;
+      drawing = false;
+      // Store canvas data as base64 in hidden input
+      document.getElementById('signature_data').value = canvas.toDataURL();
+    }
+
+    function clearSignature() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      document.getElementById('signature_data').value = '';
+      document.getElementById('sig_upload').value = '';
+    }
+
+    function loadUploadedSignature(e) {
+      if (e.target.files.length > 0) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const img = new Image();
+          img.onload = function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            document.getElementById('signature_data').value = event.target.result;
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      
+      // Show dynamic Bootstrap Success Modal
+      var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+      myModal.show();
+    }
+  </script>
 </body>
 </html>
