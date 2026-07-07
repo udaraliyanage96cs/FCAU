@@ -92,12 +92,21 @@
                   <div class="col-md-6"><label class="form-label">Jurisdiction Court</label><select class="form-select"><option>Colombo Magistrate's Court</option><option>Gampaha Magistrate's Court</option><option>Kandy Magistrate's Court</option></select></div>
 
                   <div class="col-md-12">
-                    <label class="form-label">Violated Sections / Codes</label>
-                    <select class="form-select select2" multiple>
-                      <option selected>S.26 - Adulterated Food</option>
-                      <option selected>S.28 - Misleading Labeling</option>
-                      <option>S.14 - Unlicensed Premises</option>
-                    </select>
+                    <label class="form-label fw-semibold">Violated Sections / Codes</label>
+                    <div class="border rounded p-3 bg-white">
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="violation_s26" value="S.26 - Adulterated Food" checked>
+                        <label class="form-check-label" for="violation_s26">S.26 - Adulterated Food</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="violation_s28" value="S.28 - Misleading Labeling" checked>
+                        <label class="form-check-label" for="violation_s28">S.28 - Misleading Labeling</label>
+                      </div>
+                      <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="violation_s14" value="S.14 - Unlicensed Premises">
+                        <label class="form-check-label" for="violation_s14">S.14 - Unlicensed Premises</label>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="col-md-4"><label class="form-label">Statute Deadline</label><input type="date" class="form-control" value="2026-07-30"></div>
