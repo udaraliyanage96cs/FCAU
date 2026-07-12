@@ -222,6 +222,7 @@
                       <thead class="table-light">
                         <tr>
                           <th>Manager Name</th>
+                          <th>Assigned Premises</th>
                           <th>NIC Number</th>
                           <th>Email Address</th>
                           <th>Phone Number</th>
@@ -443,6 +444,12 @@
               <label class="form-label">Phone Number <span class="text-danger">*</span></label>
               <input type="tel" class="form-control" id="m-phone" placeholder="e.g. +94 7X XXX XXXX" required>
             </div>
+            <div class="mb-3">
+              <label class="form-label">Parent Outlets & Premises</label>
+              <select class="form-select" id="m-premises">
+                <option value="">Select Outlets & Premises</option>
+              </select>
+            </div>
             <div class="modal-footer px-0 pb-0">
               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
               <button type="submit" class="btn btn-primary">Create Profile</button>
@@ -519,6 +526,7 @@
       renderBusinesses();
       renderBranches();
       renderManagers();
+      populateManagerPremisesDropdown();
       updateChart();
     }
 
@@ -609,9 +617,14 @@
       tbody.innerHTML = '';
       
       managers.forEach(m => {
+        // Find if this manager is assigned to any branch
+        const assignedBranch = branches.find(b => b.manager === m.name);
+        const premisesText = assignedBranch ? assignedBranch.name : (m.premisesName || 'Unassigned');
+
         tbody.innerHTML += `
           <tr>
             <td><span class="fw-semibold">${m.name}</span></td>
+            <td><span class="badge bg-secondary-subtle text-secondary">${premisesText}</span></td>
             <td>${m.nic || 'N/A'}</td>
             <td>${m.email}</td>
             <td>${m.phone || 'N/A'}</td>
@@ -703,15 +716,30 @@
 
     document.getElementById('add-manager-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      const mPremisesSelect = document.getElementById('m-premises');
+      const premisesId = mPremisesSelect.value;
+      const premisesName = premisesId ? mPremisesSelect.options[mPremisesSelect.selectedIndex].text : '';
+
       const newManager = {
         name: document.getElementById('m-name').value,
         nic: document.getElementById('m-nic').value,
         email: document.getElementById('m-email').value,
-        phone: document.getElementById('m-phone').value
+        phone: document.getElementById('m-phone').value,
+        premisesId: premisesId,
+        premisesName: premisesName
       };
 
       managers.push(newManager);
       localStorage.setItem('fcau_managers', JSON.stringify(managers));
+
+      // Update the branch's manager in local storage if a premises was selected
+      if (premisesId) {
+        const branchIdx = branches.findIndex(b => b.id === premisesId);
+        if (branchIdx !== -1) {
+          branches[branchIdx].manager = newManager.name;
+          localStorage.setItem('fcau_branches', JSON.stringify(branches));
+        }
+      }
 
       document.getElementById('add-manager-form').reset();
       const modal = bootstrap.Modal.getInstance(document.getElementById('addManagerModal'));
@@ -882,6 +910,15 @@
           });
           gnSelect.disabled = false;
         }
+      });
+    }
+
+    function populateManagerPremisesDropdown() {
+      const select = document.getElementById('m-premises');
+      if (!select) return;
+      select.innerHTML = '<option value="">Select Outlets & Premises</option>';
+      branches.forEach(b => {
+        select.innerHTML += `<option value="${b.id}">${b.name}</option>`;
       });
     }
 
