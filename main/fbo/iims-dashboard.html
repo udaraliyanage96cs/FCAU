@@ -222,6 +222,7 @@
                       <thead class="table-light">
                         <tr>
                           <th>Manager Name</th>
+                          <th>Assigned Premises</th>
                           <th>NIC Number</th>
                           <th>Email Address</th>
                           <th>Phone Number</th>
@@ -303,6 +304,39 @@
               <div class="col-md-6 mb-3">
                 <label class="form-label">Address <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="b-address" placeholder="Complete street address" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Province <span class="text-danger">*</span></label>
+                <select class="form-select" id="b-province" required>
+                  <option value="">Select Province</option>
+                  <option value="Western">Western</option>
+                  <option value="Central">Central</option>
+                  <option value="Southern">Southern</option>
+                  <option value="Northern">Northern</option>
+                  <option value="Eastern">Eastern</option>
+                  <option value="North Western">North Western</option>
+                  <option value="North Central">North Central</option>
+                  <option value="Uva">Uva</option>
+                  <option value="Sabaragamuwa">Sabaragamuwa</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">District <span class="text-danger">*</span></label>
+                <select class="form-select" id="b-district" required disabled>
+                  <option value="">Select District</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">PHI Area <span class="text-danger">*</span></label>
+                <select class="form-select" id="b-phi" required disabled>
+                  <option value="">Select PHI Area</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">GN Division <span class="text-danger">*</span></label>
+                <select class="form-select" id="b-gn" required disabled>
+                  <option value="">Select GN Division</option>
+                </select>
               </div>
 
               <!-- Main & Sub Categories Selection -->
@@ -410,6 +444,12 @@
               <label class="form-label">Phone Number <span class="text-danger">*</span></label>
               <input type="tel" class="form-control" id="m-phone" placeholder="e.g. +94 7X XXX XXXX" required>
             </div>
+            <div class="mb-3">
+              <label class="form-label">Parent Outlets & Premises</label>
+              <select class="form-select" id="m-premises">
+                <option value="">Select Outlets & Premises</option>
+              </select>
+            </div>
             <div class="modal-footer px-0 pb-0">
               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
               <button type="submit" class="btn btn-primary">Create Profile</button>
@@ -486,6 +526,7 @@
       renderBusinesses();
       renderBranches();
       renderManagers();
+      populateManagerPremisesDropdown();
       updateChart();
     }
 
@@ -533,7 +574,7 @@
           if (app) {
             if (app.status === 'Registered') {
               regBadge = `<span class="badge bg-success">Registered (${b.grade || 'A'})</span>`;
-              actionBtn = `<span class="text-success"><i class="ti ti-circle-check fs-5"></i></span>`;
+              actionBtn = `<a href="./iims-fbo-registration.html?editAppId=${app.id}" class="btn btn-sm btn-outline-info"><i class="ti ti-eye me-1"></i>View Details</a>`;
             } else if (app.status === 'PHI Assigned (Pending Inspection)') {
               regBadge = `<span class="badge bg-warning text-dark">PHI Assigned (${app.assignedPhi})</span>`;
               actionBtn = `<a href="./iims-fbo-registration.html?editAppId=${app.id}" class="btn btn-sm btn-outline-info">View Details</a>`;
@@ -551,7 +592,10 @@
           <tr>
             <td><span class="fw-semibold text-muted">${bizName}</span></td>
             <td><span class="fw-semibold text-dark">${b.name}</span></td>
-            <td><span class="fs-3 text-secondary">${b.address}</span></td>
+            <td>
+              <span class="fs-3 text-secondary">${b.address}</span>
+              ${b.province ? `<br><small class="text-muted fs-2">${b.gnDivision || ''}, ${b.phiArea || ''}, ${b.district || ''}, ${b.province || ''}</small>` : ''}
+            </td>
             <td><span class="badge bg-secondary-subtle text-secondary">${b.manager}</span></td>
             <td>${regBadge}</td>
             <td>
@@ -573,9 +617,14 @@
       tbody.innerHTML = '';
       
       managers.forEach(m => {
+        // Find if this manager is assigned to any branch
+        const assignedBranch = branches.find(b => b.manager === m.name);
+        const premisesText = assignedBranch ? assignedBranch.name : (m.premisesName || 'Unassigned');
+
         tbody.innerHTML += `
           <tr>
             <td><span class="fw-semibold">${m.name}</span></td>
+            <td><span class="badge bg-secondary-subtle text-secondary">${premisesText}</span></td>
             <td>${m.nic || 'N/A'}</td>
             <td>${m.email}</td>
             <td>${m.phone || 'N/A'}</td>
@@ -642,6 +691,10 @@
         businessId: document.getElementById('b-business').value,
         name: document.getElementById('b-name').value,
         address: document.getElementById('b-address').value,
+        province: document.getElementById('b-province').value,
+        district: document.getElementById('b-district').value,
+        phiArea: document.getElementById('b-phi').value,
+        gnDivision: document.getElementById('b-gn').value,
         manager: mgrName,
         mains: mains,
         subs: subs,
@@ -653,6 +706,9 @@
       localStorage.setItem('fcau_branches', JSON.stringify(branches));
 
       document.getElementById('add-branch-form').reset();
+      document.getElementById('b-district').disabled = true;
+      document.getElementById('b-phi').disabled = true;
+      document.getElementById('b-gn').disabled = true;
       const modal = bootstrap.Modal.getInstance(document.getElementById('addBranchModal'));
       modal.hide();
       renderAll();
@@ -660,15 +716,30 @@
 
     document.getElementById('add-manager-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      const mPremisesSelect = document.getElementById('m-premises');
+      const premisesId = mPremisesSelect.value;
+      const premisesName = premisesId ? mPremisesSelect.options[mPremisesSelect.selectedIndex].text : '';
+
       const newManager = {
         name: document.getElementById('m-name').value,
         nic: document.getElementById('m-nic').value,
         email: document.getElementById('m-email').value,
-        phone: document.getElementById('m-phone').value
+        phone: document.getElementById('m-phone').value,
+        premisesId: premisesId,
+        premisesName: premisesName
       };
 
       managers.push(newManager);
       localStorage.setItem('fcau_managers', JSON.stringify(managers));
+
+      // Update the branch's manager in local storage if a premises was selected
+      if (premisesId) {
+        const branchIdx = branches.findIndex(b => b.id === premisesId);
+        if (branchIdx !== -1) {
+          branches[branchIdx].manager = newManager.name;
+          localStorage.setItem('fcau_branches', JSON.stringify(branches));
+        }
+      }
 
       document.getElementById('add-manager-form').reset();
       const modal = bootstrap.Modal.getInstance(document.getElementById('addManagerModal'));
@@ -701,7 +772,158 @@
       chartInstance.render();
     }
 
+    // Location Data for Sri Lanka hierarchy (Province -> District -> PHI Area -> GN Division)
+    const locationData = {
+      "Western": {
+        "Colombo": {
+          "phiAreas": {
+            "Colombo 07": ["Colombo 07 - 508A", "Colombo 07 - 508B"],
+            "Dehiwala": ["Bambalapitiya - 520", "Dehiwala - 521"],
+            "Maharagama": ["Maharagama - 528", "Kottawa - 529"],
+            "Homagama": ["Homagama - 535", "Athurugiriya - 536"]
+          }
+        },
+        "Gampaha": {
+          "phiAreas": {
+            "Gampaha": ["Gampaha - 201", "Yakkala - 202"],
+            "Negombo": ["Negombo - 210", "Kochchikade - 211"],
+            "Kelaniya": ["Kelaniya - 215", "Kiribathgoda - 216"],
+            "Kadawatha": ["Kadawatha - 220", "Eldeniya - 221"]
+          }
+        },
+        "Kalutara": {
+          "phiAreas": {
+            "Kalutara": ["Kalutara - 301", "Kalutara North - 302"],
+            "Panadura": ["Panadura - 310", "Panadura South - 311"],
+            "Horana": ["Horana - 320", "Millewa - 321"]
+          }
+        }
+      },
+      "Central": {
+        "Kandy": {
+          "phiAreas": {
+            "Kandy": ["Kandy Town - 101", "Kandy Outer - 102"],
+            "Peradeniya": ["Peradeniya - 105", "Kiribathkumbura - 106"]
+          }
+        },
+        "Matale": {
+          "phiAreas": {
+            "Matale": ["Matale Town - 110", "Matale North - 111"],
+            "Dambulla": ["Dambulla - 115", "Galewela - 116"]
+          }
+        },
+        "Nuwara Eliya": {
+          "phiAreas": {
+            "Nuwara Eliya": ["Nuwara Eliya - 120", "Nanu Oya - 121"],
+            "Hatton": ["Hatton - 125", "Dickoya - 126"]
+          }
+        }
+      },
+      "Southern": {
+        "Galle": {
+          "phiAreas": {
+            "Galle": ["Galle Fort - 401", "Karapitiya - 402"],
+            "Hikkaduwa": ["Hikkaduwa - 405", "Ambalangoda - 406"]
+          }
+        },
+        "Matara": {
+          "phiAreas": {
+            "Matara": ["Matara Town - 410", "Weligama - 411"]
+          }
+        },
+        "Hambantota": {
+          "phiAreas": {
+            "Hambantota": ["Hambantota Town - 420", "Tangalle - 421"]
+          }
+        }
+      }
+    };
+
+    function setupLocationDropdowns() {
+      const provSelect = document.getElementById('b-province');
+      const distSelect = document.getElementById('b-district');
+      const phiSelect = document.getElementById('b-phi');
+      const gnSelect = document.getElementById('b-gn');
+
+      provSelect.addEventListener('change', function() {
+        const prov = this.value;
+        distSelect.innerHTML = '<option value="">Select District</option>';
+        phiSelect.innerHTML = '<option value="">Select PHI Area</option>';
+        gnSelect.innerHTML = '<option value="">Select GN Division</option>';
+        distSelect.disabled = true;
+        phiSelect.disabled = true;
+        gnSelect.disabled = true;
+
+        if (prov) {
+          let districts = [];
+          if (locationData[prov]) {
+            districts = Object.keys(locationData[prov]);
+          } else {
+            // General fallback districts
+            districts = [prov + " District A", prov + " District B"];
+          }
+          districts.forEach(d => {
+            distSelect.innerHTML += `<option value="${d}">${d}</option>`;
+          });
+          distSelect.disabled = false;
+        }
+      });
+
+      distSelect.addEventListener('change', function() {
+        const prov = provSelect.value;
+        const dist = this.value;
+        phiSelect.innerHTML = '<option value="">Select PHI Area</option>';
+        gnSelect.innerHTML = '<option value="">Select GN Division</option>';
+        phiSelect.disabled = true;
+        gnSelect.disabled = true;
+
+        if (dist) {
+          let phiAreas = [];
+          if (locationData[prov] && locationData[prov][dist]) {
+            phiAreas = Object.keys(locationData[prov][dist].phiAreas);
+          } else {
+            phiAreas = [dist + " PHI Area 1", dist + " PHI Area 2"];
+          }
+          phiAreas.forEach(p => {
+            phiSelect.innerHTML += `<option value="${p}">${p}</option>`;
+          });
+          phiSelect.disabled = false;
+        }
+      });
+
+      phiSelect.addEventListener('change', function() {
+        const prov = provSelect.value;
+        const dist = distSelect.value;
+        const phi = this.value;
+        gnSelect.innerHTML = '<option value="">Select GN Division</option>';
+        gnSelect.disabled = true;
+
+        if (phi) {
+          let gns = [];
+          if (locationData[prov] && locationData[prov][dist] && locationData[prov][dist].phiAreas[phi]) {
+            gns = locationData[prov][dist].phiAreas[phi];
+          } else {
+            gns = [phi + " - GN Div A", phi + " - GN Div B"];
+          }
+          gns.forEach(g => {
+            gnSelect.innerHTML += `<option value="${g}">${g}</option>`;
+          });
+          gnSelect.disabled = false;
+        }
+      });
+    }
+
+    function populateManagerPremisesDropdown() {
+      const select = document.getElementById('m-premises');
+      if (!select) return;
+      select.innerHTML = '<option value="">Select Outlets & Premises</option>';
+      branches.forEach(b => {
+        select.innerHTML += `<option value="${b.id}">${b.name}</option>`;
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+      setupLocationDropdowns();
       renderAll();
     });
   </script>

@@ -206,6 +206,17 @@
             </div>
           </label>
 
+          <label class="role-card" id="card-lab-reception"
+                 style="--rc:#3B82F6;--rc-rgb:59,130,246;"
+                 onclick="selectRole('lab-reception')">
+            <input type="radio" name="role" value="lab-reception">
+            <div class="role-icon"><i class="ti ti-microscope"></i></div>
+            <div class="role-info">
+              <span class="role-badge-pill" style="background:#3B82F6;">LRO</span>
+              <span class="role-name">Laboratory Reception Officer</span>
+            </div>
+          </label>
+
           <label class="role-card" id="card-fbo"
                  style="--rc:#10B981;--rc-rgb:16,185,129;"
                  onclick="selectRole('fbo')">
@@ -442,6 +453,7 @@
       admin:       './admin/iims-dashboard.html',
       fdi:         './fdi/iims-dashboard.html',
       lab:         './lab/iims-dashboard.html',
+      'lab-reception': './lab-reception/iims-dashboard.html',
       fbo:         './fbo/iims-dashboard.html',
       trader:      './trader/index.html',
       'trader-export': './trader-export/index.html',

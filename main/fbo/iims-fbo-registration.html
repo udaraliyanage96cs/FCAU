@@ -463,6 +463,54 @@
             addressTextarea.readOnly = true;
           }
 
+          // Pre-fill Step 3 Location Dropdowns & Readonly fields
+          if (selectedBranch.province) {
+            const provinceSelect = document.querySelector('#step-3 select:nth-of-type(1)');
+            if (provinceSelect) {
+              provinceSelect.value = selectedBranch.province;
+            }
+          }
+          if (selectedBranch.district) {
+            const districtSelect = document.querySelector('#step-3 select:nth-of-type(2)');
+            if (districtSelect) {
+              if (!Array.from(districtSelect.options).some(opt => opt.value === selectedBranch.district)) {
+                const opt = document.createElement('option');
+                opt.value = selectedBranch.district;
+                opt.text = selectedBranch.district;
+                districtSelect.add(opt);
+              }
+              districtSelect.value = selectedBranch.district;
+            }
+          }
+          if (selectedBranch.gnDivision) {
+            const gnSelect = document.querySelector('#step-3 select:nth-of-type(4)');
+            if (gnSelect) {
+              if (!Array.from(gnSelect.options).some(opt => opt.value === selectedBranch.gnDivision)) {
+                const opt = document.createElement('option');
+                opt.value = selectedBranch.gnDivision;
+                opt.text = selectedBranch.gnDivision;
+                gnSelect.add(opt);
+              }
+              gnSelect.value = selectedBranch.gnDivision;
+            }
+          }
+          if (selectedBranch.phiArea) {
+            const phiInput = document.querySelector('#step-3 input[readonly]');
+            if (phiInput) {
+              phiInput.value = selectedBranch.phiArea;
+            }
+            const mohSelect = document.querySelector('#step-3 select:nth-of-type(3)');
+            if (mohSelect) {
+              if (!Array.from(mohSelect.options).some(opt => opt.value === selectedBranch.phiArea)) {
+                const opt = document.createElement('option');
+                opt.value = selectedBranch.phiArea;
+                opt.text = selectedBranch.phiArea;
+                mohSelect.add(opt);
+              }
+              mohSelect.value = selectedBranch.phiArea;
+            }
+          }
+
           // Pre-fill Manager Details (Applicant Details)
           const mgr = managers.find(m => m.name === selectedBranch.manager);
           if (mgr) {

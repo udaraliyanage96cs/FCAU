@@ -250,26 +250,37 @@
 
   <script>
     function initData() {
-      if (!localStorage.getItem('fcau_businesses')) {
+      const bizStorage = localStorage.getItem('fcau_businesses');
+      if (!bizStorage || JSON.parse(bizStorage).length < 6) {
         const initialBusinesses = [
           { id: "bus-1", name: "Golden Rice Corp", regNo: "BR-1001", status: "Approved" },
-          { id: "bus-2", name: "Silver Spoon Group", regNo: "BR-1002", status: "Pending Approval" }
+          { id: "bus-2", name: "Silver Spoon Group", regNo: "BR-1002", status: "Pending Approval" },
+          { id: "bus-3", name: "Royal Food Caterers", regNo: "BR-1003", status: "Pending Approval" },
+          { id: "bus-4", name: "Ocean Fresh Seafoods", regNo: "BR-1004", status: "Pending Approval" },
+          { id: "bus-5", name: "Sweet Dreams Confectionery", regNo: "BR-1005", status: "Pending Approval" },
+          { id: "bus-6", name: "Ceylon Tea & Spice", regNo: "BR-1006", status: "Pending Approval" }
         ];
         localStorage.setItem('fcau_businesses', JSON.stringify(initialBusinesses));
       }
 
-      if (!localStorage.getItem('fcau_branches')) {
+      const branchStorage = localStorage.getItem('fcau_branches');
+      if (!branchStorage || JSON.parse(branchStorage).length < 5) {
         const initialBranches = [
           { id: "br-1", businessId: "bus-1", name: "Golden Rice - Colombo 07", address: "No. 45, Ward Place, Colombo 07", manager: "Jagath Kumara", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Dairy Products"], status: "Registered", grade: "A (88%)" },
           { id: "br-2", businessId: "bus-1", name: "Golden Rice Express - Gampaha", address: "No. 12, Kandy Road, Gampaha", manager: "Nimal Silva", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Beverages"], status: "Registered", grade: "B (74%)" },
-          { id: "br-3", businessId: "bus-1", name: "Golden Rice Bakery - Kandy", address: "No. 88, Temple Street, Kandy", manager: "Chathura Perera", mains: ["K1 - Bakery / Confectionery"], subs: ["Bakery Products", "Confectioneries"], status: "Registered", grade: "A (91%)" }
+          { id: "br-3", businessId: "bus-1", name: "Golden Rice Bakery - Kandy", address: "No. 88, Temple Street, Kandy", manager: "Chathura Perera", mains: ["K1 - Bakery / Confectionery"], subs: ["Bakery Products", "Confectioneries"], status: "Registered", grade: "A (91%)" },
+          { id: "br-4", businessId: "bus-2", name: "Silver Spoon Diner - Colombo 03", address: "No. 120, Galle Road, Colombo 03", manager: "Nilantha Perera", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals"], status: "Not Registered", grade: "Pending review (0%)" },
+          { id: "br-5", businessId: "bus-3", name: "Royal Catering Outlets - Galle", address: "No. 88, Galle Road, Mount Lavinia", manager: "Sunil Shantha", mains: ["A2 - Restaurant / Hotel"], subs: ["Catering Services"], status: "Not Registered", grade: "Pending review (0%)" }
         ];
         localStorage.setItem('fcau_branches', JSON.stringify(initialBranches));
       }
 
-      if (!localStorage.getItem('fcau_applications')) {
+      const appStorage = localStorage.getItem('fcau_applications');
+      if (!appStorage || JSON.parse(appStorage).length < 3) {
         const initialApplications = [
-          { id: "app-1", businessId: "bus-1", branchId: "br-1", applicantName: "Jagath Kumara", applicantNic: "198522104V", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Dairy Products"], address: "No. 45, Ward Place, Colombo 07", district: "Colombo", mohArea: "Colombo MC", gnDivision: "Colombo 07 - 508A", status: "Registered", assignedPhi: "K. Perera (PHI/COL/007)" }
+          { id: "app-1", businessId: "bus-1", branchId: "br-1", applicantName: "Jagath Kumara", applicantNic: "198522104V", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals", "Dairy Products"], address: "No. 45, Ward Place, Colombo 07", district: "Colombo", mohArea: "Colombo MC", gnDivision: "Colombo 07 - 508A", status: "Registered", assignedPhi: "K. Perera (PHI/COL/007)" },
+          { id: "app-2", businessId: "bus-2", branchId: "br-4", applicantName: "Nilantha Perera", applicantNic: "198711202V", mains: ["A2 - Restaurant / Hotel"], subs: ["Cooked Meals"], address: "No. 120, Galle Road, Colombo 03", district: "Colombo", mohArea: "Colombo MC", gnDivision: "Colombo 03 - 504", status: "Submitted (Awaiting PHI)", assignedPhi: null },
+          { id: "app-3", businessId: "bus-3", branchId: "br-5", applicantName: "Sunil Shantha", applicantNic: "197523190V", mains: ["A2 - Restaurant / Hotel"], subs: ["Catering Services"], address: "No. 88, Galle Road, Mount Lavinia", district: "Colombo", mohArea: "Dehiwala", gnDivision: "Mount Lavinia - 506", status: "Submitted (Awaiting PHI)", assignedPhi: null }
         ];
         localStorage.setItem('fcau_applications', JSON.stringify(initialApplications));
       }
@@ -421,7 +432,7 @@
 
         alert('PHI assigned successfully!');
         const modalEl = document.getElementById('assignPhiModal');
-        const modal = bootstrap.Modal.getInstance(modalEl);
+        const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
         modal.hide();
         renderAllMOH();
       }
