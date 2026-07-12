@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link class="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <title>IIMS - Common Salt Premises Registration</title>
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 250px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+    }
+    .file-input-wrapper {
+      position: relative;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+    }
+    .category-card {
+      border: 2px dashed #E2E8F0 !important;
+      background-color: #fff;
+      transition: all 0.25s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      border-color: #5D87FF !important;
+    }
+    .category-card.selected {
+      border: 2px solid #5D87FF !important;
+      background-color: rgba(93, 135, 255, 0.04) !important;
+      box-shadow: 0 4px 6px -1px rgba(93, 135, 255, 0.1), 0 2px 4px -2px rgba(93, 135, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  
+  <header class="bg-white border-bottom py-3 mb-4 shadow-sm">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-2">
+        <img src="../assets/images/logos/favicon.png" alt="Logo" width="40" height="40" />
+        <div>
+          <h4 class="fw-bold mb-0 text-primary">FCAU IIMS</h4>
+          <span class="fs-2 text-muted">Ministry of Health, Sri Lanka</span>
+        </div>
+      </div>
+      <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
+    </div>
+  </header>
+
+  <div class="container py-2" style="max-width: 1000px;">
+    <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+      <div class="card-body px-4 py-3">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <h4 class="fw-semibold mb-1 text-primary">Common Salt Premises Registration</h4>
+            <p class="mb-0 text-muted">Register common salt premises (Salt Factory or Saltern) with the FCAU.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wizard Card -->
+    <div class="card">
+      <div class="card-body">
+        
+        <!-- Beautiful Category Selection Cards -->
+        <h5 class="fw-bold mb-2 text-center text-dark fs-4">Select Registration Entity Category</h5>
+        <p class="text-muted fs-2 text-center mb-4">Choose your operations type to initialize the corresponding regulatory registration wizard.</p>
+        
+        <div class="row g-4 mb-4 justify-content-center">
+          <div class="col-md-5">
+            <div class="card h-100 category-card cursor-pointer text-center p-4" 
+                 id="card-factory" onclick="selectCategory('Salt Factory')" style="border-radius: 12px; cursor: pointer;">
+              <div class="d-inline-flex align-items-center justify-content-center bg-warning-subtle text-warning rounded-circle mb-3 animate-up-hover" style="width: 60px; height: 60px;">
+                <i class="ti ti-building-factory fs-8"></i>
+              </div>
+              <h5 class="fw-bold text-dark mb-2">Salt Processing Factory</h5>
+              <p class="text-muted fs-2 mb-0">For entities engaged in industrial processing, refining, iodization, packaging, and raw material imports.</p>
+              <div class="mt-3 badge bg-light text-dark border select-badge" id="badge-factory">Click to Select</div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card h-100 category-card cursor-pointer text-center p-4" 
+                 id="card-salterns" onclick="selectCategory('Salterns')" style="border-radius: 12px; cursor: pointer;">
+              <div class="d-inline-flex align-items-center justify-content-center bg-info-subtle text-info rounded-circle mb-3 animate-up-hover" style="width: 60px; height: 60px;">
+                <i class="ti ti-sun fs-8"></i>
+              </div>
+              <h5 class="fw-bold text-dark mb-2">Natural Salterns</h5>
+              <p class="text-muted fs-2 mb-0">For operators harvesting raw salt from sea water pans, saltern lagoons, and local storage units.</p>
+              <div class="mt-3 badge bg-light text-dark border select-badge" id="badge-salterns">Click to Select</div>
+            </div>
+          </div>
+        </div>
+        
+        <input type="hidden" id="facility-type" value="" />
+
+        <div id="wizard-container" style="display: none;">
+          <!-- Stepper -->
+          <div class="d-flex justify-content-start justify-content-md-center overflow-x-auto pb-2 mb-4 w-100 flex-nowrap" style="scrollbar-width: thin; -webkit-overflow-scrolling: touch;">
+            <div class="d-flex align-items-center gap-3 flex-nowrap">
+              <div class="d-flex align-items-center gap-2" id="step-indicator-1">
+                <div class="round-36 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold">1</div>
+                <span class="fw-semibold text-primary d-none d-md-inline-block">Applicant Type</span>
+              </div>
+              <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+              
+              <div class="d-flex align-items-center gap-2" id="step-indicator-2">
+                <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">2</div>
+                <span class="text-muted d-none d-md-inline-block">Business Profile</span>
+              </div>
+              <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+              
+              <div class="d-flex align-items-center gap-2" id="step-indicator-3">
+                <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">3</div>
+                <span class="text-muted d-none d-md-inline-block">Product Details</span>
+              </div>
+              <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+              
+              <div class="d-flex align-items-center gap-2" id="step-indicator-4">
+                <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">4</div>
+                <span class="text-muted d-none d-md-inline-block">Premises Location</span>
+              </div>
+              <div class="border-top flex-grow-0 d-none d-sm-block" style="width:40px;"></div>
+              
+              <div class="d-flex align-items-center gap-2" id="step-indicator-5">
+                <div class="round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold">5</div>
+                <span class="text-muted d-none d-md-inline-block">Fees & Docs</span>
+              </div>
+            </div>
+          </div>
+
+          <form id="saltRegForm" onsubmit="event.preventDefault();">
+            
+            <!-- STEP 1: Applicant Account Details -->
+            <div id="step-1">
+              <h5 class="fw-semibold mb-4">Applicant Identity & Details</h5>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Name of Applicant</label>
+                  <input type="text" class="form-control" placeholder="e.g. Sunil Perera" id="applicant-name">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">NIC / Passport Number</label>
+                  <input type="text" class="form-control" placeholder="e.g. 197823456789" id="applicant-nic">
+                </div>
+                <div class="col-md-6 mb-3 saltern-only-field" style="display: none;">
+                  <label class="form-label">Designation</label>
+                  <input type="text" class="form-control" placeholder="e.g. Managing Director / Proprietor" id="applicant-designation">
+                </div>
+                <div class="col-md-12 mb-3">
+                  <label class="form-label">Address of Applicant</label>
+                  <input type="text" class="form-control" placeholder="e.g. 12/4, Galle Road, Colombo 03" id="applicant-address">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Contact Number</label>
+                  <input type="tel" class="form-control" placeholder="+94 7X XXX XXXX" id="applicant-phone">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" placeholder="sunil.salt@example.com" id="applicant-email">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Portal Password</label>
+                  <input type="password" class="form-control" placeholder="Minimum 8 characters" id="password">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" placeholder="Re-enter password" id="confirm-password">
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 2: Business & Industry Profile -->
+            <div id="step-2" style="display: none;">
+              
+              <!-- Salt Factory Variant -->
+              <div id="factory-form-step-2" style="display: none;">
+                <h5 class="fw-semibold mb-4">Business & Industry Profile (Salt Factory)</h5>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Name of Industry</label>
+                    <input type="text" class="form-control" placeholder="e.g. Southern Salt Refineries" id="industry-name">
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Address of the Business</label>
+                    <input type="text" class="form-control" placeholder="e.g. Industrial Zone, Hambantota" id="business-address">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Type of Industry</label>
+                    <input type="text" class="form-control" placeholder="e.g. Chemical Manufacturing, Food Processing" id="industry-type">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Business Registration No.</label>
+                    <input type="text" class="form-control" placeholder="e.g. PV-123456" id="business-reg-no">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Salterns Variant -->
+              <div id="saltern-form-step-2" style="display: none;">
+                <h5 class="fw-semibold mb-4">Business & Industry Profile (Saltern Registration)</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Nature of the Trade</label>
+                    <select class="form-select" id="saltern-trade-nature">
+                      <option value="Private" selected>Private</option>
+                      <option value="Limited Liability Company">Limited Liability Company</option>
+                      <option value="Government">Government</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Business / Company Registration No.</label>
+                    <input type="text" class="form-control" placeholder="e.g. CO-789654" id="saltern-brn">
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label fw-semibold text-primary">Purpose of the Application (Please check all that apply)</label>
+                    <div class="border rounded p-3 bg-white">
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="purpose-1" checked>
+                        <label class="form-check-label" for="purpose-1">(i) Manufacturing of food grade salt in salterns</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="purpose-2">
+                        <label class="form-check-label" for="purpose-2">(ii) Importation, transportation and storage of food grade salt/common salt</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="purpose-3">
+                        <label class="form-check-label" for="purpose-3">(iii) Storage of food grade salt in saltern</label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="purpose-4">
+                        <label class="form-check-label" for="purpose-4">(iv) Use of food grade salt for industrial purposes</label>
+                      </div>
+                      <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="purpose-5">
+                        <label class="form-check-label" for="purpose-5">(v) Retail sale of food grade salt/ common salt on medical prescription</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Type / Name of Industry / Pharmacy</label>
+                    <input type="text" class="form-control" placeholder="e.g. Hambantota Salt Pans Ltd" id="saltern-ind-name">
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Address of Industry / Pharmacy</label>
+                    <input type="text" class="form-control" placeholder="e.g. Salt Pans Road, Hambantota" id="saltern-ind-address">
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Name & Address of Company</label>
+                    <input type="text" class="form-control" placeholder="e.g. Hambantota Salt Pans Group Co." id="saltern-company">
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Name & Address of Owner / Board of Directors</label>
+                    <textarea class="form-control" rows="2" placeholder="e.g. Owner: Sunil Perera, Address: 12/4 Galle Rd. Board: A. Silva, P. Fernando" id="saltern-directors"></textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- STEP 3: Product Details -->
+            <div id="step-3" style="display: none;">
+              
+              <!-- Salt Factory Variant -->
+              <div id="factory-form-step-3" style="display: none;">
+                <h5 class="fw-semibold mb-4">Product Specifications (Salt Factory)</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Product Name</label>
+                    <input type="text" class="form-control" placeholder="e.g. Pure Vacuum Refined Industrial Salt" id="product-name">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Percentage of Common Salt in the Product (%)</label>
+                    <input type="text" class="form-control" placeholder="e.g. 98.5%" id="salt-percentage">
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Reason why Iodized common salt should not be / need not be used (For products other than Iodated salt)</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter reason (e.g. chemical processing interference, preservation requirement, export specifications, etc.)" id="non-iodized-reason"></textarea>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Annually requirement of common salt (Kg)</label>
+                    <input type="number" class="form-control" placeholder="e.g. 50000" id="annual-requirement">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Salterns Variant -->
+              <div id="saltern-form-step-3" style="display: none;">
+                <h5 class="fw-semibold mb-4">Product Specifications (Saltern / Non-Iodized Registration)</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Brand Name(s) of the Product</label>
+                    <input type="text" class="form-control" placeholder="e.g. Hambantota Salt / SaltyGold" id="saltern-brands">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Name of Product Manufactured / Sold</label>
+                    <input type="text" class="form-control" placeholder="e.g. Non-Iodized Food Grade Coarse Salt" id="saltern-prod-sold">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Percentage of food grade salt used as an ingredient in the product</label>
+                    <input type="text" class="form-control" placeholder="e.g. 99.1%" id="saltern-ingredient-pct">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Annual Production Capacity (MT)</label>
+                    <input type="number" class="form-control" placeholder="e.g. 120" id="saltern-capacity">
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <label class="form-label">Reasons why iodized food grade salt should not be / need not be used</label>
+                    <textarea class="form-control" rows="2" placeholder="Explain the technical/biological reason iodized salt is not usable for this specific trade" id="saltern-non-iodized-reason"></textarea>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Expected Annual Requirement of food grade salt (Kg)</label>
+                    <input type="number" class="form-control" placeholder="e.g. 75000" id="saltern-annual-req">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Expected Amount of Stock of food grade salt at a given time (Kg)</label>
+                    <input type="number" class="form-control" placeholder="e.g. 15000" id="saltern-stock-limit">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Previous Registration No. (If any)</label>
+                    <input type="text" class="form-control" placeholder="e.g. REG-SALT-2022-09" id="saltern-prev-reg">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Previous Registration Date (If any)</label>
+                    <input type="date" class="form-control" id="saltern-prev-date">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- STEP 4: Location Mapping -->
+            <div id="step-4" style="display: none;">
+              <h5 class="fw-semibold mb-4">Facility Location Coordinates & Mapping</h5>
+              <p class="text-muted fs-2">Locate the Saltern or Salt Factory on the map. Drag the marker or click on the map to capture coordinates.</p>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">GPS Latitude</label>
+                  <input type="text" class="form-control" id="latitude" readonly placeholder="Click map to capture latitude" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">GPS Longitude</label>
+                  <input type="text" class="form-control" id="longitude" readonly placeholder="Click map to capture longitude" />
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div id="map"></div>
+              </div>
+            </div>
+
+            <!-- STEP 5: Fees & Documents Upload -->
+            <div id="step-5" style="display: none;">
+              <h5 class="fw-semibold mb-4">Documentation & Form Processing Fee</h5>
+              
+              <div class="p-3 bg-secondary-subtle rounded border mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="fw-bold mb-0 text-dark">Form Processing & Site Inspection Fee</h6>
+                    <small class="text-muted">Required by MoH for conducting site safety inspections and lab checks.</small>
+                  </div>
+                  <h5 class="fw-bold text-primary mb-0">Rs. 15,000.00</h5>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <h6 class="fw-semibold mb-3">Mandatory Document Attachments</h6>
+                
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <label class="form-label text-dark fw-semibold">Copy of Business Registration Certificate</label>
+                    <div class="file-input-wrapper" id="wrapper-br">
+                      <span class="text-muted fs-2" id="name-br">No file chosen</span>
+                      <button type="button" class="btn btn-xs btn-outline-primary" onclick="document.getElementById('file-br').click()">Choose File</button>
+                      <input type="file" id="file-br" class="d-none" onchange="fileSelected('br')" />
+                      <i class="ti ti-circle-check text-muted fs-5 ms-2"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label class="form-label text-dark fw-semibold">Factory Flow Chart & Process Operations Layout</label>
+                    <div class="file-input-wrapper" id="wrapper-layout">
+                      <span class="text-muted fs-2" id="name-layout">No file chosen</span>
+                      <button type="button" class="btn btn-xs btn-outline-primary" onclick="document.getElementById('file-layout').click()">Choose File</button>
+                      <input type="file" id="file-layout" class="d-none" onchange="fileSelected('layout')" />
+                      <i class="ti ti-circle-check text-muted fs-5 ms-2"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label class="form-label text-dark fw-semibold">Chemical Analysis & Quality Spec Report (Salt Analysis)</label>
+                    <div class="file-input-wrapper" id="wrapper-report">
+                      <span class="text-muted fs-2" id="name-report">No file chosen</span>
+                      <button type="button" class="btn btn-xs btn-outline-primary" onclick="document.getElementById('file-report').click()">Choose File</button>
+                      <input type="file" id="file-report" class="d-none" onchange="fileSelected('report')" />
+                      <i class="ti ti-circle-check text-muted fs-5 ms-2"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="alert alert-warning border-0 fs-2">
+                <i class="ti ti-info-circle me-1"></i> Registering this premises triggers a MoH / CAO inspector visit to check iodine levels and factory safety compliance.
+              </div>
+            </div>
+
+            <!-- Form Navigation Controls -->
+            <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+              <button type="button" class="btn btn-light" id="btn-prev"><i class="ti ti-arrow-left me-1"></i>Previous</button>
+              <div>
+                <button type="button" class="btn btn-outline-secondary me-2" id="btn-save-draft"><i class="ti ti-device-floppy me-1"></i>Save Draft</button>
+                <button type="button" class="btn btn-primary" id="btn-next">Next<i class="ti ti-arrow-right ms-1"></i></button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../assets/js/vendor.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../assets/js/theme/app.init.js"></script>
+  <script src="../assets/js/theme/theme.js"></script>
+  <script src="../assets/js/theme/app.min.js"></script>
+  <script src="../assets/js/theme/sidebarmenu.js"></script>
+  
+  <script>
+    var currentStep = 1;
+    var totalSteps = 5;
+    var map, marker;
+
+    function showStep(n) {
+      for (var i = 1; i <= totalSteps; i++) {
+        document.getElementById('step-' + i).style.display = i === n ? 'block' : 'none';
+      }
+      document.getElementById('btn-prev').disabled = n === 1;
+      
+      if (n === totalSteps) {
+        document.getElementById('btn-next').innerHTML = '<i class="ti ti-send me-1"></i>Submit Application';
+      } else {
+        document.getElementById('btn-next').innerHTML = 'Next<i class="ti ti-arrow-right ms-1"></i>';
+      }
+
+      for (var i = 1; i <= totalSteps; i++) {
+        var ind = document.getElementById('step-indicator-' + i);
+        var circle = ind.querySelector('div');
+        var label = ind.querySelector('span');
+        if (i <= n) {
+          circle.className = 'round-36 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold';
+          label.className = 'fw-semibold text-primary d-none d-md-inline-block';
+        } else {
+          circle.className = 'round-36 rounded-circle bg-light text-muted d-flex align-items-center justify-content-center fw-semibold';
+          label.className = 'text-muted d-none d-md-inline-block';
+        }
+      }
+
+      if (n === 4) {
+        setTimeout(initMap, 200);
+      }
+    }
+
+    // Direct navigation via stepper clicks
+    for (var i = 1; i <= totalSteps; i++) {
+      (function(stepIndex) {
+        var ind = document.getElementById('step-indicator-' + stepIndex);
+        ind.style.cursor = 'pointer';
+        ind.addEventListener('click', function() {
+          currentStep = stepIndex;
+          showStep(currentStep);
+        });
+      })(i);
+    }
+
+    document.getElementById('btn-next').addEventListener('click', function() {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        var fType = document.getElementById('facility-type').value;
+        alert("Common Salt Premises Registration (" + fType + ") application submitted successfully! Status: PENDING_REVIEW. Log in credentials have been dispatched to your email.");
+        window.location.href = "./iims-login.html";
+      }
+    });
+
+    document.getElementById('btn-prev').addEventListener('click', function() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    document.getElementById('btn-save-draft').addEventListener('click', function() {
+      alert("Application saved as DRAFT successfully.");
+    });
+
+    function initMap() {
+      if (!map) {
+        map = L.map('map').setView([6.1248, 81.1215], 11); // Set Hambantota / Salt Production region center
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        marker = L.marker([6.1248, 81.1215], {draggable: true}).addTo(map);
+
+        marker.on('dragend', function (e) {
+          var position = marker.getLatLng();
+          document.getElementById('latitude').value = position.lat.toFixed(4);
+          document.getElementById('longitude').value = position.lng.toFixed(4);
+        });
+
+        map.on('click', function(e) {
+          marker.setLatLng(e.latlng);
+          document.getElementById('latitude').value = e.latlng.lat.toFixed(4);
+          document.getElementById('longitude').value = e.latlng.lng.toFixed(4);
+        });
+      }
+    }
+
+    function fileSelected(type) {
+      var input = document.getElementById("file-" + type);
+      var nameSpan = document.getElementById("name-" + type);
+      var wrapper = document.getElementById("wrapper-" + type);
+
+      if (input.files.length > 0) {
+        nameSpan.textContent = input.files[0].name;
+        nameSpan.classList.remove("text-muted");
+        nameSpan.classList.add("text-dark", "fw-bold");
+        wrapper.querySelector('i').className = "ti ti-circle-check text-success fs-5";
+      } else {
+        nameSpan.textContent = "No file chosen";
+        wrapper.querySelector('i').className = "ti ti-circle-check text-muted fs-5";
+      }
+    }
+
+    function selectCategory(category) {
+      document.getElementById('facility-type').value = category;
+
+      // Handle card selections CSS states
+      var fCard = document.getElementById('card-factory');
+      var sCard = document.getElementById('card-salterns');
+      var fBadge = document.getElementById('badge-factory');
+      var sBadge = document.getElementById('badge-salterns');
+
+      if (category === 'Salt Factory') {
+        fCard.classList.add('selected');
+        sCard.classList.remove('selected');
+        fBadge.className = 'mt-3 badge bg-success text-white border-0';
+        fBadge.innerHTML = 'Selected <i class="ti ti-check ms-1"></i>';
+        sBadge.className = 'mt-3 badge bg-light text-dark border';
+        sBadge.textContent = 'Click to Select';
+      } else {
+        sCard.classList.add('selected');
+        fCard.classList.remove('selected');
+        sBadge.className = 'mt-3 badge bg-success text-white border-0';
+        sBadge.innerHTML = 'Selected <i class="ti ti-check ms-1"></i>';
+        fBadge.className = 'mt-3 badge bg-light text-dark border';
+        fBadge.textContent = 'Click to Select';
+      }
+
+      // Show wizard container
+      document.getElementById('wizard-container').style.display = 'block';
+      
+      // Toggle Step 1 designation field
+      var salternFields = document.querySelectorAll('.saltern-only-field');
+      salternFields.forEach(function(el) {
+        el.style.display = category === 'Salterns' ? 'block' : 'none';
+      });
+
+      // Toggle Step 2 subforms
+      document.getElementById('factory-form-step-2').style.display = category === 'Salt Factory' ? 'block' : 'none';
+      document.getElementById('saltern-form-step-2').style.display = category === 'Salterns' ? 'block' : 'none';
+      
+      // Toggle Step 3 subforms
+      document.getElementById('factory-form-step-3').style.display = category === 'Salt Factory' ? 'block' : 'none';
+      document.getElementById('saltern-form-step-3').style.display = category === 'Salterns' ? 'block' : 'none';
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      showStep(currentStep);
+    });
+  </script>
+</body>
+</html>

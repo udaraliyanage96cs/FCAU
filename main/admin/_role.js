@@ -27,6 +27,19 @@
       { type: 'cap', label: 'System Config' },
       { type: 'link', icon: 'ti ti-settings',         label: 'Inspection Config',       href: './iims-inspection-config.html' },
       { type: 'link', icon: 'ti ti-mail-opened',      label: 'Notification Templates',  href: './iims-notification-templates.html' },
+      {
+        type: 'link-parent',
+        icon: 'ti ti-file-text',
+        label: 'Grading & Form',
+        children: [
+          { label: 'Food Classifications', href: './iims-food-classifications.html' },
+          { label: 'Criteria Domains',     href: './iims-criteria-domains.html' },
+          { label: 'Criteria Config',      href: './iims-criteria-config.html' },
+          { label: 'Master Config',        href: './iims-master-config.html' },
+          { label: 'Frequency Rules',      href: './iims-frequency-rules.html' },
+          { label: 'H800 Forms',           href: './iims-h800-forms.html' }
+        ]
+      },
 
       { type: 'cap', label: 'Analytics' },
       { type: 'link', icon: 'ti ti-chart-bar',        label: 'Reports & Analytics',     href: './iims-reports.html' },
@@ -45,6 +58,36 @@
         return '<li class="nav-small-cap">' +
                '<i class="ti ti-dots nav-small-cap-icon fs-4"></i>' +
                '<span class="hide-menu">' + item.label + '</span></li>';
+      }
+      if (item.type === 'link-parent') {
+        var isOpen = item.children.some(function(child) {
+          return cur === child.href.replace('./', '');
+        });
+        var activeClass = isOpen ? ' active' : '';
+        var showClass = isOpen ? ' show' : '';
+        var expanded = isOpen ? 'true' : 'false';
+        
+        var submenuHtml = item.children.map(function(child) {
+          var childActive = (cur === child.href.replace('./', '')) ? ' active' : '';
+          return '<li class="sidebar-item">' +
+                 '<a href="' + child.href + '" class="sidebar-link' + childActive + '">' +
+                 '<div class="round-16 d-flex align-items-center justify-content-center">' +
+                 '<i class="ti ti-circle" style="font-size: 8px;"></i>' +
+                 '</div>' +
+                 '<span class="hide-menu">' + child.label + '</span>' +
+                 '</a>' +
+                 '</li>';
+        }).join('');
+        
+        return '<li class="sidebar-item">' +
+               '<a class="sidebar-link has-arrow' + activeClass + '" href="javascript:void(0)" aria-expanded="' + expanded + '">' +
+               '<span><i class="' + item.icon + '"></i></span>' +
+               '<span class="hide-menu">' + item.label + '</span>' +
+               '</a>' +
+               '<ul aria-expanded="' + expanded + '" class="collapse first-level' + showClass + '">' +
+               submenuHtml +
+               '</ul>' +
+               '</li>';
       }
       var active = (cur === item.href.replace('./', '')) ? ' active' : '';
       return '<li class="sidebar-item">' +
@@ -84,7 +127,50 @@
 
     /* rebuild sidebar nav */
     var nav = document.getElementById('sidebarnav');
-    if (nav) nav.innerHTML = buildNav();
+    if (nav) {
+      nav.innerHTML = buildNav();
+      
+      // Bind toggle event listeners to the links
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          const isActive = this.classList.contains("active");
+          const parentUl = this.closest("ul");
+          
+          if (!isActive) {
+            // hide any open menus and remove all other classes
+            parentUl.querySelectorAll("ul").forEach(function (submenu) {
+              submenu.classList.remove("in");
+            });
+            parentUl.querySelectorAll("a").forEach(function (navLink) {
+              navLink.classList.remove("active");
+            });
+            
+            // open our new menu and add the open class
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+              submenu.classList.add("in");
+            }
+            this.classList.add("active");
+          } else {
+            this.classList.remove("active");
+            parentUl.classList.remove("active");
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+              submenu.classList.remove("in");
+            }
+          }
+        });
+      });
+      
+      // Expand sub-menus on load if active child matches
+      nav.querySelectorAll("ul.collapse.first-level.show").forEach(function (submenu) {
+        submenu.classList.add("in");
+        var parentLink = submenu.previousElementSibling;
+        if (parentLink) {
+          parentLink.classList.add("active");
+        }
+      });
+    }
 
     /* update profile chip */
     var ph6 = document.querySelector('.fixed-profile h6');

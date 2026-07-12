@@ -1,5 +1,9 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   "use strict";
+
+  const mainIndex = window.location.pathname.indexOf('/main/');
+  const basePath = mainIndex !== -1 ? window.location.pathname.substring(0, mainIndex + 5) : '/main';
+
 
   // =================================
   // Tooltip
@@ -80,7 +84,7 @@
         return el.textContent.includes('Sign Out') || href.includes('iims-login.html');
       });
       if (!hasSignOut) {
-        const loginUrl = '/main/iims-login.html';
+        const loginUrl = basePath + '/iims-login.html';
         const defaultColor = '#5D87FF';
         
         const signOutLi = document.createElement('li');
@@ -120,8 +124,8 @@
 
     // MOH has its own profile page; other roles use the shared PHI profile
     const profileUrl = window.location.pathname.includes('/main/moh/')
-      ? '/main/moh/iims-profile.html'
-      : '/main/phi/iims-profile.html';
+      ? basePath + '/moh/iims-profile.html'
+      : basePath + '/phi/iims-profile.html';
 
     profileLink.classList.add('nav-link', 'pe-0');
     profileLink.setAttribute('href', profileUrl);
@@ -171,8 +175,8 @@
     ];
 
     const alertUrl = rolesWithAlertPage.includes(roleFolder)
-      ? '/main/' + roleFolder + '/iims-alerts.html'
-      : '/main/iims-alerts.html';
+      ? basePath + '/' + roleFolder + '/iims-alerts.html'
+      : basePath + '/iims-alerts.html';
 
     const alertItem = document.createElement('li');
 

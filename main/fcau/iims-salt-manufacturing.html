@@ -86,8 +86,36 @@
                       <td>Lanka Salt Ltd</td>
                       <td>Refined Iodized</td>
                       <td><span class="badge bg-success-subtle text-success">Compliant (>15ppm)</span></td>
-                      <td><span class="badge bg-primary">Active</span></td>
-                      <td><button class="btn btn-sm btn-outline-primary">Manage</button></td>
+                      <td><span class="badge bg-primary" id="status-sm-001">Active</span></td>
+                      <td class="text-nowrap">
+                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
+                        <button class="btn btn-sm btn-warning me-1" onclick="alert('Inspection report generated successfully for Lanka Salt Ltd!')"><i class="ti ti-file-text me-1"></i>Generate Inspection Report</button>
+                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('SM-2026-001')"><i class="ti ti-history me-1"></i>Inspection History</button>
+                      </td>
+                    </tr>
+                    <tr id="row-sm-002">
+                      <td>SM-2026-002</td>
+                      <td>Puttalam Salt Pans</td>
+                      <td>Crude Iodized</td>
+                      <td><span class="badge bg-warning-subtle text-warning">Awaiting Audit</span></td>
+                      <td><span class="badge bg-warning text-dark" id="status-sm-002">Pending Review</span></td>
+                      <td id="actions-sm-002" class="text-nowrap">
+                        <button class="btn btn-sm btn-success me-1" onclick="approveSalt('SM-2026-002')"><i class="ti ti-check me-1"></i>Approve</button>
+                        <button class="btn btn-sm btn-danger me-1" onclick="rejectSalt('SM-2026-002')"><i class="ti ti-x me-1"></i>Reject</button>
+                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('SM-2026-002')"><i class="ti ti-history me-1"></i>Inspection History</button>
+                      </td>
+                    </tr>
+                    <tr id="row-sm-003">
+                      <td>SM-2026-003</td>
+                      <td>Raigam Salterns</td>
+                      <td>Refined Iodized</td>
+                      <td><span class="badge bg-warning-subtle text-warning">Awaiting Inspection</span></td>
+                      <td><span class="badge bg-secondary text-white" id="status-sm-003">Draft Recommendation</span></td>
+                      <td id="actions-sm-003" class="text-nowrap">
+                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
+                        <button class="btn btn-sm btn-success me-1" onclick="issueRecommendation('SM-2026-003')"><i class="ti ti-checklist me-1"></i>Issue Full Recommendation</button>
+                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('SM-2026-003')"><i class="ti ti-history me-1"></i>Inspection History</button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -108,5 +136,58 @@
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
+<script>
+  function approveSalt(id) {
+    if (confirm("Are you sure you want to approve salt manufacturer " + id + "?")) {
+      const badge = document.getElementById('status-sm-002');
+      badge.textContent = 'Active';
+      badge.className = 'badge bg-primary';
+      
+      const actions = document.getElementById('actions-sm-002');
+      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1">View</button> <button class="btn btn-sm btn-warning me-1" onclick="alert(\'Inspection report generated successfully for Puttalam Salt Pans!\')"><i class="ti ti-file-text me-1"></i>Generate</button> <button class="btn btn-sm btn-outline-info me-1" onclick="showHistory(\'SM-2026-002\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-success fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-check-filled me-1"></i>Approved</span>';
+    }
+  }
+  
+  function rejectSalt(id) {
+    if (confirm("Are you sure you want to reject salt manufacturer " + id + "?")) {
+      const badge = document.getElementById('status-sm-002');
+      badge.textContent = 'Rejected';
+      badge.className = 'badge bg-danger';
+      
+      const actions = document.getElementById('actions-sm-002');
+      actions.innerHTML = '<button class="btn btn-sm btn-outline-info me-1" onclick="showHistory(\'SM-2026-002\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-danger fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-x-filled me-1"></i>Rejected</span>';
+    }
+  }
+
+  function sendForApproval(id) {
+    if (confirm("Are you sure you want to send salt manufacturer " + id + " for higher approval?")) {
+      alert("Application for " + id + " has been successfully submitted to DDG & Director for approval.");
+      if (id === 'SM-2026-003') {
+        const badge = document.getElementById('status-sm-003');
+        badge.textContent = 'Awaiting Approval';
+        badge.className = 'badge bg-info text-white';
+        
+        const actions = document.getElementById('actions-sm-003');
+        actions.innerHTML = '<button class="btn btn-sm btn-outline-info me-1" onclick="showHistory(\'SM-2026-003\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-info fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-mail-forward me-1"></i> Sent for Approval</span>';
+      }
+    }
+  }
+
+  function issueRecommendation(id) {
+    if (confirm("Are you sure you want to issue a full recommendation for salt manufacturer " + id + "?")) {
+      alert("Recommendation successfully issued!");
+      const badge = document.getElementById('status-sm-003');
+      badge.textContent = 'Recommended';
+      badge.className = 'badge bg-success text-white';
+      
+      const actions = document.getElementById('actions-sm-003');
+      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1">View</button> <button class="btn btn-sm btn-info me-1" onclick="sendForApproval(\'SM-2026-003\')"><i class="ti ti-send me-1"></i>Send for Approval</button> <button class="btn btn-sm btn-outline-info" onclick="showHistory(\'SM-2026-003\')"><i class="ti ti-history me-1"></i>History</button>';
+    }
+  }
+
+  function showHistory(id) {
+    alert("Viewing inspection history logs for salt manufacturer " + id + ":\n\n- 2026-01-15: SLS Re-certification Audit (Satisfactory)\n- 2025-07-22: Routine Factory Visit (Minor Non-compliance resolved)\n- 2025-02-10: Initial Premises Grade (Grade A)");
+  }
+</script>
 </body>
 </html>

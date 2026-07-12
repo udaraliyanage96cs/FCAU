@@ -5,6 +5,17 @@
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
   <title>IIMS - Import Control</title>
+  <style>
+    .btn-xs {
+      padding: 3px 6px !important;
+      font-size: 10px !important;
+      line-height: 1.2 !important;
+      border-radius: 4px !important;
+    }
+    .btn-xs i {
+      font-size: 11px !important;
+    }
+  </style>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -74,14 +85,13 @@
             <div class="card-body px-4 py-3"><div class="row align-items-center"><div class="col-9"><h4 class="fw-semibold mb-8">Import Control Module</h4><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li><li class="breadcrumb-item active">Import Control</li></ol></nav></div></div></div>
           </div>
 
-          <!-- Pipeline Status -->
-          <div class="row mb-3">
-            <div class="col-md-2"><div class="card border-start border-4 border-primary"><div class="card-body py-2 text-center"><h4 class="fw-bold text-primary mb-0">24</h4><small class="text-muted">Pre-Import</small></div></div></div>
-            <div class="col-md-2"><div class="card border-start border-4 border-info"><div class="card-body py-2 text-center"><h4 class="fw-bold text-info mb-0">18</h4><small class="text-muted">Doc Verification</small></div></div></div>
-            <div class="col-md-2"><div class="card border-start border-4 border-warning"><div class="card-body py-2 text-center"><h4 class="fw-bold text-warning mb-0">12</h4><small class="text-muted">Border Inspection</small></div></div></div>
-            <div class="col-md-2"><div class="card border-start border-4 border-secondary"><div class="card-body py-2 text-center"><h4 class="fw-bold text-secondary mb-0">8</h4><small class="text-muted">Lab Testing</small></div></div></div>
-            <div class="col-md-2"><div class="card border-start border-4 border-success"><div class="card-body py-2 text-center"><h4 class="fw-bold text-success mb-0">342</h4><small class="text-muted">Released (MTD)</small></div></div></div>
-            <div class="col-md-2"><div class="card border-start border-4 border-danger"><div class="card-body py-2 text-center"><h4 class="fw-bold text-danger mb-0">7</h4><small class="text-muted">Rejected</small></div></div></div>
+          <div class="row mb-3 g-2 align-items-stretch">
+            <div class="col-lg-2 col-md-4 col-6"><div class="card h-100 bg-transparent shadow-none" style="border: 2px solid #5D87FF !important;"><div class="card-body py-2 text-center d-flex flex-column justify-content-center"><h4 class="fw-bold text-primary mb-0">24</h4><small class="text-muted">Pre-Import</small></div></div></div>
+            <div class="col-lg-2 col-md-4 col-6"><div class="card h-100 bg-transparent shadow-none" style="border: 2px solid #5D87FF !important;"><div class="card-body py-2 text-center d-flex flex-column justify-content-center"><h4 class="fw-bold text-primary mb-0">18</h4><small class="text-muted">Doc Verification</small></div></div></div>
+            <div class="col-lg-2 col-md-4 col-6"><div class="card h-100 bg-transparent shadow-none" style="border: 2px solid #FFAE1F !important;"><div class="card-body py-2 text-center d-flex flex-column justify-content-center"><h4 class="fw-bold text-warning mb-0">12</h4><small class="text-muted">Border Inspection</small></div></div></div>
+            <div class="col-lg-2 col-md-4 col-6"><div class="card h-100 bg-transparent shadow-none" style="border: 2px solid #06B6D4 !important;"><div class="card-body py-2 text-center d-flex flex-column justify-content-center"><h4 class="fw-bold text-info mb-0">8</h4><small class="text-muted">Lab Testing</small></div></div></div>
+            <div class="col-lg-2 col-md-4 col-6"><div class="card h-100 bg-transparent shadow-none" style="border: 2px solid #13DEB9 !important;"><div class="card-body py-2 text-center d-flex flex-column justify-content-center"><h4 class="fw-bold text-success mb-0">342</h4><small class="text-muted">Released</small></div></div></div>
+            <div class="col-lg-2 col-md-4 col-6"><div class="card h-100 bg-transparent shadow-none" style="border: 2px solid #FA896B !important;"><div class="card-body py-2 text-center d-flex flex-column justify-content-center"><h4 class="fw-bold text-danger mb-0">7</h4><small class="text-muted">Rejected</small></div></div></div>
           </div>
 
           <!-- Import Queue -->
@@ -177,7 +187,7 @@
                     </td>
                     <td>
                       <div class="d-flex gap-1">
-                        <button class="btn btn-xs btn-warning py-1 px-2" onclick="alert('Verifying importer status. Registration needs renewal.')"><i class="ti ti-alert-circle"></i> Resolve Importer</button>
+                        <button class="btn btn-xs btn-warning py-1 px-2" onclick="alert('Supplementary Label verification process initiated...')"><i class="ti ti-alert-circle"></i> Supplementary Label Verification</button>
                         <button class="btn btn-xs btn-outline-info py-1 px-2" onclick="alert('Opening document viewer...')"><i class="ti ti-file-search"></i> Verify Docs</button>
                         <button class="btn btn-xs btn-success py-1 px-2" onclick="alert('Consignment Approved.')"><i class="ti ti-check"></i> Approve</button>
                         <button class="btn btn-xs btn-danger py-1 px-2" onclick="alert('Consignment Rejected due to suspended registration.')"><i class="ti ti-x"></i> Reject</button>

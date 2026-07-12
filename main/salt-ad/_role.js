@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    IIMS Role Script â€” Assistant Director
    Injected into every page inside /main/salt-ad/
    ============================================================ */
@@ -12,14 +12,20 @@
     badge: 'AD_SALT',
     color: '#4338CA',
     nav: [
-      { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-salt-manufacturing.html' },
-
       { type: 'cap', label: 'Salt Manufacturing' },
+      { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
       { type: 'link', icon: 'ti ti-file-text',          label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
       { type: 'link', icon: 'ti ti-refresh',            label: 'Annual Renewal',      href: './iims-salt-renewal.html' },
       { type: 'link', icon: 'ti ti-edit',               label: 'Amendment Request',   href: './iims-salt-amendment.html' },
       { type: 'link', icon: 'ti ti-certificate',        label: 'Brand Registration',  href: './iims-salt-brands.html' },
+
+      { type: 'cap', label: 'Bottled Water' },
+      { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
+      { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
+      { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
+
+      { type: 'cap', label: 'Trade Control' },
+      { type: 'link', icon: 'ti ti-package-import',      label: 'Pre-Import Entry',    href: './iims-import-entry.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }

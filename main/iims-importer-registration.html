@@ -5,97 +5,558 @@
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <title>IIMS - Importer Registration</title>
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    .step-indicator {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .step-indicator::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: #E2E8F0;
+      z-index: 1;
+    }
+    .step-item {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .step-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #64748B;
+      transition: all 0.3s;
+    }
+    .step-item.active .step-circle {
+      background-color: #3B82F6;
+      border-color: #3B82F6;
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+    }
+    .step-item.completed .step-circle {
+      background-color: #10B981;
+      border-color: #10B981;
+      color: #fff;
+    }
+    .step-label {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #64748B;
+    }
+    .step-item.active .step-label {
+      color: #2563EB;
+      font-weight: 600;
+    }
+    .step-item.completed .step-label {
+      color: #10B981;
+    }
+    #map {
+      height: 300px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+    }
+    .btn-register {
+      background-color: #10B981;
+      color: #fff;
+      border: none;
+    }
+    .btn-register:hover {
+      background-color: #059669;
+      color: #fff;
+    }
+    .password-feedback {
+      font-size: 0.75rem;
+      color: #94A3B8;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .password-feedback span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .password-feedback span.valid {
+      color: #10B981;
+    }
+    .password-feedback span.invalid {
+      color: #EF4444;
+    }
+    .file-input-wrapper {
+      position: relative;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+    }
+    .file-input-wrapper.error {
+      border-color: #EF4444;
+    }
+  </style>
 </head>
 <body class="bg-light">
   <div class="preloader"><img src="../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
   
-  <header class="bg-white border-bottom py-3 mb-4 shadow-sm">
-    <div class="container d-flex align-items-center justify-content-between">
-      <div class="d-flex align-items-center gap-2">
-        <img src="../assets/images/logos/favicon.png" alt="Logo" width="40" height="40" />
-        <div>
-          <h4 class="fw-bold mb-0 text-primary">FCAU IIMS</h4>
-          <span class="fs-2 text-muted">Ministry of Health, Sri Lanka</span>
-        </div>
-      </div>
-      <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
-    </div>
-  </header>
-
-  <div class="container py-2" style="max-width: 1000px;">
-    <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-      <div class="card-body px-4 py-3">
-        <div class="row align-items-center">
-          <div class="col-sm-9 col-12">
-            <h4 class="fw-semibold mb-1 text-primary">Importer Entity Registration</h4>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a class="text-muted" href="./iims-login.html">Sign In</a></li>
-                <li class="breadcrumb-item active">Importer Registry</li>
-              </ol>
-            </nav>
+  <div class="container py-5 d-flex justify-content-center">
+    <div class="card shadow-lg border-0 bg-white" style="width: 100%; max-width: 750px; border-radius: 12px;">
+      <div class="card-body p-5">
+        
+        <!-- Logo Header -->
+        <div class="text-center mb-4">
+          <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+            <img src="../assets/images/logos/favicon.png" alt="Logo" width="40" height="40" />
+            <h3 class="fw-bold text-dark mb-0">IIMS</h3>
           </div>
-          <div class="col-sm-3 col-12 text-sm-end mt-2 mt-sm-0">
-            <a href="./iims-login.html" class="btn btn-outline-primary btn-sm"><i class="ti ti-arrow-left me-1"></i>Back to Sign In</a>
+          <h4 class="fw-bold text-dark mb-1">Importer Registration</h4>
+          <p class="text-muted fs-2">Complete the step-by-step form to register your profile</p>
+        </div>
+
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+          <div class="step-item active" id="step-ind-1">
+            <div class="step-circle" id="circle-1">1</div>
+            <div class="step-label">Account</div>
+          </div>
+          <div class="step-item" id="step-ind-2">
+            <div class="step-circle" id="circle-2">2</div>
+            <div class="step-label">Company</div>
+          </div>
+          <div class="step-item" id="step-ind-3">
+            <div class="step-circle" id="circle-3">3</div>
+            <div class="step-label">Warehouse</div>
+          </div>
+          <div class="step-item" id="step-ind-4">
+            <div class="step-circle" id="circle-4">4</div>
+            <div class="step-label">Contact</div>
+          </div>
+          <div class="step-item" id="step-ind-5">
+            <div class="step-circle" id="circle-5">5</div>
+            <div class="step-label">Documents</div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-body">
-        <h5 class="fw-semibold mb-4">Importer Business & Customs Credentials</h5>
-        <form onsubmit="alert('Importer registration submitted successfully. Awaiting FCAU verification!'); return false;">
-          <div class="row g-3">
-            <div class="col-md-6"><label class="form-label">Importer Entity Name</label><input type="text" class="form-control" required placeholder="e.g. Lanka Food Distributors"></div>
-            <div class="col-md-6"><label class="form-label">Business Registration Number (BRN)</label><input type="text" class="form-control" required placeholder="e.g. PV-85923"></div>
-            <div class="col-md-4"><label class="form-label">Taxpayer Identification Number (TIN)</label><input type="text" class="form-control" required placeholder="e.g. 1094829-232"></div>
-            <div class="col-md-4"><label class="form-label">VAT Registration Number</label><input type="text" class="form-control" placeholder="e.g. 1094829-7000"></div>
-            <div class="col-md-4"><label class="form-label">Customs House Agent (CHA) License No</label><input type="text" class="form-control" required placeholder="e.g. CHA-504"></div>
+        <!-- Wizard Steps Content -->
+        <form id="regForm" onsubmit="submitForm(event)">
+          
+          <!-- STEP 1: Account -->
+          <div class="tab" id="step-1">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-user-plus me-1"></i>Account Setup</h5>
             
-            <div class="col-md-12"><hr></div>
-            
-            <h6 class="fw-semibold">Warehousing & Storage Facilities</h6>
-            <div class="col-md-6"><label class="form-label">Primary Warehouse Address</label><input type="text" class="form-control" required placeholder="e.g. No. 42, Harbor Rd, Colombo 13"></div>
-            <div class="col-md-3">
-              <label class="form-label">Storage Capacity (Metric Tons)</label>
-              <input type="number" class="form-control" placeholder="e.g. 500">
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">Cold Storage Facility Available?</label>
-              <select class="form-select">
-                <option>No Cold Storage</option>
-                <option>Chilled Storage (0 - 4°C)</option>
-                <option>Frozen Storage (-18°C or below)</option>
-              </select>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Enter your full name" required id="full-name">
             </div>
             
-            <div class="col-md-6"><label class="form-label">Upload Importer License & BRN (PDF)</label><input type="file" class="form-control" required></div>
-            <div class="col-md-6"><label class="form-label">Upload Warehouse Inspection Certificate</label><input type="file" class="form-control"></div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" value="akilaimport@gmail.com" required id="email-address">
+            </div>
 
-            <div class="col-md-12 mt-4">
-              <div class="alert alert-warning border-0 fs-2">
-                <i class="ti ti-alert-circle me-1"></i> Registration as an importer requires a documentary check by the Food Control Administration Unit (FCAU) before shipping entries can be declared.
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Password <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <input type="password" class="form-control" value="AkiPass123!" required id="password">
+                  <button class="btn btn-outline-secondary" type="button" onclick="togglePass('password')"><i class="ti ti-eye"></i></button>
+                </div>
+                <div class="password-feedback mt-2">
+                  <span class="valid"><i class="ti ti-circle-check"></i> Min 8 chars</span>
+                  <span class="valid"><i class="ti ti-circle-check"></i> Letters</span>
+                  <span class="valid"><i class="ti ti-circle-check"></i> Numbers</span>
+                  <span class="valid"><i class="ti ti-circle-check"></i> Special char</span>
+                </div>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Confirm Password <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <input type="password" class="form-control" value="AkiPass123!" required id="confirm-password">
+                  <button class="btn btn-outline-secondary" type="button" onclick="togglePass('confirm-password')"><i class="ti ti-eye"></i></button>
+                </div>
               </div>
             </div>
 
-            <div class="col-12 text-end">
-              <button type="submit" class="btn btn-primary px-4">Submit Registration Application</button>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-primary" onclick="nextPrev(1)">Next: Company Details</button>
             </div>
           </div>
+
+          <!-- STEP 2: Company -->
+          <div class="tab" id="step-2" style="display: none;">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-building-factory-2 me-1"></i>Company Details</h5>
+            
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Legal Company Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="e.g. Food Imports (Pvt) Ltd" required id="company-name">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Business Registration No <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="e.g. PV-123456" required id="brn">
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">TIN Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="9-digit Taxpayer ID" required id="tin">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">VAT Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="VAT Registration Number" required id="vat">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">NIC Number</label>
+              <input type="text" class="form-control" placeholder="e.g. 199012345678 or 901234567V" id="nic">
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary" onclick="nextPrev(-1)">Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextPrev(1)">Next: Warehouse Location</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Warehouse -->
+          <div class="tab" id="step-3" style="display: none;">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-map-pin me-1"></i>Warehouse Location (Spatial Data)</h5>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Latitude <span class="text-danger">*</span></label>
+                <input type="text" class="form-control border-danger" placeholder="e.g. 6.9271" id="latitude" required value="6.9271">
+                <span class="text-danger fs-2" id="lat-error">Latitude is required.</span>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Longitude <span class="text-danger">*</span></label>
+                <input type="text" class="form-control border-danger" placeholder="e.g. 79.8612" id="longitude" required value="79.8612">
+                <span class="text-danger fs-2" id="lng-error">Longitude is required.</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold"><i class="ti ti-map-2 me-1"></i>Warehouse Location Map</label>
+              <div id="map"></div>
+              <small class="text-muted mt-1 d-block">Click on the map or drag the pin to set your warehouse location.</small>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary" onclick="nextPrev(-1)">Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextPrev(1)">Next: Contact Information</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Contact -->
+          <div class="tab" id="step-4" style="display: none;">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-phone me-1"></i>Contact Information</h5>
+            
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Contact Person Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" value="Akila Hashan" required id="contact-name">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Mobile Number <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" value="071729693" required id="contact-mobile">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Official Email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" value="pubad123456@gmail.com" required id="contact-email">
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary" onclick="nextPrev(-1)">Back</button>
+              <button type="button" class="btn btn-primary" onclick="nextPrev(1)">Next: Verification Documents</button>
+            </div>
+          </div>
+
+          <!-- STEP 5: Documents -->
+          <div class="tab" id="step-5" style="display: none;">
+            <h5 class="fw-semibold text-primary mb-4"><i class="ti ti-cloud-upload me-1"></i>Required Verification Documents</h5>
+            
+            <!-- Doc 1 -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">Business Registration Certificate <span class="text-danger">*</span></label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 10MB)</span>
+              </div>
+              <div class="file-input-wrapper error" id="wrapper-brc">
+                <input type="file" id="file-brc" class="d-none" onchange="fileSelected('brc')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-brc').click()">Choose File</button>
+                <span id="name-brc" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-alert-circle text-danger fs-5"></i>
+              </div>
+              <span class="text-danger fs-2" id="err-brc">Business Registration Certificate file is required.</span>
+            </div>
+
+            <!-- Doc 2 -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">VAT Certificate <span class="text-danger">*</span></label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 10MB)</span>
+              </div>
+              <div class="file-input-wrapper error" id="wrapper-vat">
+                <input type="file" id="file-vat" class="d-none" onchange="fileSelected('vat')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-vat').click()">Choose File</button>
+                <span id="name-vat" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-alert-circle text-danger fs-5"></i>
+              </div>
+              <span class="text-danger fs-2" id="err-vat">VAT Certificate file is required.</span>
+            </div>
+
+            <!-- Doc 3 -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">Director Board Details Document <span class="text-danger">*</span></label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 10MB)</span>
+              </div>
+              <div class="file-input-wrapper error" id="wrapper-director">
+                <input type="file" id="file-director" class="d-none" onchange="fileSelected('director')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-director').click()">Choose File</button>
+                <span id="name-director" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-alert-circle text-danger fs-5"></i>
+              </div>
+              <span class="text-danger fs-2" id="err-director">Director board details document file is required.</span>
+            </div>
+
+            <!-- Doc 4 -->
+            <div class="mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="form-label fw-semibold mb-0">EDB Certificate <span class="text-danger">*</span></label>
+                <span class="fs-1 text-muted">PDF, JPG, PNG (Max 10MB)</span>
+              </div>
+              <div class="file-input-wrapper error" id="wrapper-edb">
+                <input type="file" id="file-edb" class="d-none" onchange="fileSelected('edb')">
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="document.getElementById('file-edb').click()">Choose File</button>
+                <span id="name-edb" class="text-muted ms-2 flex-grow-1">No file chosen</span>
+                <i class="ti ti-alert-circle text-danger fs-5"></i>
+              </div>
+              <span class="text-danger fs-2" id="err-edb">EDB Certificate file is required.</span>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-outline-secondary" onclick="nextPrev(-1)">Back</button>
+              <button type="submit" class="btn btn-register px-4"><i class="ti ti-cloud-upload me-1"></i>Register Importer Profile</button>
+            </div>
+          </div>
+
         </form>
+
+        <!-- Footer Sign In Link -->
+        <div class="text-center mt-4">
+          <p class="fs-2 text-muted mb-0">Already registered? <a href="./iims-login.html" class="text-primary fw-semibold">Sign In Here</a></p>
+        </div>
+
       </div>
     </div>
   </div>
-  
-  <div class="dark-transparent sidebartoggler"></div>
+
   <script src="../assets/js/vendor.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
   <script src="../assets/js/theme/app.init.js"></script>
   <script src="../assets/js/theme/theme.js"></script>
   <script src="../assets/js/theme/app.min.js"></script>
-  <script src="../assets/js/theme/sidebarmenu.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  
+  <script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    var map, marker;
+
+    function showTab(n) {
+      var tabs = document.getElementsByClassName("tab");
+      tabs[n].style.display = "block";
+      
+      // Update Step Indicators
+      updateIndicators(n);
+
+      // Initialize map on step 3
+      if (n === 2) {
+        setTimeout(initMap, 200);
+      }
+    }
+
+    function updateIndicators(n) {
+      for (var i = 1; i <= 5; i++) {
+        var ind = document.getElementById("step-ind-" + i);
+        var circle = document.getElementById("circle-" + i);
+        
+        ind.className = "step-item";
+        if (i < n + 1) {
+          ind.className = "step-item completed";
+          circle.innerHTML = '<i class="ti ti-check"></i>';
+        } else if (i === n + 1) {
+          ind.className = "step-item active";
+          circle.innerHTML = i;
+        } else {
+          circle.innerHTML = i;
+        }
+      }
+    }
+
+    function nextPrev(n) {
+      var tabs = document.getElementsByClassName("tab");
+      
+      // Validation Check
+      if (n === 1 && !validateForm()) return false;
+      
+      tabs[currentTab].style.display = "none";
+      currentTab = currentTab + n;
+      
+      showTab(currentTab);
+    }
+
+    function validateForm() {
+      // Basic client-side validation
+      var valid = true;
+      var inputs = document.getElementsByClassName("tab")[currentTab].getElementsByTagName("input");
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].hasAttribute('required') && !inputs[i].value) {
+          inputs[i].classList.add("is-invalid");
+          valid = false;
+        } else {
+          inputs[i].classList.remove("is-invalid");
+        }
+      }
+
+      // Warehouse Validation
+      if (currentTab === 2) {
+        var lat = document.getElementById("latitude").value;
+        var lng = document.getElementById("longitude").value;
+        if (!lat) {
+          document.getElementById("latitude").classList.add("border-danger");
+          document.getElementById("lat-error").style.display = "block";
+          valid = false;
+        } else {
+          document.getElementById("latitude").classList.remove("border-danger");
+          document.getElementById("lat-error").style.display = "none";
+        }
+        if (!lng) {
+          document.getElementById("longitude").classList.add("border-danger");
+          document.getElementById("lng-error").style.display = "block";
+          valid = false;
+        } else {
+          document.getElementById("longitude").classList.remove("border-danger");
+          document.getElementById("lng-error").style.display = "none";
+        }
+      }
+
+      return valid;
+    }
+
+    function initMap() {
+      if (!map) {
+        map = L.map('map').setView([6.9271, 79.8612], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        marker = L.marker([6.9271, 79.8612], {draggable: true}).addTo(map);
+
+        marker.on('dragend', function (e) {
+          var position = marker.getLatLng();
+          document.getElementById('latitude').value = position.lat.toFixed(4);
+          document.getElementById('longitude').value = position.lng.toFixed(4);
+        });
+
+        map.on('click', function(e) {
+          marker.setLatLng(e.latlng);
+          document.getElementById('latitude').value = e.latlng.lat.toFixed(4);
+          document.getElementById('longitude').value = e.latlng.lng.toFixed(4);
+        });
+      }
+    }
+
+    function togglePass(id) {
+      var x = document.getElementById(id);
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+
+    function fileSelected(type) {
+      var input = document.getElementById("file-" + type);
+      var nameSpan = document.getElementById("name-" + type);
+      var wrapper = document.getElementById("wrapper-" + type);
+      var err = document.getElementById("err-" + type);
+
+      if (input.files.length > 0) {
+        nameSpan.textContent = input.files[0].name;
+        nameSpan.classList.remove("text-muted");
+        nameSpan.classList.add("text-dark", "fw-bold");
+        wrapper.classList.remove("error");
+        err.style.display = "none";
+        wrapper.querySelector('i').className = "ti ti-circle-check text-success fs-5";
+      } else {
+        nameSpan.textContent = "No file chosen";
+        wrapper.classList.add("error");
+        err.style.display = "block";
+        wrapper.querySelector('i').className = "ti ti-alert-circle text-danger fs-5";
+      }
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      // Validate documents step
+      var valid = true;
+      var docs = ['brc', 'vat', 'director', 'edb'];
+      docs.forEach(function(doc) {
+        var input = document.getElementById("file-" + doc);
+        if (input.files.length === 0) {
+          document.getElementById("wrapper-" + doc).classList.add("error");
+          document.getElementById("err-" + doc).style.display = "block";
+          valid = false;
+        }
+      });
+
+      if (valid) {
+        alert("Importer entity profile registration submitted successfully! Awaiting FCAU review and credentials dispatch.");
+        window.location.href = "./iims-login.html";
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      // Hide error messages initially
+      document.getElementById("lat-error").style.display = "none";
+      document.getElementById("lng-error").style.display = "none";
+      document.getElementById("latitude").classList.remove("border-danger");
+      document.getElementById("longitude").classList.remove("border-danger");
+      
+      var docs = ['brc', 'vat', 'director', 'edb'];
+      docs.forEach(function(doc) {
+        document.getElementById("err-" + doc).style.display = "none";
+        document.getElementById("wrapper-" + doc).classList.remove("error");
+        document.getElementById("wrapper-" + doc).querySelector('i').className = "ti ti-alert-circle text-muted fs-5";
+      });
+
+      showTab(currentTab);
+    });
+  </script>
 </body>
 </html>

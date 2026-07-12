@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    IIMS Role Script â€” District Food & Drugs Inspector
    Injected into every page inside /main/salt-dfdi/
    ============================================================ */
@@ -13,13 +13,29 @@
     color: '#B45309',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-salt-manufacturing.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-dashboard.html' },
 
       { type: 'cap', label: 'Salt Manufacturing' },
+      { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
       { type: 'link', icon: 'ti ti-file-text',          label: 'Salt Registration',   href: './iims-salt-registration-form.html' },
       { type: 'link', icon: 'ti ti-refresh',            label: 'Annual Renewal',      href: './iims-salt-renewal.html' },
       { type: 'link', icon: 'ti ti-edit',               label: 'Amendment Request',   href: './iims-salt-amendment.html' },
       { type: 'link', icon: 'ti ti-certificate',        label: 'Brand Registration',  href: './iims-salt-brands.html' },
+
+      { type: 'cap', label: 'Bottled Water' },
+      { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
+      { type: 'link', icon: 'ti ti-droplet',             label: 'Water Registration',  href: './iims-water-registration-form.html' },
+      { type: 'link', icon: 'ti ti-tag',                 label: 'Brand Registration',  href: './iims-water-brands.html' },
+
+      { type: 'cap', label: 'Laboratory' },
+      { type: 'link', icon: 'ti ti-test-pipe',           label: 'Sample Management',   href: './iims-sample-management.html' },
+
+      { type: 'cap', label: 'Compliance' },
+      { type: 'link', icon: 'ti ti-message-report',      label: 'Complaints Ledger',   href: './iims-complaints.html' },
+      { type: 'link', icon: 'ti ti-gavel',               label: 'Enforcement',         href: './iims-enforcement.html' },
+      { type: 'link', icon: 'ti ti-lock',                label: 'Seizure Order',       href: './iims-seizure-order.html' },
+      { type: 'link', icon: 'ti ti-scale',               label: 'Prosecution Form',    href: './iims-prosecution-form.html' },
+      { type: 'link', icon: 'ti ti-user-cancel',         label: 'Arrested List',       href: './iims-arrested-list.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }

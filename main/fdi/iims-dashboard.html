@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
 
 <head>
@@ -214,6 +214,50 @@
                     <span class="text-danger fs-2 fw-semibold"><i class="ti ti-arrow-up"></i> +5 new</span>
                     <span class="text-muted fs-2">requires action</span>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Food Sampling to Laboratory Widget -->
+          <div class="card mb-4 shadow-sm border-0">
+            <div class="card-body py-3 px-4">
+              <h6 class="fw-semibold mb-3 text-dark">Food Sampling to Laboratory</h6>
+              <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold mb-1">Premise Category <span class="text-danger">*</span></label>
+                  <select class="form-select" id="fsl-premise-category" onchange="filterFoodPremises()">
+                    <option value="">- Select -</option>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="retail">Retail</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="market">Market</option>
+                    <option value="processing">Processing</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold mb-1">Food Premise <span class="text-danger">*</span></label>
+                  <select class="form-select" id="fsl-food-premise">
+                    <option value="">- Select -</option>
+                    <option value="golden-rice">Golden Rice Restaurant</option>
+                    <option value="fresh-mart">Fresh Mart Supermarket</option>
+                    <option value="city-bakery">City Bakery &amp; Confections</option>
+                    <option value="lanka-spice">Lanka Spice Exporters</option>
+                    <option value="harbor-fish">Harbor Fish Market</option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold mb-1">Process Type <span class="text-danger">*</span></label>
+                  <select class="form-select" id="fsl-process-type">
+                    <option value="">- Select -</option>
+                    <option value="import">Import</option>
+                    <option value="export">Export</option>
+                  </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <button class="btn btn-dark w-100 fw-semibold" onclick="proceedFoodSampling()">
+                    Proceed
+                  </button>
                 </div>
               </div>
             </div>
@@ -437,6 +481,18 @@
       responsive:[{breakpoint:480,options:{chart:{height:250},legend:{position:'bottom'}}}]
     };
     new ApexCharts(document.querySelector("#risk-distribution-chart"), riskOptions).render();
+
+    function proceedFoodSampling() {
+      var category = document.getElementById('fsl-premise-category').value;
+      var premise  = document.getElementById('fsl-food-premise').value;
+      var process  = document.getElementById('fsl-process-type').value;
+      if (!category || !premise || !process) {
+        alert('Please select Premise Category, Food Premise, and Process Type before proceeding.');
+        return;
+      }
+      var processLabel = process.charAt(0).toUpperCase() + process.slice(1);
+      alert('Proceeding to Lab Sampling\n\nProcess Type: ' + processLabel + '\nPremise: ' + document.getElementById('fsl-food-premise').options[document.getElementById('fsl-food-premise').selectedIndex].text);
+    }
   </script>
 <script src="./_role.js"></script>
 </body>
