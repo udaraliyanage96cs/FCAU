@@ -17,8 +17,8 @@
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-dashboard.html' },
 
       { type: 'cap', label: 'Laboratory' },
-      { type: 'link', icon: 'ti ti-file-analytics',   label: 'Manual Result Entry',href: './iims-lab-report-form.html' },
       { type: 'link', icon: 'ti ti-test-pipe',        label: 'Sample Management',  href: './iims-sample-management.html' },
+      { type: 'link', icon: 'ti ti-file-analytics',   label: 'Manual Result Entry',href: './iims-lab-report-form.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts',             href: './iims-alerts.html' }
