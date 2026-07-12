@@ -574,7 +574,7 @@
           if (app) {
             if (app.status === 'Registered') {
               regBadge = `<span class="badge bg-success">Registered (${b.grade || 'A'})</span>`;
-              actionBtn = `<span class="text-success"><i class="ti ti-circle-check fs-5"></i></span>`;
+              actionBtn = `<a href="./iims-fbo-registration.html?editAppId=${app.id}" class="btn btn-sm btn-outline-info"><i class="ti ti-eye me-1"></i>View Details</a>`;
             } else if (app.status === 'PHI Assigned (Pending Inspection)') {
               regBadge = `<span class="badge bg-warning text-dark">PHI Assigned (${app.assignedPhi})</span>`;
               actionBtn = `<a href="./iims-fbo-registration.html?editAppId=${app.id}" class="btn btn-sm btn-outline-info">View Details</a>`;
