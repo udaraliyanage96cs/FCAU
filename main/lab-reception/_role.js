@@ -1,24 +1,23 @@
 /* ============================================================
-   IIMS Role Script — LAB (Laboratory Analyst)
-   Injected into every page inside /main/lab/
+   IIMS Role Script — LAB-RECEPTION (Laboratory Reception Officer)
+   Injected into every page inside /main/lab-reception/
    ============================================================ */
 (function () {
   'use strict';
 
   var ROLE = {
-    id: 'lab',
-    name: 'Laboratory Analyst',
+    id: 'lab-reception',
+    name: 'Laboratory Reception Officer',
     subtitle: 'NFSQAL Central Lab',
-    badge: 'LAB',
-    color: '#F59E0B',
-    colorLight: '#FFFBEB',
+    badge: 'LRO',
+    color: '#3B82F6',
+    colorLight: '#EFF6FF',
     nav: [
       { type: 'cap', label: 'Home' },
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-dashboard.html' },
 
       { type: 'cap', label: 'Laboratory' },
-      { type: 'link', icon: 'ti ti-file-analytics',   label: 'Manual Result Entry',href: './iims-lab-report-form.html' },
-      { type: 'link', icon: 'ti ti-test-pipe',        label: 'Sample Management',  href: './iims-sample-management.html' },
+      { type: 'link', icon: 'ti ti-microscope',       label: 'Reception Triage',   href: './iims-received-samples.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts',             href: './iims-alerts.html' }
@@ -50,7 +49,7 @@
       '.role-badge{background:' + ROLE.color + ';color:#fff;font-size:10px;font-weight:700;',
       'padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;}',
       '.role-label{font-size:11px;font-weight:600;color:' + ROLE.color + ';}',
-      '.sidebar-link.active{background-color:#5D87FF !important;color:#fff !important;}',
+      '.sidebar-link.active{background-color:#3B82F6 !important;color:#fff !important;}',
       '.sidebar-link.active i{color:#fff !important;}'
     ].join('');
     document.head.appendChild(s);
