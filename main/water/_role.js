@@ -13,10 +13,16 @@
     color: '#14B8A6',
     colorLight: '#F0FDFA',
     nav: [
+      { type: 'cap', label: 'Home' },
+      { type: 'link', icon: 'ti ti-layout-dashboard',    label: 'Dashboard',           href: './iims-water-manufacturing.html' },
+
       { type: 'cap', label: 'Water Products' },
       { type: 'link', icon: 'ti ti-droplet',          label: 'Water Registration',  href: './iims-water-registration-form.html' },
       { type: 'link', icon: 'ti ti-tag',              label: 'Brand Registration',  href: './iims-water-brands.html' },
-      { type: 'link', icon: 'ti ti-refresh',          label: 'Registered Brands',   href: './iims-water-renewal.html' }
+      { type: 'link', icon: 'ti ti-refresh',          label: 'Registered Brands',   href: './iims-water-renewal.html' },
+
+      { type: 'cap', label: 'System' },
+      { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }
     ]
   };
 
