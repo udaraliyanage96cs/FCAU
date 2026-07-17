@@ -37,7 +37,7 @@
     <table>
         <tr><th>Page</th><th>URL</th><th>Description</th></tr>
         <tr><td><b>Registration Wizard</b></td><td class="url">iims-fbo-registration.html</td><td class="description">Multi-step form for Premises Owners to register and upload statutory documents.</td></tr>
-        <tr><td><b>Premises Registry</b></td><td class="url">iims-premises-list.html</td><td class="description">Comprehensive list of all registered food establishments with risk indexing.</td></tr>
+        <tr><td><b>Premises Registry</b></td><td class="url">iims-premises-list.html</td><td class="description">Comprehensive list of all registered food establishments</td></tr>
         <tr><td><b>Grievance & Appeals</b></td><td class="url">iims-appeals.html</td><td class="description">Management of appeals against rejected registrations or grading results.</td></tr>
     </table>
 

@@ -20,7 +20,7 @@ This document provides a comprehensive list of all functional pages within the F
 | Page | URL | Description |
 |------|-----|-------------|
 | **Registration Wizard** | [iims-fbo-registration.html](file:///d:/FCAU/main/iims-fbo-registration.html) | Multi-step form for Premises Owners to register and upload statutory documents. |
-| **Premises Registry** | [iims-premises-list.html](file:///d:/FCAU/main/iims-premises-list.html) | Comprehensive list of all registered food establishments with risk indexing. |
+| **Premises Registry** | [iims-premises-list.html](file:///d:/FCAU/main/iims-premises-list.html) | Comprehensive list of all registered food establishments. |
 | **Grievance & Appeals**| [iims-appeals.html](file:///d:/FCAU/main/iims-appeals.html) | Management of appeals against rejected registrations or grading results. |
 
 ## 🛡️ Inspection & Grading

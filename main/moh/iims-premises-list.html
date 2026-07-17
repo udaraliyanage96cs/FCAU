@@ -124,10 +124,6 @@
                   <select class="form-select"><option>All</option><option>A1 - Manufacturing</option><option>A2 - Restaurant</option><option>A3 - Market</option><option>H2 - Retail</option><option>I1 - Processing</option></select>
                 </div>
                 <div class="col-md-2">
-                  <label class="form-label">Risk Index</label>
-                  <select class="form-select"><option>All</option><option selected>Critical</option><option>High</option><option>Medium</option><option>Low</option></select>
-                </div>
-                <div class="col-md-2">
                   <label class="form-label">Grade</label>
                   <select class="form-select"><option>All</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
                 </div>
@@ -188,7 +184,6 @@
                       <th>Establishment Name</th>
                       <th>Category</th>
                       <th>GN Division</th>
-                      <th>Risk Index</th>
                       <th>Last Grade</th>
                       <th>Last Inspection</th>
                       <th>Next Due</th>
@@ -369,11 +364,6 @@
     }
 
     function getPremisesRowHTML(num, p) {
-      let riskBadgeClass = 'bg-success';
-      if (p.risk === 'Medium') riskBadgeClass = 'bg-warning';
-      if (p.risk === 'High') riskBadgeClass = 'bg-danger';
-      if (p.risk === 'Critical') riskBadgeClass = 'bg-dark text-white';
-
       let gradeBadgeClass = 'bg-success';
       if (p.grade.includes('B')) gradeBadgeClass = 'bg-primary';
       if (p.grade.includes('C')) gradeBadgeClass = 'bg-warning';
@@ -386,7 +376,6 @@
           <td><span class="fw-semibold">${p.name}</span></td>
           <td><span class="badge bg-info-subtle text-info">${p.cat}</span></td>
           <td>${p.gn}</td>
-          <td><span class="badge ${riskBadgeClass}">${p.risk}</span></td>
           <td><span class="badge ${gradeBadgeClass}">${p.grade}</span></td>
           <td>${p.last}</td>
           <td>${p.next}</td>
