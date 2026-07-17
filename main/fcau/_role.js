@@ -24,7 +24,7 @@
       { type: 'link', icon: 'ti ti-building-factory-2',  label: 'Exporter Applications',   href: './iims-exporter-registration.html' },
       { type: 'link', icon: 'ti ti-package-export',      label: 'Health Certificates',     href: './iims-export-control.html' },
 
-      { type: 'cap', label: 'Specialized Mfg' },
+      { type: 'cap', label: 'Salt & Bottled Water' },
       { type: 'link', icon: 'ti ti-bottle',              label: 'Water Overview',      href: './iims-bottled-water.html' },
       { type: 'link', icon: 'ti ti-salt',                label: 'Salt Overview',       href: './iims-salt-manufacturing.html' },
 
