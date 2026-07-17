@@ -4,7 +4,7 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Laboratory Triage</title>
+  <title>IIMS - Laboratory Checklist</title>
 </head>
 <body class="link-sidebar">
   <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
@@ -33,12 +33,12 @@
             <div class="card-body px-4 py-3">
               <div class="row align-items-center">
                 <div class="col-9">
-                  <h4 class="fw-semibold mb-8">Laboratory Reception & Triage</h4>
+                  <h4 class="fw-semibold mb-8">Laboratory Reception & Checklist</h4>
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
                       <li class="breadcrumb-item"><a class="text-muted" href="./iims-received-samples.html">Received Samples</a></li>
-                      <li class="breadcrumb-item active">Sample Triage</li>
+                      <li class="breadcrumb-item active">Sample Checklist</li>
                     </ol>
                   </nav>
                 </div>
@@ -72,7 +72,7 @@
 
                   <hr>
 
-                  <h6 class="fw-semibold mb-3">Triage Checklist</h6>
+                  <h6 class="fw-semibold mb-3">Reception Checklist</h6>
                   <div class="list-group list-group-flush" id="triage-checklist">
                     <label class="list-group-item d-flex gap-2"><input class="form-check-input flex-shrink-0" type="checkbox" id="check-seal" checked><span>Seal is intact and matches the digital record</span></label>
                     <label class="list-group-item d-flex gap-2"><input class="form-check-input flex-shrink-0" type="checkbox" id="check-qty" checked><span>Quantity is sufficient for requested tests</span></label>
@@ -89,7 +89,7 @@
                   <h5 class="card-title fw-semibold mb-4" id="action-title">Reception Action</h5>
                   <form id="triage-form">
                     <div class="mb-3">
-                      <label class="form-label">Triage Determination</label>
+                      <label class="form-label">Determination Status</label>
                       <select class="form-select" id="triage-determination">
                         <option value="Accepted">Accept for Testing (Formal Intake)</option>
                         <option value="Rejected (Incorrect Temp/Seal Broken)">Reject Sample (Incorrect Temp/Seal Broken)</option>
@@ -112,10 +112,10 @@
                       <input type="text" class="form-control" id="lab-id" placeholder="e.g. LAB-COL-2026-991" required>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label">Triage Remarks</label>
+                      <label class="form-label">Remarks</label>
                       <textarea class="form-control" id="triage-remarks" rows="3" placeholder="Enter notes..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100" id="btn-submit"><i class="ti ti-check me-1"></i>Finalize Triage</button>
+                    <button type="submit" class="btn btn-primary w-100" id="btn-submit"><i class="ti ti-check me-1"></i>Finalize Checklist</button>
                     <a href="./iims-received-samples.html" class="btn btn-outline-secondary w-100 mt-2">Back to Register</a>
                   </form>
                 </div>
@@ -222,7 +222,7 @@
       localStorage.setItem('fcau_received_samples', JSON.stringify(samplesList));
 
       // Show success alert and redirect
-      alert(`Sample ${currentSample.id} triaged successfully as "${determination}"`);
+      alert(`Sample ${currentSample.id} processed successfully as "${determination}"`);
       window.location.href = './iims-received-samples.html';
     });
 

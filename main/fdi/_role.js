@@ -46,7 +46,7 @@
       { type: 'link', icon: 'ti ti-gavel',               label: 'Enforcement',         href: './iims-enforcement.html' },
       { type: 'link', icon: 'ti ti-lock',                label: 'Seizure Order',       href: './iims-seizure-order.html' },
       { type: 'link', icon: 'ti ti-scale',               label: 'Prosecution Form',    href: './iims-prosecution-form.html' },
-      { type: 'link', icon: 'ti ti-user-cancel',         label: 'Arrested List',       href: './iims-arrested-list.html' },
+      { type: 'link', icon: 'ti ti-user-off',           label: 'Arrested List',       href: './iims-arrested-list.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',        label: 'Alerts',              href: './iims-alerts.html' }

@@ -20,11 +20,11 @@
       { type: 'cap', label: 'Supervision' },
       { type: 'link', icon: 'ti ti-eye-check',        label: 'Supervisory Review',   href: './iims-inspection-review.html' },
       { type: 'link', icon: 'ti ti-building-store',   label: 'Premises Registry',    href: './iims-premises-list.html' },
-      { type: 'link', icon: 'ti ti-filter',           label: 'Complaint Triage',     href: './iims-complaint-triage.html' },
+      { type: 'link', icon: 'ti ti-filter',           label: 'Complaint Review',     href: './iims-complaint-triage.html' },
       { type: 'link', icon: 'ti ti-scale',            label: 'Grievance & Appeals',  href: './iims-appeals.html' },
 
       { type: 'cap', label: 'Laboratory' },
-      { type: 'link', icon: 'ti ti-microscope',       label: 'Reception Triage',     href: './iims-lab-triage.html' },
+      { type: 'link', icon: 'ti ti-microscope',       label: 'Reception Checklist',  href: './iims-lab-triage.html' },
       { type: 'link', icon: 'ti ti-file-analytics',   label: 'Manual Result Entry',  href: './iims-lab-report-form.html' },
       { type: 'link', icon: 'ti ti-test-pipe',        label: 'Sample Management',    href: './iims-sample-management.html' },
 

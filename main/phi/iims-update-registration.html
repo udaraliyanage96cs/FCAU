@@ -190,11 +190,11 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                       <label class="form-label fw-semibold">Company Registration Number</label>
                       <input type="text" class="form-control" id="company_reg_no" placeholder="Enter registration number">
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                       <label class="form-label fw-semibold">Category of the Premise</label>
                       <select class="form-select" id="premise_category">
                         <option value="">Select</option>
@@ -205,6 +205,15 @@
                         <option value="5">Grocery</option>
                         <option value="6">Supermarket</option>
                         <option value="7">Others</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label class="form-label fw-semibold">H800 Grading</label>
+                      <select class="form-select" id="premise_grade">
+                        <option value="A" selected>Grade A</option>
+                        <option value="B">Grade B</option>
+                        <option value="C">Grade C</option>
+                        <option value="D">Grade D</option>
                       </select>
                     </div>
                   </div>
@@ -245,6 +254,7 @@
               <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
                 <span class="heading mb-2">Details of Food Handler</span>
                 <hr class="mt-0">
+
                 <form id="form_handlers">
                   <div class="row">
                     <div class="col-md-6 mb-3">
@@ -302,7 +312,22 @@
                         <label class="form-check-label" for="m_no">No</label>
                       </div>
                     </div>
-                    <div class="col-md-6 d-flex flex-column flex-sm-row align-items-stretch align-items-sm-end justify-content-sm-end gap-2 mb-3">
+                    <div class="col-md-6 mb-3">
+                      <!-- layout align -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label fw-semibold">Medical Health Certificate (PDF/Image) <span class="text-danger">*</span></label>
+                      <input type="file" class="form-control" id="h_medical_cert" accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label fw-semibold">Training Experience Certificate (PDF/Image) <span class="text-danger">*</span></label>
+                      <input type="file" class="form-control" id="h_training_cert" accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 d-flex flex-column flex-sm-row align-items-stretch align-items-sm-end justify-content-sm-end gap-2 mb-3">
                       <button type="button" class="btn btn-success" onclick="addFoodHandler()">Save & Add Handler</button>
                       <button type="button" class="btn btn-secondary" onclick="switchTab('tab1')">Previous</button>
                       <button type="button" class="btn btn-primary" onclick="switchTab('tab3')">Next</button>
@@ -587,8 +612,8 @@
 
     let foodHandlerCount = 0;
     function addFoodHandler() {
-      const name = document.getElementById('h_name').value;
-      const position = document.getElementById('h_position').value;
+      const name = document.getElementById('h_name').value.trim();
+      const position = document.getElementById('h_position').value.trim();
       const age = document.getElementById('h_age').value || '-';
       const genderVal = document.querySelector('input[name="gender"]:checked')?.value;
       const gender = genderVal === '1' ? 'Male' : (genderVal === '2' ? 'Female' : '-');
@@ -630,6 +655,8 @@
       const checkedMedical = document.querySelector('input[name="is_medical"]:checked');
       if (checkedMedical) checkedMedical.checked = false;
       document.getElementById('duration').value = '';
+      document.getElementById('h_medical_cert').value = '';
+      document.getElementById('h_training_cert').value = '';
 
       alert("Food Handler '" + name + "' added successfully!");
     }

@@ -91,7 +91,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="fw-semibold mb-4">Business & Quality Credentials (Phase 1)</h5>
+              <h5 class="fw-semibold mb-4">Business & Quality Credentials</h5>
               <form>
                 <div class="row g-3">
                   <div class="col-md-6"><label class="form-label">Full Legal Entity Name</label><input type="text" class="form-control"></div>
@@ -104,13 +104,25 @@
                   
                   <h6 class="fw-semibold">Statutory Quality Certifications</h6>
                   <div class="col-md-6">
-                    <label class="form-label">Certification Type</label>
-                    <select class="form-select" multiple>
-                      <option>GMP (Good Manufacturing Practices)</option>
-                      <option>HACCP</option>
-                      <option>ISO 22000</option>
-                      <option>SLS Mark</option>
-                    </select>
+                    <label class="form-label d-block">Certification Type</label>
+                    <div class="d-flex flex-wrap gap-3 mt-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cert_gmp">
+                        <label class="form-check-label" for="cert_gmp">GMP</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cert_haccp" checked>
+                        <label class="form-check-label" for="cert_haccp">HACCP</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cert_iso">
+                        <label class="form-check-label" for="cert_iso">ISO 22000</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cert_sls">
+                        <label class="form-check-label" for="cert_sls">SLS Mark</label>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-6"><label class="form-label">Upload Certificates (Merge to one PDF)</label><input type="file" class="form-control"></div>
 

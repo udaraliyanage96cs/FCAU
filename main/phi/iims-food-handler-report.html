@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+  <title>IIMS - Food Handler Report</title>
+  <style>
+    .second-box {
+      background: #fff;
+      border-radius: 7px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body class="link-sidebar">
+  <div class="preloader"><img src="../../assets/images/logos/favicon.png" alt="loader" class="lds-ripple img-fluid" /></div>
+  <div id="main-wrapper">
+    <aside class="left-sidebar with-vertical">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./iims-dashboard.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
+          <ul id="sidebarnav">
+            <!-- Sidebar navigation loaded via _role.js -->
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="page-wrapper">
+      <header class="topbar">
+        <div class="with-vertical">
+          <nav class="navbar navbar-expand-lg p-0">
+            <ul class="navbar-nav">
+              <li class="nav-item nav-icon-hover-bg rounded-circle ms-n2"><a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li>
+            </ul>
+            <div class="d-block d-lg-none py-4 text-primary fw-bold fs-5 ps-3">IIMS</div>
+            <a class="navbar-toggler p-0 border-0 nav-icon-hover-bg rounded-circle" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="ti ti-dots fs-7"></i></a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <div class="d-flex align-items-center justify-content-between">
+                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
+                  <li class="nav-item nav-icon-hover-bg rounded-circle"><a class="nav-link" href="javascript:void(0)"><i class="ti ti-bell-ringing"></i></a></li>
+                  <li class="nav-item"><div class="d-flex align-items-center"><img src="../../assets/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" /></div></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <div class="body-wrapper">
+        <div class="container-fluid">
+          <!-- Breadcrumb Card -->
+          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
+            <div class="card-body px-4 py-3">
+              <div class="row align-items-center">
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">Food Handler Report</h4>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-dashboard.html">Home</a></li>
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-premises-list.html">Premises</a></li>
+                      <li class="breadcrumb-item active">Food Handler Report</li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary Metric Cards -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-3">
+              <div class="card border shadow-none bg-primary-subtle mb-0">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                  <div>
+                    <span class="fs-2 text-muted fw-semibold d-block">Total Food Handlers</span>
+                    <h3 class="fw-bold mb-0 text-primary mt-1" id="lbl_total_handlers">7</h3>
+                  </div>
+                  <div class="round-40 rounded-circle bg-primary text-white d-flex align-items-center justify-content-center">
+                    <i class="ti ti-users fs-5"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border shadow-none bg-success-subtle mb-0">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                  <div>
+                    <span class="fs-2 text-muted fw-semibold d-block">Medical Certificate Valid</span>
+                    <h3 class="fw-bold mb-0 text-success mt-1" id="lbl_valid_medical">5</h3>
+                  </div>
+                  <div class="round-40 rounded-circle bg-success text-white d-flex align-items-center justify-content-center">
+                    <i class="ti ti-circle-check fs-5"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border shadow-none bg-danger-subtle mb-0">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                  <div>
+                    <span class="fs-2 text-muted fw-semibold d-block">Medical Certificate Pending</span>
+                    <h3 class="fw-bold mb-0 text-danger mt-1" id="lbl_pending_medical">2</h3>
+                  </div>
+                  <div class="round-40 rounded-circle bg-danger text-white d-flex align-items-center justify-content-center">
+                    <i class="ti ti-alert-triangle fs-5"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border shadow-none bg-warning-subtle mb-0">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                  <div>
+                    <span class="fs-2 text-muted fw-semibold d-block">Completion Rate</span>
+                    <h3 class="fw-bold mb-0 text-warning mt-1" id="lbl_rate">71.4%</h3>
+                  </div>
+                  <div class="round-40 rounded-circle bg-warning text-white d-flex align-items-center justify-content-center">
+                    <i class="ti ti-percentage fs-5"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Report Body -->
+          <div class="second-box">
+            <!-- Filter Bar and Excel Export Button -->
+            <div class="row align-items-end g-3 mb-4">
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">Search Food Handler</label>
+                <input type="text" class="form-control" id="searchName" oninput="filterReport()" placeholder="Name or position...">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">GN Division</label>
+                <select class="form-select" id="filterGN" onchange="filterReport()">
+                  <option value="All">All Divisions</option>
+                  <option value="Colombo 07">Colombo 07</option>
+                  <option value="Dehiwala">Dehiwala</option>
+                  <option value="Maharagama">Maharagama</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">Medical Exam Status</label>
+                <select class="form-select" id="filterMedical" onchange="filterReport()">
+                  <option value="All">All Statuses</option>
+                  <option value="Yes">Valid Certificate (Done)</option>
+                  <option value="No">Pending/Expired</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-success w-100 py-2 d-flex align-items-center justify-content-center gap-2" onclick="exportExcel()">
+                  <i class="ti ti-file-spreadsheet fs-5"></i> Export Report to Excel
+                </button>
+              </div>
+            </div>
+
+            <!-- Handlers Table -->
+            <div class="table-responsive">
+              <table class="table table-hover table-bordered align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th style="width: 50px;">#</th>
+                    <th>Handler Name</th>
+                    <th>Position</th>
+                    <th style="width: 80px;">Age</th>
+                    <th style="width: 80px;">Sex</th>
+                    <th>Associated Premise</th>
+                    <th>GN Division</th>
+                    <th>Medical Exam</th>
+                  </tr>
+                </thead>
+                <tbody id="reportTableBody">
+                  <!-- Generated via javascript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+  <script src="../../assets/js/vendor.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
+  <script src="../../assets/js/theme/app.init.js"></script>
+  <script src="../../assets/js/theme/theme.js"></script>
+  <script src="../../assets/js/theme/app.min.js"></script>
+  <script src="../../assets/js/theme/sidebarmenu.js"></script>
+  
+  <script>
+    // Detailed Mock Dataset
+    const masterHandlersList = [
+      { id: 1, name: "A.B. Perera", position: "Chef", age: 34, sex: "Male", premise: "Golden Rice Restaurant", gn: "Colombo 07", medical: "Yes" },
+      { id: 2, name: "M.S. Silva", position: "Assistant Chef", age: 28, sex: "Female", premise: "Golden Rice Restaurant", gn: "Colombo 07", medical: "Yes" },
+      { id: 3, name: "K.D. Kumara", position: "Kitchen Helper", age: 22, sex: "Male", premise: "Golden Rice Restaurant", gn: "Colombo 07", medical: "No" },
+      { id: 4, name: "S. Hettiarachchi", position: "Cashier / Front Server", age: 25, sex: "Female", premise: "Fresh Mart Supermarket", gn: "Dehiwala", medical: "Yes" },
+      { id: 5, name: "J. Ranasinghe", position: "Master Baker", age: 41, sex: "Male", premise: "City Bakery & Confections", gn: "Maharagama", medical: "No" },
+      { id: 6, name: "F. Ghouse", position: "Sanitation Staff", age: 31, sex: "Male", premise: "City Bakery & Confections", gn: "Maharagama", medical: "Yes" },
+      { id: 7, name: "R. Wickramasinghe", position: "Juice Bar Operator", age: 23, sex: "Male", premise: "Fresh Mart Supermarket", gn: "Dehiwala", medical: "Yes" }
+    ];
+
+    let currentList = [...masterHandlersList];
+
+    function calculateMetrics(list) {
+      const total = list.length;
+      const valid = list.filter(h => h.medical === "Yes").length;
+      const pending = total - valid;
+      const rate = total > 0 ? ((valid / total) * 100).toFixed(1) + "%" : "0%";
+
+      document.getElementById('lbl_total_handlers').textContent = total;
+      document.getElementById('lbl_valid_medical').textContent = valid;
+      document.getElementById('lbl_pending_medical').textContent = pending;
+      document.getElementById('lbl_rate').textContent = rate;
+    }
+
+    function renderTable(list) {
+      const tbody = document.getElementById('reportTableBody');
+      tbody.innerHTML = '';
+
+      if (list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-3">No matching records found.</td></tr>`;
+        return;
+      }
+
+      list.forEach((h, index) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td><strong>${h.name}</strong></td>
+          <td>${h.position}</td>
+          <td>${h.age}</td>
+          <td>${h.sex}</td>
+          <td>${h.premise}</td>
+          <td>${h.gn}</td>
+          <td>
+            <span class="badge ${h.medical === 'Yes' ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'}">
+              ${h.medical === 'Yes' ? 'Valid' : 'Pending / Expired'}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterReport() {
+      const search = document.getElementById('searchName').value.toLowerCase();
+      const gn = document.getElementById('filterGN').value;
+      const medical = document.getElementById('filterMedical').value;
+
+      currentList = masterHandlersList.filter(h => {
+        const matchSearch = h.name.toLowerCase().includes(search) || h.position.toLowerCase().includes(search);
+        const matchGN = (gn === "All" || h.gn === gn);
+        const matchMedical = (medical === "All" || h.medical === medical);
+        return matchSearch && matchGN && matchMedical;
+      });
+
+      renderTable(currentList);
+      calculateMetrics(currentList);
+    }
+
+    function exportExcel() {
+      if (currentList.length === 0) {
+        alert("No data available to export.");
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += "Serial No,Handler Name,Position,Age,Sex,Premises,GN Division,Medical Status\n";
+
+      currentList.forEach((h, index) => {
+        csvContent += `"${index + 1}","${h.name}","${h.position}","${h.age}","${h.sex}","${h.premise}","${h.gn}","${h.medical === 'Yes' ? 'Valid' : 'Pending'}"\n`;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "food_handlers_medical_status_report.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      renderTable(masterHandlersList);
+      calculateMetrics(masterHandlersList);
+    });
+  </script>
+  <script src="./_role.js"></script>
+</body>
+</html>

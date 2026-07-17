@@ -17,7 +17,7 @@
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-dashboard.html' },
 
       { type: 'cap', label: 'Laboratory' },
-      { type: 'link', icon: 'ti ti-microscope',       label: 'Reception Triage',   href: './iims-received-samples.html' },
+      { type: 'link', icon: 'ti ti-microscope',       label: 'Reception Checklist',href: './iims-received-samples.html' },
 
       { type: 'cap', label: 'System' },
       { type: 'link', icon: 'ti ti-bell-ringing',     label: 'Alerts',             href: './iims-alerts.html' }

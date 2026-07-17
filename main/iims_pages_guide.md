@@ -36,7 +36,7 @@ This document provides a comprehensive list of all functional pages within the F
 | Page | URL | Description |
 |------|-----|-------------|
 | **Sample Management** | [iims-sample-management.html](file:///d:/FCAU/main/iims-sample-management.html) | Registry of all physical samples currently in transit, in lab, or completed. |
-| **Reception Triage** | [iims-lab-triage.html](file:///d:/FCAU/main/iims-lab-triage.html) | Lab reception interface to verify sample integrity and assign analysts. |
+| **Reception Checklist** | [iims-lab-triage.html](file:///d:/FCAU/main/iims-lab-triage.html) | Lab reception interface to verify sample integrity and assign analysts. |
 | **Manual Result Entry**| [iims-lab-report-form.html](file:///d:/FCAU/main/iims-lab-report-form.html) | Form for recording analytical parameters (Moisture, NaCl, Microbiology). |
 
 ## 🚢 Trade Control (Import/Export)
