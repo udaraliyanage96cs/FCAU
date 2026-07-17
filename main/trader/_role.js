@@ -14,14 +14,14 @@
     colorLight: '#F5F3FF',
     nav: [
       { type: 'cap', label: 'Home' },
-      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-import-entry.html' },
+      { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-importer-registration.html' },
       { type: 'link', icon: 'ti ti-package',           label: 'Pre-Import Entry',   href: './iims-import-entry.html' },
       // { type: 'link', icon: 'ti ti-user-plus',        label: 'Importer Registration', href: './iims-importer-registration.html' }
     ]
   };
 
   function buildNav() {
-    var cur = window.location.pathname.split('/').pop() || 'iims-import-entry.html';
+    var cur = window.location.pathname.split('/').pop() || 'iims-importer-registration.html';
     var matchedActive = false;
     return ROLE.nav.map(function (item) {
       if (item.type === 'cap') {

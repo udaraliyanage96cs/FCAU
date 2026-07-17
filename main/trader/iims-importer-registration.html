@@ -4,23 +4,17 @@
   <meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="../../assets/css/styles.css" />
-  <title>IIMS - Importer Registration</title>
-  <!-- Leaflet Map CSS & JS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <title>IIMS - Import Trade Dashboard</title>
   <style>
-    #map {
-      height: 320px;
-      border-radius: 8px;
-      border: 1px solid #CBD5E1;
+    .kpi-card {
+      transition: all 0.3s ease;
     }
-    .form-section-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #1E293B;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .kpi-card:hover {
+      transform: translateY(-4px);
+    }
+    .dest-progress {
+      height: 8px;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -29,10 +23,16 @@
   <div id="main-wrapper">
     <aside class="left-sidebar with-vertical"><div>
       <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./iims-export-app.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">IIMS</a>
-          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none"><i class="ti ti-x"></i></a>
-      </div>
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav"></ul></nav>
+          <a href="./iims-importer-registration.html" class="text-nowrap logo-img text-primary fw-bold fs-6 ps-3">
+            IIMS
+          </a>
+          <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
+            <i class="ti ti-x"></i>
+          </a>
+        </div>
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar><ul id="sidebarnav">
+        <!-- Sidebar items injected by _role.js -->
+      </ul></nav>
     </div></aside>
 
     <div class="page-wrapper">
@@ -40,15 +40,16 @@
 
       <div class="body-wrapper">
         <div class="container-fluid">
+          <!-- Page Header -->
           <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
             <div class="card-body px-4 py-3">
               <div class="row align-items-center">
-                <div class="col-sm-9 col-12">
-                  <h4 class="fw-semibold mb-8">Importer Registration</h4>
+                <div class="col-9">
+                  <h4 class="fw-semibold mb-8">Import Trade Dashboard & Analytics</h4>
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-export-app.html">Home</a></li>
-                      <li class="breadcrumb-item active">Importer Registration</li>
+                      <li class="breadcrumb-item"><a class="text-muted" href="./iims-importer-registration.html">Home</a></li>
+                      <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                   </nav>
                 </div>
@@ -56,136 +57,172 @@
             </div>
           </div>
 
-          <div class="card">
+          <!-- KPI Cards Row -->
+          <div class="row g-3 mb-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="card kpi-card shadow-sm border-0 bg-primary-subtle text-primary mb-0">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="fw-semibold text-uppercase fs-2 tracking-wider">Profile Status</span>
+                    <i class="ti ti-shield-check fs-6 text-primary"></i>
+                  </div>
+                  <div class="d-flex align-items-baseline gap-2">
+                    <h3 class="fw-bold mb-0">Active</h3>
+                    <span class="badge bg-success-subtle text-success fs-1">VERIFIED</span>
+                  </div>
+                  <p class="fs-1 text-muted mb-0 mt-2">Facility: Global Foods Import (IMP-001)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div class="card kpi-card shadow-sm border-0 bg-info-subtle text-info mb-0">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="fw-semibold text-uppercase fs-2 tracking-wider">Total Applications</span>
+                    <i class="ti ti-folders fs-6 text-info"></i>
+                  </div>
+                  <h3 class="fw-bold mb-0">24</h3>
+                  <p class="fs-1 text-muted mb-0 mt-2">Cumulative applications filed</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div class="card kpi-card shadow-sm border-0 bg-success-subtle text-success mb-0">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="fw-semibold text-uppercase fs-2 tracking-wider">Permits Issued</span>
+                    <i class="ti ti-file-certificate fs-6 text-success"></i>
+                  </div>
+                  <h3 class="fw-bold mb-0">20</h3>
+                  <p class="fs-1 text-muted mb-0 mt-2">Ready to download/print</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+              <div class="card kpi-card shadow-sm border-0 bg-warning-subtle text-warning mb-0">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center justify-content-between mb-3">
+                    <span class="fw-semibold text-uppercase fs-2 tracking-wider">Pending Action</span>
+                    <i class="ti ti-clock fs-6 text-warning"></i>
+                  </div>
+                  <h3 class="fw-bold mb-0">4</h3>
+                  <p class="fs-1 text-muted mb-0 mt-2">Under review or lab testing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="row g-4 mb-4">
+            <!-- Left Chart - Import Volume -->
+            <div class="col-lg-7">
+              <div class="card shadow-sm h-100 mb-0">
+                <div class="card-body">
+                  <h5 class="fw-semibold mb-4"><i class="ti ti-chart-bar me-2 text-primary"></i>Weekly Import Weight Volume (MT)</h5>
+                  <div class="d-flex align-items-baseline gap-2 mb-3">
+                    <h2 class="fw-bold mb-0">95.4 MT</h2>
+                    <span class="text-success fs-2 fw-semibold d-flex align-items-center"><i class="ti ti-trending-up me-1"></i>+15.2% vs last week</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-end pt-4" style="height: 180px;">
+                    <div class="text-center w-100">
+                      <div class="bg-primary-subtle rounded-top mx-auto" style="width: 32px; height: 95px; background-color: #8B5CF6 !important;"></div>
+                      <span class="fs-1 text-muted mt-2 d-block">Week 1</span>
+                    </div>
+                    <div class="text-center w-100">
+                      <div class="bg-primary-subtle rounded-top mx-auto" style="width: 32px; height: 110px; background-color: #8B5CF6 !important;"></div>
+                      <span class="fs-1 text-muted mt-2 d-block">Week 2</span>
+                    </div>
+                    <div class="text-center w-100">
+                      <div class="bg-primary-subtle rounded-top mx-auto" style="width: 32px; height: 80px; background-color: #8B5CF6 !important;"></div>
+                      <span class="fs-1 text-muted mt-2 d-block">Week 3</span>
+                    </div>
+                    <div class="text-center w-100">
+                      <div class="bg-primary rounded-top mx-auto" style="width: 32px; height: 155px; background-color: #5D87FF !important;"></div>
+                      <span class="fs-1 text-muted mt-2 d-block fw-semibold">Week 4</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Chart - Origins Breakdown -->
+            <div class="col-lg-5">
+              <div class="card shadow-sm h-100 mb-0">
+                <div class="card-body">
+                  <h5 class="fw-semibold mb-4"><i class="ti ti-world me-2 text-primary"></i>Top Consignment Origins</h5>
+                  <div class="space-y-4">
+                    <div class="mb-3">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="fs-2 fw-semibold text-dark">Australia</span>
+                        <span class="fs-2 text-muted fw-bold">40%</span>
+                      </div>
+                      <div class="progress dest-progress bg-light">
+                        <div class="progress-bar bg-primary" style="width: 40%; background-color: #8B5CF6 !important;"></div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="fs-2 fw-semibold text-dark">India</span>
+                        <span class="fs-2 text-muted fw-bold">25%</span>
+                      </div>
+                      <div class="progress dest-progress bg-light">
+                        <div class="progress-bar bg-info" style="width: 25%; background-color: #3B82F6 !important;"></div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="fs-2 fw-semibold text-dark">New Zealand</span>
+                        <span class="fs-2 text-muted fw-bold">20%</span>
+                      </div>
+                      <div class="progress dest-progress bg-light">
+                        <div class="progress-bar bg-success" style="width: 20%; background-color: #13DEB9 !important;"></div>
+                      </div>
+                    </div>
+
+                    <div class="mb-0">
+                      <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="fs-2 fw-semibold text-dark">Netherlands</span>
+                        <span class="fs-2 text-muted fw-bold">15%</span>
+                      </div>
+                      <div class="progress dest-progress bg-light">
+                        <div class="progress-bar bg-warning" style="width: 15%; background-color: #FFAE1F !important;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Row - Recent Activity Table -->
+          <div class="card shadow-sm">
             <div class="card-body">
-              <form id="importer-reg-form" onsubmit="submitImporterRegistration(event)">
-                
-                <!-- Section 1: Company Information -->
-                <div class="mb-4">
-                  <div class="form-section-title mb-3">
-                    <div class="bg-primary-subtle text-primary p-2 rounded">
-                      <i class="ti ti-building-store"></i>
-                    </div>
-                    <span>Company Information</span>
-                  </div>
-                  <div class="row g-3">
-                    <div class="col-12">
-                      <label class="form-label">Legal Company Name <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" placeholder="e.g. Food Imports (Pvt) Ltd" required>
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Business Registration No <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" placeholder="e.g. PV-123456" required>
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">NIC Number</label>
-                      <input type="text" class="form-control" placeholder="e.g. 199012345678 or 901234567V">
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">TIN Number <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" placeholder="9-digit Taxpayer ID" required>
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">VAT Number <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" placeholder="VAT Registration Number" required>
-                    </div>
-                  </div>
-                </div>
-
-                <hr class="my-4">
-
-                <!-- Section 2: Contact Information -->
-                <div class="mb-4">
-                  <div class="form-section-title mb-3">
-                    <div class="bg-primary-subtle text-primary p-2 rounded">
-                      <i class="ti ti-phone"></i>
-                    </div>
-                    <span>Contact Information</span>
-                  </div>
-                  <div class="row g-3">
-                    <div class="col-md-4">
-                      <label class="form-label">Contact Person Name <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" placeholder="Contact person full name" required>
-                    </div>
-                    <div class="col-md-4">
-                      <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" placeholder="e.g. 0771234567" required>
-                    </div>
-                    <div class="col-md-4">
-                      <label class="form-label">Official Email <span class="text-danger">*</span></label>
-                      <input type="email" class="form-control" placeholder="e.g. imports@company.com" required>
-                    </div>
-                  </div>
-                </div>
-
-                <hr class="my-4">
-
-                <!-- Section 3: Warehouse Location -->
-                <div class="mb-4">
-                  <div class="form-section-title mb-3">
-                    <div class="bg-primary-subtle text-primary p-2 rounded">
-                      <i class="ti ti-map-pin"></i>
-                    </div>
-                    <span>Warehouse Location (Spatial Data)</span>
-                  </div>
-                  <div class="row g-3 mb-3">
-                    <div class="col-md-6">
-                      <label class="form-label">Latitude <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" id="lat-field" placeholder="e.g. 6.9271" required value="6.9271">
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Longitude <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control" id="lng-field" placeholder="e.g. 79.8612" required value="79.8612">
-                    </div>
-                  </div>
-                  <div class="mb-2">
-                    <label class="form-label fw-semibold"><i class="ti ti-map-2 me-1"></i>Warehouse Location Map</label>
-                    <div id="map"></div>
-                    <small class="text-muted mt-2 d-block">Click on the map or drag the pin to set your warehouse location.</small>
-                  </div>
-                </div>
-
-                <hr class="my-4">
-
-                <!-- Section 4: Required Documents -->
-                <div class="mb-4">
-                  <div class="form-section-title mb-3">
-                    <div class="bg-primary-subtle text-primary p-2 rounded">
-                      <i class="ti ti-cloud-upload"></i>
-                    </div>
-                    <span>Required Verification Documents</span>
-                  </div>
-                  <div class="row g-3">
-                    <div class="col-md-6 col-lg-4">
-                      <label class="form-label">Business Registration Certificate <span class="text-danger">*</span></label>
-                      <input type="file" class="form-control" required>
-                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                      <label class="form-label">VAT Certificate <span class="text-danger">*</span></label>
-                      <input type="file" class="form-control" required>
-                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                      <label class="form-label">Director Board Details Document <span class="text-danger">*</span></label>
-                      <input type="file" class="form-control" required>
-                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mt-lg-3">
-                      <label class="form-label">EDB Certificate <span class="text-danger">*</span></label>
-                      <input type="file" class="form-control" required>
-                      <small class="text-muted fs-1 d-block mt-1">PDF, JPG, PNG (Max 10MB)</small>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Footer Buttons -->
-                <div class="d-flex justify-content-end gap-2 mt-4 border-top pt-3">
-                  <button type="button" class="btn btn-outline-secondary">Cancel</button>
-                  <button type="submit" class="btn btn-primary px-4">Submit Registration</button>
-                </div>
-
-              </form>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-semibold mb-0"><i class="ti ti-history me-2 text-primary"></i>Recent Pre-Import Application Log</h5>
+                <a href="./iims-import-entry.html" class="btn btn-outline-primary btn-sm">View All Pre-Import Entries</a>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-middle text-nowrap mb-0 table-hover">
+                  <thead class="text-dark fs-2 bg-light">
+                    <tr>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">FCAU No.</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">CUSDEC No.</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Food Category</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Doc. Verification</h6></th>
+                      <th class="border-bottom-0"><h6 class="fw-semibold mb-0 fs-2">Payment Status</h6></th>
+                      <th class="border-bottom-0 text-end"><h6 class="fw-semibold mb-0 fs-2">Actions</h6></th>
+                    </tr>
+                  </thead>
+                  <tbody id="entries-tbody">
+                    <!-- Rendered by JS -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
@@ -193,7 +230,6 @@
       </div>
     </div>
   </div>
-
   <script src="../../assets/js/vendor.min.js"></script>
   <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/libs/simplebar/dist/simplebar.min.js"></script>
@@ -202,38 +238,57 @@
   <script src="../../assets/js/theme/app.min.js"></script>
   <script src="../../assets/js/theme/sidebarmenu.js"></script>
   <script src="./_role.js"></script>
-
   <script>
-    var map, marker;
-    function initMap() {
-      map = L.map('map').setView([6.9271, 79.8612], 8); // View Sri Lanka
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
+    var entries = [
+      { id: "I-XORKSO", cusdec: "123", category: "Dairy Processing", docStatus: "Approved", payStatus: "Unpaid" },
+      { id: "I-DSH0QQ", cusdec: "123", category: "Bakeries", docStatus: "Pending", payStatus: "Unpaid" },
+      { id: "I-LDC5PK", cusdec: "54321", category: "Food Packaging", docStatus: "Approved", payStatus: "Paid" },
+      { id: "I-G0BNCY", cusdec: "766", category: "Food Packaging", docStatus: "Approved", payStatus: "Paid" }
+    ];
 
-      marker = L.marker([6.9271, 79.8612], {draggable: true}).addTo(map);
+    function renderEntries() {
+      var tbody = document.getElementById('entries-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      entries.forEach(function(item) {
+        var docBadge = item.docStatus === 'Approved' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning';
+        var payBadge = item.payStatus === 'Paid' ? 'bg-success-subtle text-success' : 'bg-info-subtle text-info';
 
-      marker.on('dragend', function (e) {
-        var position = marker.getLatLng();
-        document.getElementById('lat-field').value = position.lat.toFixed(4);
-        document.getElementById('lng-field').value = position.lng.toFixed(4);
-      });
+        var payActionBtn = item.payStatus === 'Unpaid' 
+          ? '<button class="btn btn-sm btn-success px-2 me-1" title="Pay Now" onclick="payEntry(\'' + item.id + '\')"><i class="ti ti-credit-card fs-3"></i> Pay</button>' 
+          : '';
 
-      map.on('click', function(e) {
-        marker.setLatLng(e.latlng);
-        document.getElementById('lat-field').value = e.latlng.lat.toFixed(4);
-        document.getElementById('lng-field').value = e.latlng.lng.toFixed(4);
+        tbody.insertAdjacentHTML('beforeend', '<tr>' +
+          '<td><span class="font-monospace fw-semibold text-primary">' + item.id + '</span></td>' +
+          '<td><span class="fw-semibold text-dark fs-2">' + item.cusdec + '</span></td>' +
+          '<td><span class="fw-semibold text-dark fs-2">' + item.category + '</span></td>' +
+          '<td><span class="badge ' + docBadge + ' fw-semibold fs-1 px-3 py-1 rounded">' + item.docStatus + '</span></td>' +
+          '<td><span class="badge ' + payBadge + ' fw-semibold fs-1 px-3 py-1 rounded">' + item.payStatus + '</span></td>' +
+          '<td class="text-end">' +
+          '  <div class="d-flex align-items-center justify-content-end">' +
+          payActionBtn +
+          '    <button class="btn btn-sm btn-primary px-2 ms-1" title="View Details" onclick="viewEntry(\'' + item.id + '\')"><i class="ti ti-eye fs-3"></i></button>' +
+          '  </div>' +
+          '</td>' +
+          '</tr>');
       });
     }
 
-    function submitImporterRegistration(e) {
-      e.preventDefault();
-      alert("Importer registration submitted successfully! Awaiting FCAU review and validation.");
-      window.location.href = "./iims-export-app.html";
-    }
+    window.payEntry = function(id) {
+      var item = entries.find(function(e) { return e.id === id; });
+      if (item) {
+        item.payStatus = 'Paid';
+        alert("Payment for entry " + id + " submitted successfully!");
+        renderEntries();
+      }
+    };
+
+    window.viewEntry = function(id) {
+      window.location.href = './iims-import-entry.html';
+    };
 
     window.addEventListener('DOMContentLoaded', function() {
-      initMap();
+      renderEntries();
     });
   </script>
 </body>
