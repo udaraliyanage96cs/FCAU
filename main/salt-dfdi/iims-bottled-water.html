@@ -45,34 +45,37 @@
                       <td>Deep Tube Well</td>
                       <td>Aqua Pure</td>
                       <td><span class="badge bg-success-subtle text-success">SLS Certified</span></td>
-                      <td><span class="badge bg-primary">Active</span></td>
+                      <td><span class="badge bg-primary" id="status-bw-001">Active</span></td>
                       <td class="text-nowrap">
                         <button class="btn btn-sm btn-outline-primary me-1">View</button>
-                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-001')"><i class="ti ti-history me-1"></i>Inspection History</button>
+                        <button class="btn btn-sm btn-warning me-1" onclick="alert('Inspection report generated successfully for Aqua Pure Ltd!')"><i class="ti ti-file-text me-1"></i>Generate Inspection Report</button>
+                        <button class="btn btn-sm btn-outline-primary" onclick="showHistory('BW-2026-001')"><i class="ti ti-history me-1"></i>Inspection History</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr id="row-bw-002">
                       <td>BW-2026-002</td>
                       <td>Spring Valley Waters</td>
                       <td>Natural Spring</td>
                       <td>Peak Valley Springs</td>
                       <td><span class="badge bg-warning-subtle text-warning">Awaiting Audit</span></td>
-                      <td><span class="badge bg-warning text-dark">Pending Review</span></td>
-                      <td class="text-nowrap">
-                        <button class="btn btn-sm btn-outline-primary me-1">View</button>
-                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-002')"><i class="ti ti-history me-1"></i>Inspection History</button>
+                      <td><span class="badge bg-warning text-dark" id="status-bw-002">Pending Review</span></td>
+                      <td id="actions-bw-002" class="text-nowrap">
+                        <button class="btn btn-sm btn-success me-1" onclick="approveWater('BW-2026-002')"><i class="ti ti-check me-1"></i>Approve</button>
+                        <button class="btn btn-sm btn-danger me-1" onclick="rejectWater('BW-2026-002')"><i class="ti ti-x me-1"></i>Reject</button>
+                        <button class="btn btn-sm btn-outline-primary" onclick="showHistory('BW-2026-002')"><i class="ti ti-history me-1"></i>Inspection History</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr id="row-bw-003">
                       <td>BW-2026-003</td>
                       <td>Alpine Water Ltd</td>
                       <td>Deep Tube Well</td>
                       <td>Alpine Frost</td>
                       <td><span class="badge bg-warning-subtle text-warning">Awaiting Inspection</span></td>
-                      <td><span class="badge bg-secondary text-white">Draft Recommendation</span></td>
-                      <td class="text-nowrap">
+                      <td><span class="badge bg-secondary text-white" id="status-bw-003">Draft Recommendation</span></td>
+                      <td id="actions-bw-003" class="text-nowrap">
                         <button class="btn btn-sm btn-outline-primary me-1">View</button>
-                        <button class="btn btn-sm btn-outline-info" onclick="showHistory('BW-2026-003')"><i class="ti ti-history me-1"></i>Inspection History</button>
+                        <button class="btn btn-sm btn-success me-1" onclick="issueRecommendation('BW-2026-003')"><i class="ti ti-checklist me-1"></i>Issue Full Recommendation</button>
+                        <button class="btn btn-sm btn-outline-primary" onclick="showHistory('BW-2026-003')"><i class="ti ti-history me-1"></i>Inspection History</button>
                       </td>
                     </tr>
                   </tbody>
@@ -95,6 +98,54 @@
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 <script src="./_role.js"></script>
 <script>
+  function approveWater(id) {
+    if (confirm("Are you sure you want to approve water manufacturer " + id + "?")) {
+      const badge = document.getElementById('status-bw-002');
+      badge.textContent = 'Active';
+      badge.className = 'badge bg-primary';
+      
+      const actions = document.getElementById('actions-bw-002');
+      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1">View</button> <button class="btn btn-sm btn-warning me-1" onclick="alert(\'Inspection report generated successfully for Spring Valley Waters!\')"><i class="ti ti-file-text me-1"></i>Generate</button> <button class="btn btn-sm btn-outline-primary me-1" onclick="showHistory(\'BW-2026-002\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-success fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-check-filled me-1"></i>Approved</span>';
+    }
+  }
+  
+  function rejectWater(id) {
+    if (confirm("Are you sure you want to reject water manufacturer " + id + "?")) {
+      const badge = document.getElementById('status-bw-002');
+      badge.textContent = 'Rejected';
+      badge.className = 'badge bg-danger';
+      
+      const actions = document.getElementById('actions-bw-002');
+      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1" onclick="showHistory(\'BW-2026-002\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-danger fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-circle-x-filled me-1"></i>Rejected</span>';
+    }
+  }
+
+  function sendForApproval(id) {
+    if (confirm("Are you sure you want to send water manufacturer " + id + " for higher approval?")) {
+      alert("Application for " + id + " has been successfully submitted to DDG & Director for approval.");
+      if (id === 'BW-2026-003') {
+        const badge = document.getElementById('status-bw-003');
+        badge.textContent = 'Awaiting Approval';
+        badge.className = 'badge bg-info text-white';
+        
+        const actions = document.getElementById('actions-bw-003');
+        actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1" onclick="showHistory(\'BW-2026-003\')"><i class="ti ti-history me-1"></i>History</button> <span class="text-info fw-semibold fs-2 d-inline-flex align-items-center"><i class="ti ti-mail-forward me-1"></i> Sent for Approval</span>';
+      }
+    }
+  }
+
+  function issueRecommendation(id) {
+    if (confirm("Are you sure you want to issue a full recommendation for water manufacturer " + id + "?")) {
+      alert("Recommendation successfully issued!");
+      const badge = document.getElementById('status-bw-003');
+      badge.textContent = 'Recommended';
+      badge.className = 'badge bg-success text-white';
+      
+      const actions = document.getElementById('actions-bw-003');
+      actions.innerHTML = '<button class="btn btn-sm btn-outline-primary me-1">View</button> <button class="btn btn-sm btn-info me-1" onclick="sendForApproval(\'BW-2026-003\')"><i class="ti ti-send me-1"></i>Send for Approval</button> <button class="btn btn-sm btn-outline-primary" onclick="showHistory(\'BW-2026-003\')"><i class="ti ti-history me-1"></i>History</button>';
+    }
+  }
+
   function showHistory(id) {
     alert("Viewing inspection history logs for manufacturer " + id + ":\n\n- 2026-01-15: SLS Re-certification Audit (Satisfactory)\n- 2025-07-22: Routine Factory Visit (Minor Non-compliance resolved)\n- 2025-02-10: Initial Premises Grade (Grade A)");
   }
