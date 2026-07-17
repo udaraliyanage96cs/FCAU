@@ -16,7 +16,7 @@
       { type: 'cap', label: 'Home' },
       { type: 'link', icon: 'ti ti-layout-dashboard', label: 'Dashboard',          href: './iims-import-entry.html' },
       { type: 'link', icon: 'ti ti-package',           label: 'Pre-Import Entry',   href: './iims-import-entry.html' },
-      { type: 'link', icon: 'ti ti-user-plus',        label: 'Importer Registration', href: './iims-importer-registration.html' }
+      // { type: 'link', icon: 'ti ti-user-plus',        label: 'Importer Registration', href: './iims-importer-registration.html' }
     ]
   };
 
